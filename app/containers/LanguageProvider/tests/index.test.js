@@ -7,21 +7,24 @@ import { browserHistory } from 'react-router-dom'
 import ConnectedLanguageProvider, { LanguageProvider } from '../index'
 import configureStore from '../../../configureStore'
 
-import { translationMessages } from '../../../i18n'
-
 const messages = defineMessages({
   someMessage: {
-    id: 'some.id',
+    id: 'someMessage',
     defaultMessage: 'This is some default message',
-    pt: 'This is some pt message',
   },
 })
+
+const translationMessages = {
+  pt: {
+    someMessage: 'This is some default message',
+  },
+}
 
 describe('<LanguageProvider />', () => {
   it('should render its children', () => {
     const children = <h1>Test</h1>
     const { container } = render(
-      <LanguageProvider messages={messages} locale="pt">
+      <LanguageProvider messages={translationMessages} locale="pt">
         {children}
       </LanguageProvider>,
     )
