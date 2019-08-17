@@ -9,7 +9,7 @@ describe('<HomePage />', () => {
     const {
       container: { firstChild },
     } = render(
-      <IntlProvider locale="en">
+      <IntlProvider locale="pt">
         <HomePage />
       </IntlProvider>,
     )
