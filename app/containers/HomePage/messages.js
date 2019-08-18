@@ -8,8 +8,12 @@ import { defineMessages } from 'react-intl'
 export const scope = 'app.containers.HomePage'
 
 export default defineMessages({
-  header: {
-    id: `${scope}.header`,
-    defaultMessage: 'This is the HomePage container!',
+  learnToManagerYourFinances: {
+    id: `${scope}.learnToManagerYourFinances`,
+    defaultMessage: 'Aprenda a gerenciar suas finanças de graça.',
+  },
+  startNow: {
+    id: `${scope}.startNow`,
+    defaultMessage: 'Comece agora',
   },
 })

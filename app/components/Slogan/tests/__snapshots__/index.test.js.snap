@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Slogan /> Should render and match the snapshot 1`] = `
+<div
+  class="Slogan__Wrapper-v1mhy0-0 dhXgpb"
+>
+  <img
+    alt="Betinnapp icon"
+    src="IMAGE_MOCK"
+  />
+  <span>
+    Betinnapp
+  </span>
+</div>
+`;
