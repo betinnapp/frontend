@@ -1,9 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<HomePage /> should render and match the snapshot 1`] = `
-<h1>
+<div>
+  <img
+    alt="Stats"
+    src="IMAGE_MOCK"
+  />
   <span>
-    This is the HomePage container!
+    Aprenda a gerenciar suas finanças de graça.
   </span>
-</h1>
+  <button
+    class="Button__StyledButton-ss41oc-0 eUuPsm"
+    id="startNow"
+    type="button"
+  >
+    <span>
+      Comece agora
+    </span>
+  </button>
+</div>
 `;

@@ -1,4 +1,7 @@
 {
   "app.containers.App.betinnapp": "Betinnapp",
+  "app.containers.HomePage.alreadyHaveAnAccount": "Já tenho uma conta",
+  "app.containers.HomePage.learnToManagerYourFinances": "Aprenda a gerenciar suas finanças de graça.",
+  "app.containers.HomePage.startNow": "Comece agora",
   "app.containers.NotFoundPage.header": "This is the NotFoundPage container!"
 }

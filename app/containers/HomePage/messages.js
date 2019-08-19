@@ -16,4 +16,8 @@ export default defineMessages({
     id: `${scope}.startNow`,
     defaultMessage: 'Comece agora',
   },
+  alreadyHaveAnAccount: {
+    id: `${scope}.alreadyHaveAnAccount`,
+    defaultMessage: 'Já tenho uma conta',
+  },
 })
