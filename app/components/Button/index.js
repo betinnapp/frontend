@@ -32,7 +32,7 @@ const StyledButton = styled.button`
 
 function Button(props) {
   return (
-    <StyledButton type="button" id={props.id} onClick={props.onClick}>
+    <StyledButton type={props.type} id={props.id} onClick={props.onClick}>
       {props.children}
     </StyledButton>
   )
@@ -42,6 +42,11 @@ Button.propTypes = {
   children: PropTypes.node.isRequired,
   id: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+  type: PropTypes.string,
+}
+
+Button.defualtProps = {
+  type: 'button',
 }
 
 export default Button

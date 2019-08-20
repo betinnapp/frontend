@@ -12,4 +12,13 @@ export default defineMessages({
     id: `${scope}.betinnapp`,
     defaultMessage: 'Betinnapp',
   },
+  // Fields label
+  user: {
+    id: `${scope}.user`,
+    defaultMessage: 'Usuário',
+  },
+  password: {
+    id: `${scope}.password`,
+    defaultMessage: 'Senha',
+  },
 })

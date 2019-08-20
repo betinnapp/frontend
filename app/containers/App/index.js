@@ -12,6 +12,7 @@ import { Switch, Route } from 'react-router-dom'
 import styled from 'styled-components'
 
 import HomePage from 'containers/HomePage/Loadable'
+import LoginPage from 'containers/LoginPage'
 import NotFoundPage from 'containers/NotFoundPage/Loadable'
 
 import GlobalStyle from '../../global-styles'
@@ -27,6 +28,7 @@ export default function App() {
     <AppWrapper>
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route path="/login" component={LoginPage} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
