@@ -16,6 +16,7 @@ import { useInjectSaga } from 'utils/injectSaga'
 import { useInjectReducer } from 'utils/injectReducer'
 
 import Button from 'components/Button'
+import InputField from 'components/InputField'
 import Link from 'components/Link'
 import Text from 'components/Text'
 import Slogan from 'components/Slogan'
@@ -46,8 +47,13 @@ export function LoginPage() {
         </Text>
         <FormattedMessage {...messages.weHaveALotToLearn} />
       </div>
-      <input type="email" id="user" />
-      <input type="password" id="password" />
+      <InputField type="text" id="user" name="user" label={messages.user} />
+      <InputField
+        type="password"
+        id="password"
+        name="password"
+        label={messages.password}
+      />
       <Link id="forgotPassword" to="/forgotPassword" bold small>
         <FormattedMessage {...messages.forgotPassword} />
       </Link>

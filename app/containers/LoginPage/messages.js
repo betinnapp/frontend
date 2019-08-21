@@ -5,10 +5,11 @@
  */
 
 import { defineMessages } from 'react-intl'
+import commonMessages from 'containers/App/messages'
 
 export const scope = 'app.containers.LoginPage'
 
-export default defineMessages({
+const messages = defineMessages({
   welcome: {
     id: `${scope}.welcome`,
     defaultMessage: 'Bem-vindo!',
@@ -26,3 +27,8 @@ export default defineMessages({
     defaultMessage: 'Iniciar Sessão',
   },
 })
+
+export default {
+  ...commonMessages,
+  ...messages,
+}
