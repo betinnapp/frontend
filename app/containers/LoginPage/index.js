@@ -21,6 +21,7 @@ import Link from 'components/Link'
 import Text from 'components/Text'
 import Slogan from 'components/Slogan'
 
+import { login } from './actions'
 import makeSelectLoginPage from './selectors'
 import reducer from './reducer'
 import saga from './saga'
@@ -34,7 +35,7 @@ const Wrapper = styled.div`
   height: 100%;
 `
 
-export function LoginPage() {
+export function LoginPage(props) {
   useInjectReducer({ key: 'loginPage', reducer })
   useInjectSaga({ key: 'loginPage', saga })
 
@@ -59,7 +60,7 @@ export function LoginPage() {
       <Link id="forgotPassword" to="/forgotPassword" bold small>
         <FormattedMessage {...messages.forgotPassword} />
       </Link>
-      <Button id="beginSession" type="submit" onClick={() => {}}>
+      <Button id="beginSession" type="submit" onClick={props.submitLogin}>
         <FormattedMessage {...messages.beginSession} />
       </Button>
     </Wrapper>
@@ -67,7 +68,7 @@ export function LoginPage() {
 }
 
 LoginPage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  submitLogin: PropTypes.func,
 }
 
 const mapStateToProps = createStructuredSelector({
@@ -76,7 +77,9 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    submitLogin: () => {
+      dispatch(login())
+    },
   }
 }
 

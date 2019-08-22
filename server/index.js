@@ -33,6 +33,18 @@ app.get('*.js', (req, res, next) => {
   next()
 })
 
+app.post('/api/auth/login', (req, res) => {
+  res.json({
+    token: 'tokenID',
+    id: '111',
+    firstName: 'Test',
+    lastName: 'User',
+    birthDate: '1990-01-02',
+    email: 'test_user@email.com',
+    preferences: {},
+  })
+})
+
 // Start your app.
 app.listen(port, host, async err => {
   if (err) {
