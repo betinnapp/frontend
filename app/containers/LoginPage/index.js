@@ -45,7 +45,9 @@ export function LoginPage() {
         <Text bold big>
           <FormattedMessage {...messages.welcome} />
         </Text>
-        <FormattedMessage {...messages.weHaveALotToLearn} />
+        <Text semiBold secondary>
+          <FormattedMessage {...messages.weHaveALotToLearn} />
+        </Text>
       </div>
       <InputField type="text" id="user" name="user" label={messages.user} />
       <InputField

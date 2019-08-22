@@ -9,6 +9,8 @@ import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import styled from 'styled-components'
 
+import Text from 'components/Text'
+
 const Wrapper = styled.div`
   position: relative;
 
@@ -25,6 +27,7 @@ const Wrapper = styled.div`
     background: none;
     border: none;
     border-bottom: 2px solid #bababa;
+    outline: none;
   }
 
   .label {
@@ -42,9 +45,9 @@ function InputField(props) {
   return (
     <Wrapper>
       <input type={props.type} id={props.id} name={props.name} required />
-      <span className="label">
+      <Text className="label" semiBold secondary>
         <FormattedMessage {...props.label} />
-      </span>
+      </Text>
     </Wrapper>
   )
 }
