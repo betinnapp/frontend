@@ -5,13 +5,15 @@ import request from 'utils/request'
 import * as actions from './actions'
 import { LOGIN } from './constants'
 
-export function* makeLogin() {
+export function* makeLogin(action) {
   try {
-    const base64 = btoa(`test_user:test_password`)
+    const { username, password } = action.values
+
     const response = yield call(request, LOGIN_URL, {
       method: 'POST',
-      Headers: {
-        Authorization: `Basic ${base64}`,
+      auth: {
+        username,
+        password,
       },
     })
 

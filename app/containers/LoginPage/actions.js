@@ -6,9 +6,10 @@
 
 import { LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE } from './constants'
 
-export function login() {
+export function login(values) {
   return {
     type: LOGIN,
+    values,
   }
 }
 
