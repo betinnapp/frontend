@@ -26,8 +26,13 @@ const Wrapper = styled.div`
     height: 32px;
     background: none;
     border: none;
-    border-bottom: 2px solid #bababa;
     outline: none;
+    border-bottom: 2px solid #bababa;
+
+    &:focus {
+      border-image-source: linear-gradient(45deg, #9657f6, #00dba1);
+      border-image-slice: 1;
+    }
   }
 
   .label {
