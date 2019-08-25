@@ -24,7 +24,7 @@ export function RegisterPage() {
 
   return (
     <div>
-      <FormattedMessage {...messages.header} />
+      <FormattedMessage {...messages.tellAboutYou} />
     </div>
   )
 }
