@@ -14,6 +14,7 @@ import styled from 'styled-components'
 import HomePage from 'containers/HomePage/Loadable'
 import LoginPage from 'containers/LoginPage'
 import NotFoundPage from 'containers/NotFoundPage/Loadable'
+import Notifications from 'containers/Notifications'
 
 import GlobalStyle from '../../global-styles'
 
@@ -32,6 +33,7 @@ export default function App() {
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
+      <Notifications />
     </AppWrapper>
   )
 }

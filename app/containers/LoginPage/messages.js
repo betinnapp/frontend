@@ -30,6 +30,10 @@ const messages = defineMessages({
     id: `${scope}.required`,
     defaultMessage: 'Obrigatório',
   },
+  invalidLogin: {
+    id: `${scope}.invalidLogin`,
+    defaultMessage: 'Usuário e/ou senha estão inválidos',
+  },
 })
 
 export default {
