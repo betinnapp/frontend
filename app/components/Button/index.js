@@ -28,11 +28,21 @@ const StyledButton = styled.button`
   &:active {
     transform: translateY(2px);
   }
+
+  &:disabled,
+  &:disabled&:hover {
+    background: #a3a3a3;
+  }
 `
 
 function Button(props) {
   return (
-    <StyledButton type={props.type} id={props.id} onClick={props.onClick}>
+    <StyledButton
+      type={props.type}
+      id={props.id}
+      onClick={props.onClick}
+      disabled={props.disabled}
+    >
       {props.children}
     </StyledButton>
   )
@@ -41,8 +51,9 @@ function Button(props) {
 Button.propTypes = {
   children: PropTypes.node.isRequired,
   id: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   type: PropTypes.string,
+  disabled: PropTypes.bool,
 }
 
 Button.defualtProps = {
