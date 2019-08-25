@@ -9,6 +9,7 @@ import { FormattedMessage } from 'react-intl'
 import styled from 'styled-components'
 
 import Button from 'components/Button'
+import history from 'utils/history'
 import Link from 'components/Link'
 import Slogan from 'components/Slogan'
 import stat from 'images/stat.svg'
@@ -31,7 +32,9 @@ const Wrapper = styled.div`
 `
 
 export default function HomePage() {
-  const startNowOnClickHandler = () => {}
+  const startNowOnClickHandler = () => {
+    history.push('/register')
+  }
 
   return (
     <Wrapper>
