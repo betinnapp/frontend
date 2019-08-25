@@ -21,15 +21,15 @@ import Link from 'components/Link'
 import Text from 'components/Text'
 import Slogan from 'components/Slogan'
 
+import { Formik, Form } from 'formik'
 import { login } from './actions'
 import makeSelectLoginPage from './selectors'
 import reducer from './reducer'
 import saga from './saga'
 import messages from './messages'
 
-const Wrapper = styled.div`
+const StyledForm = styled(Form)`
   display: grid;
-  /* grid-template-rows: 1fr 2fr 1fr; */
   align-items: center;
   justify-content: center;
   height: 100%;
@@ -40,30 +40,70 @@ export function LoginPage(props) {
   useInjectSaga({ key: 'loginPage', saga })
 
   return (
-    <Wrapper>
-      <Slogan big />
-      <div>
-        <Text bold big>
-          <FormattedMessage {...messages.welcome} />
-        </Text>
-        <Text semiBold secondary>
-          <FormattedMessage {...messages.weHaveALotToLearn} />
-        </Text>
-      </div>
-      <InputField type="text" id="user" name="user" label={messages.user} />
-      <InputField
-        type="password"
-        id="password"
-        name="password"
-        label={messages.password}
-      />
-      <Link id="forgotPassword" to="/forgotPassword" bold small>
-        <FormattedMessage {...messages.forgotPassword} />
-      </Link>
-      <Button id="beginSession" type="submit" onClick={props.submitLogin}>
-        <FormattedMessage {...messages.beginSession} />
-      </Button>
-    </Wrapper>
+    <Formik
+      initialValues={{ username: '', password: '' }}
+      validate={values => {
+        const errors = {}
+        Object.keys(values).forEach(value => {
+          if (!values[value]) {
+            errors[value] = <FormattedMessage {...messages.required} />
+          }
+        })
+
+        return errors
+      }}
+      onSubmit={(values, { setSubmitting }) => {
+        props.submitLogin(values)
+        setSubmitting(false)
+      }}
+    >
+      {({
+        values,
+        touched,
+        errors,
+        handleChange,
+        handleBlur,
+        isSubmitting,
+      }) => (
+        <StyledForm>
+          <Slogan big />
+          <div>
+            <Text bold big>
+              <FormattedMessage {...messages.welcome} />
+            </Text>
+            <Text semiBold secondary>
+              <FormattedMessage {...messages.weHaveALotToLearn} />
+            </Text>
+          </div>
+          <InputField
+            type="text"
+            id="username"
+            name="username"
+            label={messages.user}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.username}
+            error={touched.username && errors.username}
+          />
+          <InputField
+            type="password"
+            id="password"
+            name="password"
+            label={messages.password}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.password}
+            error={touched.password && errors.password}
+          />
+          <Link id="forgotPassword" to="/forgotPassword" bold small>
+            <FormattedMessage {...messages.forgotPassword} />
+          </Link>
+          <Button id="beginSession" type="submit" disabled={isSubmitting}>
+            <FormattedMessage {...messages.beginSession} />
+          </Button>
+        </StyledForm>
+      )}
+    </Formik>
   )
 }
 
@@ -77,8 +117,8 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    submitLogin: () => {
-      dispatch(login())
+    submitLogin: values => {
+      dispatch(login(values))
     },
   }
 }

@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   position: relative;
 
   > input:focus ~ .label,
-  > input:not(:focus):valid ~ .label {
+  > input:not(:focus) ~ .label {
     opacity: 1;
     top: -25px;
   }
@@ -27,7 +27,7 @@ const Wrapper = styled.div`
     background: none;
     border: none;
     outline: none;
-    border-bottom: 2px solid #bababa;
+    border-bottom: 2px solid ${props => (props.error && '#f2994a') || '#bababa'};
 
     &:focus {
       border-image-source: linear-gradient(45deg, #9657f6, #00dba1);
@@ -43,16 +43,24 @@ const Wrapper = styled.div`
     line-height: 32px;
     pointer-events: none;
     transition: 0.2s ease all;
+    color: ${props => props.error && '#f2994a'};
   }
 `
 
-function InputField(props) {
+const ErrorMessage = styled.p`
+  color: #f2994a;
+  font-size: 11px;
+  font-weight: bold;
+`
+
+function InputField({ label, error, ...props }) {
   return (
-    <Wrapper>
-      <input type={props.type} id={props.id} name={props.name} required />
+    <Wrapper error={error}>
+      <input {...props} />
       <Text className="label" semiBold secondary>
-        <FormattedMessage {...props.label} />
+        <FormattedMessage {...label} />
       </Text>
+      {error && <ErrorMessage>{error}</ErrorMessage>}
     </Wrapper>
   )
 }
@@ -65,6 +73,7 @@ InputField.propTypes = {
     id: PropTypes.string,
     defaultMessage: PropTypes.string,
   }).isRequired,
+  error: PropTypes.node,
 }
 
 export default InputField
