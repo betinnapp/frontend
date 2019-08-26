@@ -4,15 +4,17 @@
  *
  */
 import produce from 'immer'
-import { DEFAULT_ACTION } from './constants'
+import { ANSWER_QUESTION, REGISTER_QUESTIONS } from './constants'
 
-export const initialState = {}
+export const initialState = {
+  questions: REGISTER_QUESTIONS,
+}
 
 /* eslint-disable default-case, no-param-reassign */
 const registerPageReducer = (state = initialState, action) =>
   produce(state, (/* draft */) => {
     switch (action.type) {
-      case DEFAULT_ACTION:
+      case ANSWER_QUESTION:
         break
     }
   })

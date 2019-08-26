@@ -10,7 +10,7 @@ import styled from 'styled-components'
 
 const StyledButton = styled.button`
   outline: none;
-  background: #00dba1;
+  background: ${({ secondary }) => (secondary && '#904ee2') || '#00dba1'};
   border: none;
   border-radius: 16px;
   width: 296px;
@@ -22,7 +22,7 @@ const StyledButton = styled.button`
   transition: ease 0.3s;
 
   &:hover {
-    background: #06b492;
+    filter: brightness(85%);
   }
 
   &:active {
@@ -42,6 +42,7 @@ function Button(props) {
       id={props.id}
       onClick={props.onClick}
       disabled={props.disabled}
+      secondary={props.secondary}
     >
       {props.children}
     </StyledButton>
@@ -54,6 +55,7 @@ Button.propTypes = {
   onClick: PropTypes.func,
   type: PropTypes.string,
   disabled: PropTypes.bool,
+  secondary: PropTypes.bool,
 }
 
 Button.defualtProps = {

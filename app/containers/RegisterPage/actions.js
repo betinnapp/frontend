@@ -4,10 +4,10 @@
  *
  */
 
-import { DEFAULT_ACTION } from './constants'
+import { ANSWER_QUESTION } from './constants'
 
-export function defaultAction() {
+export function answerQuestion() {
   return {
-    type: DEFAULT_ACTION,
+    type: ANSWER_QUESTION,
   }
 }

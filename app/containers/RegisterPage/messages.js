@@ -13,6 +13,10 @@ export default defineMessages({
     id: `${scope}.tellAboutYou`,
     defaultMessage: 'Conte sobre você',
   },
+  answer: {
+    id: `${scope}.answer`,
+    defaultMessage: 'Resposta',
+  },
   YES: {
     id: `${scope}.YES`,
     defaultMessage: 'Sim',

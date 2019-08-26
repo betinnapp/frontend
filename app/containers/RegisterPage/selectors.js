@@ -15,11 +15,11 @@ const selectRegisterPageDomain = state => state.registerPage || initialState
  * Default selector used by RegisterPage
  */
 
-const makeSelectRegisterPage = () =>
+const makeSelectQuestions = () =>
   createSelector(
     selectRegisterPageDomain,
-    substate => substate,
+    substate => substate.questions,
   )
 
-export default makeSelectRegisterPage
+export default makeSelectQuestions
 export { selectRegisterPageDomain }

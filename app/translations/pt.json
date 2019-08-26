@@ -24,5 +24,6 @@
   "app.containers.RegisterPage.QUESTION_THOUGHT_ABOUT_INVESTING_OUT_OF_USUAL_BANK": "O que pensa logo que ouve sobre investir seu dinheiro fora da poupança",
   "app.containers.RegisterPage.QUESTION_WORK": "Você trabalha?",
   "app.containers.RegisterPage.YES": "Sim",
+  "app.containers.RegisterPage.answer": "Resposta",
   "app.containers.RegisterPage.tellAboutYou": "Conte sobre você"
 }
