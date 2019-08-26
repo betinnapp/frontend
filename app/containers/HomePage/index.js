@@ -14,8 +14,8 @@ import Link from 'components/Link'
 import Slogan from 'components/Slogan'
 import stat from 'images/stat.svg'
 
+import Text from '../../components/Text'
 import messages from './messages'
-import Paragraph from './Paragraph'
 
 const Wrapper = styled.div`
   display: grid;
@@ -39,21 +39,22 @@ export default function HomePage() {
   return (
     <Wrapper>
       <Slogan />
+
       <div>
         <img src={stat} alt="Stats" />
-        <Paragraph bold fontSize="18">
+        <Text bold fontSize="18">
           <FormattedMessage {...messages.learnToManagerYourFinances} />
-        </Paragraph>
+        </Text>
       </div>
       <div>
         <Button id="startNow" onClick={startNowOnClickHandler}>
           <FormattedMessage {...messages.startNow} />
         </Button>
-        <Paragraph>
+        <Text>
           <Link id="haveAnAccount" to="/login">
             <FormattedMessage {...messages.alreadyHaveAnAccount} />
           </Link>
-        </Paragraph>
+        </Text>
       </div>
     </Wrapper>
   )
