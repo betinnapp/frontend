@@ -56,7 +56,7 @@ const ErrorMessage = styled.p`
 function InputField({ label, error, ...props }) {
   return (
     <Wrapper error={error}>
-      <input {...props} />
+      <input {...props} autoComplete="off" />
       <Text className="label" semiBold secondary>
         <FormattedMessage {...label} />
       </Text>
