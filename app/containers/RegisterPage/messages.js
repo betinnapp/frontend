@@ -70,4 +70,12 @@ export default defineMessages({
     defaultMessage:
       'O que pensa logo que ouve sobre investir seu dinheiro fora da poupança',
   },
+  QUESTION_PASSWORD: {
+    id: `${scope}.QUESTION_PASSWORD`,
+    defaultMessage: 'Por favor informe uma senha para acessar sua conta.',
+  },
+  QUESTION_PASSWORD_CONFIRMATION: {
+    id: `${scope}.QUESTION_PASSWORD_CONFIRMATION`,
+    defaultMessage: 'Confirme a senha digitada anteriormente.',
+  },
 })

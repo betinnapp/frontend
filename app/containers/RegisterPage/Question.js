@@ -29,14 +29,14 @@ const UserIcon = styled(ActorIcon)`
   margin-left: 8px;
 `
 
-export default function Question({ answer, choices, id }) {
-  return (
-    <Wrapper>
-      <QuestionWrapper>
-        <SystemIcon src={Icon} alt="Betinnapp icon" />
-        <FormattedMessage {...messages[id]} />
-      </QuestionWrapper>
-      {answer && (
+export default function Question({ answer, choices, id, type }) {
+  const renderAnswer = () => {
+    if (answer && (type === 'PASSWORD' || type === 'PASSWORD_CONFIRMATION')) {
+      return null
+    }
+
+    return (
+      answer && (
         <Answer>
           {choices ? (
             <FormattedMessage {...messages[answer]} />
@@ -45,13 +45,24 @@ export default function Question({ answer, choices, id }) {
           )}
           <UserIcon src={Icon} alt="Betinnapp icon" />
         </Answer>
-      )}
+      )
+    )
+  }
+
+  return (
+    <Wrapper>
+      <QuestionWrapper>
+        <SystemIcon src={Icon} alt="Betinnapp icon" />
+        <FormattedMessage {...messages[id]} />
+      </QuestionWrapper>
+      {renderAnswer()}
     </Wrapper>
   )
 }
 
 Question.propTypes = {
   id: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
   choices: PropTypes.array,
   answer: PropTypes.string,
 }

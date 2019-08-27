@@ -16,12 +16,19 @@ const registerPageReducer = (state = initialState, action) =>
     switch (action.type) {
       case ANSWER_QUESTION: {
         const { questionId, answer } = action
+
         const questionIndex = draft.questions.findIndex(
           question => question.id === questionId,
         )
+
         draft.questions[questionIndex].answer = answer
         draft.questions[questionIndex].waitingAnswer = false
-        draft.questions[questionIndex + 1].waitingAnswer = true
+
+        // Setting next question to wait answer if not the last one
+        if (draft.questions.length !== questionIndex + 1) {
+          draft.questions[questionIndex + 1].waitingAnswer = true
+        }
+
         break
       }
     }

@@ -9,8 +9,7 @@ export const ANSWER_QUESTION = 'app/RegisterPage/ANSWER_QUESTION'
 export const REGISTER_QUESTIONS = [
   {
     id: 'QUESTION_NAME',
-    type: 'CHOICE',
-    choices: ['YES', 'NO'],
+    type: 'TEXT',
     waitingAnswer: true,
   },
   {
@@ -72,5 +71,13 @@ export const REGISTER_QUESTIONS = [
         score: 1,
       },
     ],
+  },
+  {
+    id: 'QUESTION_PASSWORD',
+    type: 'PASSWORD',
+  },
+  {
+    id: 'QUESTION_PASSWORD_CONFIRMATION',
+    type: 'PASSWORD_CONFIRMATION',
   },
 ]

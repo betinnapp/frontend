@@ -57,10 +57,12 @@ export function RegisterPage(props) {
     <Wrapper>
       <Header />
       {renderQuestions()}
-      <AnswerArea
-        question={props.questionBeingAnswered}
-        answerQuestion={props.answerQuestion}
-      />
+      {props.questionBeingAnswered && (
+        <AnswerArea
+          question={props.questionBeingAnswered}
+          answerQuestion={props.answerQuestion}
+        />
+      )}
     </Wrapper>
   )
 }
