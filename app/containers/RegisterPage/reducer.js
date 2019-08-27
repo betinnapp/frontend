@@ -12,10 +12,18 @@ export const initialState = {
 
 /* eslint-disable default-case, no-param-reassign */
 const registerPageReducer = (state = initialState, action) =>
-  produce(state, (/* draft */) => {
+  produce(state, draft => {
     switch (action.type) {
-      case ANSWER_QUESTION:
+      case ANSWER_QUESTION: {
+        const { questionId, answer } = action
+        const questionIndex = draft.questions.findIndex(
+          question => question.id === questionId,
+        )
+        draft.questions[questionIndex].answer = answer
+        draft.questions[questionIndex].waitingAnswer = false
+        draft.questions[questionIndex + 1].waitingAnswer = true
         break
+      }
     }
   })
 

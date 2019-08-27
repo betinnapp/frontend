@@ -4,16 +4,7 @@ import { initialState } from './reducer'
 /**
  * Direct selector to the registerPage state domain
  */
-
 const selectRegisterPageDomain = state => state.registerPage || initialState
-
-/**
- * Other specific selectors
- */
-
-/**
- * Default selector used by RegisterPage
- */
 
 const makeSelectQuestions = () =>
   createSelector(
@@ -21,5 +12,10 @@ const makeSelectQuestions = () =>
     substate => substate.questions,
   )
 
-export default makeSelectQuestions
-export { selectRegisterPageDomain }
+const makeSelectQuestionBeingAnswered = () =>
+  createSelector(
+    makeSelectQuestions(),
+    questions => questions.find(question => question.waitingAnswer),
+  )
+
+export { makeSelectQuestions, makeSelectQuestionBeingAnswered }

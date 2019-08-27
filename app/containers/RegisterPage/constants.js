@@ -6,68 +6,71 @@
 
 export const ANSWER_QUESTION = 'app/RegisterPage/ANSWER_QUESTION'
 
-export const REGISTER_QUESTIONS = {
-  QUESTION_NAME: {
-    question: 'QUESTION_NAME',
-    answerType: 'TEXT',
-    answersChoice: ['YES', 'NO'],
+export const REGISTER_QUESTIONS = [
+  {
+    id: 'QUESTION_NAME',
+    type: 'CHOICE',
+    choices: ['YES', 'NO'],
+    waitingAnswer: true,
   },
-  QUESTION_SHORTNAME: {
-    question: 'QUESTION_SHORTNAME',
-    answerType: 'TEXT',
+  {
+    id: 'QUESTION_SHORTNAME',
+    type: 'TEXT',
   },
-  QUESTION_AGE: {
-    question: 'QUESTION_AGE',
-    answerType: 'DATE',
+  {
+    id: 'QUESTION_AGE',
+    type: 'DATE',
   },
-  QUESTION_EMAIL: {
-    question: 'QUESTION_EMAIL',
-    answerType: 'EMAIL',
+  {
+    id: 'QUESTION_EMAIL',
+    type: 'EMAIL',
   },
-  QUESTION_WORK: {
-    question: 'QUESTION_WORK',
-    answerType: 'CHOICE',
-    answersChoice: ['YES', 'NO'],
-    questionOnAnswer: {
-      YES: {
+  {
+    id: 'QUESTION_WORK',
+    type: 'CHOICE',
+    choices: ['YES', 'NO'],
+    questionOnAnswer: [
+      {
         answer: 'YES',
-        question: 'QUESTION_MONTHLY_INCOME',
-        answerType: 'TEXT',
+        id: 'QUESTION_MONTHLY_INCOME',
+        type: 'TEXT',
       },
-    },
+    ],
   },
-  QUESTION_INVESTIMENT_TODAY: {
-    question: 'QUESTION_INVESTIMENT_TODAY',
-    answerType: 'CHOICE',
-    answersChoice: ['YES', 'NO'],
-    scoreOnAnswerChoice: {
-      answer: 'YES',
-      score: 2,
-    },
-    questionOnAnswer: {
-      NO: {
+  {
+    id: 'QUESTION_INVESTIMENT_TODAY',
+    type: 'CHOICE',
+    choices: ['YES', 'NO'],
+    scoreOnChoice: [
+      {
+        answer: 'YES',
+        score: 2,
+      },
+    ],
+    questionOnAnswer: [
+      {
         answer: 'NO',
-        question: 'QUESTION_ALREADY_INVESTED',
-        answerType: 'CHOICE',
-        answersChoice: ['YES', 'NO'],
-        scoreOnAnswerChoice: [
+        id: 'QUESTION_ALREADY_INVESTED',
+        type: 'CHOICE',
+        choices: ['YES', 'NO'],
+        scoreOnChoice: [
           {
             answer: 'YES',
             score: 1,
           },
         ],
       },
-    },
+    ],
   },
-  QUESTION_THOUGHT_ABOUT_INVESTING_OUT_OF_USUAL_BANK: {
-    question: 'QUESTION_THOUGHT_ABOUT_INVESTING_OUT_OF_USUAL_BANK',
-    answerType: 'CHOICE',
-    answersChoice: ['LETS_DO_THIS', 'NEVER_DO_THIS'],
-    scoreOnAnswerChoice: [
+  {
+    id: 'QUESTION_THOUGHT_ABOUT_INVESTING_OUT_OF_USUAL_BANK',
+    type: 'CHOICE',
+    choices: ['LETS_DO_THIS', 'NEVER_DO_THIS'],
+    scoreOnChoice: [
       {
         answer: 'LETS_DO_THIS',
         score: 1,
       },
     ],
   },
-}
+]
