@@ -17,6 +17,7 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable'
 import RegisterPage from 'containers/RegisterPage'
 
 import GlobalStyle from '../../global-styles'
+import Fonts from '../../components/Fonts'
 
 const AppWrapper = styled.div`
   height: 100vh;
@@ -27,13 +28,15 @@ const AppWrapper = styled.div`
 export default function App() {
   return (
     <AppWrapper>
+      <Fonts />
+      <GlobalStyle />
+
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />
         <Route component={NotFoundPage} />
       </Switch>
-      <GlobalStyle />
     </AppWrapper>
   )
 }
