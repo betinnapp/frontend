@@ -18,6 +18,10 @@ const GlobalStyle = createGlobalStyle`
   label {
     line-height: 1.5em;
   }
+
+  .bt-text-align-center {
+    text-align: center;
+  }
 `
 
 export default GlobalStyle

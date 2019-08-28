@@ -4,10 +4,16 @@
  *
  */
 import produce from 'immer'
-import { ANSWER_QUESTION, REGISTER_QUESTIONS } from './constants'
+import {
+  ANSWER_QUESTION,
+  REGISTER_QUESTIONS,
+  SUBMIT_REGISTER,
+} from './constants'
 
 export const initialState = {
   questions: REGISTER_QUESTIONS,
+  isLoading: false,
+  error: null,
 }
 
 /* eslint-disable default-case, no-param-reassign */
@@ -31,6 +37,9 @@ const registerPageReducer = (state = initialState, action) =>
 
         break
       }
+      case SUBMIT_REGISTER:
+        draft.isLoading = true
+        break
     }
   })
 

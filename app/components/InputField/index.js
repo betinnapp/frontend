@@ -60,7 +60,7 @@ function InputField({ formik, label, name, ...props }) {
 
   return (
     <Wrapper error={touch && error}>
-      <Field name={name} {...props} />
+      <Field name={name} {...props} autoComplete="off" />
 
       <Text className="label" semiBold secondary>
         <FormattedMessage {...label} />

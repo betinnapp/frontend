@@ -17,6 +17,10 @@ export default defineMessages({
     id: `${scope}.answer`,
     defaultMessage: 'Resposta',
   },
+  createAccount: {
+    id: `${scope}.createAccount`,
+    defaultMessage: 'Criar Conta',
+  },
   YES: {
     id: `${scope}.YES`,
     defaultMessage: 'Sim',
@@ -68,7 +72,7 @@ export default defineMessages({
   QUESTION_THOUGHT_ABOUT_INVESTING_OUT_OF_USUAL_BANK: {
     id: `${scope}.QUESTION_THOUGHT_ABOUT_INVESTING_OUT_OF_USUAL_BANK`,
     defaultMessage:
-      'O que pensa logo que ouve sobre investir seu dinheiro fora da poupança',
+      'O que pensa logo que ouve sobre investir seu dinheiro fora da poupança?',
   },
   QUESTION_PASSWORD: {
     id: `${scope}.QUESTION_PASSWORD`,

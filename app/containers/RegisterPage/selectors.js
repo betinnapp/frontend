@@ -18,4 +18,17 @@ const makeSelectQuestionBeingAnswered = () =>
     questions => questions.find(question => question.waitingAnswer),
   )
 
-export { makeSelectQuestions, makeSelectQuestionBeingAnswered }
+const makeSelectAnswers = () =>
+  createSelector(
+    makeSelectQuestions(),
+    questions => {
+      console.log(questions)
+      return questions
+    },
+  )
+
+export {
+  makeSelectQuestions,
+  makeSelectQuestionBeingAnswered,
+  makeSelectAnswers,
+}

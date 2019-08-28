@@ -14,6 +14,9 @@ import { compose } from 'redux'
 import { useInjectSaga } from 'utils/injectSaga'
 import { useInjectReducer } from 'utils/injectReducer'
 
+import Button from 'components/Button'
+
+import { FormattedMessage } from 'react-intl'
 import {
   makeSelectQuestions,
   makeSelectQuestionBeingAnswered,
@@ -23,7 +26,8 @@ import Header from './Header'
 import Question from './Question'
 import reducer from './reducer'
 import saga from './saga'
-import { answerQuestion } from './actions'
+import { answerQuestion, submitRegister } from './actions'
+import messages from './messages'
 
 const Wrapper = styled.div`
   display: grid;
@@ -31,6 +35,12 @@ const Wrapper = styled.div`
   grid-template-rows: auto 1fr auto;
   grid-row-gap: 8px;
   height: 100%;
+`
+const QuestionWrapper = styled.div`
+  overflow-y: auto;
+`
+const SubmitWrapper = styled.div`
+  margin-bottom: 8px;
 `
 
 export function RegisterPage(props) {
@@ -50,7 +60,7 @@ export function RegisterPage(props) {
       return true
     })
 
-    return <div>{content}</div>
+    return <QuestionWrapper>{content}</QuestionWrapper>
   }
 
   return (
@@ -63,6 +73,13 @@ export function RegisterPage(props) {
           answerQuestion={props.answerQuestion}
         />
       )}
+      {!props.questionBeingAnswered && (
+        <SubmitWrapper className="bt-text-align-center">
+          <Button id="createAccount" onClick={props.submitRegister}>
+            <FormattedMessage {...messages.createAccount} />
+          </Button>
+        </SubmitWrapper>
+      )}
     </Wrapper>
   )
 }
@@ -71,6 +88,7 @@ RegisterPage.propTypes = {
   questions: PropTypes.array,
   questionBeingAnswered: PropTypes.object,
   answerQuestion: PropTypes.func,
+  submitRegister: PropTypes.func,
 }
 
 const mapStateToProps = createStructuredSelector({
@@ -82,6 +100,9 @@ function mapDispatchToProps(dispatch) {
   return {
     answerQuestion: (id, answer) => {
       dispatch(answerQuestion(id, answer))
+    },
+    submitRegister: () => {
+      dispatch(submitRegister())
     },
   }
 }

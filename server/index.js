@@ -33,7 +33,7 @@ app.get('*.js', (req, res, next) => {
   next()
 })
 
-app.post('/api/auth/login', (req, res) => {
+app.post('/auth/login', (req, res) => {
   res.json({
     token: 'tokenID',
     id: '111',
@@ -43,6 +43,10 @@ app.post('/api/auth/login', (req, res) => {
     email: 'test_user@email.com',
     preferences: {},
   })
+})
+
+app.post('/user/', (req, res) => {
+  res.json({})
 })
 
 // Start your app.

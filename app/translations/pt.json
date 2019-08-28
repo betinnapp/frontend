@@ -23,9 +23,10 @@
   "app.containers.RegisterPage.QUESTION_PASSWORD": "Por favor informe uma senha para acessar sua conta.",
   "app.containers.RegisterPage.QUESTION_PASSWORD_CONFIRMATION": "Confirme a senha digitada anteriormente.",
   "app.containers.RegisterPage.QUESTION_SHORTNAME": "Como podemos te chamar (apelido)?",
-  "app.containers.RegisterPage.QUESTION_THOUGHT_ABOUT_INVESTING_OUT_OF_USUAL_BANK": "O que pensa logo que ouve sobre investir seu dinheiro fora da poupança",
+  "app.containers.RegisterPage.QUESTION_THOUGHT_ABOUT_INVESTING_OUT_OF_USUAL_BANK": "O que pensa logo que ouve sobre investir seu dinheiro fora da poupança?",
   "app.containers.RegisterPage.QUESTION_WORK": "Você trabalha?",
   "app.containers.RegisterPage.YES": "Sim",
   "app.containers.RegisterPage.answer": "Resposta",
+  "app.containers.RegisterPage.createAccount": "Criar Conta",
   "app.containers.RegisterPage.tellAboutYou": "Conte sobre você"
 }
