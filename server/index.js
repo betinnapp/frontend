@@ -28,21 +28,23 @@ const prettyHost = customHost || 'localhost'
 
 // use the gzipped bundle
 app.get('*.js', (req, res, next) => {
-  req.url = req.url + '.gz'; // eslint-disable-line
+  req.url = req.url + '.gz' // eslint-disable-line
   res.set('Content-Encoding', 'gzip')
   next()
 })
 
 app.post('/api/auth/login', (req, res) => {
-  res.json({
-    token: 'tokenID',
-    id: '111',
-    firstName: 'Test',
-    lastName: 'User',
-    birthDate: '1990-01-02',
-    email: 'test_user@email.com',
-    preferences: {},
-  })
+  // res.json({
+  //   token: 'tokenID',
+  //   id: '111',
+  //   firstName: 'Test',
+  //   lastName: 'User',
+  //   birthDate: '1990-01-02',
+  //   email: 'test_user@email.com',
+  //   preferences: {},
+  // })
+
+  res.status(500).json()
 })
 
 // Start your app.

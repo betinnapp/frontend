@@ -4,17 +4,12 @@
  *
  */
 
-import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { createStructuredSelector } from 'reselect'
-import { compose } from 'redux'
+import React from 'react'
 import { FormattedMessage } from 'react-intl'
+import { connect } from 'react-redux'
+import { compose } from 'redux'
 import styled from 'styled-components'
-
-import { useInjectReducer } from 'utils/injectReducer'
-import makeSelectNotifications from './selectors'
-import reducer from './reducer'
 
 const Wrapper = styled.div`
   position: absolute;
@@ -35,32 +30,23 @@ const NotificationItem = styled.div`
     (feedback === 'good' && '#6fcf97') ||
     '#a3a3a3'};
 `
-
-export function Notifications({ notifications }) {
-  useInjectReducer({ key: 'notifications', reducer })
-
-  const renderNotificationItem = (item = {}) => (
-    <NotificationItem feedback={item.feedback}>
+const renderNotificationItem = (item = {}) =>
+  console.log(item) || (
+    <NotificationItem feedback={item.level}>
       <FormattedMessage {...item.message} />
     </NotificationItem>
   )
 
-  return (
-    <Wrapper>
-      {notifications.map(notification => renderNotificationItem(notification))}
-      {/* {renderNotificationItem({ feedback: 'warning' })}
-      {renderNotificationItem({ feedback: 'good' })}
-      {renderNotificationItem()} */}
-    </Wrapper>
-  )
+export function Notifications({ notifications }) {
+  return <Wrapper>{notifications.map(renderNotificationItem)}</Wrapper>
 }
 
 Notifications.propTypes = {
   notifications: PropTypes.array,
 }
 
-const mapStateToProps = createStructuredSelector({
-  notifications: makeSelectNotifications(),
+const mapStateToProps = state => ({
+  notifications: state.notifications || [],
 })
 
 function mapDispatchToProps(dispatch) {

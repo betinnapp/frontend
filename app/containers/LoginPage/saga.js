@@ -1,9 +1,9 @@
+import { LOGIN_URL } from 'containers/App/urls'
+import { warning } from 'react-notification-system-redux'
 import { call, put, takeLatest } from 'redux-saga/effects'
 import history from 'utils/history'
-
-import { LOGIN_URL } from 'containers/App/urls'
 import request from 'utils/request'
-import { addNotification } from 'containers/Notifications/actions'
+
 import * as actions from './actions'
 import { LOGIN } from './constants'
 import messages from './messages'
@@ -21,10 +21,11 @@ export function* makeLogin(action) {
     })
 
     localStorage.setItem('token', response.token)
+
     yield put(actions.loginSuccess(response))
     yield call(history.push, '/home')
   } catch (e) {
-    yield put(addNotification('warning', messages.invalidLogin))
+    yield put(warning({ message: messages.invalidLogin, autoDismiss: 50 }))
     yield put(actions.loginFailure(e))
   }
 }

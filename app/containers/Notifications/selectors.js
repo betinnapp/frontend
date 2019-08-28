@@ -1,11 +1,10 @@
 import { createSelector } from 'reselect'
-import { initialState } from './reducer'
 
 /**
  * Direct selector to the notifications state domain
  */
 
-const selectNotificationsDomain = state => state.notifications || initialState
+const selectNotificationsDomain = state => state.notifications || []
 
 /**
  * Other specific selectors
