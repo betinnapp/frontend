@@ -44,7 +44,7 @@ app.post('/api/auth/login', (req, res) => {
   //   preferences: {},
   // })
 
-  res.status(500).json()
+  res.status(500).json('Error')
 })
 
 // Start your app.
