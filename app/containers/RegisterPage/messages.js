@@ -62,10 +62,6 @@ const messages = defineMessages({
     id: `${scope}.QUESTION_WORK`,
     defaultMessage: 'Você trabalha?',
   },
-  QUESTION_MONTHLY_INCOME: {
-    id: `${scope}.QUESTION_MONTHLY_INCOME`,
-    defaultMessage: 'Qual a sua renda mensal?',
-  },
   QUESTION_INVESTIMENT_TODAY: {
     id: `${scope}.QUESTION_INVESTIMENT_TODAY`,
     defaultMessage: 'Você investe hoje?',

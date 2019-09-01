@@ -4,7 +4,12 @@
  *
  */
 
-import { ANSWER_QUESTION, SUBMIT_REGISTER } from './constants'
+import {
+  ANSWER_QUESTION,
+  SUBMIT_REGISTER,
+  SUBMIT_REGISTER_SUCCESS,
+  SUBMIT_REGISTER_FAILURE,
+} from './constants'
 
 export function answerQuestion(questionId, answer) {
   return {
@@ -17,5 +22,18 @@ export function answerQuestion(questionId, answer) {
 export function submitRegister() {
   return {
     type: SUBMIT_REGISTER,
+  }
+}
+
+export function submitRegisterSuccess() {
+  return {
+    type: SUBMIT_REGISTER_SUCCESS,
+  }
+}
+
+export function submitRegisterFailure(error) {
+  return {
+    type: SUBMIT_REGISTER_FAILURE,
+    error,
   }
 }

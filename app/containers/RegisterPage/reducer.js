@@ -4,10 +4,14 @@
  *
  */
 import produce from 'immer'
+import { LOCATION_CHANGE } from 'connected-react-router'
+
 import {
   ANSWER_QUESTION,
   REGISTER_QUESTIONS,
   SUBMIT_REGISTER,
+  SUBMIT_REGISTER_FAILURE,
+  SUBMIT_REGISTER_SUCCESS,
 } from './constants'
 
 export const initialState = {
@@ -24,13 +28,36 @@ const registerPageReducer = (state = initialState, action) =>
         const { questionId, answer } = action
 
         const questionIndex = draft.questions.findIndex(
-          question => question.id === questionId,
+          question =>
+            question.id === questionId ||
+            (question.questionOnAnswer || []).some(
+              subQuestion => subQuestion.id === questionId,
+            ),
         )
 
-        draft.questions[questionIndex].answer = answer
-        draft.questions[questionIndex].waitingAnswer = false
+        const draftQuestion = draft.questions[questionIndex]
+        if (draftQuestion.id === questionId) {
+          draftQuestion.answer = answer
+          draftQuestion.waitingAnswer = false
 
-        // Setting next question to wait answer if not the last one
+          const subQuestion = (draftQuestion.questionOnAnswer || []).find(
+            question => question.questionAnswer === answer,
+          )
+
+          if (subQuestion) {
+            subQuestion.waitingAnswer = true
+            break
+          }
+        } else {
+          // it's a sub question answer
+          const subQuestion = draftQuestion.questionOnAnswer.find(
+            question => question.id === questionId,
+          )
+
+          subQuestion.answer = answer
+          subQuestion.waitingAnswer = false
+        }
+
         if (draft.questions.length !== questionIndex + 1) {
           draft.questions[questionIndex + 1].waitingAnswer = true
         }
@@ -39,6 +66,18 @@ const registerPageReducer = (state = initialState, action) =>
       }
       case SUBMIT_REGISTER:
         draft.isLoading = true
+        break
+      case SUBMIT_REGISTER_SUCCESS:
+        draft.isLoading = false
+        break
+      case SUBMIT_REGISTER_FAILURE:
+        draft.isLoading = false
+        draft.error = action.error
+        break
+      case LOCATION_CHANGE:
+        draft.questions = REGISTER_QUESTIONS
+        draft.isLoading = false
+        draft.error = null
         break
     }
   })

@@ -43,16 +43,9 @@ export const REGISTER_QUESTIONS = [
     fieldPath: 'work',
     type: 'CHOICE',
     choices: [true, false],
-    questionOnAnswer: [
-      {
-        answer: true,
-        id: 'QUESTION_MONTHLY_INCOME',
-        type: 'TEXT',
-      },
-    ],
   },
   {
-    id: 'QUESTION_INVESTIMENT_TODAY',
+    id: 'QUESTION_ALREADY_INVESTED',
     type: 'CHOICE',
     choices: [true, false],
     scoreOnChoice: [
@@ -63,8 +56,8 @@ export const REGISTER_QUESTIONS = [
     ],
     questionOnAnswer: [
       {
-        answer: false,
-        id: 'QUESTION_ALREADY_INVESTED',
+        questionAnswer: false,
+        id: 'QUESTION_INVESTIMENT_TODAY',
         type: 'CHOICE',
         choices: [true, false],
         scoreOnChoice: [

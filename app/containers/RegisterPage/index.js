@@ -55,7 +55,7 @@ export function RegisterPage(props) {
     const content = []
 
     questions.every(question => {
-      const { answer } = question
+      const { answer, questionOnAnswer } = question
       const normalizedAnswer = answer !== undefined ? answer.toString() : answer
 
       content.push(
@@ -64,6 +64,30 @@ export function RegisterPage(props) {
 
       if (question.waitingAnswer) {
         return false
+      }
+
+      if (questionOnAnswer) {
+        const subQuestion = questionOnAnswer.find(
+          subQtn => subQtn.waitingAnswer || subQtn.answer !== undefined,
+        )
+
+        if (subQuestion) {
+          const { answer: subAnswer } = subQuestion
+          const subNormalizedAnswer =
+            subAnswer !== undefined ? subAnswer.toString() : subAnswer
+
+          content.push(
+            <Question
+              key={subQuestion.id}
+              {...subQuestion}
+              answer={subNormalizedAnswer}
+            />,
+          )
+
+          if (subQuestion.waitingAnswer) {
+            return false
+          }
+        }
       }
 
       return true

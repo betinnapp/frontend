@@ -15,7 +15,29 @@ const makeSelectQuestions = () =>
 const makeSelectQuestionBeingAnswered = () =>
   createSelector(
     makeSelectQuestions(),
-    questions => questions.find(question => question.waitingAnswer),
+    questions => {
+      let found
+
+      questions.every(question => {
+        found = question.waitingAnswer ? question : undefined
+
+        if (found) {
+          return false
+        }
+
+        found = (question.questionOnAnswer || []).find(
+          subQuestion => subQuestion.waitingAnswer,
+        )
+
+        if (found) {
+          return false
+        }
+
+        return true
+      })
+
+      return found
+    },
   )
 
 const makeSelectAnswers = () =>
@@ -40,18 +62,20 @@ const makeSelectScore = () =>
   createSelector(
     makeSelectQuestions(),
     questions => {
-      let score = 0
-
-      questions.forEach(question => {
-        const { answer, scoreOnChoice = [] } = question
-
+      const countScore = (score, question) => {
+        const { answer, scoreOnChoice = [], questionOnAnswer = [] } = question
         const scoreObj = scoreOnChoice.find(option => option.answer === answer)
-        if (scoreObj) {
-          score += scoreObj.score
-        }
-      })
 
-      return score
+        const subScore = questionOnAnswer.reduce(countScore, 0)
+
+        if (scoreObj) {
+          return score + scoreObj.score + subScore
+        }
+
+        return score + subScore
+      }
+
+      return questions.reduce(countScore, 0)
     },
   )
 
