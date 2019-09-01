@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import { Formik, Form } from 'formik'
-// import * as yup from 'yup'
+import * as yup from 'yup'
 
 import Button from 'components/Button'
 import InputField from 'components/InputField'
@@ -26,19 +26,19 @@ const AnswerForm = styled(Form)`
   grid-column-gap: 8px;
   align-items: center;
   background: #fff;
-  height: 70px;
+  min-height: 70px;
   padding: 8px;
 `
 
-// const answerAreaSchema = yup.object().shape({
-//   answer: yup.string().required(messages.required),
-// })
+const answerAreaSchema = yup.object().shape({
+  answer: yup.string().required(messages.required),
+})
 
 const formInitialValues = {
   answer: '',
 }
 
-export default function AnswerArea({ question, answerQuestion }) {
+export function AnswerArea({ question, answerQuestion }) {
   const { id, type, choices } = question
 
   const handleButtonAnswerType = answer => () => {
@@ -47,7 +47,8 @@ export default function AnswerArea({ question, answerQuestion }) {
 
   const renderForm = (inputType = 'text') => (
     <Formik
-      // validationSchema={answerAreaSchema}
+      validationSchema={answerAreaSchema}
+      validateOnBlur={false}
       initialValues={formInitialValues}
       onSubmit={({ answer }, { resetForm }) => {
         answerQuestion(id, answer)
@@ -57,7 +58,7 @@ export default function AnswerArea({ question, answerQuestion }) {
       <AnswerForm>
         <InputField
           type={inputType}
-          id={`answer-${id}`}
+          id="answer"
           name="answer"
           label={messages.answer}
         />
@@ -77,7 +78,7 @@ export default function AnswerArea({ question, answerQuestion }) {
               secondary={index % 2 !== 0}
               onClick={handleButtonAnswerType(choice)}
             >
-              <FormattedMessage {...messages[choice]} />
+              <FormattedMessage {...messages[choice.toString()]} />
             </Button>
           ))}
         </Choices>
@@ -97,4 +98,7 @@ export default function AnswerArea({ question, answerQuestion }) {
 AnswerArea.propTypes = {
   question: PropTypes.object.isRequired,
   answerQuestion: PropTypes.func.isRequired,
+  intl: intlShape.isRequired,
 }
+
+export default injectIntl(AnswerArea)

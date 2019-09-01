@@ -46,7 +46,16 @@ app.post('/auth/login', (req, res) => {
 })
 
 app.post('/user/', (req, res) => {
-  res.json({})
+  res.json({
+    token: 'tokenId',
+    id: '111',
+    firstName: 'Test',
+    lastName: 'User',
+    shortName: 'Test',
+    birthDate: '1990-01-02',
+    email: 'test_user@email.com',
+    preferences: {},
+  })
 })
 
 // Start your app.

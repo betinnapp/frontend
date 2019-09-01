@@ -35,9 +35,11 @@ const Wrapper = styled.div`
   grid-template-rows: auto 1fr auto;
   grid-row-gap: 8px;
   height: 100%;
+  margin: auto -16px;
 `
 const QuestionWrapper = styled.div`
   overflow-y: auto;
+  padding: 0 16px;
 `
 const SubmitWrapper = styled.div`
   margin-bottom: 8px;
@@ -53,10 +55,17 @@ export function RegisterPage(props) {
     const content = []
 
     questions.every(question => {
-      content.push(<Question key={question.id} {...question} />)
+      const { answer } = question
+      const normalizedAnswer = answer !== undefined ? answer.toString() : answer
+
+      content.push(
+        <Question key={question.id} {...question} answer={normalizedAnswer} />,
+      )
+
       if (question.waitingAnswer) {
         return false
       }
+
       return true
     })
 

@@ -52,6 +52,7 @@ const FieldError = styled.p`
   color: #f2994a;
   font-size: 11px;
   font-weight: bold;
+  margin: 0;
 `
 
 function InputField({ formik, label, name, ...props }) {

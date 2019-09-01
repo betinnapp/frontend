@@ -5,10 +5,11 @@
  */
 
 import { defineMessages } from 'react-intl'
+import commonMessages from 'containers/App/messages'
 
 export const scope = 'app.containers.RegisterPage'
 
-export default defineMessages({
+const messages = defineMessages({
   tellAboutYou: {
     id: `${scope}.tellAboutYou`,
     defaultMessage: 'Conte sobre você',
@@ -21,12 +22,12 @@ export default defineMessages({
     id: `${scope}.createAccount`,
     defaultMessage: 'Criar Conta',
   },
-  YES: {
-    id: `${scope}.YES`,
+  true: {
+    id: `${scope}.true`,
     defaultMessage: 'Sim',
   },
-  NO: {
-    id: `${scope}.NO`,
+  false: {
+    id: `${scope}.false`,
     defaultMessage: 'Não',
   },
   LETS_DO_THIS: {
@@ -37,9 +38,13 @@ export default defineMessages({
     id: `${scope}.NEVER_DO_THIS`,
     defaultMessage: 'Tenho medo',
   },
-  QUESTION_NAME: {
-    id: `${scope}.QUESTION_NAME`,
+  QUESTION_FIRST_NAME: {
+    id: `${scope}.QUESTION_FIRST_NAME`,
     defaultMessage: 'Qual o seu nome?',
+  },
+  QUESTION_LAST_NAME: {
+    id: `${scope}.QUESTION_LAST_NAME`,
+    defaultMessage: 'Qual o seu sobrenome?',
   },
   QUESTION_AGE: {
     id: `${scope}.QUESTION_AGE`,
@@ -83,3 +88,8 @@ export default defineMessages({
     defaultMessage: 'Confirme a senha digitada anteriormente.',
   },
 })
+
+export default {
+  ...commonMessages,
+  ...messages,
+}

@@ -5,22 +5,18 @@ import history from 'utils/history'
 import { REGISTER_URL } from 'containers/App/urls'
 
 import { SUBMIT_REGISTER } from './constants'
-import { makeSelectAnswers } from './selectors'
+import { makeSelectAnswers, makeSelectScore } from './selectors'
 
-function* submitRegister(action) {
-  console.log('submitRegister', action)
+function* submitRegister() {
   const answers = yield select(makeSelectAnswers())
+  const score = yield select(makeSelectScore())
 
   try {
     const response = yield call(request, REGISTER_URL, {
       method: 'POST',
       data: {
-        firstName: 'Vitor',
-        lastName: 'Marques',
-        email: 'vitor@email.com',
-        birthDate: '1995-10-10',
-        initialScore: 2,
-        password: 'Vitor!',
+        ...answers,
+        initialScore: score,
       },
     })
 

@@ -13,29 +13,39 @@ export const SUBMIT_REGISTER_FAILURE =
 
 export const REGISTER_QUESTIONS = [
   {
-    id: 'QUESTION_NAME',
+    id: 'QUESTION_FIRST_NAME',
+    fieldPath: 'firstName',
     type: 'TEXT',
     waitingAnswer: true,
   },
   {
+    id: 'QUESTION_LAST_NAME',
+    fieldPath: 'lastName',
+    type: 'TEXT',
+  },
+  {
     id: 'QUESTION_SHORTNAME',
+    fieldPath: 'shortName',
     type: 'TEXT',
   },
   {
     id: 'QUESTION_AGE',
+    fieldPath: 'birthDate',
     type: 'DATE',
   },
   {
     id: 'QUESTION_EMAIL',
+    fieldPath: 'email',
     type: 'EMAIL',
   },
   {
     id: 'QUESTION_WORK',
+    fieldPath: 'work',
     type: 'CHOICE',
-    choices: ['YES', 'NO'],
+    choices: [true, false],
     questionOnAnswer: [
       {
-        answer: 'YES',
+        answer: true,
         id: 'QUESTION_MONTHLY_INCOME',
         type: 'TEXT',
       },
@@ -44,22 +54,22 @@ export const REGISTER_QUESTIONS = [
   {
     id: 'QUESTION_INVESTIMENT_TODAY',
     type: 'CHOICE',
-    choices: ['YES', 'NO'],
+    choices: [true, false],
     scoreOnChoice: [
       {
-        answer: 'YES',
+        answer: true,
         score: 2,
       },
     ],
     questionOnAnswer: [
       {
-        answer: 'NO',
+        answer: false,
         id: 'QUESTION_ALREADY_INVESTED',
         type: 'CHOICE',
-        choices: ['YES', 'NO'],
+        choices: [true, false],
         scoreOnChoice: [
           {
-            answer: 'YES',
+            answer: true,
             score: 1,
           },
         ],
@@ -79,6 +89,7 @@ export const REGISTER_QUESTIONS = [
   },
   {
     id: 'QUESTION_PASSWORD',
+    fieldPath: 'password',
     type: 'PASSWORD',
   },
   {

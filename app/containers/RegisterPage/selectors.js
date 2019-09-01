@@ -22,8 +22,36 @@ const makeSelectAnswers = () =>
   createSelector(
     makeSelectQuestions(),
     questions => {
-      console.log(questions)
-      return questions
+      const questionsObject = {}
+
+      questions.forEach(question => {
+        const { fieldPath } = question
+
+        if (fieldPath) {
+          questionsObject[fieldPath] = question.answer
+        }
+      })
+
+      return questionsObject
+    },
+  )
+
+const makeSelectScore = () =>
+  createSelector(
+    makeSelectQuestions(),
+    questions => {
+      let score = 0
+
+      questions.forEach(question => {
+        const { answer, scoreOnChoice = [] } = question
+
+        const scoreObj = scoreOnChoice.find(option => option.answer === answer)
+        if (scoreObj) {
+          score += scoreObj.score
+        }
+      })
+
+      return score
     },
   )
 
@@ -31,4 +59,5 @@ export {
   makeSelectQuestions,
   makeSelectQuestionBeingAnswered,
   makeSelectAnswers,
+  makeSelectScore,
 }
