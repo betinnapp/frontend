@@ -6,6 +6,7 @@
 
 import {
   ANSWER_QUESTION,
+  FINISH_QUESTIONS,
   SUBMIT_REGISTER,
   SUBMIT_REGISTER_SUCCESS,
   SUBMIT_REGISTER_FAILURE,
@@ -16,6 +17,12 @@ export function answerQuestion(questionId, answer) {
     type: ANSWER_QUESTION,
     questionId,
     answer,
+  }
+}
+
+export function finishQuestions() {
+  return {
+    type: FINISH_QUESTIONS,
   }
 }
 

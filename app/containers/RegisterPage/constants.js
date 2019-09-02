@@ -5,6 +5,7 @@
  */
 
 export const ANSWER_QUESTION = 'app/RegisterPage/ANSWER_QUESTION'
+export const FINISH_QUESTIONS = 'app/RegisterPage/FINISH_QUESTIONS'
 export const SUBMIT_REGISTER = 'app/RegisterPage/SUBMIT_REGISTER'
 export const SUBMIT_REGISTER_SUCCESS =
   'app/RegisterPage/SUBMIT_REGISTER_SUCCESS'
@@ -79,14 +80,5 @@ export const REGISTER_QUESTIONS = [
         score: 1,
       },
     ],
-  },
-  {
-    id: 'QUESTION_PASSWORD',
-    fieldPath: 'password',
-    type: 'PASSWORD',
-  },
-  {
-    id: 'QUESTION_PASSWORD_CONFIRMATION',
-    type: 'PASSWORD_CONFIRMATION',
   },
 ]

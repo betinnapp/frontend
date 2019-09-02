@@ -20,13 +20,15 @@ import { FormattedMessage } from 'react-intl'
 import {
   makeSelectQuestions,
   makeSelectQuestionBeingAnswered,
+  makeSelectFinishedQuestions,
 } from './selectors'
 import AnswerArea from './AnswerArea'
 import Header from './Header'
+import PasswordArea from './PasswordArea'
 import Question from './Question'
 import reducer from './reducer'
 import saga from './saga'
-import { answerQuestion, submitRegister } from './actions'
+import { answerQuestion, finishQuestions, submitRegister } from './actions'
 import messages from './messages'
 
 const Wrapper = styled.div`
@@ -99,19 +101,22 @@ export function RegisterPage(props) {
   return (
     <Wrapper>
       <Header />
-      {renderQuestions()}
+      {!props.finishedQuestions && renderQuestions()}
       {props.questionBeingAnswered && (
         <AnswerArea
           question={props.questionBeingAnswered}
           answerQuestion={props.answerQuestion}
         />
       )}
-      {!props.questionBeingAnswered && (
+      {!props.questionBeingAnswered && !props.finishedQuestions && (
         <SubmitWrapper className="bt-text-align-center">
-          <Button id="createAccount" onClick={props.submitRegister}>
-            <FormattedMessage {...messages.createAccount} />
+          <Button id="finishRegister" onClick={props.finishQuestions}>
+            <FormattedMessage {...messages.finishRegister} />
           </Button>
         </SubmitWrapper>
+      )}
+      {props.finishedQuestions && (
+        <PasswordArea submitRegister={props.submitRegister} />
       )}
     </Wrapper>
   )
@@ -120,13 +125,16 @@ export function RegisterPage(props) {
 RegisterPage.propTypes = {
   questions: PropTypes.array,
   questionBeingAnswered: PropTypes.object,
+  finishedQuestions: PropTypes.bool,
   answerQuestion: PropTypes.func,
   submitRegister: PropTypes.func,
+  finishQuestions: PropTypes.func,
 }
 
 const mapStateToProps = createStructuredSelector({
   questions: makeSelectQuestions(),
   questionBeingAnswered: makeSelectQuestionBeingAnswered(),
+  finishedQuestions: makeSelectFinishedQuestions(),
 })
 
 function mapDispatchToProps(dispatch) {
@@ -136,6 +144,9 @@ function mapDispatchToProps(dispatch) {
     },
     submitRegister: () => {
       dispatch(submitRegister())
+    },
+    finishQuestions: () => {
+      dispatch(finishQuestions())
     },
   }
 }
