@@ -5,20 +5,29 @@
  */
 
 import { defineMessages } from 'react-intl'
+import commonMessages from 'containers/App/messages'
 
 export const scope = 'app.containers.RegisterPage'
 
-export default defineMessages({
+const messages = defineMessages({
   tellAboutYou: {
     id: `${scope}.tellAboutYou`,
     defaultMessage: 'Conte sobre você',
   },
-  YES: {
-    id: `${scope}.YES`,
+  answer: {
+    id: `${scope}.answer`,
+    defaultMessage: 'Resposta',
+  },
+  createAccount: {
+    id: `${scope}.createAccount`,
+    defaultMessage: 'Criar Conta',
+  },
+  true: {
+    id: `${scope}.true`,
     defaultMessage: 'Sim',
   },
-  NO: {
-    id: `${scope}.NO`,
+  false: {
+    id: `${scope}.false`,
     defaultMessage: 'Não',
   },
   LETS_DO_THIS: {
@@ -29,9 +38,13 @@ export default defineMessages({
     id: `${scope}.NEVER_DO_THIS`,
     defaultMessage: 'Tenho medo',
   },
-  QUESTION_NAME: {
-    id: `${scope}.QUESTION_NAME`,
+  QUESTION_FIRST_NAME: {
+    id: `${scope}.QUESTION_FIRST_NAME`,
     defaultMessage: 'Qual o seu nome?',
+  },
+  QUESTION_LAST_NAME: {
+    id: `${scope}.QUESTION_LAST_NAME`,
+    defaultMessage: 'Qual o seu sobrenome?',
   },
   QUESTION_AGE: {
     id: `${scope}.QUESTION_AGE`,
@@ -49,10 +62,6 @@ export default defineMessages({
     id: `${scope}.QUESTION_WORK`,
     defaultMessage: 'Você trabalha?',
   },
-  QUESTION_MONTHLY_INCOME: {
-    id: `${scope}.QUESTION_MONTHLY_INCOME`,
-    defaultMessage: 'Qual a sua renda mensal?',
-  },
   QUESTION_INVESTIMENT_TODAY: {
     id: `${scope}.QUESTION_INVESTIMENT_TODAY`,
     defaultMessage: 'Você investe hoje?',
@@ -64,6 +73,19 @@ export default defineMessages({
   QUESTION_THOUGHT_ABOUT_INVESTING_OUT_OF_USUAL_BANK: {
     id: `${scope}.QUESTION_THOUGHT_ABOUT_INVESTING_OUT_OF_USUAL_BANK`,
     defaultMessage:
-      'O que pensa logo que ouve sobre investir seu dinheiro fora da poupança',
+      'O que pensa logo que ouve sobre investir seu dinheiro fora da poupança?',
+  },
+  QUESTION_PASSWORD: {
+    id: `${scope}.QUESTION_PASSWORD`,
+    defaultMessage: 'Por favor informe uma senha para acessar sua conta.',
+  },
+  QUESTION_PASSWORD_CONFIRMATION: {
+    id: `${scope}.QUESTION_PASSWORD_CONFIRMATION`,
+    defaultMessage: 'Confirme a senha digitada anteriormente.',
   },
 })
+
+export default {
+  ...commonMessages,
+  ...messages,
+}

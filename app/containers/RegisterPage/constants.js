@@ -4,54 +4,65 @@
  *
  */
 
-export const DEFAULT_ACTION = 'app/RegisterPage/DEFAULT_ACTION'
+export const ANSWER_QUESTION = 'app/RegisterPage/ANSWER_QUESTION'
+export const SUBMIT_REGISTER = 'app/RegisterPage/SUBMIT_REGISTER'
+export const SUBMIT_REGISTER_SUCCESS =
+  'app/RegisterPage/SUBMIT_REGISTER_SUCCESS'
+export const SUBMIT_REGISTER_FAILURE =
+  'app/RegisterPage/SUBMIT_REGISTER_FAILURE'
 
 export const REGISTER_QUESTIONS = [
   {
-    question: 'QUESTION_NAME',
-    answerType: 'TEXT_DATE',
+    id: 'QUESTION_FIRST_NAME',
+    fieldPath: 'firstName',
+    type: 'TEXT',
+    waitingAnswer: true,
   },
   {
-    question: 'QUESTION_SHORTNAME',
-    answerType: 'TEXT',
+    id: 'QUESTION_LAST_NAME',
+    fieldPath: 'lastName',
+    type: 'TEXT',
   },
   {
-    question: 'QUESTION_AGE',
-    answerType: 'DATE',
+    id: 'QUESTION_SHORTNAME',
+    fieldPath: 'shortName',
+    type: 'TEXT',
   },
   {
-    question: 'QUESTION_EMAIL',
-    answerType: 'EMAIL',
+    id: 'QUESTION_AGE',
+    fieldPath: 'birthDate',
+    type: 'DATE',
   },
   {
-    question: 'QUESTION_WORK',
-    answerType: 'CHOICE',
-    answersChoice: ['YES', 'NO'],
-    questionOnAnswer: [
+    id: 'QUESTION_EMAIL',
+    fieldPath: 'email',
+    type: 'EMAIL',
+  },
+  {
+    id: 'QUESTION_WORK',
+    fieldPath: 'work',
+    type: 'CHOICE',
+    choices: [true, false],
+  },
+  {
+    id: 'QUESTION_ALREADY_INVESTED',
+    type: 'CHOICE',
+    choices: [true, false],
+    scoreOnChoice: [
       {
-        answer: 'YES',
-        question: 'QUESTION_MONTHLY_INCOME',
-        answerType: 'TEXT',
+        answer: true,
+        score: 2,
       },
     ],
-  },
-  {
-    question: 'QUESTION_INVESTIMENT_TODAY',
-    answerType: 'CHOICE',
-    answersChoice: ['YES', 'NO'],
-    scoreOnAnswerChoice: {
-      answer: 'YES',
-      score: 2,
-    },
     questionOnAnswer: [
       {
-        answer: 'NO',
-        question: 'QUESTION_ALREADY_INVESTED',
-        answerType: 'CHOICE',
-        answersChoice: ['YES', 'NO'],
-        scoreOnAnswerChoice: [
+        questionAnswer: false,
+        id: 'QUESTION_INVESTIMENT_TODAY',
+        type: 'CHOICE',
+        choices: [true, false],
+        scoreOnChoice: [
           {
-            answer: 'YES',
+            answer: true,
             score: 1,
           },
         ],
@@ -59,14 +70,23 @@ export const REGISTER_QUESTIONS = [
     ],
   },
   {
-    question: 'QUESTION_THOUGHT_ABOUT_INVESTING_OUT_OF_USUAL_BANK',
-    answerType: 'CHOICE',
-    answersChoice: ['LETS_DO_THIS', 'NEVER_DO_THIS'],
-    scoreOnAnswerChoice: [
+    id: 'QUESTION_THOUGHT_ABOUT_INVESTING_OUT_OF_USUAL_BANK',
+    type: 'CHOICE',
+    choices: ['LETS_DO_THIS', 'NEVER_DO_THIS'],
+    scoreOnChoice: [
       {
         answer: 'LETS_DO_THIS',
         score: 1,
       },
     ],
+  },
+  {
+    id: 'QUESTION_PASSWORD',
+    fieldPath: 'password',
+    type: 'PASSWORD',
+  },
+  {
+    id: 'QUESTION_PASSWORD_CONFIRMATION',
+    type: 'PASSWORD_CONFIRMATION',
   },
 ]

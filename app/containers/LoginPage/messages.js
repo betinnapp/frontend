@@ -26,10 +26,6 @@ const messages = defineMessages({
     id: `${scope}.beginSession`,
     defaultMessage: 'Iniciar Sessão',
   },
-  required: {
-    id: `${scope}.required`,
-    defaultMessage: 'Obrigatório',
-  },
 })
 
 export default {

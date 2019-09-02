@@ -33,12 +33,25 @@ app.get('*.js', (req, res, next) => {
   next()
 })
 
-app.post('/api/auth/login', (req, res) => {
+app.post('/auth/login', (req, res) => {
   res.json({
     token: 'tokenID',
     id: '111',
     firstName: 'Test',
     lastName: 'User',
+    birthDate: '1990-01-02',
+    email: 'test_user@email.com',
+    preferences: {},
+  })
+})
+
+app.post('/user/', (req, res) => {
+  res.json({
+    token: 'tokenId',
+    id: '111',
+    firstName: 'Test',
+    lastName: 'User',
+    shortName: 'Test',
     birthDate: '1990-01-02',
     email: 'test_user@email.com',
     preferences: {},

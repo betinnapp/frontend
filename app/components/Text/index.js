@@ -16,7 +16,7 @@ const SemiBoldText = css`
 `
 
 const SecondaryText = css`
-  color: $bababa;
+  color: #bababa;
 `
 
 const BigText = css`
