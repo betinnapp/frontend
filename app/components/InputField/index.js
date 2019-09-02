@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   }
 
   > input:focus ~ .label,
-  > input:not(:focus) ~ .label {
+  > input:not(:placeholder-shown) ~ .label {
     opacity: 1;
     top: -25px;
   }
@@ -61,7 +61,7 @@ function InputField({ formik, label, name, ...props }) {
 
   return (
     <Wrapper error={touch && error}>
-      <Field name={name} {...props} autoComplete="off" />
+      <Field name={name} {...props} autoComplete="off" placeholder=" " />
 
       <Text className="label" semiBold secondary>
         <FormattedMessage {...label} />
