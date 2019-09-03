@@ -1,0 +1,9 @@
+{
+  "token": "b74c5346-cdea-11e9-a32f-2a2ae2dbcce4",
+  "id": "111",
+  "firstName": "Test",
+  "lastName": "User",
+  "birthDate": "1990-01-02",
+  "email": "test_user@email.com",
+  "preferences": {}
+}

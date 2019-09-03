@@ -26,6 +26,9 @@ const customHost = argv.host || process.env.HOST
 const host = customHost || null // Let http.Server use its default IPv6/4 host
 const prettyHost = customHost || 'localhost'
 
+// API JSON responses
+const loginResponse = require('./data/login')
+
 // use the gzipped bundle
 app.get('*.js', (req, res, next) => {
   req.url = req.url + '.gz' // eslint-disable-line
@@ -33,31 +36,12 @@ app.get('*.js', (req, res, next) => {
   next()
 })
 
-app.post('/api/auth/login', (req, res) => {
-  // res.json({
-  //   token: 'tokenID',
-  //   id: '111',
-  //   firstName: 'Test',
-  //   lastName: 'User',
-  //   birthDate: '1990-01-02',
-  //   email: 'test_user@email.com',
-  //   preferences: {},
-  // })
-
-  res.status(500).json('Error')
+app.post('/auth/login', (req, res) => {
+  res.json(loginResponse)
 })
 
 app.post('/user/', (req, res) => {
-  res.json({
-    token: 'tokenId',
-    id: '111',
-    firstName: 'Test',
-    lastName: 'User',
-    shortName: 'Test',
-    birthDate: '1990-01-02',
-    email: 'test_user@email.com',
-    preferences: {},
-  })
+  res.json(loginResponse)
 })
 
 // Start your app.
