@@ -22,14 +22,20 @@ const Wrapper = styled.div`
 `
 
 const NotificationItem = styled(animated.div)`
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
   display: flex;
   min-height: 38px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   margin-bottom: 8px;
+  padding: 8px;
+  align-items: center;
   background: ${({ feedback }) =>
     (feedback === 'warning' && '#f2994a') ||
-    (feedback === 'good' && '#6fcf97') ||
+    (feedback === 'success' && '#6fcf97') ||
+    (feedback === 'error' && '#dc2e2e') ||
     '#a3a3a3'};
 `
 
