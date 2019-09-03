@@ -1,7 +1,9 @@
-import { LOGIN_URL } from 'containers/App/urls'
-import { error } from 'react-notification-system-redux'
 import { call, put, takeLatest } from 'redux-saga/effects'
 import history from 'utils/history'
+
+import { LOGIN_URL } from 'containers/App/urls'
+import { error } from 'react-notification-system-redux'
+
 import request from 'utils/request'
 
 import * as actions from './actions'

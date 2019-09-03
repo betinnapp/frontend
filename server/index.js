@@ -47,6 +47,19 @@ app.post('/api/auth/login', (req, res) => {
   res.status(500).json('Error')
 })
 
+app.post('/user/', (req, res) => {
+  res.json({
+    token: 'tokenId',
+    id: '111',
+    firstName: 'Test',
+    lastName: 'User',
+    shortName: 'Test',
+    birthDate: '1990-01-02',
+    email: 'test_user@email.com',
+    preferences: {},
+  })
+})
+
 // Start your app.
 app.listen(port, host, async err => {
   if (err) {

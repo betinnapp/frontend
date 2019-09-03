@@ -21,4 +21,8 @@ export default defineMessages({
     id: `${scope}.password`,
     defaultMessage: 'Senha',
   },
+  required: {
+    id: `${scope}.required`,
+    defaultMessage: 'Obrigatório',
+  },
 })
