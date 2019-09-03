@@ -2,9 +2,13 @@ import { call, put, takeLatest } from 'redux-saga/effects'
 import history from 'utils/history'
 
 import { LOGIN_URL } from 'containers/App/urls'
+import { warning } from 'react-notification-system-redux'
+
 import request from 'utils/request'
+
 import * as actions from './actions'
 import { LOGIN } from './constants'
+import messages from './messages'
 
 export function* makeLogin(action) {
   try {
@@ -19,9 +23,11 @@ export function* makeLogin(action) {
     })
 
     localStorage.setItem('token', response.token)
+
     yield put(actions.loginSuccess(response))
     yield call(history.push, '/home')
   } catch (e) {
+    yield put(warning({ message: messages.invalidLogin, autoDismiss: 5000 }))
     yield put(actions.loginFailure(e))
   }
 }

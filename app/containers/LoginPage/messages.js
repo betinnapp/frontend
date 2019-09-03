@@ -26,6 +26,10 @@ const messages = defineMessages({
     id: `${scope}.beginSession`,
     defaultMessage: 'Iniciar Sessão',
   },
+  invalidLogin: {
+    id: `${scope}.invalidLogin`,
+    defaultMessage: 'Usuário e/ou senha estão inválidos',
+  },
 })
 
 export default {

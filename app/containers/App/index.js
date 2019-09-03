@@ -14,6 +14,7 @@ import styled from 'styled-components'
 import HomePage from 'containers/HomePage/Loadable'
 import LoginPage from 'containers/LoginPage'
 import NotFoundPage from 'containers/NotFoundPage/Loadable'
+import Notifications from 'containers/Notifications'
 import RegisterPage from 'containers/RegisterPage'
 
 import GlobalStyle from '../../global-styles'
@@ -37,6 +38,7 @@ export default function App() {
         <Route path="/register" component={RegisterPage} />
         <Route component={NotFoundPage} />
       </Switch>
+      <Notifications />
     </AppWrapper>
   )
 }

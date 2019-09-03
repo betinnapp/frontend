@@ -8,6 +8,7 @@
   "app.containers.HomePage.startNow": "Comece agora",
   "app.containers.LoginPage.beginSession": "Iniciar Sessão",
   "app.containers.LoginPage.forgotPassword": "Esqueceu a senha?",
+  "app.containers.LoginPage.invalidLogin": "Usuário e/ou senha estão inválidos",
   "app.containers.LoginPage.weHaveALotToLearn": "Temos muito o que aprender.",
   "app.containers.LoginPage.welcome": "Bem-vindo!",
   "app.containers.NotFoundPage.header": "This is the NotFoundPage container!",
