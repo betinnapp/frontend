@@ -28,6 +28,7 @@
   "app.containers.RegisterPage.false": "Não",
   "app.containers.RegisterPage.finishRegister": "Terminar cadastro",
   "app.containers.RegisterPage.password": "Senha",
+  "app.containers.RegisterPage.passwordRequirements": "Senha deve possuir no mínimo 8 caracteres, 1 minúsculo, 1 maiscúlo, 1 número e um caractér especial",
   "app.containers.RegisterPage.passwordsDoNotMatch": "Senhas não batem",
   "app.containers.RegisterPage.pleaseInformYourPasswordToFinish": "Por favor informe sua senha para terminar o cadastro",
   "app.containers.RegisterPage.tellAboutYou": "Conte sobre você",

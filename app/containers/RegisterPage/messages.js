@@ -100,6 +100,11 @@ const messages = defineMessages({
     id: `${scope}.passwordsDoNotMatch`,
     defaultMessage: 'Senhas não coincidem',
   },
+  passwordRequirements: {
+    id: `${scope}.passwordRequirements`,
+    defaultMessage:
+      'Senha deve possuir no mínimo 8 caracteres, 1 minúsculo, 1 maiscúlo, 1 número e um caractér especial',
+  },
 })
 
 export default {

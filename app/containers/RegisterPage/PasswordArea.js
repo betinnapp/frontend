@@ -21,7 +21,13 @@ const StyledForm = styled(Form)`
 `
 
 const validationSchema = yup.object().shape({
-  password: yup.string().required(messages.required),
+  password: yup
+    .string()
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+      messages.passwordRequirements,
+    )
+    .required(messages.required),
   confirmPassword: yup
     .string()
     .oneOf([yup.ref('password'), null], messages.passwordsDoNotMatch)
