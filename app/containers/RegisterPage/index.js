@@ -98,26 +98,31 @@ export function RegisterPage(props) {
     return <QuestionWrapper>{content}</QuestionWrapper>
   }
 
+  let content
+  if (props.finishedQuestions) {
+    content = <PasswordArea submitRegister={props.submitRegister} />
+  } else if (props.questionBeingAnswered) {
+    content = (
+      <AnswerArea
+        question={props.questionBeingAnswered}
+        answerQuestion={props.answerQuestion}
+      />
+    )
+  } else {
+    content = (
+      <SubmitWrapper className="bt-text-align-center">
+        <Button id="finishRegister" onClick={props.finishQuestions}>
+          <FormattedMessage {...messages.finishRegister} />
+        </Button>
+      </SubmitWrapper>
+    )
+  }
+
   return (
     <Wrapper>
       <Header />
       {!props.finishedQuestions && renderQuestions()}
-      {props.questionBeingAnswered && (
-        <AnswerArea
-          question={props.questionBeingAnswered}
-          answerQuestion={props.answerQuestion}
-        />
-      )}
-      {!props.questionBeingAnswered && !props.finishedQuestions && (
-        <SubmitWrapper className="bt-text-align-center">
-          <Button id="finishRegister" onClick={props.finishQuestions}>
-            <FormattedMessage {...messages.finishRegister} />
-          </Button>
-        </SubmitWrapper>
-      )}
-      {props.finishedQuestions && (
-        <PasswordArea submitRegister={props.submitRegister} />
-      )}
+      {content}
     </Wrapper>
   )
 }
@@ -142,8 +147,8 @@ function mapDispatchToProps(dispatch) {
     answerQuestion: (id, answer) => {
       dispatch(answerQuestion(id, answer))
     },
-    submitRegister: () => {
-      dispatch(submitRegister())
+    submitRegister: password => {
+      dispatch(submitRegister(password))
     },
     finishQuestions: () => {
       dispatch(finishQuestions())

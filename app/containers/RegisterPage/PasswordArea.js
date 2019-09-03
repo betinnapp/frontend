@@ -7,11 +7,17 @@ import * as yup from 'yup'
 
 import Button from 'components/Button'
 import InputField from 'components/InputField'
+import Text from 'components/Text'
 
 import messages from './messages'
 
 const StyledForm = styled(Form)`
   display: grid;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  grid-template-columns: min-content;
 `
 
 const validationSchema = yup.object().shape({
@@ -34,12 +40,19 @@ export function PasswordArea({ submitRegister }) {
       validateOnBlur={false}
       initialValues={formInitialValues}
       onSubmit={(values, { setSubmitting }) => {
-        submitRegister(values)
+        submitRegister(values.password)
         setSubmitting(false)
       }}
     >
       <StyledForm>
-        <FormattedMessage {...messages.pleaseInformYourPasswordToFinish} />
+        <div>
+          <Text big bold terciary>
+            <FormattedMessage {...messages.weAreAlmostFinishing} />
+          </Text>
+          <Text semiBold>
+            <FormattedMessage {...messages.pleaseInformYourPasswordToFinish} />
+          </Text>
+        </div>
         <InputField
           type="password"
           id="password"

@@ -7,6 +7,10 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
   }
 
+  body.fontLoaded {
+    font-family: 'Poppings', sans-serif;
+  }
+
   #app {
     background-color: #e6e6e6;
     min-height: 100%;

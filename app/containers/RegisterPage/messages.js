@@ -79,6 +79,11 @@ const messages = defineMessages({
     id: `${scope}.finishRegister`,
     defaultMessage: 'Terminar cadastro',
   },
+  weAreAlmostFinishing: {
+    id: `${scope}.weAreAlmostFinishing`,
+    defaultMessage:
+      'Estamos quase acabando e logo você desfrutará do aprendizado sobre o mundo financeiro',
+  },
   pleaseInformYourPasswordToFinish: {
     id: `${scope}.pleaseInformYourPasswordToFinish`,
     defaultMessage: 'Por favor informe sua senha para terminar o cadastro',
@@ -89,7 +94,7 @@ const messages = defineMessages({
   },
   confirmPassword: {
     id: `${scope}.confirmPassword`,
-    defaultMessage: 'Confirme a senha digitada anteriormente.',
+    defaultMessage: 'Confirme a senha',
   },
   passwordsDoNotMatch: {
     id: `${scope}.passwordsDoNotMatch`,

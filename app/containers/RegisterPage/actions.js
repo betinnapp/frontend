@@ -26,9 +26,10 @@ export function finishQuestions() {
   }
 }
 
-export function submitRegister() {
+export function submitRegister(password) {
   return {
     type: SUBMIT_REGISTER,
+    password,
   }
 }
 
