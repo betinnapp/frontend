@@ -16,7 +16,6 @@ const Wrapper = styled.div`
   position: relative;
   text-align: initial;
   margin-top: 16px;
-  margin-bottom: ${props => (props.error && '0') || '16px'};
 
   .label {
     position: absolute;
@@ -53,9 +52,14 @@ const Wrapper = styled.div`
 
 const FieldError = styled.p`
   color: #f2994a;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: bold;
   margin: 0;
+`
+
+const ErrorMessageWrapper = styled.div`
+  margin-top: 4px;
+  min-height: 18px;
 `
 
 function InputField({ formik, label, name, ...props }) {
@@ -70,13 +74,15 @@ function InputField({ formik, label, name, ...props }) {
         <FormattedMessage {...label} />
       </Text>
 
-      <ErrorMessage name={name}>
-        {errorMessage => (
-          <FieldError>
-            <FormattedMessage {...errorMessage} />
-          </FieldError>
-        )}
-      </ErrorMessage>
+      <ErrorMessageWrapper>
+        <ErrorMessage name={name}>
+          {errorMessage => (
+            <FieldError>
+              <FormattedMessage {...errorMessage} />
+            </FieldError>
+          )}
+        </ErrorMessage>
+      </ErrorMessageWrapper>
     </Wrapper>
   )
 }

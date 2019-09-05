@@ -13,8 +13,8 @@
   "app.containers.NotFoundPage.header": "This is the NotFoundPage container!",
   "app.containers.RegisterPage.LETS_DO_THIS": "Sem problemas",
   "app.containers.RegisterPage.NEVER_DO_THIS": "Tenho medo",
-  "app.containers.RegisterPage.QUESTION_AGE": "Qual a sua idade?",
   "app.containers.RegisterPage.QUESTION_ALREADY_INVESTED": "Já investiu alguma vez?",
+  "app.containers.RegisterPage.QUESTION_BIRTH_DATE": "Qual a sua idade?",
   "app.containers.RegisterPage.QUESTION_EMAIL": "Qual o seu e-mail?",
   "app.containers.RegisterPage.QUESTION_FIRST_NAME": "Qual o seu nome?",
   "app.containers.RegisterPage.QUESTION_INVESTIMENT_TODAY": "Você investe hoje?",
@@ -33,5 +33,6 @@
   "app.containers.RegisterPage.pleaseInformYourPasswordToFinish": "Por favor informe sua senha para terminar o cadastro",
   "app.containers.RegisterPage.tellAboutYou": "Conte sobre você",
   "app.containers.RegisterPage.true": "Sim",
-  "app.containers.RegisterPage.weAreAlmostFinishing": "Estamos quase acabando e logo você desfrutará do aprendizado sobre o mundo financeiro"
+  "app.containers.RegisterPage.weAreAlmostFinishing": "Estamos quase acabando e logo você desfrutará do aprendizado sobre o mundo financeiro",
+  "app.containers.RegisterPage.wrongEmail": "E-mail inválido"
 }

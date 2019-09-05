@@ -30,10 +30,6 @@ const AnswerForm = styled(Form)`
   padding: 8px;
 `
 
-const answerAreaSchema = yup.object().shape({
-  answer: yup.string().required(messages.required),
-})
-
 const formInitialValues = {
   answer: '',
 }
@@ -45,27 +41,48 @@ export function AnswerArea({ question, answerQuestion }) {
     answerQuestion(id, answer)
   }
 
-  const renderForm = (inputType = 'text') => (
-    <Formik
-      validationSchema={answerAreaSchema}
-      validateOnBlur={false}
-      initialValues={formInitialValues}
-      onSubmit={({ answer }, { resetForm }) => {
-        answerQuestion(id, answer)
-        resetForm()
-      }}
-    >
-      <AnswerForm>
-        <InputField
-          type={inputType}
-          id="answer"
-          name="answer"
-          label={messages.answer}
-        />
-        <button type="submit">Go</button>
-      </AnswerForm>
-    </Formik>
-  )
+  const getValidationForFieldType = inputType => {
+    switch (inputType) {
+      case 'EMAIL':
+        return yup
+          .string()
+          .email(messages.wrongEmail)
+          .required(messages.required)
+      case 'DATE':
+      case 'TEXT':
+      default:
+        return yup.string().required(messages.required)
+    }
+  }
+
+  const renderForm = (inputType = 'text') => {
+    const validation = getValidationForFieldType(inputType)
+    const validationSchema = yup.object().shape({
+      answer: validation,
+    })
+
+    return (
+      <Formik
+        validationSchema={validationSchema}
+        validateOnBlur={false}
+        initialValues={formInitialValues}
+        onSubmit={({ answer }, { resetForm }) => {
+          answerQuestion(id, answer)
+          resetForm()
+        }}
+      >
+        <AnswerForm>
+          <InputField
+            type={inputType}
+            id="answer"
+            name="answer"
+            label={messages.answer}
+          />
+          <button type="submit">Go</button>
+        </AnswerForm>
+      </Formik>
+    )
+  }
 
   switch (type) {
     case 'CHOICE': {
@@ -84,10 +101,8 @@ export function AnswerArea({ question, answerQuestion }) {
         </Choices>
       )
     }
-    case 'PASSWORD':
-    case 'PASSWORD_CONFIRMATION':
-      return renderForm('password')
     case 'DATE':
+      return renderForm('date')
     case 'EMAIL':
     case 'TEXT':
     default:

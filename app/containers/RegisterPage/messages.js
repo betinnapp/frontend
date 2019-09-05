@@ -46,9 +46,9 @@ const messages = defineMessages({
     id: `${scope}.QUESTION_LAST_NAME`,
     defaultMessage: 'Qual o seu sobrenome?',
   },
-  QUESTION_AGE: {
-    id: `${scope}.QUESTION_AGE`,
-    defaultMessage: 'Qual a sua idade?',
+  QUESTION_BIRTH_DATE: {
+    id: `${scope}.QUESTION_BIRTH_DATE`,
+    defaultMessage: 'Qual a sua data de nascimento?',
   },
   QUESTION_SHORTNAME: {
     id: `${scope}.QUESTION_SHORTNAME`,
@@ -104,6 +104,10 @@ const messages = defineMessages({
     id: `${scope}.passwordRequirements`,
     defaultMessage:
       'Senha deve possuir no mínimo 8 caracteres, 1 minúsculo, 1 maiscúlo, 1 número e um caractér especial',
+  },
+  wrongEmail: {
+    id: `${scope}.wrongEmail`,
+    defaultMessage: 'E-mail inválido',
   },
 })
 

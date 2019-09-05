@@ -30,7 +30,7 @@ export const REGISTER_QUESTIONS = [
     type: 'TEXT',
   },
   {
-    id: 'QUESTION_AGE',
+    id: 'QUESTION_BIRTH_DATE',
     fieldPath: 'birthDate',
     type: 'DATE',
   },
