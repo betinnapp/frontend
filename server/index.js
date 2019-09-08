@@ -12,6 +12,15 @@ const ngrok =
 const { resolve } = require('path')
 const app = express()
 
+const mix = (req, res, success, failure = 'ERROR') => {
+  const random = Math.floor(Math.random() * 2)
+  if (random === 0) {
+    res.status(200).json(success)
+  } else {
+    res.status(500).json(failure)
+  }
+}
+
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
 
@@ -46,7 +55,7 @@ app.post('/user/', (req, res) => {
 })
 
 app.get('/module/list', (req, res) => {
-  res.json(modulesReponse)
+  mix(req, res, modulesReponse)
 })
 
 // Start your app.
