@@ -20,13 +20,15 @@ import { FormattedMessage } from 'react-intl'
 import {
   makeSelectQuestions,
   makeSelectQuestionBeingAnswered,
+  makeSelectFinishedQuestions,
 } from './selectors'
 import AnswerArea from './AnswerArea'
 import Header from './Header'
+import PasswordArea from './PasswordArea'
 import Question from './Question'
 import reducer from './reducer'
 import saga from './saga'
-import { answerQuestion, submitRegister } from './actions'
+import { answerQuestion, finishQuestions, submitRegister } from './actions'
 import messages from './messages'
 
 const Wrapper = styled.div`
@@ -96,23 +98,31 @@ export function RegisterPage(props) {
     return <QuestionWrapper>{content}</QuestionWrapper>
   }
 
+  let content
+  if (props.finishedQuestions) {
+    content = <PasswordArea submitRegister={props.submitRegister} />
+  } else if (props.questionBeingAnswered) {
+    content = (
+      <AnswerArea
+        question={props.questionBeingAnswered}
+        answerQuestion={props.answerQuestion}
+      />
+    )
+  } else {
+    content = (
+      <SubmitWrapper className="bt-text-align-center">
+        <Button id="finishRegister" onClick={props.finishQuestions}>
+          <FormattedMessage {...messages.finishRegister} />
+        </Button>
+      </SubmitWrapper>
+    )
+  }
+
   return (
     <Wrapper>
       <Header />
-      {renderQuestions()}
-      {props.questionBeingAnswered && (
-        <AnswerArea
-          question={props.questionBeingAnswered}
-          answerQuestion={props.answerQuestion}
-        />
-      )}
-      {!props.questionBeingAnswered && (
-        <SubmitWrapper className="bt-text-align-center">
-          <Button id="createAccount" onClick={props.submitRegister}>
-            <FormattedMessage {...messages.createAccount} />
-          </Button>
-        </SubmitWrapper>
-      )}
+      {!props.finishedQuestions && renderQuestions()}
+      {content}
     </Wrapper>
   )
 }
@@ -120,13 +130,16 @@ export function RegisterPage(props) {
 RegisterPage.propTypes = {
   questions: PropTypes.array,
   questionBeingAnswered: PropTypes.object,
+  finishedQuestions: PropTypes.bool,
   answerQuestion: PropTypes.func,
   submitRegister: PropTypes.func,
+  finishQuestions: PropTypes.func,
 }
 
 const mapStateToProps = createStructuredSelector({
   questions: makeSelectQuestions(),
   questionBeingAnswered: makeSelectQuestionBeingAnswered(),
+  finishedQuestions: makeSelectFinishedQuestions(),
 })
 
 function mapDispatchToProps(dispatch) {
@@ -134,8 +147,11 @@ function mapDispatchToProps(dispatch) {
     answerQuestion: (id, answer) => {
       dispatch(answerQuestion(id, answer))
     },
-    submitRegister: () => {
-      dispatch(submitRegister())
+    submitRegister: password => {
+      dispatch(submitRegister(password))
+    },
+    finishQuestions: () => {
+      dispatch(finishQuestions())
     },
   }
 }

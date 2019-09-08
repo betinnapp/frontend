@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { FormattedMessage } from 'react-intl'
 
+import Text from 'components/Text'
+
 import messages from './messages'
 
 const StyledHeader = styled.div`
@@ -13,18 +15,12 @@ const StyledHeader = styled.div`
   justify-content: center;
 `
 
-const HeaderTitle = styled.span`
-  color: #9657f6;
-  font-size: 18px;
-  font-weight: 600;
-`
-
 export function Header() {
   return (
     <StyledHeader>
-      <HeaderTitle>
+      <Text medium terciary semiBold>
         <FormattedMessage {...messages.tellAboutYou} />
-      </HeaderTitle>
+      </Text>
     </StyledHeader>
   )
 }

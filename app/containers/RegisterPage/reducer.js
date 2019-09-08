@@ -12,12 +12,14 @@ import {
   SUBMIT_REGISTER,
   SUBMIT_REGISTER_FAILURE,
   SUBMIT_REGISTER_SUCCESS,
+  FINISH_QUESTIONS,
 } from './constants'
 
 export const initialState = {
   questions: REGISTER_QUESTIONS,
   isLoading: false,
   error: null,
+  finishedQuestions: false,
 }
 
 /* eslint-disable default-case, no-param-reassign */
@@ -64,6 +66,9 @@ const registerPageReducer = (state = initialState, action) =>
 
         break
       }
+      case FINISH_QUESTIONS:
+        draft.finishedQuestions = true
+        break
       case SUBMIT_REGISTER:
         draft.isLoading = true
         break
@@ -78,6 +83,7 @@ const registerPageReducer = (state = initialState, action) =>
         draft.questions = REGISTER_QUESTIONS
         draft.isLoading = false
         draft.error = null
+        draft.finishedQuestions = false
         break
     }
   })

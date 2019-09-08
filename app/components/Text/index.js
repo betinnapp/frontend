@@ -8,7 +8,6 @@ import styled, { css } from 'styled-components'
 
 const BoldText = css`
   font-weight: bold;
-  font-family: 'Poppings', sans-serif;
 `
 
 const SemiBoldText = css`
@@ -19,8 +18,16 @@ const SecondaryText = css`
   color: #bababa;
 `
 
+const TerciaryText = css`
+  color: #9657f6;
+`
+
 const BigText = css`
   font-size: 20px;
+`
+
+const MediumText = css`
+  font-size: 18px;
 `
 
 const Text = styled.p`
@@ -30,9 +37,11 @@ const Text = styled.p`
   color: #000000;
 
   ${props => props.big && BigText}
+  ${props => props.medium && MediumText}
   ${props => props.bold && BoldText}
   ${props => props.semiBold && SemiBoldText}
   ${props => props.secondary && SecondaryText}
+  ${props => props.terciary && TerciaryText}
 `
 
 export default Text

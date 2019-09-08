@@ -75,13 +75,35 @@ const messages = defineMessages({
     defaultMessage:
       'O que pensa logo que ouve sobre investir seu dinheiro fora da poupança?',
   },
-  QUESTION_PASSWORD: {
-    id: `${scope}.QUESTION_PASSWORD`,
-    defaultMessage: 'Por favor informe uma senha para acessar sua conta.',
+  finishRegister: {
+    id: `${scope}.finishRegister`,
+    defaultMessage: 'Terminar cadastro',
   },
-  QUESTION_PASSWORD_CONFIRMATION: {
-    id: `${scope}.QUESTION_PASSWORD_CONFIRMATION`,
-    defaultMessage: 'Confirme a senha digitada anteriormente.',
+  weAreAlmostFinishing: {
+    id: `${scope}.weAreAlmostFinishing`,
+    defaultMessage:
+      'Estamos quase acabando e logo você desfrutará do aprendizado sobre o mundo financeiro',
+  },
+  pleaseInformYourPasswordToFinish: {
+    id: `${scope}.pleaseInformYourPasswordToFinish`,
+    defaultMessage: 'Por favor informe sua senha para terminar o cadastro',
+  },
+  password: {
+    id: `${scope}.password`,
+    defaultMessage: 'Senha',
+  },
+  confirmPassword: {
+    id: `${scope}.confirmPassword`,
+    defaultMessage: 'Confirme a senha',
+  },
+  passwordsDoNotMatch: {
+    id: `${scope}.passwordsDoNotMatch`,
+    defaultMessage: 'Senhas não coincidem',
+  },
+  passwordRequirements: {
+    id: `${scope}.passwordRequirements`,
+    defaultMessage:
+      'Senha deve possuir no mínimo 8 caracteres, 1 minúsculo, 1 maiscúlo, 1 número e um caractér especial',
   },
 })
 

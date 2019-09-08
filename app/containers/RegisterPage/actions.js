@@ -6,6 +6,7 @@
 
 import {
   ANSWER_QUESTION,
+  FINISH_QUESTIONS,
   SUBMIT_REGISTER,
   SUBMIT_REGISTER_SUCCESS,
   SUBMIT_REGISTER_FAILURE,
@@ -19,9 +20,16 @@ export function answerQuestion(questionId, answer) {
   }
 }
 
-export function submitRegister() {
+export function finishQuestions() {
+  return {
+    type: FINISH_QUESTIONS,
+  }
+}
+
+export function submitRegister(password) {
   return {
     type: SUBMIT_REGISTER,
+    password,
   }
 }
 

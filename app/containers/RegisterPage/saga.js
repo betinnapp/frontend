@@ -8,7 +8,7 @@ import { SUBMIT_REGISTER } from './constants'
 import { makeSelectAnswers, makeSelectScore } from './selectors'
 import * as actions from './actions'
 
-function* submitRegister() {
+function* submitRegister(action) {
   const answers = yield select(makeSelectAnswers())
   const score = yield select(makeSelectScore())
 
@@ -18,6 +18,7 @@ function* submitRegister() {
       data: {
         ...answers,
         initialScore: score,
+        password: action.password,
       },
     })
 

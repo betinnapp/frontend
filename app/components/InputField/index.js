@@ -14,6 +14,9 @@ import Text from 'components/Text'
 
 const Wrapper = styled.div`
   position: relative;
+  text-align: initial;
+  margin-top: 16px;
+  margin-bottom: ${props => (props.error && '0') || '16px'};
 
   .label {
     position: absolute;
@@ -29,7 +32,7 @@ const Wrapper = styled.div`
   > input:focus ~ .label,
   > input:not(:placeholder-shown) ~ .label {
     opacity: 1;
-    top: -25px;
+    top: -23px;
   }
 
   > input {

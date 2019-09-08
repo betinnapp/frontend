@@ -79,9 +79,16 @@ const makeSelectScore = () =>
     },
   )
 
+const makeSelectFinishedQuestions = () =>
+  createSelector(
+    selectRegisterPageDomain,
+    substate => substate.finishedQuestions,
+  )
+
 export {
   makeSelectQuestions,
   makeSelectQuestionBeingAnswered,
   makeSelectAnswers,
   makeSelectScore,
+  makeSelectFinishedQuestions,
 }
