@@ -1,13 +1,13 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import request from 'utils/request'
-import { MODULES_LIST_URL } from 'containers/App/urls'
+import { MODULES_LIST_API_URL } from 'containers/App/urls'
 
 import * as actions from './actions'
 import { FETCH_MODULES_LIST } from './constants'
 
 function* fetchModulesList() {
   try {
-    const response = yield call(request, MODULES_LIST_URL, {
+    const response = yield call(request, MODULES_LIST_API_URL, {
       method: 'GET',
     })
     yield put(actions.fetchModulesListSuccess(response))

@@ -14,7 +14,9 @@ import { compose } from 'redux'
 
 import { useInjectSaga } from 'utils/injectSaga'
 import { useInjectReducer } from 'utils/injectReducer'
+import { SUBMODULES_PATH } from 'containers/App/urls'
 import CardItem from 'components/CardItem'
+import history from 'utils/history'
 
 import { fetchModulesList } from './actions'
 import {
@@ -40,6 +42,11 @@ export function ModulesListPage(props) {
     props.fetchModulesList()
   }, [])
 
+  const onCardClickHandler = id => {
+    const url = SUBMODULES_PATH.replace(':id', id)
+    history.push(url)
+  }
+
   return (
     <div>
       {props.error && (
@@ -48,7 +55,11 @@ export function ModulesListPage(props) {
       <ModulesWrapper>
         {!props.error &&
           props.modules.map(moduleItem => (
-            <CardItem key={moduleItem.id} {...moduleItem} />
+            <CardItem
+              key={moduleItem.id}
+              {...moduleItem}
+              onClick={onCardClickHandler}
+            />
           ))}
       </ModulesWrapper>
     </div>

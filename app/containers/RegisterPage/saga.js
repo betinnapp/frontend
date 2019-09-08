@@ -3,7 +3,7 @@ import { takeLatest, call, put, select } from 'redux-saga/effects'
 import request from 'utils/request'
 import history from 'utils/history'
 import { setToken } from 'utils/auth'
-import { REGISTER_URL } from 'containers/App/urls'
+import { REGISTER_API_URL } from 'containers/App/urls'
 
 import { SUBMIT_REGISTER } from './constants'
 import { makeSelectAnswers, makeSelectScore } from './selectors'
@@ -15,7 +15,7 @@ function* submitRegister(action) {
   const score = yield select(makeSelectScore())
 
   try {
-    const response = yield call(request, REGISTER_URL, {
+    const response = yield call(request, REGISTER_API_URL, {
       method: 'POST',
       data: {
         ...answers,

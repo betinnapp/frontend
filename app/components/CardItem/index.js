@@ -73,6 +73,10 @@ const Blocked = styled.div`
     z-index: 2;
   }
 
+  &:hover {
+    cursor: not-allowed;
+  }
+
   .blockedBackground {
     z-index: 1;
     position: absolute;
@@ -85,16 +89,23 @@ const Blocked = styled.div`
 `
 
 function CardItem(props) {
-  const { image, name, status, submodule } = props
+  const { id, image, name, onClick, status, submodule } = props
+  const isLocked = status === StatusType.LOCKED
   const completedSubmodulesLength = submodule.filter(
     subItem => subItem.status === StatusType.COMPLETED,
   ).length
   const submodulesCompleted = completedSubmodulesLength === submodule.length
 
+  const onClickHandler = () => {
+    if (!isLocked) {
+      onClick(id)
+    }
+  }
+
   return (
-    <Wrapper image={image}>
+    <Wrapper image={image} onClick={onClickHandler}>
       <div className="banner">
-        {status === StatusType.LOCKED && (
+        {isLocked && (
           <Blocked>
             <img src={Lock} alt="Lock" />
             <Text medium>
@@ -125,6 +136,8 @@ CardItem.propTypes = {
   status: PropTypes.string,
   submodule: PropTypes.array,
   image: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 }
 
 export default CardItem

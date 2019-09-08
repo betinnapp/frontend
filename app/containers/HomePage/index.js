@@ -8,13 +8,13 @@ import React from 'react'
 import { FormattedMessage } from 'react-intl'
 import styled from 'styled-components'
 
+import { LOGIN_PATH, REGISTER_PATH } from 'containers/App/urls'
 import Button from 'components/Button'
-import history from 'utils/history'
 import Link from 'components/Link'
 import Slogan from 'components/Slogan'
 import stat from 'images/stat.svg'
+import Text from 'components/Text'
 
-import Text from '../../components/Text'
 import messages from './messages'
 
 const Wrapper = styled.div`
@@ -32,10 +32,6 @@ const Wrapper = styled.div`
 `
 
 export default function HomePage() {
-  const startNowOnClickHandler = () => {
-    history.push('/register')
-  }
-
   return (
     <Wrapper>
       <Slogan />
@@ -47,11 +43,11 @@ export default function HomePage() {
         </Text>
       </div>
       <div>
-        <Button id="startNow" onClick={startNowOnClickHandler}>
+        <Button id="startNow" link={REGISTER_PATH}>
           <FormattedMessage {...messages.startNow} />
         </Button>
         <Text>
-          <Link id="haveAnAccount" to="/login">
+          <Link id="haveAnAccount" to={LOGIN_PATH}>
             <FormattedMessage {...messages.alreadyHaveAnAccount} />
           </Link>
         </Text>

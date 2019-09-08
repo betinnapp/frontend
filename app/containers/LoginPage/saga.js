@@ -2,7 +2,7 @@ import { call, put, takeLatest } from 'redux-saga/effects'
 import history from 'utils/history'
 
 import { saveUserInformation } from 'containers/App/actions'
-import { LOGIN_URL } from 'containers/App/urls'
+import { LOGIN_API_URL, HOME_PATH } from 'containers/App/urls'
 import { warning } from 'react-notification-system-redux'
 
 import request from 'utils/request'
@@ -16,7 +16,7 @@ export function* makeLogin(action) {
   try {
     const { username, password } = action.values
 
-    const response = yield call(request, LOGIN_URL, {
+    const response = yield call(request, LOGIN_API_URL, {
       method: 'POST',
       auth: {
         username,
@@ -31,7 +31,7 @@ export function* makeLogin(action) {
     yield put(actions.loginSuccess())
     yield put(saveUserInformation(user))
 
-    yield call(history.push, '/home')
+    yield call(history.push, HOME_PATH)
   } catch (e) {
     yield put(warning({ message: messages.invalidLogin, autoDismiss: 5000 }))
     yield put(actions.loginFailure(e))

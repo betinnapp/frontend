@@ -21,6 +21,7 @@ import RegisterPage from 'containers/RegisterPage'
 import WelcomePage from 'containers/WelcomePage'
 
 import Fonts from 'components/Fonts'
+import * as urls from './urls'
 import GlobalStyle from '../../global-styles'
 
 import reducer from './reducer'
@@ -42,10 +43,10 @@ export default function App() {
 
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route path="/login" component={LoginPage} />
-        <Route path="/register" component={RegisterPage} />
-        <Route path="/home" component={WelcomePage} />
-        <Route path="/modules" component={ModulesListPage} />
+        <Route exact path={urls.LOGIN_PATH} component={LoginPage} />
+        <Route exact path={urls.REGISTER_PATH} component={RegisterPage} />
+        <Route exact path={urls.HOME_PATH} component={WelcomePage} />
+        <Route exact path={urls.MODULES_PATH} component={ModulesListPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </AppWrapper>
