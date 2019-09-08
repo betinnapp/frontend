@@ -1,6 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import history from 'utils/history'
 
+import { saveUserInformation } from 'containers/App/actions'
 import { LOGIN_URL } from 'containers/App/urls'
 import { warning } from 'react-notification-system-redux'
 
@@ -22,9 +23,13 @@ export function* makeLogin(action) {
       },
     })
 
-    localStorage.setItem('token', response.token)
+    const { token, ...user } = response
 
-    yield put(actions.loginSuccess(response))
+    localStorage.setItem('token', token)
+
+    yield put(actions.loginSuccess())
+    yield put(saveUserInformation(user))
+
     yield call(history.push, '/home')
   } catch (e) {
     yield put(warning({ message: messages.invalidLogin, autoDismiss: 5000 }))

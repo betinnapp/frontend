@@ -74,6 +74,7 @@ const registerPageReducer = (state = initialState, action) =>
         break
       case SUBMIT_REGISTER_SUCCESS:
         draft.isLoading = false
+        draft.error = null
         break
       case SUBMIT_REGISTER_FAILURE:
         draft.isLoading = false
