@@ -44,10 +44,6 @@ export function AnswerArea({ question, answerQuestion }) {
   const getValidationForFieldType = inputType => {
     switch (inputType) {
       case 'EMAIL':
-        return yup
-          .string()
-          .email(messages.wrongEmail)
-          .required(messages.required)
       case 'DATE':
       case 'TEXT':
       default:
@@ -56,9 +52,8 @@ export function AnswerArea({ question, answerQuestion }) {
   }
 
   const renderForm = (inputType = 'text') => {
-    const validation = getValidationForFieldType(inputType)
     const validationSchema = yup.object().shape({
-      answer: validation,
+      answer: getValidationForFieldType(inputType),
     })
 
     return (
