@@ -2,6 +2,7 @@ import { takeLatest, call, put, select } from 'redux-saga/effects'
 
 import request from 'utils/request'
 import history from 'utils/history'
+import { setToken } from 'utils/auth'
 import { REGISTER_URL } from 'containers/App/urls'
 
 import { SUBMIT_REGISTER } from './constants'
@@ -25,7 +26,7 @@ function* submitRegister(action) {
 
     const { token, ...user } = response
 
-    localStorage.setItem('token', token)
+    setToken(token)
 
     yield put(actions.submitRegisterSuccess())
     yield put(saveUserInformation(user))

@@ -28,6 +28,7 @@ const prettyHost = customHost || 'localhost'
 
 // API JSON responses
 const loginResponse = require('./data/login')
+const modulesReponse = require('./data/modules')
 
 // use the gzipped bundle
 app.get('*.js', (req, res, next) => {
@@ -42,6 +43,10 @@ app.post('/auth/login', (req, res) => {
 
 app.post('/user/', (req, res) => {
   res.json(loginResponse)
+})
+
+app.get('/module/list', (req, res) => {
+  res.json(modulesReponse)
 })
 
 // Start your app.

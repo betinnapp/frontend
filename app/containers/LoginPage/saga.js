@@ -6,6 +6,7 @@ import { LOGIN_URL } from 'containers/App/urls'
 import { warning } from 'react-notification-system-redux'
 
 import request from 'utils/request'
+import { setToken } from 'utils/auth'
 
 import * as actions from './actions'
 import { LOGIN } from './constants'
@@ -25,7 +26,7 @@ export function* makeLogin(action) {
 
     const { token, ...user } = response
 
-    localStorage.setItem('token', token)
+    setToken(token)
 
     yield put(actions.loginSuccess())
     yield put(saveUserInformation(user))

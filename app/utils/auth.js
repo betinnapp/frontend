@@ -1,0 +1,16 @@
+// Functions related to authentication
+export function setToken(token) {
+  localStorage.setItem('token', token)
+}
+
+export function getToken() {
+  return localStorage.getItem('token')
+}
+
+export function deleteToken() {
+  localStorage.removeItem('token')
+}
+
+export function isLoggedIn() {
+  return !!getToken()
+}
