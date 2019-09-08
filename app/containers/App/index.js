@@ -14,6 +14,7 @@ import styled from 'styled-components'
 import { useInjectReducer } from 'utils/injectReducer'
 import HomePage from 'containers/HomePage/Loadable'
 import LoginPage from 'containers/LoginPage'
+import ModulesListPage from 'containers/ModulesListPage'
 import NotFoundPage from 'containers/NotFoundPage/Loadable'
 import Notifications from 'containers/Notifications'
 import RegisterPage from 'containers/RegisterPage'
@@ -44,6 +45,7 @@ export default function App() {
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />
         <Route path="/home" component={WelcomePage} />
+        <Route path="/modules" component={ModulesListPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </AppWrapper>
