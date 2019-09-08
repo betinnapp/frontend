@@ -8,6 +8,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
+import history from 'utils/history'
+
 const SecondaryButton = css`
   background: #904ee2;
 `
@@ -49,11 +51,19 @@ const StyledButton = styled.button`
 `
 
 function Button(props) {
+  const onClickHandler = () => {
+    if (props.onClick) {
+      props.onClick()
+    } else if (props.link) {
+      history.push(props.link)
+    }
+  }
+
   return (
     <StyledButton
       type={props.type}
       id={props.id}
-      onClick={props.onClick}
+      onClick={onClickHandler}
       disabled={props.disabled}
       secondary={props.secondary}
       small={props.small}
@@ -71,6 +81,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   secondary: PropTypes.bool,
   small: PropTypes.bool,
+  link: PropTypes.string,
 }
 
 Button.defualtProps = {

@@ -25,7 +25,7 @@ export function WelcomePage() {
         />
       </div>
       <div>
-        <Button id="seeAvailableModules" small>
+        <Button id="seeAvailableModules" link="/modules" small>
           <FormattedMessage {...messages.seeAvailableModules} />
         </Button>
       </div>
