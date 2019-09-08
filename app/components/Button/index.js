@@ -6,11 +6,21 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+
+const SecondaryButton = css`
+  background: #904ee2;
+`
+
+const SmallButton = css`
+  font-size: 14px;
+  height: 40px;
+  border-radius: 8px;
+`
 
 const StyledButton = styled.button`
   outline: none;
-  background: ${({ secondary }) => (secondary && '#904ee2') || '#00dba1'};
+  background: #00dba1;
   border: none;
   border-radius: 16px;
   width: 296px;
@@ -33,6 +43,9 @@ const StyledButton = styled.button`
   &:disabled&:hover {
     background: #a3a3a3;
   }
+
+  ${props => props.small && SmallButton}
+  ${props => props.secondary && SecondaryButton}
 `
 
 function Button(props) {
@@ -43,6 +56,7 @@ function Button(props) {
       onClick={props.onClick}
       disabled={props.disabled}
       secondary={props.secondary}
+      small={props.small}
     >
       {props.children}
     </StyledButton>
@@ -56,6 +70,7 @@ Button.propTypes = {
   type: PropTypes.string,
   disabled: PropTypes.bool,
   secondary: PropTypes.bool,
+  small: PropTypes.bool,
 }
 
 Button.defualtProps = {

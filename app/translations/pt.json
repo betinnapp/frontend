@@ -35,5 +35,7 @@
   "app.containers.RegisterPage.tellAboutYou": "Conte sobre você",
   "app.containers.RegisterPage.true": "Sim",
   "app.containers.RegisterPage.weAreAlmostFinishing": "Estamos quase acabando e logo você desfrutará do aprendizado sobre o mundo financeiro",
-  "app.containers.RegisterPage.wrongEmail": "E-mail inválido"
+  "app.containers.RegisterPage.wrongEmail": "E-mail inválido",
+  "app.containers.WelcomePage.seeAvailableModules": "Visualizar módulos disponíveis",
+  "app.containers.WelcomePage.welcomeUser": "Bem vindo, {username}"
 }
