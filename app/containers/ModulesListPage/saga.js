@@ -8,7 +8,7 @@ import { FETCH_MODULES_LIST } from './constants'
 function* fetchModulesList() {
   try {
     const response = yield call(request, MODULES_LIST_URL, {
-      method: 'PUT',
+      method: 'GET',
     })
     yield put(actions.fetchModulesListSuccess(response))
   } catch (e) {
