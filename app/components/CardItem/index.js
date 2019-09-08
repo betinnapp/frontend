@@ -7,9 +7,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { FormattedMessage } from 'react-intl'
 
 import { StatusType } from 'containers/App/enums'
 import Text from 'components/Text'
+import Lock from 'images/lock.png'
+
+import messages from './messages'
 
 const Wrapper = styled.div`
   cursor: pointer;
@@ -52,8 +56,36 @@ const DescriptionArea = styled.div`
   }
 `
 
+const DoneIcon = styled.span`
+  color: #00dba1;
+`
+
+const Blocked = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  padding: 24px;
+
+  > * {
+    z-index: 2;
+  }
+
+  .blockedBackground {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #e2e2e2;
+    opacity: 0.8;
+  }
+`
+
 function CardItem(props) {
-  const { image, name, submodule } = props
+  const { image, name, status, submodule } = props
   const completedSubmodulesLength = submodule.filter(
     subItem => subItem.status === StatusType.COMPLETED,
   ).length
@@ -61,15 +93,27 @@ function CardItem(props) {
 
   return (
     <Wrapper image={image}>
-      <div className="banner" />
+      <div className="banner">
+        {status === StatusType.LOCKED && (
+          <Blocked>
+            <img src={Lock} alt="Lock" />
+            <Text medium>
+              <FormattedMessage {...messages.finishLastOneToUnlock} />
+            </Text>
+            <div className="blockedBackground" />
+          </Blocked>
+        )}
+      </div>
       <DescriptionArea>
         <Text light huge>
           {name}
         </Text>
         <Text big bold>
-          {submodulesCompleted
-            ? 'OK' // TODO: Import Font Awesome icons and use a done icon here
-            : `${completedSubmodulesLength}/${submodule.length}`}
+          {submodulesCompleted ? (
+            <DoneIcon>OK</DoneIcon> // TODO: Import Font Awesome icons and use a done icon here
+          ) : (
+            `${completedSubmodulesLength}/${submodule.length}`
+          )}
         </Text>
       </DescriptionArea>
     </Wrapper>
@@ -78,6 +122,7 @@ function CardItem(props) {
 
 CardItem.propTypes = {
   name: PropTypes.string,
+  status: PropTypes.string,
   submodule: PropTypes.array,
   image: PropTypes.string,
 }
