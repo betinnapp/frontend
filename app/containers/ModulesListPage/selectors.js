@@ -19,9 +19,16 @@ const selectModulesListError = createSelector(
   substate => substate.error,
 )
 
+const selectSubmodulesList = moduleId =>
+  createSelector(
+    selectModulesList,
+    substate => substate.find(moduleItem => moduleItem.id === moduleId),
+  )
+
 export {
   selectModulesListPageDomain,
   selectModulesList,
   selectModulesListError,
   selectModulesListIsLoading,
+  selectSubmodulesList,
 }
