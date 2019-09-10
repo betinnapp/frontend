@@ -22,7 +22,35 @@ const mix = (req, res, success, failure = 'ERROR') => {
 }
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
-// app.use('/api', myApi);
+const api = express()
+
+api.use((req, res, next) => {
+  res.set('REQUEST-ID', Math.random())
+  next()
+})
+
+app.use(api) // Backend mock middleware
+
+// API JSON responses
+const loginResponse = require('./data/login')
+const modulesReponse = require('./data/modules')
+const submodule = require('./data/submodule')
+
+api.post('/auth/login', (req, res) => {
+  res.json(loginResponse)
+})
+
+api.post('/user/', (req, res) => {
+  res.json(loginResponse)
+})
+
+api.get('/module/list', (req, res) => {
+  mix(req, res, modulesReponse)
+})
+
+api.get('/module/:moduleId/submodule/:submoduleId', (req, res) => {
+  res.json(submodule)
+})
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
@@ -35,32 +63,11 @@ const customHost = argv.host || process.env.HOST
 const host = customHost || null // Let http.Server use its default IPv6/4 host
 const prettyHost = customHost || 'localhost'
 
-// API JSON responses
-const loginResponse = require('./data/login')
-const modulesReponse = require('./data/modules')
-const submodule = require('./data/submodule')
-
 // use the gzipped bundle
 app.get('*.js', (req, res, next) => {
   req.url = req.url + '.gz' // eslint-disable-line
   res.set('Content-Encoding', 'gzip')
   next()
-})
-
-app.post('/auth/login', (req, res) => {
-  res.json(loginResponse)
-})
-
-app.post('/user/', (req, res) => {
-  res.json(loginResponse)
-})
-
-app.get('/module/list', (req, res) => {
-  mix(req, res, modulesReponse)
-})
-
-app.get('/module/:moduleId/submodule/:submoduleId', (req, res) => {
-  res.json(submodule)
 })
 
 // Start your app.
