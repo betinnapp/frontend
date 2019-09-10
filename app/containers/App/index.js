@@ -17,6 +17,7 @@ import ModulesListPage from 'containers/ModulesListPage'
 import NotFoundPage from 'containers/NotFoundPage/Loadable'
 import Notifications from 'containers/Notifications'
 import RegisterPage from 'containers/RegisterPage'
+import SubmoduleContent from 'containers/SubmoduleContent'
 import SubmodulesList from 'containers/SubmodulesList'
 import WelcomePage from 'containers/WelcomePage'
 
@@ -43,7 +44,8 @@ export default function App() {
         <Route exact path={urls.REGISTER_PATH} component={RegisterPage} />
         <Route exact path={urls.HOME_PATH} component={WelcomePage} />
         <Route exact path={urls.MODULES_PATH} component={ModulesListPage} />
-        <Route path={urls.SUBMODULES_PATH} component={SubmodulesList} />
+        <Route exact path={urls.SUBMODULES_PATH} component={SubmodulesList} />
+        <Route exact path={urls.SUBMODULE_DETAILS_PATH} component={SubmoduleContent} />
         <Route component={NotFoundPage} />
       </Switch>
     </AppWrapper>
