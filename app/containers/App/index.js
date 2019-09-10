@@ -11,20 +11,18 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { useInjectReducer } from 'utils/injectReducer'
 import HomePage from 'containers/HomePage/Loadable'
 import LoginPage from 'containers/LoginPage'
 import ModulesListPage from 'containers/ModulesListPage'
 import NotFoundPage from 'containers/NotFoundPage/Loadable'
 import Notifications from 'containers/Notifications'
 import RegisterPage from 'containers/RegisterPage'
+import SubmodulesList from 'containers/SubmodulesList'
 import WelcomePage from 'containers/WelcomePage'
 
 import Fonts from 'components/Fonts'
 import * as urls from './urls'
 import GlobalStyle from '../../global-styles'
-
-import reducer from './reducer'
 
 const AppWrapper = styled.div`
   height: 100vh;
@@ -33,8 +31,6 @@ const AppWrapper = styled.div`
 `
 
 export default function App() {
-  useInjectReducer({ key: 'common', reducer })
-
   return (
     <AppWrapper>
       <Fonts />
@@ -47,6 +43,7 @@ export default function App() {
         <Route exact path={urls.REGISTER_PATH} component={RegisterPage} />
         <Route exact path={urls.HOME_PATH} component={WelcomePage} />
         <Route exact path={urls.MODULES_PATH} component={ModulesListPage} />
+        <Route path={urls.SUBMODULES_PATH} component={SubmodulesList} />
         <Route component={NotFoundPage} />
       </Switch>
     </AppWrapper>

@@ -6,7 +6,6 @@
 
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import { createStructuredSelector } from 'reselect'
@@ -16,7 +15,9 @@ import { useInjectSaga } from 'utils/injectSaga'
 import { useInjectReducer } from 'utils/injectReducer'
 import { SUBMODULES_PATH } from 'containers/App/urls'
 import CardItem from 'components/CardItem'
+import ContentWrapper from 'components/ContentWrapper'
 import history from 'utils/history'
+import Loader from 'components/Loader'
 
 import { fetchModulesList } from './actions'
 import {
@@ -27,12 +28,6 @@ import {
 import reducer from './reducer'
 import saga from './saga'
 import messages from './messages'
-
-const ModulesWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-`
 
 export function ModulesListPage(props) {
   useInjectReducer({ key: 'modulesListPage', reducer })
@@ -48,21 +43,23 @@ export function ModulesListPage(props) {
   }
 
   return (
-    <div>
-      {props.error && (
-        <FormattedMessage {...messages.unableToLoadModulesList} />
-      )}
-      <ModulesWrapper>
-        {!props.error &&
-          props.modules.map(moduleItem => (
-            <CardItem
-              key={moduleItem.id}
-              {...moduleItem}
-              onClick={onCardClickHandler}
-            />
-          ))}
-      </ModulesWrapper>
-    </div>
+    <ContentWrapper fullHeight>
+      <Loader isLoading={props.isLoading}>
+        {props.error && (
+          <FormattedMessage {...messages.unableToLoadModulesList} />
+        )}
+        <ContentWrapper flexbox flexWrap="wrap" justifyContent="space-around">
+          {!props.error &&
+            props.modules.map(moduleItem => (
+              <CardItem
+                key={moduleItem.id}
+                {...moduleItem}
+                onClick={onCardClickHandler}
+              />
+            ))}
+        </ContentWrapper>
+      </Loader>
+    </ContentWrapper>
   )
 }
 
