@@ -1,26 +1,21 @@
 import { createSelector } from 'reselect'
 import { initialState } from './reducer'
 
-/**
- * Direct selector to the submoduleContent state domain
- */
-
 const selectSubmoduleContentDomain = state =>
   state.submoduleContent || initialState
 
-/**
- * Other specific selectors
- */
+const selectSubmoduleContent = createSelector(
+  selectSubmoduleContentDomain,
+  substate => substate.resource,
+)
 
-/**
- * Default selector used by SubmoduleContent
- */
+const selectSubmoduleContentIsLoading = createSelector(
+  selectSubmoduleContentDomain,
+  substate => substate.isLoading,
+)
 
-const makeSelectSubmoduleContent = () =>
-  createSelector(
-    selectSubmoduleContentDomain,
-    substate => substate,
-  )
-
-export default makeSelectSubmoduleContent
-export { selectSubmoduleContentDomain }
+export {
+  selectSubmoduleContentDomain,
+  selectSubmoduleContent,
+  selectSubmoduleContentIsLoading,
+}

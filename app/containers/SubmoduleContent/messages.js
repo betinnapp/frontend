@@ -9,8 +9,9 @@ import { defineMessages } from 'react-intl'
 export const scope = 'app.containers.SubmoduleContent'
 
 export default defineMessages({
-  header: {
-    id: `${scope}.header`,
-    defaultMessage: 'This is the SubmoduleContent container!',
+  unableToLoadContent: {
+    id: `${scope}.unableToLoadContent`,
+    defaultMessage:
+      'Desculpa, não fomos capazes de carregar este conteúdo. Tente novamente mais tarde!',
   },
 })
