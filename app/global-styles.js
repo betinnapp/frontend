@@ -6,13 +6,16 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     width: 100%;
   }
-
-  body.fontLoaded {
-    font-family: 'Poppings', sans-serif;
+    
+  body {
+    background-color: #e6e6e6;
+    
+    .fontLoaded {
+      font-family: 'Poppings', sans-serif;
+    }
   }
 
   #app {
-    background-color: #e6e6e6;
     min-height: 100%;
     min-width: 100%;
     font-size: 14px;

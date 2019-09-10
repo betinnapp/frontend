@@ -1,4 +1,5 @@
 {
+  "app.components.CardItem.finishLastOneToUnlock": "Termine o módulo anterior para desbloquear este conteúdo",
   "app.containers.App.betinnapp": "Betinnapp",
   "app.containers.App.password": "Senha",
   "app.containers.App.required": "Obrigatório",
@@ -11,6 +12,7 @@
   "app.containers.LoginPage.invalidLogin": "Usuário e/ou senha estão inválidos",
   "app.containers.LoginPage.weHaveALotToLearn": "Temos muito o que aprender.",
   "app.containers.LoginPage.welcome": "Bem-vindo!",
+  "app.containers.ModulesListPage.unableToLoadModulesList": "Desculpa, não fomos capazes de carregar a lista de módulos, tente novamente mais tarde!",
   "app.containers.NotFoundPage.header": "This is the NotFoundPage container!",
   "app.containers.RegisterPage.LETS_DO_THIS": "Sem problemas",
   "app.containers.RegisterPage.NEVER_DO_THIS": "Tenho medo",
@@ -35,5 +37,7 @@
   "app.containers.RegisterPage.tellAboutYou": "Conte sobre você",
   "app.containers.RegisterPage.true": "Sim",
   "app.containers.RegisterPage.weAreAlmostFinishing": "Estamos quase acabando e logo você desfrutará do aprendizado sobre o mundo financeiro",
-  "app.containers.RegisterPage.wrongEmail": "E-mail inválido"
+  "app.containers.RegisterPage.wrongEmail": "E-mail inválido",
+  "app.containers.WelcomePage.seeAvailableModules": "Visualizar módulos disponíveis",
+  "app.containers.WelcomePage.welcomeUser": "Bem vindo, {username}"
 }

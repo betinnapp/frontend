@@ -12,6 +12,15 @@ const ngrok =
 const { resolve } = require('path')
 const app = express()
 
+const mix = (req, res, success, failure = 'ERROR') => {
+  const random = Math.floor(Math.random() * 2)
+  if (random === 0) {
+    res.status(200).json(success)
+  } else {
+    res.status(500).json(failure)
+  }
+}
+
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
 
@@ -28,6 +37,7 @@ const prettyHost = customHost || 'localhost'
 
 // API JSON responses
 const loginResponse = require('./data/login')
+const modulesReponse = require('./data/modules')
 
 // use the gzipped bundle
 app.get('*.js', (req, res, next) => {
@@ -42,6 +52,10 @@ app.post('/auth/login', (req, res) => {
 
 app.post('/user/', (req, res) => {
   res.json(loginResponse)
+})
+
+app.get('/module/list', (req, res) => {
+  mix(req, res, modulesReponse)
 })
 
 // Start your app.

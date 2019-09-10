@@ -1,3 +1,4 @@
+import { getToken } from 'utils/auth'
 import axios from 'axios'
 
 const REQUEST_TIMEOUT = 30000
@@ -13,6 +14,11 @@ export default function request(url, options) {
     newOptions.headers = {
       'Content-type': 'application/json',
     }
+  }
+
+  const token = getToken()
+  if (token && !newOptions.auth) {
+    newOptions.headers.Authorization = token
   }
 
   return axios(newOptions).then(response => response.data)
