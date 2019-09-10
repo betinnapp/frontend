@@ -1,0 +1,8 @@
+{
+  "id": "111",
+  "firstName": "Test",
+  "lastName": "User",
+  "birthDate": "1990-01-02",
+  "email": "test_user@email.com",
+  "preferences": {}
+}

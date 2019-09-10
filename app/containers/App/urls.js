@@ -3,6 +3,8 @@ const BASE_API_PATH = ''
 export const LOGIN_API_URL = `${BASE_API_PATH}/auth/login`
 export const REGISTER_API_URL = `${BASE_API_PATH}/user/`
 
+export const USER_DETAILS_API_URL = `${BASE_API_PATH}/me`
+
 export const MODULES_LIST_API_URL = `${BASE_API_PATH}/module/list`
 export const SUBMODULE_API_URL = `${BASE_API_PATH}/module/:moduleId/submodule/:submoduleId`
 
