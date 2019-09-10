@@ -8,4 +8,16 @@ const makeSelectLocation = () =>
     routerState => routerState.location,
   )
 
-export { makeSelectLocation }
+const selectCommonDomain = state => state.common
+
+const selectUserInformation = createSelector(
+  selectCommonDomain,
+  substate => substate.userInformation,
+)
+
+const selectUserFirstName = createSelector(
+  selectUserInformation,
+  userInformation => userInformation.firstName,
+)
+
+export { makeSelectLocation, selectUserInformation, selectUserFirstName }

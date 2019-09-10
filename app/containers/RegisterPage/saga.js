@@ -5,10 +5,10 @@ import history from 'utils/history'
 import { setToken } from 'utils/auth'
 import { REGISTER_API_URL } from 'containers/App/urls'
 
+import { saveUserInformation } from 'containers/App/actions'
 import { SUBMIT_REGISTER } from './constants'
 import { makeSelectAnswers, makeSelectScore } from './selectors'
 import * as actions from './actions'
-import { saveUserInformation } from '../App/actions'
 
 function* submitRegister(action) {
   const answers = yield select(makeSelectAnswers())

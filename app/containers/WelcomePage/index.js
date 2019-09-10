@@ -12,6 +12,7 @@ import { FormattedMessage } from 'react-intl'
 import { createStructuredSelector } from 'reselect'
 import { compose } from 'redux'
 
+import { selectUserFirstName } from 'containers/App/selectors'
 import Button from 'components/Button'
 import ContentWrapper from 'components/ContentWrapper'
 import Icon from 'images/icon.svg'
@@ -39,7 +40,7 @@ const Wrapper = styled(ContentWrapper)`
   }
 `
 
-export function WelcomePage() {
+export function WelcomePage(props) {
   return (
     <Wrapper
       grid
@@ -51,7 +52,7 @@ export function WelcomePage() {
         <Text bold medium>
           <FormattedMessage
             {...messages.welcomeUser}
-            values={{ username: 'Test' }} // TODO: Use username from stored user
+            values={{ username: props.userFirstName }} // TODO: Use username from stored user
           />
         </Text>
         <img src={Icon} alt="User" />
@@ -67,10 +68,12 @@ export function WelcomePage() {
 }
 
 WelcomePage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  userFirstName: PropTypes.string,
 }
 
-const mapStateToProps = createStructuredSelector({})
+const mapStateToProps = createStructuredSelector({
+  userFirstName: selectUserFirstName,
+})
 
 function mapDispatchToProps(dispatch) {
   return {
