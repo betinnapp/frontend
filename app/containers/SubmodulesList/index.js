@@ -25,8 +25,13 @@ export function SubmodulesList(props) {
   useInjectSaga({ key: 'submodulesList', saga })
 
   useEffect(() => {
-    // props.fetchModulesList()
+    const moduleId = props.match.params.id
+    console.log(moduleId)
   }, [])
+
+  const onCardClickHandler = id => {
+    props.fetchSubmodule(id)
+  }
 
   return (
     <ContentWrapper fullHeight>
@@ -35,7 +40,7 @@ export function SubmodulesList(props) {
           <CardItem
             key={moduleItem.id}
             {...moduleItem}
-            // onClick={onCardClickHandler}
+            onClick={onCardClickHandler}
           />
         ))}
       </ContentWrapper>
@@ -44,7 +49,13 @@ export function SubmodulesList(props) {
 }
 
 SubmodulesList.propTypes = {
-  submodules: PropTypes.array.isRequired,
+  submodules: PropTypes.array,
+  match: PropTypes.object,
+  fetchSubmodule: PropTypes.func,
+}
+
+SubmodulesList.defaultProps = {
+  submodules: [],
 }
 
 const mapStateToProps = createStructuredSelector({})

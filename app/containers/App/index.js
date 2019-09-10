@@ -11,7 +11,6 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { useInjectReducer } from 'utils/injectReducer'
 import HomePage from 'containers/HomePage/Loadable'
 import LoginPage from 'containers/LoginPage'
 import ModulesListPage from 'containers/ModulesListPage'
@@ -25,8 +24,6 @@ import Fonts from 'components/Fonts'
 import * as urls from './urls'
 import GlobalStyle from '../../global-styles'
 
-import reducer from './reducer'
-
 const AppWrapper = styled.div`
   height: 100vh;
   margin: 0 auto;
@@ -34,8 +31,6 @@ const AppWrapper = styled.div`
 `
 
 export default function App() {
-  useInjectReducer({ key: 'common', reducer })
-
   return (
     <AppWrapper>
       <Fonts />
