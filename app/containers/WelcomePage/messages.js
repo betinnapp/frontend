@@ -11,7 +11,12 @@ export const scope = 'app.containers.WelcomePage'
 export default defineMessages({
   welcomeUser: {
     id: `${scope}.welcomeUser`,
-    defaultMessage: 'Bem vindo, {username}',
+    defaultMessage: `Bem vindo{
+      username, select,
+        null {!}
+        undefined {!}
+        other {, {username}}
+    }`,
   },
   seeAvailableModules: {
     id: `${scope}.seeAvailableModules`,

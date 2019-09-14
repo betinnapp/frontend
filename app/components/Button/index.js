@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react'
+import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
@@ -51,13 +51,13 @@ const StyledButton = styled.button`
 `
 
 function Button(props) {
-  const onClickHandler = () => {
+  const onClickHandler = useCallback(() => {
     if (props.onClick) {
       props.onClick()
     } else if (props.link) {
       history.push(props.link)
     }
-  }
+  }, [props.onClick, props.link])
 
   return (
     <StyledButton

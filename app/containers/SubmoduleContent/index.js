@@ -35,6 +35,11 @@ const Banner = styled.div`
 `
 const Content = styled.div`
   margin: 8px;
+  text-align: justify;
+
+  img {
+    width: 100%;
+  }
 `
 
 export function SubmoduleContent(props) {
