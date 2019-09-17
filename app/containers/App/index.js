@@ -59,7 +59,11 @@ export function App(props) {
         <Route exact path={urls.REGISTER_PATH} component={RegisterPage} />
         <Route exact path={urls.HOME_PATH} component={WelcomePage} />
         <Route exact path={urls.MODULES_PATH} component={ModulesListPage} />
-        <Route exact path={urls.SUBMODULES_PATH} component={SubmodulesList} />
+        <Route
+          exact
+          path={urls.MODULE_DETAILS_PATH}
+          component={SubmodulesList}
+        />
         <Route
           exact
           path={urls.SUBMODULE_DETAILS_PATH}

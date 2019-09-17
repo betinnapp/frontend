@@ -12,57 +12,77 @@ import { compose } from 'redux'
 
 import { useInjectSaga } from 'utils/injectSaga'
 import { useInjectReducer } from 'utils/injectReducer'
+import { SUBMODULE_DETAILS_PATH } from 'containers/App/urls'
 import CardItem from 'components/CardItem'
 import ContentWrapper from 'components/ContentWrapper'
+import Loader from 'components/Loader'
 
-// import makeSelectSubmodulesList from './selectors'
+import {
+  makeSelectModuleDetails,
+  makeSelectModuleDetailsIsLoading,
+} from './selectors'
+import { fetchModuleDetails } from './actions'
 import reducer from './reducer'
 import saga from './saga'
-// import messages from './messages'
 
 export function SubmodulesList(props) {
   useInjectReducer({ key: 'submodulesList', reducer })
   useInjectSaga({ key: 'submodulesList', saga })
 
+  const {
+    match: {
+      params: { moduleId },
+    },
+    moduleDetails: { submodule = [] },
+  } = props
+
   useEffect(() => {
-    const moduleId = props.match.params.id
-    console.log(moduleId)
+    props.fetchModuleDetails(moduleId)
   }, [])
 
   const onCardClickHandler = id => {
-    props.fetchSubmodule(id)
+    const url = SUBMODULE_DETAILS_PATH.replace(':moduleId', moduleId).replace(
+      ':submoduleId',
+      id,
+    )
+    props.history.push(url)
   }
 
   return (
     <ContentWrapper fullHeight>
-      <ContentWrapper flexbox flexWrap="wrap" justifyContent="space-around">
-        {props.submodules.map(moduleItem => (
-          <CardItem
-            key={moduleItem.id}
-            {...moduleItem}
-            onClick={onCardClickHandler}
-          />
-        ))}
-      </ContentWrapper>
+      <Loader isLoading={props.isLoading}>
+        <ContentWrapper flexbox flexWrap="wrap" justifyContent="space-around">
+          {submodule.map(moduleItem => (
+            <CardItem
+              key={moduleItem.id}
+              {...moduleItem}
+              onClick={onCardClickHandler}
+            />
+          ))}
+        </ContentWrapper>
+      </Loader>
     </ContentWrapper>
   )
 }
 
 SubmodulesList.propTypes = {
-  submodules: PropTypes.array,
-  match: PropTypes.object,
-  fetchSubmodule: PropTypes.func,
+  moduleDetails: PropTypes.object.isRequired,
+  isLoading: PropTypes.bool,
+  fetchModuleDetails: PropTypes.func,
+  match: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 }
 
-SubmodulesList.defaultProps = {
-  submodules: [],
-}
-
-const mapStateToProps = createStructuredSelector({})
+const mapStateToProps = createStructuredSelector({
+  moduleDetails: makeSelectModuleDetails,
+  isLoading: makeSelectModuleDetailsIsLoading,
+})
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    fetchModuleDetails: id => {
+      dispatch(fetchModuleDetails(id))
+    },
   }
 }
 

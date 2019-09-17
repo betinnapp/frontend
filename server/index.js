@@ -34,6 +34,7 @@ app.use(api) // Backend mock middleware
 // API JSON responses
 const loginResponse = require('./data/login')
 const modulesReponse = require('./data/modules')
+const moduleDetails = require('./data/moduleDetails')
 const submodule = require('./data/submodule')
 const userDetails = require('./data/userDetails')
 
@@ -51,6 +52,10 @@ api.get('/me', (req, res) => {
 
 api.get('/module/list', (req, res) => {
   mix(req, res, modulesReponse)
+})
+
+api.get('/module/:moduleId', (req, res) => {
+  res.json(moduleDetails)
 })
 
 api.get('/module/:moduleId/submodule/:submoduleId', (req, res) => {

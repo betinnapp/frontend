@@ -15,11 +15,14 @@ const selectSubmodulesListDomain = state => state.submodulesList || initialState
  * Default selector used by SubmodulesList
  */
 
-const makeSelectSubmodulesList = () =>
-  createSelector(
-    selectSubmodulesListDomain,
-    substate => substate,
-  )
+const makeSelectModuleDetails = createSelector(
+  selectSubmodulesListDomain,
+  substate => substate.resource,
+)
 
-export default makeSelectSubmodulesList
-export { selectSubmodulesListDomain }
+const makeSelectModuleDetailsIsLoading = createSelector(
+  selectSubmodulesListDomain,
+  substate => substate.isLoading,
+)
+
+export { makeSelectModuleDetails, makeSelectModuleDetailsIsLoading }
