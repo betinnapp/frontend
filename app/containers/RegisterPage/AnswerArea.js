@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
@@ -37,9 +37,14 @@ const formInitialValues = {
 export function AnswerArea({ question, answerQuestion }) {
   const { id, type, choices } = question
 
-  const handleButtonAnswerType = answer => () => {
-    answerQuestion(id, answer)
-  }
+  const handleButtonAnswerType = answer => () => buttonClick(answer)
+
+  const buttonClick = useCallback(
+    answer => {
+      answerQuestion(id, answer)
+    },
+    [id],
+  )
 
   const getValidationForFieldType = inputType => {
     switch (inputType) {
@@ -62,8 +67,8 @@ export function AnswerArea({ question, answerQuestion }) {
         validateOnBlur={false}
         initialValues={formInitialValues}
         onSubmit={({ answer }, { resetForm }) => {
-          answerQuestion(id, answer)
           resetForm()
+          answerQuestion(id, answer)
         }}
       >
         <AnswerForm>

@@ -35,6 +35,7 @@ app.use(api) // Backend mock middleware
 const loginResponse = require('./data/login')
 const modulesReponse = require('./data/modules')
 const submodule = require('./data/submodule')
+const userDetails = require('./data/userDetails')
 
 api.post('/auth/login', (req, res) => {
   res.json(loginResponse)
@@ -42,6 +43,10 @@ api.post('/auth/login', (req, res) => {
 
 api.post('/user/', (req, res) => {
   res.json(loginResponse)
+})
+
+api.get('/me', (req, res) => {
+  res.json(userDetails)
 })
 
 api.get('/module/list', (req, res) => {
