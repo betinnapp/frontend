@@ -1,6 +1,6 @@
 /*
  *
- * SubmodulesList reducer
+ * ModuleDetails reducer
  *
  */
 import produce from 'immer'
@@ -17,7 +17,7 @@ export const initialState = {
 }
 
 /* eslint-disable default-case, no-param-reassign */
-const submodulesListReducer = (state = initialState, action) =>
+const moduleDetailsReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
       case FETCH_MODULE_DETAILS:
@@ -34,4 +34,4 @@ const submodulesListReducer = (state = initialState, action) =>
     }
   })
 
-export default submodulesListReducer
+export default moduleDetailsReducer

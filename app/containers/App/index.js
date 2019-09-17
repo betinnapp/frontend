@@ -20,7 +20,7 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable'
 import Notifications from 'containers/Notifications'
 import RegisterPage from 'containers/RegisterPage'
 import SubmoduleContent from 'containers/SubmoduleContent'
-import SubmodulesList from 'containers/SubmodulesList'
+import ModuleDetails from 'containers/ModuleDetails'
 import WelcomePage from 'containers/WelcomePage'
 
 import { useInjectSaga } from 'utils/injectSaga'
@@ -62,7 +62,7 @@ export function App(props) {
         <Route
           exact
           path={urls.MODULE_DETAILS_PATH}
-          component={SubmodulesList}
+          component={ModuleDetails}
         />
         <Route
           exact

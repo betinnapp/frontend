@@ -19,6 +19,6 @@ function* fetchModuleDetails(action) {
 }
 
 // Individual exports for testing
-export default function* submodulesListSaga() {
+export default function* moduleDetailsSaga() {
   yield takeLatest(FETCH_MODULE_DETAILS, fetchModuleDetails)
 }

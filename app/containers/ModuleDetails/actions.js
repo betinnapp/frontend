@@ -1,6 +1,6 @@
 /*
  *
- * SubmodulesList actions
+ * ModuleDetails actions
  *
  */
 

@@ -1,6 +1,6 @@
 /**
  *
- * SubmodulesList
+ * ModuleDetails
  *
  */
 
@@ -25,9 +25,9 @@ import { fetchModuleDetails } from './actions'
 import reducer from './reducer'
 import saga from './saga'
 
-export function SubmodulesList(props) {
-  useInjectReducer({ key: 'submodulesList', reducer })
-  useInjectSaga({ key: 'submodulesList', saga })
+export function ModuleDetails(props) {
+  useInjectReducer({ key: 'moduleDetails', reducer })
+  useInjectSaga({ key: 'moduleDetails', saga })
 
   const {
     match: {
@@ -65,7 +65,7 @@ export function SubmodulesList(props) {
   )
 }
 
-SubmodulesList.propTypes = {
+ModuleDetails.propTypes = {
   moduleDetails: PropTypes.object.isRequired,
   isLoading: PropTypes.bool,
   fetchModuleDetails: PropTypes.func,
@@ -91,4 +91,4 @@ const withConnect = connect(
   mapDispatchToProps,
 )
 
-export default compose(withConnect)(SubmodulesList)
+export default compose(withConnect)(ModuleDetails)
