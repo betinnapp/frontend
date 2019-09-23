@@ -1,9 +1,3 @@
-/**
- *
- * CardItem
- *
- */
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
@@ -15,7 +9,7 @@ const DoneIcon = styled.span`
   color: #00dba1;
 `
 
-function CardItem(props) {
+function CardStatus(props) {
   const { status, submodule } = props
 
   const completedSubmodulesLength = (submodule || []).filter(
@@ -37,9 +31,9 @@ function CardItem(props) {
   )
 }
 
-CardItem.propTypes = {
+CardStatus.propTypes = {
   status: PropTypes.string,
   submodule: PropTypes.array,
 }
 
-export default CardItem
+export default CardStatus

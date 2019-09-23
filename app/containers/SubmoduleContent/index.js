@@ -10,9 +10,11 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { compose } from 'redux'
+import { FormattedMessage } from 'react-intl'
 
 import { useInjectSaga } from 'utils/injectSaga'
 import { useInjectReducer } from 'utils/injectReducer'
+import Button from 'components/Button'
 import ContentWrapper from 'components/ContentWrapper'
 import Loader from 'components/Loader'
 import Text from 'components/Text'
@@ -22,6 +24,7 @@ import {
   selectSubmoduleContent,
   selectSubmoduleContentIsLoading,
 } from './selectors'
+import messages from './messages'
 import reducer from './reducer'
 import saga from './saga'
 
@@ -43,6 +46,9 @@ const Content = styled.div`
   img {
     width: 100%;
   }
+`
+const QuizArea = styled.div`
+  text-align: center;
 `
 
 export function SubmoduleContent(props) {
@@ -72,6 +78,11 @@ export function SubmoduleContent(props) {
           <div // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: submodule.content }}
           />
+          <QuizArea>
+            <Button id="startQuiz" link={`${props.match.url}/quiz`}>
+              <FormattedMessage {...messages.startQuiz} />
+            </Button>
+          </QuizArea>
         </Content>
       </Loader>
     </ContentWrapper>
@@ -82,6 +93,7 @@ SubmoduleContent.propTypes = {
   submodule: PropTypes.object,
   isLoading: PropTypes.bool,
   fetchSubmoduleContent: PropTypes.func,
+  match: PropTypes.object,
 }
 
 const mapStateToProps = createStructuredSelector({
