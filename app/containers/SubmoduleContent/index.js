@@ -34,8 +34,11 @@ const Banner = styled.div`
   background-repeat: no-repeat;
 `
 const Content = styled.div`
-  margin: 8px;
   text-align: justify;
+  margin-top: -20px;
+  padding: 8px;
+  border-radius: 20px;
+  background-color: #e6e6e6;
 
   img {
     width: 100%;
