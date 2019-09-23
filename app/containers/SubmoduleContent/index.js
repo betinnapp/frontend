@@ -27,6 +27,7 @@ import {
 import messages from './messages'
 import reducer from './reducer'
 import saga from './saga'
+import { setSelectedId } from '../App/actions'
 
 const Banner = styled.div`
   width: 100%;
@@ -66,6 +67,11 @@ export function SubmoduleContent(props) {
     props.fetchSubmoduleContent(moduleId, submoduleId)
   }, [])
 
+  const startQuizOnClickHandler = () => {
+    props.setQuizId(props.submodule.quizId)
+    props.history.push(`${props.match.url}/quiz`)
+  }
+
   return (
     <ContentWrapper fullHeight noLateralMargins>
       <Loader isLoading={props.isLoading}>
@@ -79,7 +85,10 @@ export function SubmoduleContent(props) {
             dangerouslySetInnerHTML={{ __html: submodule.content }}
           />
           <QuizArea>
-            <Button id="startQuiz" link={`${props.match.url}/quiz`}>
+            <Button
+              id="startQuiz"
+              onClick={startQuizOnClickHandler}
+            >
               <FormattedMessage {...messages.startQuiz} />
             </Button>
           </QuizArea>
@@ -92,8 +101,10 @@ export function SubmoduleContent(props) {
 SubmoduleContent.propTypes = {
   submodule: PropTypes.object,
   isLoading: PropTypes.bool,
-  fetchSubmoduleContent: PropTypes.func,
   match: PropTypes.object,
+  history: PropTypes.object,
+  fetchSubmoduleContent: PropTypes.func,
+  setQuizId: PropTypes.func,
 }
 
 const mapStateToProps = createStructuredSelector({
@@ -106,6 +117,9 @@ function mapDispatchToProps(dispatch) {
     fetchSubmoduleContent: (moduleId, submoduleId) => {
       dispatch(fetchSubmoduleContent(moduleId, submoduleId))
     },
+    setQuizId: (quizId) => {
+      dispatch(setSelectedId('quizId', quizId))
+    }
   }
 }
 
