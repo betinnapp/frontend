@@ -13,6 +13,7 @@ import { StatusType } from 'containers/App/enums'
 import Text from 'components/Text'
 import Lock from 'images/lock.png'
 
+import CardStatus from './CardStatus'
 import messages from './messages'
 
 const Wrapper = styled.div`
@@ -56,10 +57,6 @@ const DescriptionArea = styled.div`
   }
 `
 
-const DoneIcon = styled.span`
-  color: #00dba1;
-`
-
 const Blocked = styled.div`
   display: flex;
   align-items: center;
@@ -89,13 +86,16 @@ const Blocked = styled.div`
 `
 
 function CardItem(props) {
-  const { id, image, name, onClick, status, submodule = [] } = props
+  const {
+    id,
+    image,
+    name,
+    onClick,
+    status,
+    submodule,
+  } = props
 
   const isLocked = status === StatusType.LOCKED
-  const completedSubmodulesLength = submodule.filter(
-    subItem => subItem.status === StatusType.COMPLETED,
-  ).length
-  const submodulesCompleted = completedSubmodulesLength === submodule.length
 
   const onClickHandler = () => {
     if (!isLocked) {
@@ -120,13 +120,7 @@ function CardItem(props) {
         <Text light huge>
           {name}
         </Text>
-        <Text big bold>
-          {submodulesCompleted ? (
-            <DoneIcon>OK</DoneIcon> // TODO: Import Font Awesome icons and use a done icon here
-          ) : (
-            `${completedSubmodulesLength}/${submodule.length}`
-          )}
-        </Text>
+        <CardStatus status={status} submodule={submodule} />
       </DescriptionArea>
     </Wrapper>
   )
