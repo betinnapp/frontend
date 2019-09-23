@@ -89,7 +89,8 @@ const Blocked = styled.div`
 `
 
 function CardItem(props) {
-  const { id, image, name, onClick, status, submodule } = props
+  const { id, image, name, onClick, status, submodule = [] } = props
+
   const isLocked = status === StatusType.LOCKED
   const completedSubmodulesLength = submodule.filter(
     subItem => subItem.status === StatusType.COMPLETED,

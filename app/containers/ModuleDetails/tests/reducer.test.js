@@ -1,9 +1,9 @@
 // import produce from 'immer';
-import submodulesListReducer from '../reducer'
+import moduleDetailsReducer from '../reducer'
 // import { someAction } from '../actions';
 
 /* eslint-disable default-case, no-param-reassign */
-describe('submodulesListReducer', () => {
+describe('moduleDetailsReducer', () => {
   let state
   beforeEach(() => {
     state = {
@@ -13,7 +13,7 @@ describe('submodulesListReducer', () => {
 
   it('returns the initial state', () => {
     const expectedResult = state
-    expect(submodulesListReducer(undefined, {})).toEqual(expectedResult)
+    expect(moduleDetailsReducer(undefined, {})).toEqual(expectedResult)
   })
 
   /**
