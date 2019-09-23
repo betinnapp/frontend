@@ -1,0 +1,70 @@
+{
+  "id": "199a4c83-f21d-4634-9645-923c03170301",
+  "name": "Name",
+  "description": "Description",
+  "questions": [
+    {
+      "id": "199a4c83-f21d-4634-9645-923c03170311",
+      "text": "Renda fixa é composta por diversos tipos de investimentos. Sobre os investimentos existentes, quais das opções abaixos são tipos de investimentos de renda fixa?",
+      "type": "MULTIPLE_CHOICE",
+      "options": [
+        {
+          "id": "199a4c83-f21d-4634-9645-923c03171321",
+          "text": "Tesouro Direto, CDB, Ações",
+          "score": "score",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "199a4c83-f21d-4634-9645-923c03172321",
+          "text": "Tesouro Direto, CDB, LCI e LCA",
+          "score": "score",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "199a4c83-f21d-4634-9645-923c03173321",
+          "text": "Debêntures, LCI, LCA e CDB",
+          "score": "score",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "199a4c83-f21d-4634-9645-923c03174321",
+          "text": "CDB, CDI, Tesouro Direto e LCA",
+          "score": "score",
+          "isCorrectAnswer": false
+        },
+        {
+          "id": "199a4c83-f21d-4634-9645-923c03175321",
+          "text": "Tesouro Direto e CDB",
+          "score": "score",
+          "isCorrectAnswer": true
+        }          
+      ]
+    },
+    {
+      "id": "199a4c83-f21d-4634-9645-923c03170312",
+      "text": "text",
+      "type": "MULTIPLE_CHOICE",
+      "options": [
+        {
+          "id": "199a4c83-f21d-4634-9645-923c03170322",
+          "text": "text",
+          "score": "score",
+          "isCorrectAnswer": true
+        }
+      ]
+    },
+    {
+      "id": "199a4c83-f21d-4634-9645-923c03170313",
+      "text": "text",
+      "type": "MULTIPLE_CHOICE",
+      "options": [
+        {
+          "id": "199a4c83-f21d-4634-9645-923c03170323",
+          "text": "text",
+          "score": "score",
+          "isCorrectAnswer": true
+        }
+      ]
+    }
+  ]
+}
