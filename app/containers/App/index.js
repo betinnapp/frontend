@@ -16,11 +16,12 @@ import styled from 'styled-components'
 import HomePage from 'containers/HomePage/Loadable'
 import LoginPage from 'containers/LoginPage'
 import ModulesListPage from 'containers/ModulesListPage'
+import ModuleDetails from 'containers/ModuleDetails'
 import NotFoundPage from 'containers/NotFoundPage/Loadable'
 import Notifications from 'containers/Notifications'
+import Quiz from 'containers/Quiz'
 import RegisterPage from 'containers/RegisterPage'
 import SubmoduleContent from 'containers/SubmoduleContent'
-import ModuleDetails from 'containers/ModuleDetails'
 import WelcomePage from 'containers/WelcomePage'
 
 import { useInjectSaga } from 'utils/injectSaga'
@@ -59,16 +60,9 @@ export function App(props) {
         <Route exact path={urls.REGISTER_PATH} component={RegisterPage} />
         <Route exact path={urls.HOME_PATH} component={WelcomePage} />
         <Route exact path={urls.MODULES_PATH} component={ModulesListPage} />
-        <Route
-          exact
-          path={urls.MODULE_DETAILS_PATH}
-          component={ModuleDetails}
-        />
-        <Route
-          exact
-          path={urls.SUBMODULE_DETAILS_PATH}
-          component={SubmoduleContent}
-        />
+        <Route exact path={urls.MODULE_DETAILS_PATH} component={ModuleDetails} />
+        <Route exact path={urls.SUBMODULE_DETAILS_PATH} component={SubmoduleContent} />
+        <Route exact path={urls.QUIZ_PATH} component={Quiz} />
         <Route component={NotFoundPage} />
       </Switch>
     </AppWrapper>

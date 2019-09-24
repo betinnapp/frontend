@@ -5,16 +5,18 @@
  */
 
 import { defineMessages } from 'react-intl'
+import commonMessages from 'containers/App/messages'
 
 export const scope = 'app.containers.SubmoduleContent'
 
-export default defineMessages({
-  unableToLoadContent: {
-    id: `${scope}.unableToLoadContent`,
-    defaultMessage: 'Desculpa, não fomos capazes de carregar este conteúdo. Tente novamente mais tarde!',
-  },
+const messages = defineMessages({
   startQuiz: {
     id: `${scope}.startQuiz`,
     defaultMessage: 'Iniciar testes',
   },
 })
+
+export default {
+  ...commonMessages,
+  ...messages,
+}
