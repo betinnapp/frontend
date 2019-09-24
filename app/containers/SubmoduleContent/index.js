@@ -13,7 +13,6 @@ import { compose } from 'redux'
 import { FormattedMessage } from 'react-intl'
 
 import { useInjectSaga } from 'utils/injectSaga'
-import { useInjectReducer } from 'utils/injectReducer'
 import Button from 'components/Button'
 import ContentWrapper from 'components/ContentWrapper'
 import Loader from 'components/Loader'
@@ -25,7 +24,6 @@ import {
   selectSubmoduleContentIsLoading,
 } from './selectors'
 import messages from './messages'
-import reducer from './reducer'
 import saga from './saga'
 import { setSelectedId } from '../App/actions'
 
@@ -53,7 +51,6 @@ const QuizArea = styled.div`
 `
 
 export function SubmoduleContent(props) {
-  useInjectReducer({ key: 'submoduleContent', reducer })
   useInjectSaga({ key: 'submoduleContent', saga })
 
   const { submodule } = props
