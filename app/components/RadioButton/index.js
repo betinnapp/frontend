@@ -8,28 +8,52 @@ const Label = styled.label`
   margin-left: 16px;
 `
 
+const Wrapper = styled(Text)`
+  &.correctOption {
+    color: #00dba1;
+  }
+
+  &.wrongOption {
+    color: #dc2e2e;
+  }
+`
+
 function RadioButton(props) {
   const {
     field: {
-      name, value, onChange, onBlur
+      name, value, onChange, onBlur,
     },
     id,
     text,
+    submitted,
+    correctOption,
+    disabled,
   } = props
+  const isChecked = id === value
+
+  let className = ''
+  if (submitted && correctOption) {
+    if (correctOption === id) {
+      className = 'correctOption'
+    } else if (isChecked) {
+      className = 'wrongOption'
+    }
+  }
 
   return (
-    <Text medium>
+    <Wrapper medium className={className}>
       <input
         type="radio"
         id={id}
         name={name}
         value={id}
-        checked={id === value}
+        checked={isChecked}
         onChange={onChange}
         onBlur={onBlur}
+        disabled={disabled}
       />
       <Label htmlFor={id}>{text}</Label>
-    </Text>
+    </Wrapper>
   )
 }
 
@@ -37,6 +61,9 @@ RadioButton.propTypes = {
   field: PropTypes.object,
   id: PropTypes.string,
   text: PropTypes.string,
+  submitted: PropTypes.bool,
+  correctOption: PropTypes.string,
+  disabled: PropTypes.bool,
 }
 
 RadioButton.defaultProps = {

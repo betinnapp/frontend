@@ -19,6 +19,9 @@ function RadioButtonGroup({
   options,
   label,
   name,
+  submitted,
+  correctOption,
+  disabled,
 }) {
   return (
     <Wrapper>
@@ -28,6 +31,9 @@ function RadioButtonGroup({
           key={option.id}
           component={RadioButton}
           name={name}
+          submitted={submitted}
+          correctOption={correctOption}
+          disabled={disabled}
           {...option}
         />
       ))}
@@ -46,6 +52,9 @@ RadioButtonGroup.propTypes = {
   options: PropTypes.array.isRequired,
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  submitted: PropTypes.bool,
+  correctOption: PropTypes.string,
+  disabled: PropTypes.bool,
 }
 
 export default RadioButtonGroup

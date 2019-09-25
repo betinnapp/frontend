@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Formik, Form } from 'formik'
 import * as yup from 'yup'
@@ -14,7 +14,7 @@ const validationSchema = yup.object().shape({
 })
 
 const initialValues = {
-  optionId: ''
+  optionId: '',
 }
 
 function QuizContent({
@@ -23,14 +23,17 @@ function QuizContent({
   options = [],
   onSubmitQuiz,
 }) {
+  const [submitted, setSubmitted] = useState(false)
+  const correctOptionId = options.find(option => option.isCorrectAnswer).id
+
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
       validateOnBlur={false}
-      onSubmit={({ optionId }, { resetForm }) => {
-        resetForm()
+      onSubmit={({ optionId }) => {
         onSubmitQuiz(id, optionId)
+        setSubmitted(true)
       }}
     >
       {({ isSubmitting, errors, touched }) => (
@@ -41,6 +44,9 @@ function QuizContent({
             options={options}
             label={text}
             name="optionId"
+            submitted={submitted}
+            correctOption={correctOptionId}
+            disabled={isSubmitting}
           />
           <Button id="submitAnswer" type="submit" disabled={isSubmitting}>
             <FormattedMessage {...messages.confirmAnswer} />

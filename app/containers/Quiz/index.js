@@ -88,7 +88,7 @@ function mapDispatchToProps(dispatch) {
     onSubmitQuiz: (questionId, optionId) => {
       dispatch(answerQuiz(questionId, optionId))
       dispatch(success({ message: messages.answerSavedSuccessfully, autoDismiss: 5000 }))
-    }
+    },
   }
 }
 
