@@ -18,6 +18,7 @@ function RadioButtonGroup({
   touched,
   options,
   label,
+  name,
 }) {
   return (
     <Wrapper>
@@ -26,7 +27,7 @@ function RadioButtonGroup({
         <Field
           key={option.id}
           component={RadioButton}
-          name="radioGroup"
+          name={name}
           {...option}
         />
       ))}
@@ -44,6 +45,7 @@ RadioButtonGroup.propTypes = {
   touched: PropTypes.bool,
   options: PropTypes.array.isRequired,
   label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 }
 
 export default RadioButtonGroup

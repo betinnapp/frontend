@@ -27,6 +27,7 @@ export function Quiz(props) {
     quiz,
     isLoading,
     history,
+    onSubmitQuiz,
     match: {
       params: { moduleId, submoduleId },
     },
@@ -48,7 +49,12 @@ export function Quiz(props) {
     <div>
       <Loader isLoading={isLoading}>
         {submodule.name}
-        {quiz.questions && <QuizContent {...quiz.questions[0]} />}
+        {quiz.questions && (
+          <QuizContent
+            {...quiz.questions[0]}
+            onSubmitQuiz={onSubmitQuiz}
+          />
+        )}
       </Loader>
     </div>
   )
@@ -62,6 +68,7 @@ Quiz.propTypes = {
   quizId: PropTypes.string,
   quiz: PropTypes.object,
   isLoading: PropTypes.bool,
+  onSubmitQuiz: PropTypes.func,
 }
 
 const mapStateToProps = createStructuredSelector({
@@ -76,6 +83,9 @@ function mapDispatchToProps(dispatch) {
     fetchQuiz: (quizId) => {
       dispatch(fetchQuiz(quizId))
     },
+    onSubmitQuiz: (optionId) => {
+      console.log('onSubmitQuiz', optionId)
+    }
   }
 }
 

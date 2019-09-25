@@ -10,31 +10,32 @@ import RadioButtonGroup from 'components/RadioButtonGroup'
 import messages from './messages'
 
 const validationSchema = yup.object().shape({
-  radioGroup: yup.string().required(messages.anOptionIsRequired),
+  optionId: yup.string().required(messages.anOptionIsRequired),
 })
 
 const initialValues = {
-  radioGroup: ''
+  optionId: ''
 }
 
-function QuizContent({ text, options = [] }) {
+function QuizContent({ text, options = [], onSubmitQuiz }) {
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
       validateOnBlur={false}
-      onSubmit={({ answer }, { resetForm }) => {
+      onSubmit={({ optionId }, { resetForm }) => {
         resetForm()
-        console.log('submit: ', answer)
+        onSubmitQuiz(optionId)
       }}
     >
       {({ isSubmitting, errors, touched }) => (
         <Form>
           <RadioButtonGroup
-            error={errors.radioGroup}
-            touched={touched.radioGroup}
+            error={errors.optionId}
+            touched={touched.optionId}
             options={options}
             label={text}
+            name="optionId"
           />
           <Button id="submitAnswer" type="submit" disabled={isSubmitting}>
             <FormattedMessage {...messages.confirmAnswer} />
@@ -48,6 +49,7 @@ function QuizContent({ text, options = [] }) {
 QuizContent.propTypes = {
   text: PropTypes.string,
   options: PropTypes.array,
+  onSubmitQuiz: PropTypes.func.isRequired,
 }
 
 export default QuizContent
