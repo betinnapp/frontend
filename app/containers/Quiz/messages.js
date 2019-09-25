@@ -22,6 +22,10 @@ const messages = defineMessages({
     id: `${scope}.answerSavedSuccessfully`,
     defaultMessage: 'Resposta salva com sucesso!',
   },
+  nextQuestion: {
+    id: `${scope}.nextQuestion`,
+    defaultMessage: 'Próxima pergunta',
+  },
 })
 
 export default {

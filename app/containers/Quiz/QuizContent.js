@@ -26,6 +26,9 @@ function QuizContent({
   const [submitted, setSubmitted] = useState(false)
   const correctOptionId = options.find(option => option.isCorrectAnswer).id
 
+  const handleNextQuestionClick = () => {
+  }
+
   return (
     <Formik
       initialValues={initialValues}
@@ -46,11 +49,17 @@ function QuizContent({
             name="optionId"
             submitted={submitted}
             correctOption={correctOptionId}
-            disabled={isSubmitting}
+            disabled={isSubmitting || submitted}
           />
-          <Button id="submitAnswer" type="submit" disabled={isSubmitting}>
-            <FormattedMessage {...messages.confirmAnswer} />
-          </Button>
+          {submitted ? (
+            <Button id="nextQuestion" onClick={handleNextQuestionClick}>
+              <FormattedMessage {...messages.nextQuestion} />
+            </Button>
+          ) : (
+            <Button id="submitAnswer" type="submit" disabled={isSubmitting}>
+              <FormattedMessage {...messages.confirmAnswer} />
+            </Button>
+          )}
         </Form>
       )}
     </Formik>
