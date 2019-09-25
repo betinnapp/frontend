@@ -5,6 +5,7 @@
  */
 import produce from 'immer'
 import {
+  ANSWER_QUIZ,
   FETCH_QUIZ,
   FETCH_QUIZ_SUCCESS,
   FETCH_QUIZ_FAILURE,
@@ -14,6 +15,7 @@ export const initialState = {
   quizContent: {},
   isLoading: false,
   error: null,
+  answers: [],
 }
 
 /* eslint-disable default-case, no-param-reassign */
@@ -30,6 +32,13 @@ const quizReducer = (state = initialState, action) => produce(state, (draft) => 
       draft.error = action.error
       draft.isLoading = false
       break
+    case ANSWER_QUIZ: {
+      draft.answers.push({
+        questionId: action.questionIn,
+        optionId: action.optionId,
+      })
+      break
+    }
   }
 })
 

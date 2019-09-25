@@ -5,9 +5,10 @@
  */
 
 import {
+  ANSWER_QUIZ,
   FETCH_QUIZ,
   FETCH_QUIZ_SUCCESS,
-  FETCH_QUIZ_FAILURE
+  FETCH_QUIZ_FAILURE,
 } from './constants'
 
 export function fetchQuiz(quizId) {
@@ -28,5 +29,13 @@ export function fetchQuizFailure(error) {
   return {
     type: FETCH_QUIZ_FAILURE,
     error,
+  }
+}
+
+export function answerQuiz(questionId, optionId) {
+  return {
+    type: ANSWER_QUIZ,
+    questionId,
+    optionId,
   }
 }

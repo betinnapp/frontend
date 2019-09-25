@@ -17,7 +17,11 @@ const messages = defineMessages({
   anOptionIsRequired: {
     id: `${scope}.anOptionIsRequired`,
     defaultMessage: 'Selecionar uma opção é obrigatório',
-  }
+  },
+  answerSavedSuccessfully: {
+    id: `${scope}.answerSavedSuccessfully`,
+    defaultMessage: 'Resposta salva com sucesso!',
+  },
 })
 
 export default {

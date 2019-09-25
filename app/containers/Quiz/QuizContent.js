@@ -17,7 +17,12 @@ const initialValues = {
   optionId: ''
 }
 
-function QuizContent({ text, options = [], onSubmitQuiz }) {
+function QuizContent({
+  id,
+  text,
+  options = [],
+  onSubmitQuiz,
+}) {
   return (
     <Formik
       initialValues={initialValues}
@@ -25,7 +30,7 @@ function QuizContent({ text, options = [], onSubmitQuiz }) {
       validateOnBlur={false}
       onSubmit={({ optionId }, { resetForm }) => {
         resetForm()
-        onSubmitQuiz(optionId)
+        onSubmitQuiz(id, optionId)
       }}
     >
       {({ isSubmitting, errors, touched }) => (
@@ -47,6 +52,7 @@ function QuizContent({ text, options = [], onSubmitQuiz }) {
 }
 
 QuizContent.propTypes = {
+  id: PropTypes.string.isRequired,
   text: PropTypes.string,
   options: PropTypes.array,
   onSubmitQuiz: PropTypes.func.isRequired,

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { compose } from 'redux'
+import { success } from 'react-notification-system-redux'
 
 import { useInjectSaga } from 'utils/injectSaga'
 import { useInjectReducer } from 'utils/injectReducer'
@@ -11,11 +12,12 @@ import { SUBMODULE_DETAILS_PATH } from 'containers/App/urls'
 import { selectSubmoduleContent } from 'containers/SubmoduleContent/selectors'
 import Loader from 'components/Loader'
 
-import { fetchQuiz } from './actions'
+import { fetchQuiz, answerQuiz } from './actions'
 import { selectQuizContent, selectQuizIsLoading } from './selectors'
 import reducer from './reducer'
 import saga from './saga'
 import QuizContent from './QuizContent'
+import messages from './messages'
 
 export function Quiz(props) {
   useInjectReducer({ key: 'quiz', reducer })
@@ -83,8 +85,9 @@ function mapDispatchToProps(dispatch) {
     fetchQuiz: (quizId) => {
       dispatch(fetchQuiz(quizId))
     },
-    onSubmitQuiz: (optionId) => {
-      console.log('onSubmitQuiz', optionId)
+    onSubmitQuiz: (questionId, optionId) => {
+      dispatch(answerQuiz(questionId, optionId))
+      dispatch(success({ message: messages.answerSavedSuccessfully, autoDismiss: 5000 }))
     }
   }
 }
