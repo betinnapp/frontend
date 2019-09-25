@@ -9,25 +9,30 @@ import { useInjectReducer } from 'utils/injectReducer'
 import { selectSelectedId } from 'containers/App/selectors'
 import { SUBMODULE_DETAILS_PATH } from 'containers/App/urls'
 import { selectSubmoduleContent } from 'containers/SubmoduleContent/selectors'
+import Loader from 'components/Loader'
 
 import { fetchQuiz } from './actions'
-import { selectQuizContent } from './selectors'
+import { selectQuizContent, selectQuizIsLoading } from './selectors'
 import reducer from './reducer'
 import saga from './saga'
+import QuizContent from './QuizContent'
 
 export function Quiz(props) {
   useInjectReducer({ key: 'quiz', reducer })
   useInjectSaga({ key: 'quiz', saga })
 
-  useEffect(() => {
-    const {
-      quizId,
-      history,
-      match: {
-        params: { moduleId, submoduleId },
-      },
-    } = props
+  const {
+    quizId,
+    submodule,
+    quiz,
+    isLoading,
+    history,
+    match: {
+      params: { moduleId, submoduleId },
+    },
+  } = props
 
+  useEffect(() => {
     if (quizId) {
       props.fetchQuiz(quizId)
     } else {
@@ -41,18 +46,27 @@ export function Quiz(props) {
 
   return (
     <div>
-      {props.submodule.name}
+      <Loader isLoading={isLoading}>
+        {submodule.name}
+        {quiz.questions && <QuizContent {...quiz.questions[0]} />}
+      </Loader>
     </div>
   )
 }
 
 Quiz.propTypes = {
+  history: PropTypes.object,
+  match: PropTypes.object,
   fetchQuiz: PropTypes.func,
   submodule: PropTypes.object,
+  quizId: PropTypes.string,
+  quiz: PropTypes.object,
+  isLoading: PropTypes.bool,
 }
 
 const mapStateToProps = createStructuredSelector({
   quiz: selectQuizContent,
+  isLoading: selectQuizIsLoading,
   quizId: selectSelectedId('quizId'),
   submodule: selectSubmoduleContent,
 })

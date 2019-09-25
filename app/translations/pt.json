@@ -3,6 +3,7 @@
   "app.containers.App.betinnapp": "Betinnapp",
   "app.containers.App.password": "Senha",
   "app.containers.App.required": "Obrigatório",
+  "app.containers.App.unableToLoadContent": "Desculpa, não fomos capazes de carregar este conteúdo. Tente novamente mais tarde!",
   "app.containers.App.user": "Usuário",
   "app.containers.HomePage.alreadyHaveAnAccount": "Já tenho uma conta",
   "app.containers.HomePage.learnToManagerYourFinances": "Aprenda a gerenciar suas finanças de graça.",
@@ -14,6 +15,8 @@
   "app.containers.LoginPage.welcome": "Bem-vindo!",
   "app.containers.ModulesListPage.unableToLoadModulesList": "Desculpa, não fomos capazes de carregar a lista de módulos, tente novamente mais tarde!",
   "app.containers.NotFoundPage.header": "This is the NotFoundPage container!",
+  "app.containers.Quiz.anOptionIsRequired": "Selecionar uma opção é obrigatório",
+  "app.containers.Quiz.confirmAnswer": "Confirmar Resposta",
   "app.containers.RegisterPage.LETS_DO_THIS": "Sem problemas",
   "app.containers.RegisterPage.NEVER_DO_THIS": "Tenho medo",
   "app.containers.RegisterPage.QUESTION_ALREADY_INVESTED": "Já investiu alguma vez?",
@@ -39,7 +42,6 @@
   "app.containers.RegisterPage.weAreAlmostFinishing": "Estamos quase acabando e logo você desfrutará do aprendizado sobre o mundo financeiro",
   "app.containers.RegisterPage.wrongEmail": "E-mail inválido",
   "app.containers.SubmoduleContent.startQuiz": "Iniciar testes",
-  "app.containers.SubmoduleContent.unableToLoadContent": "Desculpa, não fomos capazes de carregar este conteúdo. Tente novamente mais tarde!",
   "app.containers.WelcomePage.seeAvailableModules": "Visualizar módulos disponíveis",
   "app.containers.WelcomePage.welcomeUser": "Bem vindo{username, select, null {!} undefined {!} other {, {username}}}"
 }

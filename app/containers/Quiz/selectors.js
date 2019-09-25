@@ -8,7 +8,13 @@ const selectQuizContent = createSelector(
   substate => substate.quizContent,
 )
 
+const selectQuizIsLoading = createSelector(
+  selectQuizDomain,
+  substate => substate.isLoading,
+)
+
 export {
   selectQuizDomain,
   selectQuizContent,
+  selectQuizIsLoading,
 }

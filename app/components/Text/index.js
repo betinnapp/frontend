@@ -38,6 +38,12 @@ const MediumText = css`
   font-size: 18px;
 `
 
+const ErrorText = css`
+  font-size: 12px;
+  font-weight: bold;
+  color: #f2994a;
+`
+
 const Text = styled.p`
   margin: 0;
 
@@ -52,6 +58,7 @@ const Text = styled.p`
   ${props => props.light && LightText}
   ${props => props.secondary && SecondaryText}
   ${props => props.terciary && TerciaryText}
+  ${props => props.error && ErrorText}
 `
 
 export default Text
