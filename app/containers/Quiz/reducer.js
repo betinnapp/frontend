@@ -4,6 +4,8 @@
  *
  */
 import produce from 'immer'
+import { LOCATION_CHANGE } from 'connected-react-router'
+
 import {
   ANSWER_QUIZ,
   FETCH_QUIZ,
@@ -56,6 +58,13 @@ const quizReducer = (state = initialState, action) => produce(state, (draft) => 
     }
     case SEND_ANSWERS_SUCCESS:
       draft.isLoading = false
+      break
+    case LOCATION_CHANGE:
+      draft.questions = initialState.questions
+      draft.visibleQuestion = initialState.visibleQuestion
+      draft.isLoading = initialState.isLoading
+      draft.error = initialState.error
+      draft.answers = initialState.answers
       break
   }
 })

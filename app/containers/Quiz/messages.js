@@ -34,6 +34,18 @@ const messages = defineMessages({
     id: `${scope}.submoduleFinished`,
     defaultMessage: 'Submódulo Concluído!',
   },
+  quizFinishedContinueLearning: {
+    id: `${scope}.quizFinishedContinueLearning`,
+    defaultMessage: 'Quiz finalizado, vá para o próximo conteúdo e continue aprendendo.!',
+  },
+  answersResult: {
+    id: `${scope}.answersResult`,
+    defaultMessage: 'Acertou {correctAnswersCount} questões de {questionsCount}.',
+  },
+  continue: {
+    id: `${scope}.continue`,
+    defaultMessage: 'Continuar',
+  },
   anErrorOcurredWhileSendingYourAnswers: {
     id: `${scope}.anErrorOcurredWhileSendingYourAnswers`,
     defaultMessage: 'Um erro ocorreu enquanto tentavamos enviar suas respostas. Tente novamente mais tarde.',

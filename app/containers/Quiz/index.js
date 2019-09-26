@@ -8,21 +8,28 @@ import { success } from 'react-notification-system-redux'
 import { useInjectSaga } from 'utils/injectSaga'
 import { useInjectReducer } from 'utils/injectReducer'
 import { selectSelectedId } from 'containers/App/selectors'
+import { deleteSelectedId } from 'containers/App/actions'
 import { SUBMODULE_DETAILS_PATH } from 'containers/App/urls'
 import { selectSubmoduleContent } from 'containers/SubmoduleContent/selectors'
 import Loader from 'components/Loader'
 
-import { FormattedMessage } from 'react-intl'
 import {
   fetchQuiz,
   answerQuiz,
   setNextQuestionAsVisible,
   sendAnswers,
 } from './actions'
-import { selectQuizIsLoading, selectQuizQuestion, selectIsLastQuestion } from './selectors'
+import {
+  selectCorrectAnswersCount,
+  selectIsLastQuestion,
+  selectQuestions,
+  selectQuizIsLoading,
+  selectQuizQuestion,
+} from './selectors'
 import reducer from './reducer'
 import saga from './saga'
 import QuizContent from './QuizContent'
+import QuizResult from './QuizResult'
 import messages from './messages'
 
 export function Quiz(props) {
@@ -48,6 +55,10 @@ export function Quiz(props) {
 
       props.history.replace(url)
     }
+
+    return function cleanup() {
+      props.deleteQuizIdFromStore()
+    }
   }, [])
 
   return (
@@ -63,9 +74,10 @@ export function Quiz(props) {
             sendQuizAnswers={props.sendQuizAnswers}
           />
         ) : (
-          <div>
-            <FormattedMessage {...messages.submoduleFinished} />
-          </div>
+          <QuizResult
+            correctAnswersCount={props.correctAnswersCount}
+            questionsCount={props.questions.length}
+          />
         )}
       </Loader>
     </div>
@@ -84,6 +96,9 @@ Quiz.propTypes = {
   sendQuizAnswers: PropTypes.func,
   question: PropTypes.object,
   isLastQuestion: PropTypes.bool,
+  deleteQuizIdFromStore: PropTypes.func,
+  correctAnswersCount: PropTypes.number,
+  questions: PropTypes.array,
 }
 
 const mapStateToProps = createStructuredSelector({
@@ -92,6 +107,8 @@ const mapStateToProps = createStructuredSelector({
   isLastQuestion: selectIsLastQuestion,
   quizId: selectSelectedId('quizId'),
   submodule: selectSubmoduleContent,
+  correctAnswersCount: selectCorrectAnswersCount,
+  questions: selectQuestions,
 })
 
 function mapDispatchToProps(dispatch) {
@@ -108,6 +125,9 @@ function mapDispatchToProps(dispatch) {
     },
     sendQuizAnswers: () => {
       dispatch(sendAnswers())
+    },
+    deleteQuizIdFromStore: () => {
+      dispatch(deleteSelectedId('quizId'))
     },
   }
 }
