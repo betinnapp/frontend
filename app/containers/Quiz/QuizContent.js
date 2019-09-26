@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Formik, Form } from 'formik'
 import * as yup from 'yup'
@@ -22,12 +22,14 @@ function QuizContent({
   text,
   options = [],
   onSubmitQuiz,
+  goToNextQuestion,
 }) {
   const [submitted, setSubmitted] = useState(false)
   const correctOptionId = options.find(option => option.isCorrectAnswer).id
 
-  const handleNextQuestionClick = () => {
-  }
+  useEffect(() => {
+    setSubmitted(false)
+  }, [id])
 
   return (
     <Formik
@@ -39,7 +41,12 @@ function QuizContent({
         setSubmitted(true)
       }}
     >
-      {({ isSubmitting, errors, touched }) => (
+      {({
+        isSubmitting,
+        errors,
+        touched,
+        resetForm,
+      }) => (
         <Form>
           <RadioButtonGroup
             error={errors.optionId}
@@ -52,7 +59,13 @@ function QuizContent({
             disabled={isSubmitting || submitted}
           />
           {submitted ? (
-            <Button id="nextQuestion" onClick={handleNextQuestionClick}>
+            <Button
+              id="nextQuestion"
+              onClick={() => {
+                goToNextQuestion()
+                resetForm()
+              }}
+            >
               <FormattedMessage {...messages.nextQuestion} />
             </Button>
           ) : (
@@ -71,6 +84,7 @@ QuizContent.propTypes = {
   text: PropTypes.string,
   options: PropTypes.array,
   onSubmitQuiz: PropTypes.func.isRequired,
+  goToNextQuestion: PropTypes.func.isRequired,
 }
 
 export default QuizContent

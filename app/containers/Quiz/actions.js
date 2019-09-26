@@ -9,6 +9,7 @@ import {
   FETCH_QUIZ,
   FETCH_QUIZ_SUCCESS,
   FETCH_QUIZ_FAILURE,
+  SET_NEXT_QUESTION_AS_VISIBLE,
 } from './constants'
 
 export function fetchQuiz(quizId) {
@@ -37,5 +38,11 @@ export function answerQuiz(questionId, optionId) {
     type: ANSWER_QUIZ,
     questionId,
     optionId,
+  }
+}
+
+export function setNextQuestionAsVisible() {
+  return {
+    type: SET_NEXT_QUESTION_AS_VISIBLE,
   }
 }

@@ -12,8 +12,8 @@ import { SUBMODULE_DETAILS_PATH } from 'containers/App/urls'
 import { selectSubmoduleContent } from 'containers/SubmoduleContent/selectors'
 import Loader from 'components/Loader'
 
-import { fetchQuiz, answerQuiz } from './actions'
-import { selectQuizContent, selectQuizIsLoading } from './selectors'
+import { fetchQuiz, answerQuiz, setNextQuestionAsVisible } from './actions'
+import { selectQuizIsLoading, selectQuizQuestion } from './selectors'
 import reducer from './reducer'
 import saga from './saga'
 import QuizContent from './QuizContent'
@@ -26,10 +26,11 @@ export function Quiz(props) {
   const {
     quizId,
     submodule,
-    quiz,
+    question,
     isLoading,
     history,
     onSubmitQuiz,
+    goToNextQuestion,
     match: {
       params: { moduleId, submoduleId },
     },
@@ -51,10 +52,11 @@ export function Quiz(props) {
     <div>
       <Loader isLoading={isLoading}>
         {submodule.name}
-        {quiz.questions && (
+        {question && (
           <QuizContent
-            {...quiz.questions[0]}
+            {...question}
             onSubmitQuiz={onSubmitQuiz}
+            goToNextQuestion={goToNextQuestion}
           />
         )}
       </Loader>
@@ -68,14 +70,15 @@ Quiz.propTypes = {
   fetchQuiz: PropTypes.func,
   submodule: PropTypes.object,
   quizId: PropTypes.string,
-  quiz: PropTypes.object,
   isLoading: PropTypes.bool,
   onSubmitQuiz: PropTypes.func,
+  goToNextQuestion: PropTypes.func,
+  question: PropTypes.object,
 }
 
 const mapStateToProps = createStructuredSelector({
-  quiz: selectQuizContent,
   isLoading: selectQuizIsLoading,
+  question: selectQuizQuestion,
   quizId: selectSelectedId('quizId'),
   submodule: selectSubmoduleContent,
 })
@@ -88,6 +91,9 @@ function mapDispatchToProps(dispatch) {
     onSubmitQuiz: (questionId, optionId) => {
       dispatch(answerQuiz(questionId, optionId))
       dispatch(success({ message: messages.answerSavedSuccessfully, autoDismiss: 5000 }))
+    },
+    goToNextQuestion: () => {
+      dispatch(setNextQuestionAsVisible())
     },
   }
 }

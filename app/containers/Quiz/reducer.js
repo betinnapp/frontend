@@ -9,13 +9,15 @@ import {
   FETCH_QUIZ,
   FETCH_QUIZ_SUCCESS,
   FETCH_QUIZ_FAILURE,
+  SET_NEXT_QUESTION_AS_VISIBLE,
 } from './constants'
 
 export const initialState = {
-  quizContent: {},
+  questions: [],
+  visibleQuestion: null,
   isLoading: false,
   error: null,
-  answers: [],
+  answers: {},
 }
 
 /* eslint-disable default-case, no-param-reassign */
@@ -24,19 +26,27 @@ const quizReducer = (state = initialState, action) => produce(state, (draft) => 
     case FETCH_QUIZ:
       draft.isLoading = true
       break
-    case FETCH_QUIZ_SUCCESS:
-      draft.quizContent = action.response
+    case FETCH_QUIZ_SUCCESS: {
+      const { questions } = action.response
+      const [firstQuestion] = questions
+
+      draft.questions = questions
+      draft.visibleQuestion = firstQuestion
       draft.isLoading = false
       break
+    }
     case FETCH_QUIZ_FAILURE:
       draft.error = action.error
       draft.isLoading = false
       break
-    case ANSWER_QUIZ: {
-      draft.answers.push({
-        questionId: action.questionIn,
-        optionId: action.optionId,
-      })
+    case ANSWER_QUIZ:
+      draft.answers[action.questionId] = action.optionId
+      break
+    case SET_NEXT_QUESTION_AS_VISIBLE: {
+      const visibleQuestionIndex = draft.questions.findIndex(
+        question => question.id === draft.visibleQuestion.id
+      )
+      draft.visibleQuestion = draft.questions[visibleQuestionIndex + 1]
       break
     }
   }
