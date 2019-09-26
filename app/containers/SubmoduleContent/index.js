@@ -13,9 +13,9 @@ import { compose } from 'redux'
 import { FormattedMessage } from 'react-intl'
 
 import { useInjectSaga } from 'utils/injectSaga'
+import { setSelectedId } from 'containers/App/actions'
 import Button from 'components/Button'
-import ContentWrapper from 'components/ContentWrapper'
-import Loader from 'components/Loader'
+import ContentWithBanner from 'components/ContentWithBanner'
 import Text from 'components/Text'
 
 import { fetchSubmoduleContent } from './actions'
@@ -25,22 +25,9 @@ import {
 } from './selectors'
 import messages from './messages'
 import saga from './saga'
-import { setSelectedId } from '../App/actions'
 
-const Banner = styled.div`
-  width: 100%;
-  height: 216px;
-  background-image: url(${props => props.img});
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-`
 const Content = styled.div`
   text-align: justify;
-  margin-top: -20px;
-  padding: 8px;
-  border-radius: 20px;
-  background-color: #e6e6e6;
 
   img {
     width: 100%;
@@ -70,28 +57,28 @@ export function SubmoduleContent(props) {
   }
 
   return (
-    <ContentWrapper fullHeight noLateralMargins>
-      <Loader isLoading={props.isLoading}>
-        <Banner img={submodule.image} />
-        <Content>
-          <Text huge bold>
-            {submodule.name}
-          </Text>
-          {/* TODO: Found a better solution to render html coming from backend? */}
-          <div // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{ __html: submodule.content }}
-          />
-          <QuizArea>
-            <Button
-              id="startQuiz"
-              onClick={startQuizOnClickHandler}
-            >
-              <FormattedMessage {...messages.startQuiz} />
-            </Button>
-          </QuizArea>
-        </Content>
-      </Loader>
-    </ContentWrapper>
+    <ContentWithBanner
+      isLoading={props.isLoading}
+      image={submodule.image}
+    >
+      <Content>
+        <Text huge bold>
+          {submodule.name}
+        </Text>
+        {/* TODO: Found a better solution to render html coming from backend? */}
+        <div // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: submodule.content }}
+        />
+        <QuizArea>
+          <Button
+            id="startQuiz"
+            onClick={startQuizOnClickHandler}
+          >
+            <FormattedMessage {...messages.startQuiz} />
+          </Button>
+        </QuizArea>
+      </Content>
+    </ContentWithBanner>
   )
 }
 
@@ -116,7 +103,7 @@ function mapDispatchToProps(dispatch) {
     },
     setQuizId: (quizId) => {
       dispatch(setSelectedId('quizId', quizId))
-    }
+    },
   }
 }
 

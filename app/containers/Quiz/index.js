@@ -11,7 +11,8 @@ import { selectSelectedId } from 'containers/App/selectors'
 import { deleteSelectedId } from 'containers/App/actions'
 import { SUBMODULE_DETAILS_PATH } from 'containers/App/urls'
 import { selectSubmoduleContent } from 'containers/SubmoduleContent/selectors'
-import Loader from 'components/Loader'
+import ContentWithBanner from 'components/ContentWithBanner'
+import Text from 'components/Text'
 
 import {
   fetchQuiz,
@@ -62,25 +63,29 @@ export function Quiz(props) {
   }, [])
 
   return (
-    <div>
-      <Loader isLoading={props.isLoading}>
+    <ContentWithBanner
+      isLoading={props.isLoading}
+      image={submodule.image}
+      miniBanner
+    >
+      <Text huge bold>
         {submodule.name}
-        {question ? (
-          <QuizContent
-            {...question}
-            onSubmitQuiz={props.onSubmitQuiz}
-            goToNextQuestion={props.goToNextQuestion}
-            isLastQuestion={props.isLastQuestion}
-            sendQuizAnswers={props.sendQuizAnswers}
-          />
-        ) : (
-          <QuizResult
-            correctAnswersCount={props.correctAnswersCount}
-            questionsCount={props.questions.length}
-          />
-        )}
-      </Loader>
-    </div>
+      </Text>
+      {question ? (
+        <QuizContent
+          {...question}
+          onSubmitQuiz={props.onSubmitQuiz}
+          goToNextQuestion={props.goToNextQuestion}
+          isLastQuestion={props.isLastQuestion}
+          sendQuizAnswers={props.sendQuizAnswers}
+        />
+      ) : (
+        <QuizResult
+          correctAnswersCount={props.correctAnswersCount}
+          questionsCount={props.questions.length}
+        />
+      )}
+    </ContentWithBanner>
   )
 }
 
