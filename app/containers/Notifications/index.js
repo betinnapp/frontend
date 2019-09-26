@@ -15,7 +15,7 @@ import { useTransition, animated, config } from 'react-spring'
 const Wrapper = styled.div`
   position: absolute;
   width: 312px;
-  top: 128px;
+  top: 24px;
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -32,19 +32,22 @@ const NotificationItem = styled(animated.div)`
   margin-bottom: 8px;
   padding: 8px;
   align-items: center;
-  background: ${({ feedback }) =>
-    (feedback === 'warning' && '#f2994a') ||
-    (feedback === 'success' && '#6fcf97') ||
-    (feedback === 'error' && '#dc2e2e') ||
-    '#a3a3a3'};
+  background: ${({ feedback }) => (
+    (feedback === 'warning' && '#f2994a')
+    || (feedback === 'success' && '#6fcf97')
+    || (feedback === 'error' && '#dc2e2e')
+    || '#a3a3a3'
+  )};
 `
 
-function Notification({ level, message, onDismiss, style }) {
+function Notification({
+  level, message, onDismiss, style,
+}) {
   return (
     <NotificationItem
       feedback={level}
       style={style}
-      onClick={e => {
+      onClick={(e) => {
         e.preventDefault()
 
         if (onDismiss) {
@@ -83,8 +86,7 @@ export function Notifications({ notifications }) {
       await next({ opacity: 0 })
     },
 
-    onRest: item =>
-      setNotification(state => state.filter(i => i.uid !== item.uid)),
+    onRest: item => setNotification(state => state.filter(i => i.uid !== item.uid)),
 
     config: (item, state) => ({
       ...config.stiff,
