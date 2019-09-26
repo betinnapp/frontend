@@ -1,10 +1,18 @@
-import { takeLatest, call, put } from 'redux-saga/effects'
+import {
+  takeLatest,
+  call,
+  put,
+  select,
+  all,
+} from 'redux-saga/effects'
 import { error } from 'react-notification-system-redux'
 
 import request from 'utils/request'
-import { SURVEY_API_URL } from 'containers/App/urls'
+import { SURVEY_API_URL, SURVEY_ANSWER_API_URL } from 'containers/App/urls'
+import { selectSelectedId } from 'containers/App/selectors'
 
-import { FETCH_QUIZ } from './constants'
+import { selectAnswers } from './selectors'
+import { FETCH_QUIZ, SEND_ANSWERS } from './constants'
 import * as actions from './actions'
 import messages from './messages'
 
@@ -25,6 +33,29 @@ function* fetchQuiz(action) {
   }
 }
 
+function* sendQuizAnswer() {
+  try {
+    const answers = yield select(selectAnswers)
+    const quizId = yield select(selectSelectedId('quizId'))
+    const url = SURVEY_ANSWER_API_URL.replace(':surveyId', quizId)
+
+    yield call(request, url, {
+      method: 'POST',
+      data: answers,
+    })
+
+    yield put(actions.sendAnswersSuccess())
+  } catch (e) {
+    yield put(
+      error({ message: messages.anErrorOcurredWhileSendingYourAnswers, autoDismiss: 5000 }),
+    )
+    yield put(actions.sendAnswersFailure(e))
+  }
+}
+
 export default function* quizSaga() {
-  yield takeLatest(FETCH_QUIZ, fetchQuiz)
+  yield all([
+    takeLatest(FETCH_QUIZ, fetchQuiz),
+    takeLatest(SEND_ANSWERS, sendQuizAnswer),
+  ])
 }

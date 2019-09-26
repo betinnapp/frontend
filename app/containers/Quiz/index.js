@@ -12,8 +12,14 @@ import { SUBMODULE_DETAILS_PATH } from 'containers/App/urls'
 import { selectSubmoduleContent } from 'containers/SubmoduleContent/selectors'
 import Loader from 'components/Loader'
 
-import { fetchQuiz, answerQuiz, setNextQuestionAsVisible } from './actions'
-import { selectQuizIsLoading, selectQuizQuestion } from './selectors'
+import { FormattedMessage } from 'react-intl'
+import {
+  fetchQuiz,
+  answerQuiz,
+  setNextQuestionAsVisible,
+  sendAnswers,
+} from './actions'
+import { selectQuizIsLoading, selectQuizQuestion, selectIsLastQuestion } from './selectors'
 import reducer from './reducer'
 import saga from './saga'
 import QuizContent from './QuizContent'
@@ -27,10 +33,6 @@ export function Quiz(props) {
     quizId,
     submodule,
     question,
-    isLoading,
-    history,
-    onSubmitQuiz,
-    goToNextQuestion,
     match: {
       params: { moduleId, submoduleId },
     },
@@ -44,20 +46,26 @@ export function Quiz(props) {
         .replace(':moduleId', moduleId)
         .replace(':submoduleId', submoduleId)
 
-      history.replace(url)
+      props.history.replace(url)
     }
   }, [])
 
   return (
     <div>
-      <Loader isLoading={isLoading}>
+      <Loader isLoading={props.isLoading}>
         {submodule.name}
-        {question && (
+        {question ? (
           <QuizContent
             {...question}
-            onSubmitQuiz={onSubmitQuiz}
-            goToNextQuestion={goToNextQuestion}
+            onSubmitQuiz={props.onSubmitQuiz}
+            goToNextQuestion={props.goToNextQuestion}
+            isLastQuestion={props.isLastQuestion}
+            sendQuizAnswers={props.sendQuizAnswers}
           />
+        ) : (
+          <div>
+            <FormattedMessage {...messages.submoduleFinished} />
+          </div>
         )}
       </Loader>
     </div>
@@ -73,12 +81,15 @@ Quiz.propTypes = {
   isLoading: PropTypes.bool,
   onSubmitQuiz: PropTypes.func,
   goToNextQuestion: PropTypes.func,
+  sendQuizAnswers: PropTypes.func,
   question: PropTypes.object,
+  isLastQuestion: PropTypes.bool,
 }
 
 const mapStateToProps = createStructuredSelector({
   isLoading: selectQuizIsLoading,
   question: selectQuizQuestion,
+  isLastQuestion: selectIsLastQuestion,
   quizId: selectSelectedId('quizId'),
   submodule: selectSubmoduleContent,
 })
@@ -94,6 +105,9 @@ function mapDispatchToProps(dispatch) {
     },
     goToNextQuestion: () => {
       dispatch(setNextQuestionAsVisible())
+    },
+    sendQuizAnswers: () => {
+      dispatch(sendAnswers())
     },
   }
 }

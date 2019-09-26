@@ -13,8 +13,24 @@ const selectQuizQuestion = createSelector(
   substate => substate.visibleQuestion
 )
 
+const selectIsLastQuestion = createSelector(
+  selectQuizDomain,
+  selectQuizQuestion,
+  (substate, quizQuestion) => {
+    const { questions } = substate
+    return quizQuestion ? questions[questions.length - 1].id === quizQuestion.id : false
+  }
+)
+
+const selectAnswers = createSelector(
+  selectQuizDomain,
+  substate => substate.answers
+)
+
 export {
   selectQuizDomain,
   selectQuizIsLoading,
   selectQuizQuestion,
+  selectIsLastQuestion,
+  selectAnswers,
 }

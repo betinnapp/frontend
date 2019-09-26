@@ -23,6 +23,8 @@ function QuizContent({
   options = [],
   onSubmitQuiz,
   goToNextQuestion,
+  isLastQuestion,
+  sendQuizAnswers,
 }) {
   const [submitted, setSubmitted] = useState(false)
   const correctOptionId = options.find(option => option.isCorrectAnswer).id
@@ -30,6 +32,13 @@ function QuizContent({
   useEffect(() => {
     setSubmitted(false)
   }, [id])
+
+  const handleNextQuestionClick = () => {
+    goToNextQuestion()
+    if (isLastQuestion) {
+      sendQuizAnswers()
+    }
+  }
 
   return (
     <Formik
@@ -62,11 +71,15 @@ function QuizContent({
             <Button
               id="nextQuestion"
               onClick={() => {
-                goToNextQuestion()
+                handleNextQuestionClick()
                 resetForm()
               }}
             >
-              <FormattedMessage {...messages.nextQuestion} />
+              {isLastQuestion ? (
+                <FormattedMessage {...messages.finishQuiz} />
+              ) : (
+                <FormattedMessage {...messages.nextQuestion} />
+              )}
             </Button>
           ) : (
             <Button id="submitAnswer" type="submit" disabled={isSubmitting}>
@@ -85,6 +98,8 @@ QuizContent.propTypes = {
   options: PropTypes.array,
   onSubmitQuiz: PropTypes.func.isRequired,
   goToNextQuestion: PropTypes.func.isRequired,
+  sendQuizAnswers: PropTypes.func.isRequired,
+  isLastQuestion: PropTypes.bool.isRequired,
 }
 
 export default QuizContent

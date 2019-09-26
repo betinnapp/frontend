@@ -10,6 +10,9 @@ import {
   FETCH_QUIZ_SUCCESS,
   FETCH_QUIZ_FAILURE,
   SET_NEXT_QUESTION_AS_VISIBLE,
+  SEND_ANSWERS,
+  SEND_ANSWERS_FAILURE,
+  SEND_ANSWERS_SUCCESS,
 } from './constants'
 
 export const initialState = {
@@ -23,6 +26,7 @@ export const initialState = {
 /* eslint-disable default-case, no-param-reassign */
 const quizReducer = (state = initialState, action) => produce(state, (draft) => {
   switch (action.type) {
+    case SEND_ANSWERS:
     case FETCH_QUIZ:
       draft.isLoading = true
       break
@@ -35,6 +39,7 @@ const quizReducer = (state = initialState, action) => produce(state, (draft) => 
       draft.isLoading = false
       break
     }
+    case SEND_ANSWERS_FAILURE:
     case FETCH_QUIZ_FAILURE:
       draft.error = action.error
       draft.isLoading = false
@@ -49,6 +54,9 @@ const quizReducer = (state = initialState, action) => produce(state, (draft) => 
       draft.visibleQuestion = draft.questions[visibleQuestionIndex + 1]
       break
     }
+    case SEND_ANSWERS_SUCCESS:
+      draft.isLoading = false
+      break
   }
 })
 

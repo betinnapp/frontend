@@ -26,6 +26,18 @@ const messages = defineMessages({
     id: `${scope}.nextQuestion`,
     defaultMessage: 'Próxima pergunta',
   },
+  finishQuiz: {
+    id: `${scope}.finishQuiz`,
+    defaultMessage: 'Terminar Quiz',
+  },
+  submoduleFinished: {
+    id: `${scope}.submoduleFinished`,
+    defaultMessage: 'Submódulo Concluído!',
+  },
+  anErrorOcurredWhileSendingYourAnswers: {
+    id: `${scope}.anErrorOcurredWhileSendingYourAnswers`,
+    defaultMessage: 'Um erro ocorreu enquanto tentavamos enviar suas respostas. Tente novamente mais tarde.',
+  },
 })
 
 export default {

@@ -67,7 +67,7 @@ api.get('/survey/:surveyId', (req, res) => {
 })
 
 api.post('/survey/:surveyId/answers', (req, res) => {
-  res.status(200)
+  res.status(200).send({ status: 'ok' })
 })
 
 // In production we need to pass these values in instead of relying on webpack
