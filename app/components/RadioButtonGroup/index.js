@@ -8,6 +8,7 @@ import Text from 'components/Text'
 import RadioButton from 'components/RadioButton'
 
 const Wrapper = styled.div`
+  width: 100%;
   > * {
     margin-bottom: 16px;
   }

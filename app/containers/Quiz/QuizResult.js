@@ -6,24 +6,28 @@ import { FormattedMessage } from 'react-intl'
 import { HOME_PATH } from 'containers/App/urls'
 import Button from 'components/Button'
 import Text from 'components/Text'
+import AchievementStair from 'images/achievementStair.png'
 
 import messages from './messages'
 
 const Wrapper = styled.div`
+  flex: auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  text-align: center;
 `
 
 function QuizResult(props) {
   return (
     <Wrapper>
       <div>
-        <Text huge bold>
-          <FormattedMessage {...messages.submoduleFinished} />
-        </Text>
-        <Text>
+        <Text medium bold>
           <FormattedMessage {...messages.quizFinishedContinueLearning} />
         </Text>
       </div>
       <div>
+        <img src={AchievementStair} alt="Achievement Stair" />
         <Text terciary medium bold>
           <FormattedMessage
             {...messages.answersResult}
@@ -34,9 +38,11 @@ function QuizResult(props) {
           />
         </Text>
       </div>
-      <Button id="goBackToHomePage" link={HOME_PATH}>
-        <FormattedMessage {...messages.continue} />
-      </Button>
+      <div>
+        <Button id="goBackToHomePage" link={HOME_PATH}>
+          <FormattedMessage {...messages.continue} />
+        </Button>
+      </div>
     </Wrapper>
   )
 }

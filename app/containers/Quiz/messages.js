@@ -30,13 +30,9 @@ const messages = defineMessages({
     id: `${scope}.finishQuiz`,
     defaultMessage: 'Terminar Quiz',
   },
-  submoduleFinished: {
-    id: `${scope}.submoduleFinished`,
-    defaultMessage: 'Submódulo Concluído!',
-  },
   quizFinishedContinueLearning: {
     id: `${scope}.quizFinishedContinueLearning`,
-    defaultMessage: 'Quiz finalizado, vá para o próximo conteúdo e continue aprendendo.!',
+    defaultMessage: 'Quiz finalizado, vá para o próximo conteúdo e continue aprendendo!',
   },
   answersResult: {
     id: `${scope}.answersResult`,

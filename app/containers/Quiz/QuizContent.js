@@ -3,11 +3,20 @@ import PropTypes from 'prop-types'
 import { Formik, Form } from 'formik'
 import * as yup from 'yup'
 import { FormattedMessage } from 'react-intl'
+import styled from 'styled-components'
 
 import Button from 'components/Button'
 import RadioButtonGroup from 'components/RadioButtonGroup'
 
 import messages from './messages'
+
+const FormWrapper = styled(Form)`
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  flex: auto;
+  align-items: center;
+`
 
 const validationSchema = yup.object().shape({
   optionId: yup.string().required(messages.anOptionIsRequired),
@@ -56,7 +65,7 @@ function QuizContent({
         touched,
         resetForm,
       }) => (
-        <Form>
+        <FormWrapper>
           <RadioButtonGroup
             error={errors.optionId}
             touched={touched.optionId}
@@ -86,7 +95,7 @@ function QuizContent({
               <FormattedMessage {...messages.confirmAnswer} />
             </Button>
           )}
-        </Form>
+        </FormWrapper>
       )}
     </Formik>
   )

@@ -20,6 +20,8 @@ const Banner = styled.div`
   background-repeat: no-repeat;
 `
 const Content = styled.div`
+  display: flex;
+  flex-flow: column;
   margin-top: -20px;
   padding: 8px;
   border-radius: 20px;
@@ -32,12 +34,12 @@ function ContentWithBanner(props) {
     image,
     isLoading,
     miniBanner,
-    ...rest
   } = props
 
   return (
     <ContentWrapper
-      {...rest}
+      grid
+      gridTemplateRows={['auto', '1fr']}
       fullHeight
       noLateralMargins
     >
