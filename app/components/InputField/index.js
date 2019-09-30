@@ -8,7 +8,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import styled from 'styled-components'
-import { Field, ErrorMessage, connect, getIn } from 'formik'
+import {
+  Field,
+  ErrorMessage,
+  connect,
+  getIn,
+} from 'formik'
 
 import Text from 'components/Text'
 
@@ -32,6 +37,7 @@ const Wrapper = styled.div`
   > input:not(:placeholder-shown) ~ .label {
     opacity: 1;
     top: -23px;
+    color: #9657f6;
   }
 
   > input {
@@ -50,19 +56,17 @@ const Wrapper = styled.div`
   }
 `
 
-const FieldError = styled.p`
-  color: #f2994a;
-  font-size: 12px;
-  font-weight: bold;
-  margin: 0;
-`
-
 const ErrorMessageWrapper = styled.div`
   margin-top: 4px;
   min-height: 18px;
 `
 
-function InputField({ formik, label, name, ...props }) {
+function InputField({
+  formik,
+  label,
+  name,
+  ...props
+}) {
   const error = getIn(formik.errors, name)
   const touch = getIn(formik.touched, name)
 
@@ -77,9 +81,9 @@ function InputField({ formik, label, name, ...props }) {
       <ErrorMessageWrapper>
         <ErrorMessage name={name}>
           {errorMessage => (
-            <FieldError>
+            <Text error>
               <FormattedMessage {...errorMessage} />
-            </FieldError>
+            </Text>
           )}
         </ErrorMessage>
       </ErrorMessageWrapper>

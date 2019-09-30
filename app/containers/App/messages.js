@@ -12,6 +12,10 @@ export default defineMessages({
     id: `${scope}.betinnapp`,
     defaultMessage: 'Betinnapp',
   },
+  unableToLoadContent: {
+    id: `${scope}.unableToLoadContent`,
+    defaultMessage: 'Desculpa, não fomos capazes de carregar este conteúdo. Tente novamente mais tarde!',
+  },
   // Fields label
   user: {
     id: `${scope}.user`,

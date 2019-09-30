@@ -7,8 +7,7 @@ const argv = require('./argv')
 const port = require('./port')
 const setup = require('./middlewares/frontendMiddleware')
 const isDev = process.env.NODE_ENV !== 'production'
-const ngrok =
-  (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngrok') : false
+const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngrok') : false
 const { resolve } = require('path')
 const app = express()
 
@@ -37,6 +36,7 @@ const modulesReponse = require('./data/modules')
 const moduleDetails = require('./data/moduleDetails')
 const submodule = require('./data/submodule')
 const userDetails = require('./data/userDetails')
+const survey = require('./data/survey')
 
 api.post('/auth/login', (req, res) => {
   res.json(loginResponse)
@@ -62,6 +62,14 @@ api.get('/module/:moduleId/submodule/:submoduleId', (req, res) => {
   res.json(submodule)
 })
 
+api.get('/survey/:surveyId', (req, res) => {
+  res.json(survey)
+})
+
+api.post('/survey/:surveyId/answers', (req, res) => {
+  res.status(200).send({ status: 'ok' })
+})
+
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
   outputPath: resolve(process.cwd(), 'build'),
@@ -81,7 +89,7 @@ app.get('*.js', (req, res, next) => {
 })
 
 // Start your app.
-app.listen(port, host, async err => {
+app.listen(port, host, async (err) => {
   if (err) {
     return logger.error(err.message)
   }

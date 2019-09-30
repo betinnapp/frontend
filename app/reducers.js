@@ -8,6 +8,7 @@ import { reducer as notifications } from 'react-notification-system-redux'
 import { combineReducers } from 'redux'
 import history from 'utils/history'
 import commonReducer from 'containers/App/reducer'
+import submoduleContentReducer from 'containers/SubmoduleContent/reducer'
 
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
@@ -18,6 +19,7 @@ export default function createReducer(injectedReducers = {}) {
     router: connectRouter(history),
     notifications,
     common: commonReducer,
+    submoduleContent: submoduleContentReducer,
     ...injectedReducers,
   })
 

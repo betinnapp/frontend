@@ -84,7 +84,7 @@ Button.propTypes = {
   link: PropTypes.string,
 }
 
-Button.defualtProps = {
+Button.defaultProps = {
   type: 'button',
 }
 
