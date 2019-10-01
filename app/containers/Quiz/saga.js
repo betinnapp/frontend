@@ -5,14 +5,23 @@ import {
   select,
   all,
 } from 'redux-saga/effects'
-import { error } from 'react-notification-system-redux'
+import { error, success } from 'react-notification-system-redux'
 
+import history from 'utils/history'
 import request from 'utils/request'
-import { SURVEY_API_URL, SURVEY_ANSWER_API_URL } from 'containers/App/urls'
+import {
+  SURVEY_API_URL,
+  SURVEY_ANSWER_API_URL,
+  SUBMODULE_COMPLETED_API_URL,
+} from 'containers/App/urls'
 import { selectSelectedId } from 'containers/App/selectors'
 
 import { selectAnswers } from './selectors'
-import { FETCH_QUIZ, SEND_ANSWERS } from './constants'
+import {
+  FETCH_QUIZ,
+  SEND_ANSWERS,
+  COMPLETE_SUBMOULE,
+} from './constants'
 import * as actions from './actions'
 import messages from './messages'
 
@@ -53,9 +62,29 @@ function* sendQuizAnswer() {
   }
 }
 
+function* completeSubmodule(action) {
+  try {
+    const { moduleId, submoduleId, redirectUrl } = action
+    const url = SUBMODULE_COMPLETED_API_URL
+      .replace(':moduleId', moduleId)
+      .replace(':submoduleId', submoduleId)
+
+    yield call(request, url, { method: 'POST' })
+
+    if (redirectUrl) {
+      history.push(redirectUrl)
+    }
+
+    yield put(success({ message: messages.congratulationsSubmoduleCompleted, autoDismiss: 8000 }))
+  } catch (e) {
+    yield put(error({ message: messages.anErrorOcurredWhileCompletingSubmodule, autoDismiss: 8000 }))
+  }
+}
+
 export default function* quizSaga() {
   yield all([
     takeLatest(FETCH_QUIZ, fetchQuiz),
     takeLatest(SEND_ANSWERS, sendQuizAnswer),
+    takeLatest(COMPLETE_SUBMOULE, completeSubmodule),
   ])
 }

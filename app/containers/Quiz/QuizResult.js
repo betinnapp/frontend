@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { FormattedMessage } from 'react-intl'
 
-import { HOME_PATH } from 'containers/App/urls'
 import Button from 'components/Button'
 import Text from 'components/Text'
 import AchievementStair from 'images/achievementStair.png'
@@ -39,7 +38,7 @@ function QuizResult(props) {
         </Text>
       </div>
       <div>
-        <Button id="goBackToHomePage" link={HOME_PATH}>
+        <Button id="goBackToHomePage" onClick={props.completeSubmodule}>
           <FormattedMessage {...messages.continue} />
         </Button>
       </div>
@@ -50,6 +49,7 @@ function QuizResult(props) {
 QuizResult.propTypes = {
   correctAnswersCount: PropTypes.number.isRequired,
   questionsCount: PropTypes.number.isRequired,
+  completeSubmodule: PropTypes.func.isRequired,
 }
 
 export default QuizResult

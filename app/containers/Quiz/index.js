@@ -9,7 +9,7 @@ import { useInjectSaga } from 'utils/injectSaga'
 import { useInjectReducer } from 'utils/injectReducer'
 import { selectSelectedId } from 'containers/App/selectors'
 import { deleteSelectedId } from 'containers/App/actions'
-import { SUBMODULE_DETAILS_PATH } from 'containers/App/urls'
+import { HOME_PATH, SUBMODULE_DETAILS_PATH } from 'containers/App/urls'
 import { selectSubmoduleContent } from 'containers/SubmoduleContent/selectors'
 import ContentWithBanner from 'components/ContentWithBanner'
 import Text from 'components/Text'
@@ -19,6 +19,7 @@ import {
   answerQuiz,
   setNextQuestionAsVisible,
   sendAnswers,
+  completeSubmodule,
 } from './actions'
 import {
   selectCorrectAnswersCount,
@@ -62,6 +63,10 @@ export function Quiz(props) {
     }
   }, [])
 
+  const completeSubmoduleHandler = () => {
+    props.completeSubmodule(moduleId, submoduleId)
+  }
+
   return (
     <ContentWithBanner
       isLoading={props.isLoading}
@@ -83,6 +88,7 @@ export function Quiz(props) {
         <QuizResult
           correctAnswersCount={props.correctAnswersCount}
           questionsCount={props.questions.length}
+          completeSubmodule={completeSubmoduleHandler}
         />
       )}
     </ContentWithBanner>
@@ -104,6 +110,7 @@ Quiz.propTypes = {
   deleteQuizIdFromStore: PropTypes.func,
   correctAnswersCount: PropTypes.number,
   questions: PropTypes.array,
+  completeSubmodule: PropTypes.func,
 }
 
 const mapStateToProps = createStructuredSelector({
@@ -133,6 +140,9 @@ function mapDispatchToProps(dispatch) {
     },
     deleteQuizIdFromStore: () => {
       dispatch(deleteSelectedId('quizId'))
+    },
+    completeSubmodule: (moduleId, submoduleId) => {
+      dispatch(completeSubmodule(moduleId, submoduleId, HOME_PATH))
     },
   }
 }
