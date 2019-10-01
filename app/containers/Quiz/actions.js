@@ -6,6 +6,7 @@
 
 import {
   ANSWER_QUIZ,
+  COMPLETE_SUBMOULE,
   FETCH_QUIZ,
   FETCH_QUIZ_SUCCESS,
   FETCH_QUIZ_FAILURE,
@@ -61,9 +62,19 @@ export function sendAnswersSuccess() {
     type: SEND_ANSWERS_SUCCESS,
   }
 }
+
 export function sendAnswersFailure(error) {
   return {
     type: SEND_ANSWERS_FAILURE,
     error,
+  }
+}
+
+export function completeSubmodule(moduleId, submoduleId, redirectUrl) {
+  return {
+    type: COMPLETE_SUBMOULE,
+    moduleId,
+    submoduleId,
+    redirectUrl,
   }
 }

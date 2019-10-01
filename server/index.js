@@ -62,6 +62,10 @@ api.get('/module/:moduleId/submodule/:submoduleId', (req, res) => {
   res.json(submodule)
 })
 
+api.post('/module/:moduleId/submodule/:submoduleId/completed', (req, res) => {
+  res.status(200).send({ status: 'ok' })
+})
+
 api.get('/survey/:surveyId', (req, res) => {
   res.json(survey)
 })
