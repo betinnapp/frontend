@@ -37,7 +37,6 @@ const Wrapper = styled.div`
   > input:not(:placeholder-shown) ~ .label {
     opacity: 1;
     top: -23px;
-    color: #9657f6;
   }
 
   > input {
@@ -52,6 +51,10 @@ const Wrapper = styled.div`
     &:focus {
       border-image-source: linear-gradient(45deg, #9657f6, #00dba1);
       border-image-slice: 1;
+
+      ~ .label {
+        color: #9657f6;
+      }
     }
   }
 `
