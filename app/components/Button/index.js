@@ -32,6 +32,7 @@ const StyledButton = styled.button`
   font-size: 18px;
   font-weight: bold;
   transition: ease 0.3s;
+  cursor: pointer;
 
   &:hover {
     filter: brightness(85%);

@@ -6,6 +6,7 @@ import Text from 'components/Text'
 
 const Label = styled.label`
   margin-left: 16px;
+  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
 `
 
 const Wrapper = styled(Text)`
@@ -20,9 +21,7 @@ const Wrapper = styled(Text)`
 
 function RadioButton(props) {
   const {
-    field: {
-      name, value, onChange, onBlur,
-    },
+    field: { name, value, onChange, onBlur },
     id,
     text,
     submitted,
@@ -52,7 +51,9 @@ function RadioButton(props) {
         onBlur={onBlur}
         disabled={disabled}
       />
-      <Label htmlFor={id}>{text}</Label>
+      <Label htmlFor={id} disabled={disabled}>
+        {text}
+      </Label>
     </Wrapper>
   )
 }
