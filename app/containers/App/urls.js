@@ -15,7 +15,7 @@ export const SUBMODULE_API_URL = `${MODULE_DETAILS_API_URL}/submodule/:submodule
 export const SUBMODULE_COMPLETED_API_URL = `${SUBMODULE_API_URL}/completed`
 
 export const SURVEY_API_URL = `${SURVEY_API_PATH}/:surveyId`
-export const SURVEY_ANSWER_API_URL = `${SURVEY_API_URL}/answers`
+export const SURVEY_QUESTION_ANSWER_API_URL = `${SURVEY_API_URL}/question/:questionId:answer`
 
 // Routes Path
 export const LOGIN_PATH = '/login'

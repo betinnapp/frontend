@@ -18,7 +18,6 @@ import {
   fetchQuiz,
   answerQuiz,
   setNextQuestionAsVisible,
-  sendAnswers,
   completeSubmodule,
 } from './actions'
 import {
@@ -82,7 +81,6 @@ export function Quiz(props) {
           onSubmitQuiz={props.onSubmitQuiz}
           goToNextQuestion={props.goToNextQuestion}
           isLastQuestion={props.isLastQuestion}
-          sendQuizAnswers={props.sendQuizAnswers}
         />
       ) : (
         <QuizResult
@@ -104,7 +102,6 @@ Quiz.propTypes = {
   isLoading: PropTypes.bool,
   onSubmitQuiz: PropTypes.func,
   goToNextQuestion: PropTypes.func,
-  sendQuizAnswers: PropTypes.func,
   question: PropTypes.object,
   isLastQuestion: PropTypes.bool,
   deleteQuizIdFromStore: PropTypes.func,
@@ -134,9 +131,6 @@ function mapDispatchToProps(dispatch) {
     },
     goToNextQuestion: () => {
       dispatch(setNextQuestionAsVisible())
-    },
-    sendQuizAnswers: () => {
-      dispatch(sendAnswers())
     },
     deleteQuizIdFromStore: () => {
       dispatch(deleteSelectedId('quizId'))

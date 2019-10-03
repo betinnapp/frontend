@@ -33,7 +33,6 @@ function QuizContent({
   onSubmitQuiz,
   goToNextQuestion,
   isLastQuestion,
-  sendQuizAnswers,
 }) {
   const [submitted, setSubmitted] = useState(false)
   const correctOptionId = options.find(option => option.isCorrectAnswer).id
@@ -44,9 +43,6 @@ function QuizContent({
 
   const handleNextQuestionClick = () => {
     goToNextQuestion()
-    if (isLastQuestion) {
-      sendQuizAnswers()
-    }
   }
 
   return (
@@ -107,7 +103,6 @@ QuizContent.propTypes = {
   options: PropTypes.array,
   onSubmitQuiz: PropTypes.func.isRequired,
   goToNextQuestion: PropTypes.func.isRequired,
-  sendQuizAnswers: PropTypes.func.isRequired,
   isLastQuestion: PropTypes.bool.isRequired,
 }
 

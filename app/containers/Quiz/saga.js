@@ -11,16 +11,15 @@ import history from 'utils/history'
 import request from 'utils/request'
 import {
   SURVEY_API_URL,
-  SURVEY_ANSWER_API_URL,
+  SURVEY_QUESTION_ANSWER_API_URL,
   SUBMODULE_COMPLETED_API_URL,
 } from 'containers/App/urls'
 import { selectSelectedId } from 'containers/App/selectors'
 
-import { selectAnswers } from './selectors'
 import {
-  FETCH_QUIZ,
-  SEND_ANSWERS,
+  ANSWER_QUIZ,
   COMPLETE_SUBMOULE,
+  FETCH_QUIZ,
 } from './constants'
 import * as actions from './actions'
 import messages from './messages'
@@ -42,23 +41,23 @@ function* fetchQuiz(action) {
   }
 }
 
-function* sendQuizAnswer() {
+function* answerQuiz(action) {
   try {
-    const answers = yield select(selectAnswers)
+    const { questionId, optionId } = action
     const quizId = yield select(selectSelectedId('quizId'))
-    const url = SURVEY_ANSWER_API_URL.replace(':surveyId', quizId)
+
+    const url = SURVEY_QUESTION_ANSWER_API_URL
+      .replace(':surveyId', quizId)
+      .replace(':questionId', questionId)
 
     yield call(request, url, {
       method: 'POST',
-      data: answers,
+      data: { optionId },
     })
-
-    yield put(actions.sendAnswersSuccess())
   } catch (e) {
     yield put(
-      error({ message: messages.anErrorOcurredWhileSendingYourAnswers, autoDismiss: 5000 }),
+      error({ message: messages.anErrorOcurredWhileSendingYourAnswer, autoDismiss: 5000 }),
     )
-    yield put(actions.sendAnswersFailure(e))
   }
 }
 
@@ -84,7 +83,7 @@ function* completeSubmodule(action) {
 export default function* quizSaga() {
   yield all([
     takeLatest(FETCH_QUIZ, fetchQuiz),
-    takeLatest(SEND_ANSWERS, sendQuizAnswer),
+    takeLatest(ANSWER_QUIZ, answerQuiz),
     takeLatest(COMPLETE_SUBMOULE, completeSubmodule),
   ])
 }

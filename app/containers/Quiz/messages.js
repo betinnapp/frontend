@@ -42,9 +42,9 @@ const messages = defineMessages({
     id: `${scope}.continue`,
     defaultMessage: 'Continuar',
   },
-  anErrorOcurredWhileSendingYourAnswers: {
-    id: `${scope}.anErrorOcurredWhileSendingYourAnswers`,
-    defaultMessage: 'Um erro ocorreu enquanto tentavamos enviar suas respostas. Tente novamente mais tarde.',
+  anErrorOcurredWhileSendingYourAnswer: {
+    id: `${scope}.anErrorOcurredWhileSendingYourAnswer`,
+    defaultMessage: 'Um erro ocorreu enquanto tentavamos enviar sua resposta. Tente novamente mais tarde.',
   },
   congratulationsSubmoduleCompleted: {
     id: `${scope}.congratulationsSubmoduleCompleted`,

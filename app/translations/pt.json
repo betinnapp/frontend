@@ -16,7 +16,7 @@
   "app.containers.ModulesListPage.unableToLoadModulesList": "Desculpa, não fomos capazes de carregar a lista de módulos, tente novamente mais tarde!",
   "app.containers.NotFoundPage.header": "This is the NotFoundPage container!",
   "app.containers.Quiz.anErrorOcurredWhileCompletingSubmodule": "Ocorreu um erro durante a ação de completar o submódulo, por favor complete o quiz novamente!",
-  "app.containers.Quiz.anErrorOcurredWhileSendingYourAnswers": "Um erro ocorreu enquanto tentavamos enviar suas respostas. Tente novamente mais tarde.",
+  "app.containers.Quiz.anErrorOcurredWhileSendingYourAnswer": "Um erro ocorreu enquanto tentavamos enviar sua resposta. Tente novamente mais tarde.",
   "app.containers.Quiz.anOptionIsRequired": "Selecionar uma opção é obrigatório",
   "app.containers.Quiz.answerSavedSuccessfully": "Resposta salva com sucesso!",
   "app.containers.Quiz.answersResult": "Acertou {correctAnswersCount} questões de {questionsCount}.",
