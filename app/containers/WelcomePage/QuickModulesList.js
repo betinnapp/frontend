@@ -1,9 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { FormattedMessage } from 'react-intl'
 
 import { StatusType } from 'containers/App/enums'
 import SmallCardContainer from 'components/SmallCardContainer'
 import Text from 'components/Text'
+
+import messages from './messages'
 
 function QuickModulesList(props) {
   const renderModuleStatus = moduleItem => {
@@ -26,6 +29,9 @@ function QuickModulesList(props) {
 
   return (
     <div>
+      <Text uppercase semi greyDark>
+        <FormattedMessage {...messages.keepLearning} />
+      </Text>
       {props.modules.map(moduleItem => (
         <SmallCardContainer key={moduleItem.id}>
           <Text bold>

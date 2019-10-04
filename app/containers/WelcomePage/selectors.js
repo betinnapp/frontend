@@ -13,6 +13,18 @@ const selectModulesList = createSelector(
   substate => substate.resource
 )
 
+const selectModulesListIsLoading = createSelector(
+  selectModulesListState,
+  substate => substate.isLoading
+)
+
+const selectModulesListError = createSelector(
+  selectModulesListState,
+  substate => substate.error
+)
+
 export {
   selectModulesList,
+  selectModulesListIsLoading,
+  selectModulesListError,
 }

@@ -18,13 +18,14 @@ import { selectUserFirstName } from 'containers/App/selectors'
 import Button from 'components/Button'
 import ContentWrapper from 'components/ContentWrapper'
 import Icon from 'images/icon.svg'
+import Loader from 'components/Loader'
 import Text from 'components/Text'
 
 import { fetchQuickModulesList } from './actions'
 import messages from './messages'
 import reducer from './reducer'
 import saga from './saga'
-import { selectModulesList } from './selectors'
+import { selectModulesList, selectModulesListIsLoading, selectModulesListError } from './selectors'
 import QuickModulesList from './QuickModulesList'
 
 const Wrapper = styled(ContentWrapper)`
@@ -76,10 +77,14 @@ export function WelcomePage(props) {
         <img src={Icon} alt="User" />
       </div>
       <QuickModulesListWrapper>
-        <Text uppercase semi greyDark>
-          <FormattedMessage {...messages.keepLearning} />
-        </Text>
-        <QuickModulesList modules={props.modules} />
+        <Loader isLoading={props.isLoading}>
+          {!props.error ?
+            <QuickModulesList modules={props.modules} /> : (
+              <Text bold>
+                <FormattedMessage {...messages.anErrorOccurredWhileLoadingModules} />
+              </Text>
+            )}
+        </Loader>
       </QuickModulesListWrapper>
       <div className="footer">
         <Button id="seeAvailableModules" link="/modules" small>
@@ -94,11 +99,15 @@ WelcomePage.propTypes = {
   userFirstName: PropTypes.string,
   fetchQuickModulesList: PropTypes.func.isRequired,
   modules: PropTypes.array,
+  isLoading: PropTypes.bool,
+  error: PropTypes.object,
 }
 
 const mapStateToProps = createStructuredSelector({
   userFirstName: selectUserFirstName,
   modules: selectModulesList,
+  isLoading: selectModulesListIsLoading,
+  error: selectModulesListError,
 })
 
 function mapDispatchToProps(dispatch) {
