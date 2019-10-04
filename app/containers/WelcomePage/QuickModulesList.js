@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 
+import history from 'utils/history'
+import { MODULE_DETAILS_PATH } from 'containers/App/urls'
 import { StatusType } from 'containers/App/enums'
 import SmallCardContainer from 'components/SmallCardContainer'
 import Text from 'components/Text'
@@ -27,13 +29,21 @@ function QuickModulesList(props) {
     )
   }
 
+  const onClickHandler = id => {
+    const url = MODULE_DETAILS_PATH.replace(':moduleId', id)
+    history.push(url)
+  }
+
   return (
     <div>
       <Text uppercase semi greyDark>
         <FormattedMessage {...messages.keepLearning} />
       </Text>
       {props.modules.map(moduleItem => (
-        <SmallCardContainer key={moduleItem.id}>
+        <SmallCardContainer
+          key={moduleItem.id}
+          onClick={() => onClickHandler(moduleItem.id)}
+        >
           <Text bold>
             {moduleItem.name}
           </Text>
