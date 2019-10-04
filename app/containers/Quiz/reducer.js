@@ -26,7 +26,7 @@ export const initialState = {
 }
 
 /* eslint-disable default-case, no-param-reassign */
-const quizReducer = (state = initialState, action) => produce(state, (draft) => {
+const quizReducer = (state = initialState, action) => produce(state, draft => {
   switch (action.type) {
     case SEND_ANSWER:
     case FETCH_QUIZ:

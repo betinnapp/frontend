@@ -33,10 +33,10 @@ const NotificationItem = styled(animated.div)`
   padding: 8px;
   align-items: center;
   background: ${({ feedback }) => (
-    (feedback === 'warning' && '#f2994a')
-    || (feedback === 'success' && '#6fcf97')
-    || (feedback === 'error' && '#dc2e2e')
-    || '#a3a3a3'
+    (feedback === 'warning' && '#f2994a') ||
+    (feedback === 'success' && '#6fcf97') ||
+    (feedback === 'error' && '#dc2e2e') ||
+    '#a3a3a3'
   )};
 `
 
@@ -47,7 +47,7 @@ function Notification({
     <NotificationItem
       feedback={level}
       style={style}
-      onClick={(e) => {
+      onClick={e => {
         e.preventDefault()
 
         if (onDismiss) {

@@ -122,7 +122,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchQuiz: (quizId) => {
+    fetchQuiz: quizId => {
       dispatch(fetchQuiz(quizId))
     },
     onSubmitQuiz: (questionId, optionId) => {

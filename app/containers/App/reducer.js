@@ -12,11 +12,11 @@ import {
 
 export const initialState = {
   userInformation: {},
-  selectedIds: {}
+  selectedIds: {},
 }
 
 /* eslint-disable default-case, no-param-reassign */
-const commonAppReducer = (state = initialState, action) => produce(state, (draft) => {
+const commonAppReducer = (state = initialState, action) => produce(state, draft => {
   switch (action.type) {
     case SAVE_USER_INFORMATION:
       draft.userInformation = action.user

@@ -101,7 +101,7 @@ function mapDispatchToProps(dispatch) {
     fetchSubmoduleContent: (moduleId, submoduleId) => {
       dispatch(fetchSubmoduleContent(moduleId, submoduleId))
     },
-    setQuizId: (quizId) => {
+    setQuizId: quizId => {
       dispatch(setSelectedId('quizId', quizId))
     },
   }

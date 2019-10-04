@@ -146,18 +146,14 @@ describe('injectors', () => {
       expect(() => injectSaga('test')).toThrow()
       expect(() => injectSaga('test', { saga: 1 })).toThrow()
       expect(() =>
-        injectSaga('test', { saga: testSaga, mode: 'testMode' }),
-      ).toThrow()
+        injectSaga('test', { saga: testSaga, mode: 'testMode' }),).toThrow()
       expect(() => injectSaga('test', { saga: testSaga, mode: 1 })).toThrow()
       expect(() =>
-        injectSaga('test', { saga: testSaga, mode: RESTART_ON_REMOUNT }),
-      ).not.toThrow()
+        injectSaga('test', { saga: testSaga, mode: RESTART_ON_REMOUNT }),).not.toThrow()
       expect(() =>
-        injectSaga('test', { saga: testSaga, mode: DAEMON }),
-      ).not.toThrow()
+        injectSaga('test', { saga: testSaga, mode: DAEMON }),).not.toThrow()
       expect(() =>
-        injectSaga('test', { saga: testSaga, mode: ONCE_TILL_UNMOUNT }),
-      ).not.toThrow()
+        injectSaga('test', { saga: testSaga, mode: ONCE_TILL_UNMOUNT }),).not.toThrow()
     })
 
     it('should pass args to saga.run', () => {
