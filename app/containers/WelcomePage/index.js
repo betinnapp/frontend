@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
@@ -12,13 +12,18 @@ import { FormattedMessage } from 'react-intl'
 import { createStructuredSelector } from 'reselect'
 import { compose } from 'redux'
 
+import { useInjectSaga } from 'utils/injectSaga'
+import { useInjectReducer } from 'utils/injectReducer'
 import { selectUserFirstName } from 'containers/App/selectors'
 import Button from 'components/Button'
 import ContentWrapper from 'components/ContentWrapper'
 import Icon from 'images/icon.svg'
 import Text from 'components/Text'
 
+import { fetchQuickModulesList } from './actions'
 import messages from './messages'
+import reducer from './reducer'
+import saga from './saga'
 
 const Wrapper = styled(ContentWrapper)`
   .header {
@@ -41,6 +46,13 @@ const Wrapper = styled(ContentWrapper)`
 `
 
 export function WelcomePage(props) {
+  useInjectReducer({ key: 'welcomePage', reducer })
+  useInjectSaga({ key: 'welcomePage', saga })
+
+  useEffect(() => {
+    props.fetchQuickModulesList()
+  }, [])
+
   return (
     <Wrapper
       grid
@@ -69,6 +81,7 @@ export function WelcomePage(props) {
 
 WelcomePage.propTypes = {
   userFirstName: PropTypes.string,
+  fetchQuickModulesList: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = createStructuredSelector({
@@ -77,7 +90,9 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    fetchQuickModulesList: () => {
+      dispatch(fetchQuickModulesList())
+    },
   }
 }
 
