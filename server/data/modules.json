@@ -1,31 +1,31 @@
 [
   {
-      "id": "3a63f50a-a8d9-4424-8b6b-1ba12a529da1",
-      "name": "Module 1",
-      "descrition": "Module 1",
-      "image": "https://static01.nyt.com/images/2018/08/26/business/26VIEW.illo/26VIEW.illo-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
-      "submodule": [
-          {
-              "id": "199a4c83-f21d-4634-9645-923c03170901",
-              "name": "Submodule 1.1",
-              "content": "Submodule 1.1",
-              "image": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/04/15/11/money.jpg",
-              "quizId": null,
-              "submoduleOrder": 1,
-              "status": "COMPLETED"
-          },
-          {
-              "id": "621c5aa3-bfc6-4df8-897b-148d53701ca1",
-              "name": "Submodule 1.2",
-              "content": "Submodule 1.2",
-              "image": "https://media3.s-nbcnews.com/j/newscms/2019_06/2746941/190208-stock-money-fanned-out-ew-317p_fa445b2f6f3e86a3ffa18707e6a8adcb.fit-760w.jpg",
-              "quizId": null,
-              "submoduleOrder": 2,
-              "status": "COMPLETED"
-          }
-      ],
-      "moduleOrder": 1,
-      "status": "UNLOCKED"
+    "id": "3a63f50a-a8d9-4424-8b6b-1ba12a529da1",
+    "name": "Module 1",
+    "descrition": "Module 1",
+    "image": "https://static01.nyt.com/images/2018/08/26/business/26VIEW.illo/26VIEW.illo-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
+    "submodule": [
+      {
+        "id": "199a4c83-f21d-4634-9645-923c03170901",
+        "name": "Submodule 1.1",
+        "content": "Submodule 1.1",
+        "image": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/04/15/11/money.jpg",
+        "quizId": null,
+        "submoduleOrder": 1,
+        "status": "COMPLETED"
+      },
+      {
+        "id": "621c5aa3-bfc6-4df8-897b-148d53701ca1",
+        "name": "Submodule 1.2",
+        "content": "Submodule 1.2",
+        "image": "https://media3.s-nbcnews.com/j/newscms/2019_06/2746941/190208-stock-money-fanned-out-ew-317p_fa445b2f6f3e86a3ffa18707e6a8adcb.fit-760w.jpg",
+        "quizId": null,
+        "submoduleOrder": 2,
+        "status": "COMPLETED"
+      }
+    ],
+    "moduleOrder": 1,
+    "status": "COMPLETED"
   },
   {
     "id": "3a63f50a-a8d9-4424-8b6b-1ba12a529da2",
@@ -33,24 +33,24 @@
     "descrition": "Module 2",
     "image": "https://static01.nyt.com/images/2018/08/26/business/26VIEW.illo/26VIEW.illo-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
     "submodule": [
-        {
-            "id": "199a4c83-f21d-4634-9645-923c03170902",
-            "name": "Submodule 2.1",
-            "content": "Submodule 2.1",
-            "image": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/04/15/11/money.jpg",
-            "quizId": null,
-            "submoduleOrder": 1,
-            "status": "LOCKED"
-        },
-        {
-            "id": "621c5aa3-bfc6-4df8-897b-148d53701ca1",
-            "name": "Submodule 2.2",
-            "content": "Submodule 2.2",
-            "image": "https://media3.s-nbcnews.com/j/newscms/2019_06/2746941/190208-stock-money-fanned-out-ew-317p_fa445b2f6f3e86a3ffa18707e6a8adcb.fit-760w.jpg",
-            "quizId": null,
-            "submoduleOrder": 2,
-            "status": "LOCKED"
-        }
+      {
+        "id": "199a4c83-f21d-4634-9645-923c03170902",
+        "name": "Submodule 2.1",
+        "content": "Submodule 2.1",
+        "image": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/04/15/11/money.jpg",
+        "quizId": null,
+        "submoduleOrder": 1,
+        "status": "LOCKED"
+      },
+      {
+        "id": "621c5aa3-bfc6-4df8-897b-148d53701ca1",
+        "name": "Submodule 2.2",
+        "content": "Submodule 2.2",
+        "image": "https://media3.s-nbcnews.com/j/newscms/2019_06/2746941/190208-stock-money-fanned-out-ew-317p_fa445b2f6f3e86a3ffa18707e6a8adcb.fit-760w.jpg",
+        "quizId": null,
+        "submoduleOrder": 2,
+        "status": "LOCKED"
+      }
     ],
     "moduleOrder": 2,
     "status": "LOCKED"
@@ -61,24 +61,24 @@
     "descrition": "Module 3",
     "image": "https://static01.nyt.com/images/2018/08/26/business/26VIEW.illo/26VIEW.illo-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
     "submodule": [
-        {
-            "id": "199a4c83-f21d-4634-9645-923c03170903",
-            "name": "Submodule 3.1",
-            "content": "Submodule 3.1",
-            "image": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/04/15/11/money.jpg",
-            "quizId": null,
-            "submoduleOrder": 1,
-            "status": "LOCKED"
-        },
-        {
-            "id": "621c5aa3-bfc6-4df8-897b-148d53701ca1",
-            "name": "Submodule 3.2",
-            "content": "Submodule 3.2",
-            "image": "https://media3.s-nbcnews.com/j/newscms/2019_06/2746941/190208-stock-money-fanned-out-ew-317p_fa445b2f6f3e86a3ffa18707e6a8adcb.fit-760w.jpg",
-            "quizId": null,
-            "submoduleOrder": 2,
-            "status": "LOCKED"
-        }
+      {
+        "id": "199a4c83-f21d-4634-9645-923c03170903",
+        "name": "Submodule 3.1",
+        "content": "Submodule 3.1",
+        "image": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/04/15/11/money.jpg",
+        "quizId": null,
+        "submoduleOrder": 1,
+        "status": "LOCKED"
+      },
+      {
+        "id": "621c5aa3-bfc6-4df8-897b-148d53701ca1",
+        "name": "Submodule 3.2",
+        "content": "Submodule 3.2",
+        "image": "https://media3.s-nbcnews.com/j/newscms/2019_06/2746941/190208-stock-money-fanned-out-ew-317p_fa445b2f6f3e86a3ffa18707e6a8adcb.fit-760w.jpg",
+        "quizId": null,
+        "submoduleOrder": 2,
+        "status": "LOCKED"
+      }
     ],
     "moduleOrder": 3,
     "status": "LOCKED"

@@ -24,6 +24,8 @@ import { fetchQuickModulesList } from './actions'
 import messages from './messages'
 import reducer from './reducer'
 import saga from './saga'
+import { selectModulesList } from './selectors'
+import QuickModulesList from './QuickModulesList'
 
 const Wrapper = styled(ContentWrapper)`
   .header {
@@ -43,6 +45,10 @@ const Wrapper = styled(ContentWrapper)`
     text-align: center;
     margin-bottom: 16px;
   }
+`
+
+const QuickModulesListWrapper = styled.div`
+  margin: 32px;
 `
 
 export function WelcomePage(props) {
@@ -69,7 +75,12 @@ export function WelcomePage(props) {
         </Text>
         <img src={Icon} alt="User" />
       </div>
-      <div>{/* TODO: Quick modules list */}</div>
+      <QuickModulesListWrapper>
+        <Text uppercase semi greyDark>
+          <FormattedMessage {...messages.keepLearning} />
+        </Text>
+        <QuickModulesList modules={props.modules} />
+      </QuickModulesListWrapper>
       <div className="footer">
         <Button id="seeAvailableModules" link="/modules" small>
           <FormattedMessage {...messages.seeAvailableModules} />
@@ -82,10 +93,12 @@ export function WelcomePage(props) {
 WelcomePage.propTypes = {
   userFirstName: PropTypes.string,
   fetchQuickModulesList: PropTypes.func.isRequired,
+  modules: PropTypes.array,
 }
 
 const mapStateToProps = createStructuredSelector({
   userFirstName: selectUserFirstName,
+  modules: selectModulesList,
 })
 
 function mapDispatchToProps(dispatch) {

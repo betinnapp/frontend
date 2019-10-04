@@ -22,4 +22,8 @@ export default defineMessages({
     id: `${scope}.seeAvailableModules`,
     defaultMessage: 'Visualizar módulos disponíveis',
   },
+  keepLearning: {
+    id: `${scope}.keepLearning`,
+    defaultMessage: 'Continue aprendendo...',
+  },
 })
