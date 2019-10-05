@@ -23,6 +23,7 @@ import Quiz from 'containers/Quiz'
 import RegisterPage from 'containers/RegisterPage'
 import SubmoduleContent from 'containers/SubmoduleContent'
 import WelcomePage from 'containers/WelcomePage'
+import GoalsListPage from 'containers/GoalsListPage'
 
 import { useInjectSaga } from 'utils/injectSaga'
 import { isLoggedIn } from 'utils/auth'
@@ -63,6 +64,7 @@ export function App(props) {
         <Route exact path={urls.MODULE_DETAILS_PATH} component={ModuleDetails} />
         <Route exact path={urls.SUBMODULE_DETAILS_PATH} component={SubmoduleContent} />
         <Route exact path={urls.QUIZ_PATH} component={Quiz} />
+        <Route exact path={urls.GOALS_LIST_PATH} component={GoalsListPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </AppWrapper>
