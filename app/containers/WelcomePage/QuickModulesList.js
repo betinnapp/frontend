@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl'
 import history from 'utils/history'
 import { MODULE_DETAILS_PATH } from 'containers/App/urls'
 import { StatusType } from 'containers/App/enums'
+import DoneIcon from 'components/DoneIcon'
 import SmallCardContainer from 'components/SmallCardContainer'
 import Text from 'components/Text'
 
@@ -15,7 +16,7 @@ function QuickModulesList(props) {
     const { status, submodule = [] } = moduleItem
 
     if (status === StatusType.COMPLETED) {
-      return 'OK'
+      return <DoneIcon />
     }
 
     const completedSubmodulesLength = (submodule || []).filter(

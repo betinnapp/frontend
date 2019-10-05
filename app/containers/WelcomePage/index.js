@@ -17,10 +17,10 @@ import { useInjectReducer } from 'utils/injectReducer'
 import { selectUserFirstName } from 'containers/App/selectors'
 import Button from 'components/Button'
 import ContentWrapper from 'components/ContentWrapper'
-import Icon from 'images/icon.svg'
 import Loader from 'components/Loader'
 import Text from 'components/Text'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { fetchQuickModulesList } from './actions'
 import messages from './messages'
 import reducer from './reducer'
@@ -46,6 +46,10 @@ const Wrapper = styled(ContentWrapper)`
     text-align: center;
     margin-bottom: 16px;
   }
+`
+
+const UserIcon = styled(FontAwesomeIcon)`
+  color: #000;
 `
 
 const QuickModulesListWrapper = styled.div`
@@ -74,7 +78,7 @@ export function WelcomePage(props) {
             values={{ username: props.userFirstName }} // TODO: Use username from stored user
           />
         </Text>
-        <img src={Icon} alt="User" />
+        <UserIcon icon="user-circle" size="3x" />
       </div>
       <QuickModulesListWrapper>
         <Loader isLoading={props.isLoading}>

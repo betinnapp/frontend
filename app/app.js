@@ -15,6 +15,8 @@ import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import history from 'utils/history'
 import 'sanitize.css/sanitize.css'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 
 // Import root app
 import App from 'containers/App'
@@ -32,6 +34,8 @@ import configureStore from './configureStore'
 
 // Import i18n messages
 import { translationMessages } from './i18n'
+
+library.add(fas)
 
 // Create redux store with history
 const initialState = {}

@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
 import { Formik, Form } from 'formik'
 import * as yup from 'yup'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import Button from 'components/Button'
 import InputField from 'components/InputField'
@@ -28,6 +29,20 @@ const AnswerForm = styled(Form)`
   background: #fff;
   min-height: 70px;
   padding: 8px;
+`
+
+const SendButton = styled.button`
+  font-size: 24px;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  transition: 0.2s ease all;
+
+  &:hover,
+  &:active {
+    transform: scale(1.1);
+  }
 `
 
 const formInitialValues = {
@@ -78,7 +93,9 @@ export function AnswerArea({ question, answerQuestion }) {
             name="answer"
             label={messages.answer}
           />
-          <button type="submit">Go</button>
+          <SendButton type="submit">
+            <FontAwesomeIcon icon="paper-plane" />
+          </SendButton>
         </AnswerForm>
       </Formik>
     )

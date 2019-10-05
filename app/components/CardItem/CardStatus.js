@@ -1,13 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 
+import DoneIcon from 'components/DoneIcon'
 import { StatusType } from 'containers/App/enums'
 import Text from 'components/Text'
-
-const DoneIcon = styled.span`
-  color: #00dba1;
-`
 
 function CardStatus(props) {
   const { status, submodule } = props
@@ -19,7 +15,7 @@ function CardStatus(props) {
 
   let content = null
   if (status === StatusType.COMPLETED || submodulesCompleted) {
-    content = <DoneIcon>OK</DoneIcon> // TODO: Import Font Awesome icons and use a done icon here
+    content = <DoneIcon />
   } else if (submodule) {
     content = `${completedSubmodulesLength}/${submodule.length}`
   }

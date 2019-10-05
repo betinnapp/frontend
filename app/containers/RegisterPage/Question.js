@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { FormattedMessage } from 'react-intl'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import Icon from 'images/icon.svg'
 
@@ -21,11 +22,11 @@ const Answer = styled.div`
 `
 const ActorIcon = styled.img`
   width: 36px;
-`
-const SystemIcon = styled(ActorIcon)`
   margin-right: 8px;
 `
-const UserIcon = styled(ActorIcon)`
+const UserIcon = styled(FontAwesomeIcon)`
+  color: #000;
+  font-size: 36px;
   margin-left: 8px;
 `
 
@@ -43,7 +44,7 @@ export default function Question({ answer, choices, id, type }) {
           ) : (
             <span>{answer}</span>
           )}
-          <UserIcon src={Icon} alt="Betinnapp icon" />
+          <UserIcon icon="user-circle" size="3x" />
         </Answer>
       )
     )
@@ -52,7 +53,7 @@ export default function Question({ answer, choices, id, type }) {
   return (
     <Wrapper>
       <QuestionWrapper>
-        <SystemIcon src={Icon} alt="Betinnapp icon" />
+        <ActorIcon src={Icon} alt="Betinnapp icon" />
         <FormattedMessage {...messages[id]} />
       </QuestionWrapper>
       {renderAnswer()}
