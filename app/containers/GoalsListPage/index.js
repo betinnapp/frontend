@@ -14,7 +14,7 @@ import { compose } from 'redux'
 
 import { useInjectSaga } from 'utils/injectSaga'
 import { useInjectReducer } from 'utils/injectReducer'
-import { HOME_PATH } from 'containers/App/urls'
+import { HOME_PATH, NEW_GOAL_PATH } from 'containers/App/urls'
 import Button from 'components/Button'
 import ContentWrapper from 'components/ContentWrapper'
 import Header from 'components/Header'
@@ -45,7 +45,7 @@ export function GoalsListPage() {
       <Header backTo={HOME_PATH} />
       <div></div>
       <div className="footer">
-        <Button id="makeSimulation" small>
+        <Button id="makeSimulation" small link={NEW_GOAL_PATH}>
           <FormattedMessage {...messages.makeSimulation} />
         </Button>
       </div>
