@@ -54,6 +54,10 @@ api.get('/module/list', (req, res) => {
   mix(req, res, modulesReponse)
 })
 
+api.get('/module/quick-access', (req, res) => {
+  res.json(modulesReponse)
+})
+
 api.get('/module/:moduleId', (req, res) => {
   res.json(moduleDetails)
 })

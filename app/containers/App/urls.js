@@ -13,6 +13,7 @@ export const MODULES_LIST_API_URL = `${EDU_API_PATH}/list`
 export const MODULE_DETAILS_API_URL = `${EDU_API_PATH}/:moduleId`
 export const SUBMODULE_API_URL = `${MODULE_DETAILS_API_URL}/submodule/:submoduleId`
 export const SUBMODULE_COMPLETED_API_URL = `${SUBMODULE_API_URL}/completed`
+export const MODULES_LIST_QUICK_ACCESS_API_URL = `${EDU_API_PATH}/quick-access`
 
 export const SURVEY_API_URL = `${SURVEY_API_PATH}/:surveyId`
 export const SURVEY_QUESTION_ANSWER_API_URL = `${SURVEY_API_URL}/question/:questionId:answer`

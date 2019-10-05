@@ -22,4 +22,12 @@ export default defineMessages({
     id: `${scope}.seeAvailableModules`,
     defaultMessage: 'Visualizar módulos disponíveis',
   },
+  keepLearning: {
+    id: `${scope}.keepLearning`,
+    defaultMessage: 'Continue aprendendo...',
+  },
+  anErrorOccurredWhileLoadingModules: {
+    id: `${scope}.anErrorOccurredWhileLoadingModules`,
+    defaultMessage: 'Ocorreu um erro enquanto carregavamos os módulos para acesso rápido. Tente novamente mais tarde!',
+  },
 })

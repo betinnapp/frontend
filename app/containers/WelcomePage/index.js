@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
@@ -12,13 +12,21 @@ import { FormattedMessage } from 'react-intl'
 import { createStructuredSelector } from 'reselect'
 import { compose } from 'redux'
 
+import { useInjectSaga } from 'utils/injectSaga'
+import { useInjectReducer } from 'utils/injectReducer'
 import { selectUserFirstName } from 'containers/App/selectors'
 import Button from 'components/Button'
 import ContentWrapper from 'components/ContentWrapper'
 import Icon from 'images/icon.svg'
+import Loader from 'components/Loader'
 import Text from 'components/Text'
 
+import { fetchQuickModulesList } from './actions'
 import messages from './messages'
+import reducer from './reducer'
+import saga from './saga'
+import { selectModulesList, selectModulesListIsLoading, selectModulesListError } from './selectors'
+import QuickModulesList from './QuickModulesList'
 
 const Wrapper = styled(ContentWrapper)`
   .header {
@@ -40,7 +48,18 @@ const Wrapper = styled(ContentWrapper)`
   }
 `
 
+const QuickModulesListWrapper = styled.div`
+  margin: 32px;
+`
+
 export function WelcomePage(props) {
+  useInjectReducer({ key: 'welcomePage', reducer })
+  useInjectSaga({ key: 'welcomePage', saga })
+
+  useEffect(() => {
+    props.fetchQuickModulesList()
+  }, [])
+
   return (
     <Wrapper
       grid
@@ -57,7 +76,16 @@ export function WelcomePage(props) {
         </Text>
         <img src={Icon} alt="User" />
       </div>
-      <div>{/* TODO: Quick modules list */}</div>
+      <QuickModulesListWrapper>
+        <Loader isLoading={props.isLoading}>
+          {!props.error ?
+            <QuickModulesList modules={props.modules} /> : (
+              <Text bold>
+                <FormattedMessage {...messages.anErrorOccurredWhileLoadingModules} />
+              </Text>
+            )}
+        </Loader>
+      </QuickModulesListWrapper>
       <div className="footer">
         <Button id="seeAvailableModules" link="/modules" small>
           <FormattedMessage {...messages.seeAvailableModules} />
@@ -69,15 +97,24 @@ export function WelcomePage(props) {
 
 WelcomePage.propTypes = {
   userFirstName: PropTypes.string,
+  fetchQuickModulesList: PropTypes.func.isRequired,
+  modules: PropTypes.array,
+  isLoading: PropTypes.bool,
+  error: PropTypes.object,
 }
 
 const mapStateToProps = createStructuredSelector({
   userFirstName: selectUserFirstName,
+  modules: selectModulesList,
+  isLoading: selectModulesListIsLoading,
+  error: selectModulesListError,
 })
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    fetchQuickModulesList: () => {
+      dispatch(fetchQuickModulesList())
+    },
   }
 }
 

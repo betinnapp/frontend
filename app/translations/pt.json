@@ -51,6 +51,8 @@
   "app.containers.RegisterPage.weAreAlmostFinishing": "Estamos quase acabando e logo você desfrutará do aprendizado sobre o mundo financeiro",
   "app.containers.RegisterPage.wrongEmail": "E-mail inválido",
   "app.containers.SubmoduleContent.startQuiz": "Iniciar testes",
+  "app.containers.WelcomePage.anErrorOccurredWhileLoadingModules": "Ocorreu um erro enquanto carregavamos os módulos para acesso rápido. Tente novamente mais tarde!",
+  "app.containers.WelcomePage.keepLearning": "Continue aprendendo...",
   "app.containers.WelcomePage.seeAvailableModules": "Visualizar módulos disponíveis",
   "app.containers.WelcomePage.welcomeUser": "Bem vindo{username, select, null {!} undefined {!} other {, {username}}}"
 }

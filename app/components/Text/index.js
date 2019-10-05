@@ -44,6 +44,14 @@ const ErrorText = css`
   color: #f2994a;
 `
 
+const UppercaseText = css`
+  text-transform: uppercase;
+`
+
+const GreyDark = css`
+  color: #767676;
+`
+
 const Text = styled.p`
   margin: 0;
 
@@ -59,6 +67,8 @@ const Text = styled.p`
   ${props => props.secondary && SecondaryText}
   ${props => props.terciary && TerciaryText}
   ${props => props.error && ErrorText}
+  ${props => props.uppercase && UppercaseText}
+  ${props => props.greyDark && GreyDark}
 `
 
 export default Text
