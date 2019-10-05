@@ -9,6 +9,7 @@ const FlexboxContent = css`
   display: flex;
   flex-wrap: ${props => props.flexWrap};
   justify-content: ${props => props.justifyContent};
+  align-items: ${props => props.alignItems};
 `
 const FullHeight = css`
   height: 100%;

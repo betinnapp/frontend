@@ -9,8 +9,8 @@ import { defineMessages } from 'react-intl'
 export const scope = 'app.containers.GoalsListPage'
 
 export default defineMessages({
-  header: {
-    id: `${scope}.header`,
-    defaultMessage: 'This is the GoalsListPage container!',
+  makeSimulation: {
+    id: `${scope}.makeSimulation`,
+    defaultMessage: 'Fazer Simulação',
   },
 })

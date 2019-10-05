@@ -5,6 +5,7 @@
   "app.containers.App.required": "Obrigatório",
   "app.containers.App.unableToLoadContent": "Desculpa, não fomos capazes de carregar este conteúdo. Tente novamente mais tarde!",
   "app.containers.App.user": "Usuário",
+  "app.containers.GoalsListPage.makeSimulation": "Fazer Simulação",
   "app.containers.HomePage.alreadyHaveAnAccount": "Já tenho uma conta",
   "app.containers.HomePage.learnToManagerYourFinances": "Aprenda a gerenciar suas finanças de graça.",
   "app.containers.HomePage.startNow": "Comece agora",
