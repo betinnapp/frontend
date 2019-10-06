@@ -8,6 +8,7 @@ import {
   FETCH_INVESTIMENT_TYPES,
   FETCH_INVESTIMENT_TYPES_SUCCESS,
   FETCH_INVESTIMENT_TYPES_FAILURE,
+  SAVE_GOAL,
 } from './constants'
 
 export function fetchInvestimentTypes() {
@@ -27,5 +28,12 @@ export function fetchInvestimentTypesFailure(error) {
   return {
     type: FETCH_INVESTIMENT_TYPES_FAILURE,
     error,
+  }
+}
+
+export function saveGoal(values) {
+  return {
+    type: SAVE_GOAL,
+    values,
   }
 }

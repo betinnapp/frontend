@@ -46,6 +46,18 @@ const messages = defineMessages({
     id: `${scope}.monthlyDeposit`,
     defaultMessage: 'Depósito mensal',
   },
+  saveAsGoal: {
+    id: `${scope}.saveAsGoal`,
+    defaultMessage: 'Salvar como meta',
+  },
+  goalSuccessfullyCreated: {
+    id: `${scope}.goalSuccessfullyCreated`,
+    defaultMessage: 'Meta criada com sucesso!',
+  },
+  anErrorOccurredWhileCreatingYourGoal: {
+    id: `${scope}.anErrorOccurredWhileCreatingYourGoal`,
+    defaultMessage: 'Ocorreu um erro enquanto criavamos sua meta, tente novamente mais tarde!',
+  },
 })
 
 export default {

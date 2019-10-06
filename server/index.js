@@ -83,6 +83,10 @@ api.get('/goal/types', (req, res) => {
   res.json(investimentTypes)
 })
 
+api.post('/goal', (req, res) => {
+  mix(req, res, { status: 'ok' })
+})
+
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
   outputPath: resolve(process.cwd(), 'build'),
