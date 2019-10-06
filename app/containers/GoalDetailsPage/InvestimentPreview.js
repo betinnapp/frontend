@@ -22,7 +22,7 @@ export function InvestimentPreview(props) {
   let total = depositTotal
   let totalIncome = 0
   let totalTax = 0
-  const monthTaxRate = (investimentType.interestRate || 0) / 12
+  const monthTaxRate = ((investimentType.interestRate || 0) / 100) / 12
 
   for (let i = 0; i < values.duration; i += 1) {
     const monthlyIncome = total * monthTaxRate
