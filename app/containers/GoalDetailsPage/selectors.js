@@ -18,7 +18,16 @@ const selectInvestimentTypesIsLoading = createSelector(
   substate => substate.isLoading
 )
 
+const selectInvestimentTypesOptions = createSelector(
+  selectInvestimentTypes,
+  substate => substate.map(option => ({
+    value: option.id,
+    label: `${option.name} (${option.interestRate}% a.a)`,
+  }))
+)
+
 export {
   selectInvestimentTypes,
   selectInvestimentTypesIsLoading,
+  selectInvestimentTypesOptions,
 }

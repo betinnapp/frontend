@@ -2,7 +2,7 @@
   {
     "id": "483fb637-3cf6-48b7-a840-82690c560070",
     "name": "Tesouro Selic",
-    "interestRate": 5.4,
+    "interestRate": 0.054,
     "minInvestmentMonthTime": 0,
     "interest": [
       {
@@ -16,7 +16,7 @@
   {
     "id": "f4a7ee21-93e3-45d2-b004-24fceeb4448d",
     "name": "LCI",
-    "interestRate": 6.5,
+    "interestRate": 0.065,
     "minInvestmentMonthTime": 2,
     "interest": [
       {

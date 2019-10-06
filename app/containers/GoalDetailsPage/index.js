@@ -20,12 +20,14 @@ import ContentWrapper from 'components/ContentWrapper'
 import Header from 'components/Header'
 import InputField from 'components/InputField'
 import CurrencyField from 'components/CurrencyField'
+import SelectField from 'components/SelectField'
 
 import reducer from './reducer'
 import saga from './saga'
 import {
   selectInvestimentTypes,
   selectInvestimentTypesIsLoading,
+  selectInvestimentTypesOptions,
 } from './selectors'
 import { fetchInvestimentTypes } from './actions'
 import messages from './messages'
@@ -86,11 +88,11 @@ export function GoalDetailsPage(props) {
                 investimentTypes={props.investimentTypes}
               />
               <div>
-                <InputField
-                  type="text"
+                <SelectField
+                  label={messages.investimentType}
                   id="investimentType"
                   name="investimentType"
-                  label={messages.investimentType}
+                  options={props.investimentTypesOptions}
                 />
                 <InputField
                   type="number"
@@ -129,11 +131,13 @@ export function GoalDetailsPage(props) {
 GoalDetailsPage.propTypes = {
   fetchInvestimentTypes: PropTypes.func,
   investimentTypes: PropTypes.array,
+  investimentTypesOptions: PropTypes.array,
 }
 
 const mapStateToProps = createStructuredSelector({
   investimentTypes: selectInvestimentTypes,
   investimentTypesIsLoading: selectInvestimentTypesIsLoading,
+  investimentTypesOptions: selectInvestimentTypesOptions,
 })
 
 function mapDispatchToProps(dispatch) {

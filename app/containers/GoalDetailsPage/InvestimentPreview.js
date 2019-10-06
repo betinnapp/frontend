@@ -14,14 +14,15 @@ const Wrapper = styled.div`
 `
 
 export function InvestimentPreview(props) {
-  const { values } = props
+  const { investimentTypes, values } = props
   const depositTotal = values.depositTotal || 0
   const monthlyDeposit = values.monthlyDeposit || 0
+  const investimentType = investimentTypes.find(type => type.id === values.investimentType) || {}
 
   let total = depositTotal
   let totalIncome = 0
   let totalTax = 0
-  const monthTaxRate = 0.054 / 12
+  const monthTaxRate = (investimentType.interestRate || 0) / 12
 
   for (let i = 0; i < values.duration; i += 1) {
     const monthlyIncome = total * monthTaxRate
@@ -70,6 +71,7 @@ export function InvestimentPreview(props) {
 
 InvestimentPreview.propTypes = {
   values: PropTypes.object.isRequired,
+  investimentTypes: PropTypes.array.isRequired,
 }
 
 export default InvestimentPreview
