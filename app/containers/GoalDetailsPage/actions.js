@@ -4,10 +4,28 @@
  *
  */
 
-import { DEFAULT_ACTION } from './constants'
+import {
+  FETCH_INVESTIMENT_TYPES,
+  FETCH_INVESTIMENT_TYPES_SUCCESS,
+  FETCH_INVESTIMENT_TYPES_FAILURE,
+} from './constants'
 
-export function defaultAction() {
+export function fetchInvestimentTypes() {
   return {
-    type: DEFAULT_ACTION,
+    type: FETCH_INVESTIMENT_TYPES,
+  }
+}
+
+export function fetchInvestimentTypesSuccess(response) {
+  return {
+    type: FETCH_INVESTIMENT_TYPES_SUCCESS,
+    response,
+  }
+}
+
+export function fetchInvestimentTypesFailure(error) {
+  return {
+    type: FETCH_INVESTIMENT_TYPES_FAILURE,
+    error,
   }
 }

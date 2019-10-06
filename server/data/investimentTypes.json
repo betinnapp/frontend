@@ -1,0 +1,30 @@
+[
+  {
+    "id": "483fb637-3cf6-48b7-a840-82690c560070",
+    "name": "Tesouro Selic",
+    "interestRate": 6.0,
+    "minInvestmentMonthTime": 0,
+    "interest": [
+      {
+        "id": "9946483f-eb43-448e-a25c-1cb2eeb46948",
+        "startMonth": null,
+        "finalMonth": null,
+        "aliquot": null
+      }
+    ]
+  },
+  {
+    "id": "f4a7ee21-93e3-45d2-b004-24fceeb4448d",
+    "name": "LCI",
+    "interestRate": 6.5,
+    "minInvestmentMonthTime": 2,
+    "interest": [
+      {
+        "id": "c2ad2dc5-c462-4236-bd58-657ea246f547",
+        "startMonth": null,
+        "finalMonth": null,
+        "aliquot": null
+      }
+    ]
+  }
+]

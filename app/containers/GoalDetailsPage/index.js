@@ -21,10 +21,15 @@ import Header from 'components/Header'
 import InputField from 'components/InputField'
 import CurrencyField from 'components/CurrencyField'
 
-import makeSelectGoalDetailsPage from './selectors'
 import reducer from './reducer'
 import saga from './saga'
+import {
+  selectInvestimentTypes,
+  selectInvestimentTypesIsLoading,
+} from './selectors'
+import { fetchInvestimentTypes } from './actions'
 import messages from './messages'
+import InvestimentPreview from './InvestimentPreview'
 
 const StyledForm = styled(Form)`
   margin: 0 auto;
@@ -70,8 +75,12 @@ export function GoalDetailsPage(props) {
           validateOnBlur={false}
           onSubmit={() => {}}
         >
-          {() => (
+          {({ values }) => (
             <StyledForm>
+              <InvestimentPreview
+                values={values}
+                investimentTypes={props.investimentTypes}
+              />
               <InputField
                 type="text"
                 id="investimentType"
@@ -113,17 +122,18 @@ export function GoalDetailsPage(props) {
 
 GoalDetailsPage.propTypes = {
   fetchInvestimentTypes: PropTypes.func,
+  investimentTypes: PropTypes.array,
 }
 
 const mapStateToProps = createStructuredSelector({
-  goalDetailsPage: makeSelectGoalDetailsPage(),
+  investimentTypes: selectInvestimentTypes,
+  investimentTypesIsLoading: selectInvestimentTypesIsLoading,
 })
 
 function mapDispatchToProps(dispatch) {
   return {
     fetchInvestimentTypes: () => {
-      console.log('will fetch investiment types')
-      dispatch()
+      dispatch(fetchInvestimentTypes())
     },
   }
 }
