@@ -30,13 +30,11 @@ export function InvestimentPreview(props) {
     total += monthlyIncome + monthlyDeposit
   }
 
-  const normalizeToCurrency = value => `R$${parseFloat(value).toFixed(2)}`
-
   const normalizedValues = {
-    netTotal: normalizeToCurrency(total - totalTax),
-    depositedTotal: normalizeToCurrency(depositTotal + (monthlyDeposit * values.duration)),
-    interestEarnedInThePeriod: `+${normalizeToCurrency(totalIncome)}`,
-    totalTax: `-${normalizeToCurrency(totalTax)}`,
+    netTotal: total - totalTax,
+    depositedTotal: depositTotal + (monthlyDeposit * values.duration),
+    interestEarnedInThePeriod: totalIncome,
+    totalTax,
   }
 
   return (
@@ -46,19 +44,25 @@ export function InvestimentPreview(props) {
           label={messages.netTotal}
           value={normalizedValues.netTotal}
           bigValue
+          type="currency"
         />
       </div>
       <ReadOnlyField
         label={messages.depositedTotal}
         value={normalizedValues.depositedTotal}
+        type="currency"
       />
       <ReadOnlyField
         label={messages.interestEarnedInThePeriod}
         value={normalizedValues.interestEarnedInThePeriod}
+        prefix="+"
+        type="currency"
       />
       <ReadOnlyField
         label={messages.totalTax}
         value={normalizedValues.totalTax}
+        prefix="-"
+        type="currency"
       />
     </Wrapper>
   )

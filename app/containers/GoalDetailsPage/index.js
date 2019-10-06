@@ -33,8 +33,12 @@ import InvestimentPreview from './InvestimentPreview'
 
 const StyledForm = styled(Form)`
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 24px;
   max-width: 980px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `
 
 const initialValues = {
@@ -65,7 +69,7 @@ export function GoalDetailsPage(props) {
     <ContentWrapper
       fullHeight
       grid
-      gridTemplateRows={['auto', '1fr', 'auto']}
+      gridTemplateRows={['auto', '1fr']}
     >
       <Header backTo={GOALS_LIST_PATH} />
       <div>
@@ -81,40 +85,42 @@ export function GoalDetailsPage(props) {
                 values={values}
                 investimentTypes={props.investimentTypes}
               />
-              <InputField
-                type="text"
-                id="investimentType"
-                name="investimentType"
-                label={messages.investimentType}
-              />
-              <InputField
-                type="number"
-                id="duration"
-                name="duration"
-                label={messages.investimentTime}
-              />
-              <InputField
-                type="text"
-                id="name"
-                name="name"
-                label={messages.goalName}
-              />
-              <CurrencyField
-                id="depositTotal"
-                name="depositTotal"
-                label={messages.initialValue}
-              />
-              <CurrencyField
-                id="monthlyDeposit"
-                name="monthlyDeposit"
-                label={messages.monthlyDeposit}
-              />
+              <div>
+                <InputField
+                  type="text"
+                  id="investimentType"
+                  name="investimentType"
+                  label={messages.investimentType}
+                />
+                <InputField
+                  type="number"
+                  id="duration"
+                  name="duration"
+                  label={messages.investimentTime}
+                />
+                <InputField
+                  type="text"
+                  id="name"
+                  name="name"
+                  label={messages.goalName}
+                />
+                <CurrencyField
+                  id="depositTotal"
+                  name="depositTotal"
+                  label={messages.initialValue}
+                />
+                <CurrencyField
+                  id="monthlyDeposit"
+                  name="monthlyDeposit"
+                  label={messages.monthlyDeposit}
+                />
+              </div>
+              <div>
+                {/* TODO: Save goal button */}
+              </div>
             </StyledForm>
           )}
         </Formik>
-      </div>
-      <div>
-        {/* TODO: Save goal button */}
       </div>
     </ContentWrapper>
   )
