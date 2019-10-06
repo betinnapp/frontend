@@ -15,6 +15,7 @@ import {
   getIn,
 } from 'formik'
 
+import Label from 'components/Label'
 import Text from 'components/Text'
 
 const Wrapper = styled.div`
@@ -26,9 +27,6 @@ const Wrapper = styled.div`
     position: absolute;
     left: 0px;
     top: 0;
-    font-size: 12px;
-    line-height: 32px;
-    pointer-events: none;
     transition: 0.2s ease all;
     color: ${props => props.error && '#f2994a'};
   }
@@ -85,9 +83,7 @@ function InputField({
     <Wrapper error={touch && error}>
       <Field name={name} {...props} autoComplete="off" placeholder=" " />
 
-      <Text className="label" semiBold secondary>
-        <FormattedMessage {...label} />
-      </Text>
+      <Label className="label" label={label} />
 
       <ErrorMessageWrapper>
         <ErrorMessage name={name}>

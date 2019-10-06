@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
   }
     
   body {
-    background-color: #e6e6e6;
+    background-color: #fafafa;
     
     .fontLoaded {
       font-family: 'Poppings', sans-serif;
