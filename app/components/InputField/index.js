@@ -56,6 +56,14 @@ const Wrapper = styled.div`
         color: #9657f6;
       }
     }
+
+    &[type=number] {
+      appearance: textfield;
+      &::-webkit-inner-spin-button, 
+      &::-webkit-outer-spin-button { 
+        -webkit-appearance: none;
+      }
+    }
   }
 `
 
