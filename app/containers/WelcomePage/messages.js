@@ -30,4 +30,8 @@ export default defineMessages({
     id: `${scope}.anErrorOccurredWhileLoadingModules`,
     defaultMessage: 'Ocorreu um erro enquanto carregavamos os módulos para acesso rápido. Tente novamente mais tarde!',
   },
+  seeGoals: {
+    id: `${scope}.seeGoals`,
+    defaultMessage: 'Visualizar Metas',
+  },
 })

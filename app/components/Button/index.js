@@ -31,15 +31,15 @@ const StyledButton = styled.button`
   color: #f4f4f4;
   font-size: 18px;
   font-weight: bold;
-  transition: ease 0.3s;
+  transition: ease 0.2s;
   cursor: pointer;
 
   &:hover {
-    filter: brightness(85%);
+    transform: scale(1.01);
   }
 
   &:active {
-    transform: translateY(2px);
+    transform: scale(0.99);
   }
 
   &:disabled,

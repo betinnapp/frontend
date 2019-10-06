@@ -3,6 +3,7 @@ const AUTH_API_PATH = `${BASE_API_PATH}/auth`
 const USER_API_PATH = `${BASE_API_PATH}/user`
 const EDU_API_PATH = `${BASE_API_PATH}/module`
 const SURVEY_API_PATH = `${BASE_API_PATH}/survey`
+const GOAL_API_PATH = `${BASE_API_PATH}/goal`
 
 export const LOGIN_API_URL = `${AUTH_API_PATH}/login`
 
@@ -18,6 +19,8 @@ export const MODULES_LIST_QUICK_ACCESS_API_URL = `${EDU_API_PATH}/quick-access`
 export const SURVEY_API_URL = `${SURVEY_API_PATH}/:surveyId`
 export const SURVEY_QUESTION_ANSWER_API_URL = `${SURVEY_API_URL}/question/:questionId:answer`
 
+export const GOAL_INVESTIMENT_TYPES_API_URL = `${GOAL_API_PATH}/types`
+
 // Routes Path
 export const LOGIN_PATH = '/login'
 export const REGISTER_PATH = '/register'
@@ -26,3 +29,6 @@ export const MODULES_PATH = '/modules'
 export const MODULE_DETAILS_PATH = `${MODULES_PATH}/:moduleId`
 export const SUBMODULE_DETAILS_PATH = `${MODULE_DETAILS_PATH}/submodule/:submoduleId`
 export const QUIZ_PATH = `${SUBMODULE_DETAILS_PATH}/quiz`
+export const GOALS_LIST_PATH = '/goals'
+export const NEW_GOAL_PATH = '/goal'
+export const GOAL_DETAILS_PATH = '/goal/:goalId?'

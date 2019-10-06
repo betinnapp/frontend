@@ -11,7 +11,9 @@ import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import { createStructuredSelector } from 'reselect'
 import { compose } from 'redux'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import { MODULES_PATH, GOALS_LIST_PATH } from 'containers/App/urls'
 import { useInjectSaga } from 'utils/injectSaga'
 import { useInjectReducer } from 'utils/injectReducer'
 import { selectUserFirstName } from 'containers/App/selectors'
@@ -20,7 +22,6 @@ import ContentWrapper from 'components/ContentWrapper'
 import Loader from 'components/Loader'
 import Text from 'components/Text'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { fetchQuickModulesList } from './actions'
 import messages from './messages'
 import reducer from './reducer'
@@ -45,6 +46,10 @@ const Wrapper = styled(ContentWrapper)`
   .footer {
     text-align: center;
     margin-bottom: 16px;
+
+    > * {
+      margin-top: 16px;
+    }
   }
 `
 
@@ -91,9 +96,16 @@ export function WelcomePage(props) {
         </Loader>
       </QuickModulesListWrapper>
       <div className="footer">
-        <Button id="seeAvailableModules" link="/modules" small>
-          <FormattedMessage {...messages.seeAvailableModules} />
-        </Button>
+        <div>
+          <Button id="seeAvailableModules" link={MODULES_PATH} small>
+            <FormattedMessage {...messages.seeAvailableModules} />
+          </Button>
+        </div>
+        <div>
+          <Button id="seeGoalsList" link={GOALS_LIST_PATH} small>
+            <FormattedMessage {...messages.seeGoals} />
+          </Button>
+        </div>
       </div>
     </Wrapper>
   )

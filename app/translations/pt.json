@@ -1,10 +1,21 @@
 {
   "app.components.CardItem.finishLastOneToUnlock": "Termine o módulo anterior para desbloquear este conteúdo",
+  "app.components.SelectField.selectAnOption": "Selecione uma opção...",
   "app.containers.App.betinnapp": "Betinnapp",
   "app.containers.App.password": "Senha",
   "app.containers.App.required": "Obrigatório",
   "app.containers.App.unableToLoadContent": "Desculpa, não fomos capazes de carregar este conteúdo. Tente novamente mais tarde!",
   "app.containers.App.user": "Usuário",
+  "app.containers.GoalDetailsPage.depositedTotal": "Total depositado",
+  "app.containers.GoalDetailsPage.goalName": "Nome da meta",
+  "app.containers.GoalDetailsPage.initialValue": "Valor inicial",
+  "app.containers.GoalDetailsPage.interestEarnedInThePeriod": "Juros ganho no período",
+  "app.containers.GoalDetailsPage.investimentTime": "Tempo de investimento",
+  "app.containers.GoalDetailsPage.investimentType": "Tipo de investimento",
+  "app.containers.GoalDetailsPage.monthlyDeposit": "Depósito mensal",
+  "app.containers.GoalDetailsPage.netTotal": "Total líquido",
+  "app.containers.GoalDetailsPage.totalTax": "Imposto sobre os juros",
+  "app.containers.GoalsListPage.makeSimulation": "Fazer Simulação",
   "app.containers.HomePage.alreadyHaveAnAccount": "Já tenho uma conta",
   "app.containers.HomePage.learnToManagerYourFinances": "Aprenda a gerenciar suas finanças de graça.",
   "app.containers.HomePage.startNow": "Comece agora",
@@ -54,5 +65,6 @@
   "app.containers.WelcomePage.anErrorOccurredWhileLoadingModules": "Ocorreu um erro enquanto carregavamos os módulos para acesso rápido. Tente novamente mais tarde!",
   "app.containers.WelcomePage.keepLearning": "Continue aprendendo...",
   "app.containers.WelcomePage.seeAvailableModules": "Visualizar módulos disponíveis",
+  "app.containers.WelcomePage.seeGoals": "Visualizar Metas",
   "app.containers.WelcomePage.welcomeUser": "Bem vindo{username, select, null {!} undefined {!} other {, {username}}}"
 }
