@@ -14,10 +14,9 @@ const Wrapper = styled.div`
 `
 
 export function InvestimentPreview(props) {
-  const { investimentTypes, values } = props
+  const { investimentType = {}, values } = props
   const depositTotal = values.depositTotal || 0
   const monthlyDeposit = values.monthlyDeposit || 0
-  const investimentType = investimentTypes.find(type => type.id === values.investimentType) || {}
 
   let total = depositTotal
   let totalIncome = 0
@@ -77,7 +76,7 @@ export function InvestimentPreview(props) {
 
 InvestimentPreview.propTypes = {
   values: PropTypes.object.isRequired,
-  investimentTypes: PropTypes.array.isRequired,
+  investimentType: PropTypes.object,
 }
 
 export default InvestimentPreview

@@ -17,9 +17,10 @@ import { useInjectSaga } from 'utils/injectSaga'
 import { useInjectReducer } from 'utils/injectReducer'
 import { GOALS_LIST_PATH } from 'containers/App/urls'
 import ContentWrapper from 'components/ContentWrapper'
+import CurrencyField from 'components/CurrencyField'
 import Header from 'components/Header'
 import InputField from 'components/InputField'
-import CurrencyField from 'components/CurrencyField'
+import NumberField from 'components/NumberField'
 import SelectField from 'components/SelectField'
 
 import reducer from './reducer'
@@ -45,7 +46,7 @@ const StyledForm = styled(Form)`
 
 const initialValues = {
   investimentType: '',
-  duration: 0,
+  duration: '',
   name: '',
   depositTotal: '',
   monthlyDeposit: '',
@@ -67,6 +68,8 @@ export function GoalDetailsPage(props) {
     props.fetchInvestimentTypes()
   }, [])
 
+  const { investimentTypes } = props
+
   return (
     <ContentWrapper
       fullHeight
@@ -81,47 +84,51 @@ export function GoalDetailsPage(props) {
           validateOnBlur={false}
           onSubmit={() => {}}
         >
-          {({ values }) => (
-            <StyledForm>
-              <InvestimentPreview
-                values={values}
-                investimentTypes={props.investimentTypes}
-              />
-              <div>
-                <SelectField
-                  label={messages.investimentType}
-                  id="investimentType"
-                  name="investimentType"
-                  options={props.investimentTypesOptions}
+          {({ values }) => {
+            const selectedInvestiment = investimentTypes.find(type => type.id === values.investimentType) || {}
+
+            return (
+              <StyledForm>
+                <InvestimentPreview
+                  values={values}
+                  investimentType={selectedInvestiment}
                 />
-                <InputField
-                  type="number"
-                  id="duration"
-                  name="duration"
-                  label={messages.investimentTime}
-                />
-                <InputField
-                  type="text"
-                  id="name"
-                  name="name"
-                  label={messages.goalName}
-                />
-                <CurrencyField
-                  id="depositTotal"
-                  name="depositTotal"
-                  label={messages.initialValue}
-                />
-                <CurrencyField
-                  id="monthlyDeposit"
-                  name="monthlyDeposit"
-                  label={messages.monthlyDeposit}
-                />
-              </div>
-              <div>
-                {/* TODO: Save goal button */}
-              </div>
-            </StyledForm>
-          )}
+                <div>
+                  <SelectField
+                    label={messages.investimentType}
+                    id="investimentType"
+                    name="investimentType"
+                    options={props.investimentTypesOptions}
+                  />
+                  <NumberField
+                    id="duration"
+                    name="duration"
+                    label={messages.investimentTime}
+                    min={selectedInvestiment.minInvestmentMonthTime}
+                  />
+                  <InputField
+                    type="text"
+                    id="name"
+                    name="name"
+                    label={messages.goalName}
+                  />
+                  <CurrencyField
+                    id="depositTotal"
+                    name="depositTotal"
+                    label={messages.initialValue}
+                  />
+                  <CurrencyField
+                    id="monthlyDeposit"
+                    name="monthlyDeposit"
+                    label={messages.monthlyDeposit}
+                  />
+                </div>
+                <div>
+                  {/* TODO: Save goal button */}
+                </div>
+              </StyledForm>
+            )
+          }}
         </Formik>
       </div>
     </ContentWrapper>
