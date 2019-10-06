@@ -42,7 +42,7 @@ const initialValues = {
   duration: 0,
   name: '',
   depositTotal: '',
-  monthlyIncome: '',
+  monthlyDeposit: '',
 }
 
 const goalFormShape = yup.object().shape({
@@ -50,7 +50,7 @@ const goalFormShape = yup.object().shape({
   duration: yup.string().required(messages.required),
   name: yup.string().required(messages.required),
   depositTotal: yup.string().required(messages.required),
-  monthlyIncome: yup.string().required(messages.required),
+  monthlyDeposit: yup.string().required(messages.required),
 })
 
 export function GoalDetailsPage(props) {
@@ -105,8 +105,8 @@ export function GoalDetailsPage(props) {
                 label={messages.initialValue}
               />
               <CurrencyField
-                id="monthlyIncome"
-                name="monthlyIncome"
+                id="monthlyDeposit"
+                name="monthlyDeposit"
                 label={messages.monthlyDeposit}
               />
             </StyledForm>

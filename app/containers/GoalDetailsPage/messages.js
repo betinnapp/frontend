@@ -10,9 +10,9 @@ import commonMessages from 'containers/App/messages'
 export const scope = 'app.containers.GoalDetailsPage'
 
 const messages = defineMessages({
-  grossTotal: {
-    id: `${scope}.grossTotal`,
-    defaultMessage: 'Total bruto',
+  netTotal: {
+    id: `${scope}.netTotal`,
+    defaultMessage: 'Total líquido',
   },
   depositedTotal: {
     id: `${scope}.depositedTotal`,
@@ -20,7 +20,7 @@ const messages = defineMessages({
   },
   totalTax: {
     id: `${scope}.totalTax`,
-    defaultMessage: 'Imposto sobre o total',
+    defaultMessage: 'Imposto sobre os juros',
   },
   interestEarnedInThePeriod: {
     id: `${scope}.interestEarnedInThePeriod`,

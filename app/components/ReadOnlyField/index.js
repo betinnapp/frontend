@@ -19,15 +19,17 @@ const ValueText = styled(Text)`
 `
 
 function ReadOnlyField(props) {
+  const { bigValue, label, value } = props
+
   return (
     <Wrapper>
-      <Label label={props.label} />
+      <Label label={label} />
       <ValueText
         greyDark
         bold
-        bigValue={props.bigValue}
+        bigValue={bigValue}
       >
-        {props.value || '-'}
+        {value === 0 || value ? value : '-'}
       </ValueText>
     </Wrapper>
   )
@@ -35,7 +37,7 @@ function ReadOnlyField(props) {
 
 ReadOnlyField.propTypes = {
   label: PropTypes.object.isRequired,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   bigValue: PropTypes.bool,
 }
 

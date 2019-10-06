@@ -2,7 +2,7 @@
   {
     "id": "483fb637-3cf6-48b7-a840-82690c560070",
     "name": "Tesouro Selic",
-    "interestRate": 6.0,
+    "interestRate": 5.4,
     "minInvestmentMonthTime": 0,
     "interest": [
       {
