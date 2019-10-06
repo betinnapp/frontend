@@ -10,12 +10,14 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 import { compose } from 'redux'
+import { FormattedMessage } from 'react-intl'
 import { Formik, Form } from 'formik'
 import * as yup from 'yup'
 
 import { useInjectSaga } from 'utils/injectSaga'
 import { useInjectReducer } from 'utils/injectReducer'
 import { GOALS_LIST_PATH } from 'containers/App/urls'
+import Button from 'components/Button'
 import ContentWrapper from 'components/ContentWrapper'
 import CurrencyField from 'components/CurrencyField'
 import Header from 'components/Header'
@@ -30,7 +32,7 @@ import {
   selectInvestimentTypesIsLoading,
   selectInvestimentTypesOptions,
 } from './selectors'
-import { fetchInvestimentTypes } from './actions'
+import { fetchInvestimentTypes, saveGoal } from './actions'
 import messages from './messages'
 import InvestimentPreview from './InvestimentPreview'
 
@@ -42,6 +44,10 @@ const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  .alignCenter {
+    text-align: center;
+  }
 `
 
 const initialValues = {
@@ -82,9 +88,12 @@ export function GoalDetailsPage(props) {
           initialValues={initialValues}
           validationSchema={goalFormShape}
           validateOnBlur={false}
-          onSubmit={() => {}}
+          onSubmit={(values, { setSubmitting }) => {
+            props.saveGoal(values)
+            setSubmitting(false)
+          }}
         >
-          {({ values }) => {
+          {({ values, isSubmitting }) => {
             const selectedInvestiment = investimentTypes.find(type => type.id === values.investimentType) || {}
 
             return (
@@ -123,8 +132,15 @@ export function GoalDetailsPage(props) {
                     label={messages.monthlyDeposit}
                   />
                 </div>
-                <div>
-                  {/* TODO: Save goal button */}
+                <div className="alignCenter">
+                  <Button
+                    type="submit"
+                    id="saveAsGoal"
+                    disabled={isSubmitting}
+                    small
+                  >
+                    <FormattedMessage {...messages.saveAsGoal} />
+                  </Button>
                 </div>
               </StyledForm>
             )
@@ -139,6 +155,7 @@ GoalDetailsPage.propTypes = {
   fetchInvestimentTypes: PropTypes.func,
   investimentTypes: PropTypes.array,
   investimentTypesOptions: PropTypes.array,
+  saveGoal: PropTypes.func,
 }
 
 const mapStateToProps = createStructuredSelector({
@@ -151,6 +168,9 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchInvestimentTypes: () => {
       dispatch(fetchInvestimentTypes())
+    },
+    saveGoal: values => {
+      dispatch(saveGoal(values))
     },
   }
 }

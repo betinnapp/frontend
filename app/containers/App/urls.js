@@ -3,7 +3,7 @@ const AUTH_API_PATH = `${BASE_API_PATH}/auth`
 const USER_API_PATH = `${BASE_API_PATH}/user`
 const EDU_API_PATH = `${BASE_API_PATH}/module`
 const SURVEY_API_PATH = `${BASE_API_PATH}/survey`
-const GOAL_API_PATH = `${BASE_API_PATH}/goal`
+export const GOAL_API_PATH = `${BASE_API_PATH}/goal`
 
 export const LOGIN_API_URL = `${AUTH_API_PATH}/login`
 
