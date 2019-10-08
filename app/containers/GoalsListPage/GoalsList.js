@@ -15,7 +15,8 @@ import Text from 'components/Text'
 import messages from './messages'
 
 const Wrapper = styled.div`
-  margin: 30px;
+  padding: 30px;
+  overflow-y: overlay;
   text-align: center;
 
   .content {
