@@ -19,6 +19,7 @@ export const MODULES_LIST_QUICK_ACCESS_API_URL = `${EDU_API_PATH}/quick-access`
 export const SURVEY_API_URL = `${SURVEY_API_PATH}/:surveyId`
 export const SURVEY_QUESTION_ANSWER_API_URL = `${SURVEY_API_URL}/question/:questionId:answer`
 
+export const GOALS_LIST_API_URL = `${GOAL_API_PATH}/list`
 export const GOAL_INVESTIMENT_TYPES_API_URL = `${GOAL_API_PATH}/types`
 
 // Routes Path

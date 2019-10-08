@@ -38,6 +38,7 @@ const submodule = require('./data/submodule')
 const userDetails = require('./data/userDetails')
 const survey = require('./data/survey')
 const investimentTypes = require('./data/investimentTypes')
+const goalsList = require('./data/goalsList')
 
 api.post('/auth/login', (req, res) => {
   res.json(loginResponse)
@@ -85,6 +86,10 @@ api.get('/goal/types', (req, res) => {
 
 api.post('/goal', (req, res) => {
   mix(req, res, { status: 'ok' })
+})
+
+api.get('/goal/list', (req, res) => {
+  res.json(goalsList)
 })
 
 // In production we need to pass these values in instead of relying on webpack
