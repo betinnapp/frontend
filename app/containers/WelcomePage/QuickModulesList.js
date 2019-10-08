@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl'
 import history from 'utils/history'
 import { MODULE_DETAILS_PATH } from 'containers/App/urls'
 import { StatusType } from 'containers/App/enums'
+import ContentWrapper from 'components/ContentWrapper'
 import DoneIcon from 'components/DoneIcon'
 import SmallCardContainer from 'components/SmallCardContainer'
 import Text from 'components/Text'
@@ -45,10 +46,17 @@ function QuickModulesList(props) {
           key={moduleItem.id}
           onClick={() => onClickHandler(moduleItem.id)}
         >
-          <Text bold>
-            {moduleItem.name}
-          </Text>
-          {renderModuleStatus(moduleItem)}
+          <ContentWrapper
+            flexbox
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Text bold>
+              {moduleItem.name}
+            </Text>
+            {renderModuleStatus(moduleItem)}
+          </ContentWrapper>
         </SmallCardContainer>
       ))}
     </div>

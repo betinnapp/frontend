@@ -8,12 +8,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const Wrapper = styled.button`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   padding: 0 16px;
-  align-items: center;
-
   width: 100%;
   min-height: 56px;
   background: #fff;

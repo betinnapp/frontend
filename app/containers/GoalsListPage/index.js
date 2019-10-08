@@ -25,6 +25,7 @@ import saga from './saga'
 import { fetchGoalsList } from './actions'
 import { selectGoalsList, selectGoalsListIsLoading } from './selectors'
 import messages from './messages'
+import GoalsList from './GoalsList'
 
 const Wrapper = styled(ContentWrapper)`
   padding-bottom: 16px;
@@ -50,7 +51,7 @@ export function GoalsListPage(props) {
     >
       <Header backTo={HOME_PATH} />
       <Loader isLoading={props.isLoading}>
-        <div></div>
+        <GoalsList goalsList={props.goalsList} />
       </Loader>
       <div className="footer">
         <Button id="makeSimulation" small link={NEW_GOAL_PATH}>
