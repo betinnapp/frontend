@@ -18,6 +18,7 @@ const Wrapper = styled.button`
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: 0.2s ease all;
+  position: relative;
 
   &:hover {
     transform: scale(1.01);

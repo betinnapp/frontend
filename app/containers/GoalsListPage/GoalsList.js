@@ -7,7 +7,7 @@ import round from 'lodash/round'
 import history from 'utils/history'
 import { GOAL_DETAILS_PATH } from 'containers/App/urls'
 import ContentWrapper from 'components/ContentWrapper'
-// import DoneIcon from 'components/DoneIcon'
+import DoneIcon from 'components/DoneIcon'
 import ProgressBar from 'components/ProgressBar'
 import SmallCardContainer from 'components/SmallCardContainer'
 import Text from 'components/Text'
@@ -22,6 +22,10 @@ const Wrapper = styled.div`
     margin-top: 38px;
   }
 
+  .cardTitle {
+    margin-bottom: 8px;
+  }
+
   .cardFooter {
     width: 100%;
     .left {
@@ -31,6 +35,12 @@ const Wrapper = styled.div`
       float: right;
     }
   }
+`
+const DoneIconWrapper = styled.div`
+  position: absolute;
+  top: -9px;
+  right: -9px;
+  font-size: 18px;
 `
 
 function GoalsList(props) {
@@ -55,13 +65,18 @@ function GoalsList(props) {
         key={goal.id}
         onClick={() => onClickHandler(goal.id)}
       >
+        {(percentage === 100 || goal.status === 'COMPLETED') && (
+          <DoneIconWrapper>
+            <DoneIcon className="xablau" />
+          </DoneIconWrapper>
+        )}
         <ContentWrapper
           flexbox
           flexDirection="column"
           justifyContent="space-between"
           alignItems="start"
         >
-          <Text small bold>
+          <Text small bold className="cardTitle">
             {goal.name}
           </Text>
           <ProgressBar percentage={percentage} />
@@ -86,7 +101,7 @@ function GoalsList(props) {
 
   return (
     <Wrapper>
-      <Text uppercase big bold greyDark>
+      <Text big bold greyDark>
         <FormattedMessage {...messages.myGoals} />
       </Text>
       <div className="content">
