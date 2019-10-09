@@ -37,7 +37,7 @@ const moduleDetails = require('./data/moduleDetails')
 const submodule = require('./data/submodule')
 const userDetails = require('./data/userDetails')
 const survey = require('./data/survey')
-const investimentTypes = require('./data/investimentTypes')
+const investmentTypes = require('./data/investmentTypes')
 const goalsList = require('./data/goalsList')
 
 api.post('/auth/login', (req, res) => {
@@ -81,7 +81,7 @@ api.post('/survey/:surveyId/question/:questionId:answer', (req, res) => {
 })
 
 api.get('/goal/types', (req, res) => {
-  res.json(investimentTypes)
+  res.json(investmentTypes)
 })
 
 api.post('/goal', (req, res) => {

@@ -26,12 +26,12 @@ const messages = defineMessages({
     id: `${scope}.interestEarnedInThePeriod`,
     defaultMessage: 'Juros ganho no período',
   },
-  investimentType: {
-    id: `${scope}.investimentType`,
+  investmentType: {
+    id: `${scope}.investmentType`,
     defaultMessage: 'Tipo de investimento',
   },
-  investimentTime: {
-    id: `${scope}.investimentTime`,
+  investmentTime: {
+    id: `${scope}.investmentTime`,
     defaultMessage: 'Tempo de investimento',
   },
   goalName: {

@@ -5,28 +5,28 @@
  */
 
 import {
-  FETCH_INVESTIMENT_TYPES,
-  FETCH_INVESTIMENT_TYPES_SUCCESS,
-  FETCH_INVESTIMENT_TYPES_FAILURE,
+  FETCH_INVESTMENT_TYPES,
+  FETCH_INVESTMENT_TYPES_SUCCESS,
+  FETCH_INVESTMENT_TYPES_FAILURE,
   SAVE_GOAL,
 } from './constants'
 
-export function fetchInvestimentTypes() {
+export function fetchInvestmentTypes() {
   return {
-    type: FETCH_INVESTIMENT_TYPES,
+    type: FETCH_INVESTMENT_TYPES,
   }
 }
 
-export function fetchInvestimentTypesSuccess(response) {
+export function fetchInvestmentTypesSuccess(response) {
   return {
-    type: FETCH_INVESTIMENT_TYPES_SUCCESS,
+    type: FETCH_INVESTMENT_TYPES_SUCCESS,
     response,
   }
 }
 
-export function fetchInvestimentTypesFailure(error) {
+export function fetchInvestmentTypesFailure(error) {
   return {
-    type: FETCH_INVESTIMENT_TYPES_FAILURE,
+    type: FETCH_INVESTMENT_TYPES_FAILURE,
     error,
   }
 }

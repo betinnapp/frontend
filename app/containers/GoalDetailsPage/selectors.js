@@ -3,23 +3,23 @@ import { initialState } from './reducer'
 
 const selectGoalDetailsPageDomain = state => state.goalDetailsPage || initialState
 
-const selectInvestimentTypesState = createSelector(
+const selectInvestmentTypesState = createSelector(
   selectGoalDetailsPageDomain,
-  substate => substate.investimentTypes
+  substate => substate.investmentTypes
 )
 
-const selectInvestimentTypes = createSelector(
-  selectInvestimentTypesState,
+const selectInvestmentTypes = createSelector(
+  selectInvestmentTypesState,
   substate => substate.resource
 )
 
-const selectInvestimentTypesIsLoading = createSelector(
-  selectInvestimentTypesState,
+const selectInvestmentTypesIsLoading = createSelector(
+  selectInvestmentTypesState,
   substate => substate.isLoading
 )
 
-const selectInvestimentTypesOptions = createSelector(
-  selectInvestimentTypes,
+const selectInvestmentTypesOptions = createSelector(
+  selectInvestmentTypes,
   substate => substate.map(option => ({
     value: option.id,
     label: `${option.name} (${option.interestRate}% a.a)`,
@@ -27,7 +27,7 @@ const selectInvestimentTypesOptions = createSelector(
 )
 
 export {
-  selectInvestimentTypes,
-  selectInvestimentTypesIsLoading,
-  selectInvestimentTypesOptions,
+  selectInvestmentTypes,
+  selectInvestmentTypesIsLoading,
+  selectInvestmentTypesOptions,
 }

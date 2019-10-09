@@ -62,8 +62,8 @@ const messages = defineMessages({
     id: `${scope}.QUESTION_WORK`,
     defaultMessage: 'Você trabalha?',
   },
-  QUESTION_INVESTIMENT_TODAY: {
-    id: `${scope}.QUESTION_INVESTIMENT_TODAY`,
+  QUESTION_INVESTMENT_TODAY: {
+    id: `${scope}.QUESTION_INVESTMENT_TODAY`,
     defaultMessage: 'Você investe hoje?',
   },
   QUESTION_ALREADY_INVESTED: {

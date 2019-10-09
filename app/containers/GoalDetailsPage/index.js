@@ -28,13 +28,13 @@ import SelectField from 'components/SelectField'
 import reducer from './reducer'
 import saga from './saga'
 import {
-  selectInvestimentTypes,
-  selectInvestimentTypesIsLoading,
-  selectInvestimentTypesOptions,
+  selectInvestmentTypes,
+  selectInvestmentTypesIsLoading,
+  selectInvestmentTypesOptions,
 } from './selectors'
-import { fetchInvestimentTypes, saveGoal } from './actions'
+import { fetchInvestmentTypes, saveGoal } from './actions'
 import messages from './messages'
-import InvestimentPreview from './InvestimentPreview'
+import InvestmentPreview from './InvestmentPreview'
 
 const StyledForm = styled(Form)`
   margin: 0 auto;
@@ -51,7 +51,7 @@ const StyledForm = styled(Form)`
 `
 
 const initialValues = {
-  investimentType: '',
+  investmentType: '',
   duration: '',
   name: '',
   depositTotal: '',
@@ -59,7 +59,7 @@ const initialValues = {
 }
 
 const goalFormShape = yup.object().shape({
-  investimentType: yup.string().required(messages.required),
+  investmentType: yup.string().required(messages.required),
   duration: yup.string().required(messages.required),
   name: yup.string().required(messages.required),
   depositTotal: yup.string().required(messages.required),
@@ -71,10 +71,10 @@ export function GoalDetailsPage(props) {
   useInjectSaga({ key: 'goalDetailsPage', saga })
 
   useEffect(() => {
-    props.fetchInvestimentTypes()
+    props.fetchInvestmentTypes()
   }, [])
 
-  const { investimentTypes } = props
+  const { investmentTypes } = props
 
   return (
     <ContentWrapper
@@ -94,26 +94,26 @@ export function GoalDetailsPage(props) {
           }}
         >
           {({ values, isSubmitting }) => {
-            const selectedInvestiment = investimentTypes.find(type => type.id === values.investimentType) || {}
+            const selectedInvestment = investmentTypes.find(type => type.id === values.investmentType) || {}
 
             return (
               <StyledForm>
-                <InvestimentPreview
+                <InvestmentPreview
                   values={values}
-                  investimentType={selectedInvestiment}
+                  investmentType={selectedInvestment}
                 />
                 <div>
                   <SelectField
-                    label={messages.investimentType}
-                    id="investimentType"
-                    name="investimentType"
-                    options={props.investimentTypesOptions}
+                    label={messages.investmentType}
+                    id="investmentType"
+                    name="investmentType"
+                    options={props.investmentTypesOptions}
                   />
                   <NumberField
                     id="duration"
                     name="duration"
-                    label={messages.investimentTime}
-                    min={selectedInvestiment.minInvestmentMonthTime}
+                    label={messages.investmentTime}
+                    min={selectedInvestment.minInvestmentMonthTime}
                   />
                   <InputField
                     type="text"
@@ -152,22 +152,22 @@ export function GoalDetailsPage(props) {
 }
 
 GoalDetailsPage.propTypes = {
-  fetchInvestimentTypes: PropTypes.func,
-  investimentTypes: PropTypes.array,
-  investimentTypesOptions: PropTypes.array,
+  fetchInvestmentTypes: PropTypes.func,
+  investmentTypes: PropTypes.array,
+  investmentTypesOptions: PropTypes.array,
   saveGoal: PropTypes.func,
 }
 
 const mapStateToProps = createStructuredSelector({
-  investimentTypes: selectInvestimentTypes,
-  investimentTypesIsLoading: selectInvestimentTypesIsLoading,
-  investimentTypesOptions: selectInvestimentTypesOptions,
+  investmentTypes: selectInvestmentTypes,
+  investmentTypesIsLoading: selectInvestmentTypesIsLoading,
+  investmentTypesOptions: selectInvestmentTypesOptions,
 })
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchInvestimentTypes: () => {
-      dispatch(fetchInvestimentTypes())
+    fetchInvestmentTypes: () => {
+      dispatch(fetchInvestmentTypes())
     },
     saveGoal: values => {
       dispatch(saveGoal(values))

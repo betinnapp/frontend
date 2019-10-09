@@ -5,25 +5,25 @@ import history from 'utils/history'
 import request from 'utils/request'
 import {
   GOAL_API_PATH,
-  GOAL_INVESTIMENT_TYPES_API_URL,
+  GOAL_INVESTMENT_TYPES_API_URL,
   GOALS_LIST_PATH,
 } from 'containers/App/urls'
 import {
-  FETCH_INVESTIMENT_TYPES,
+  FETCH_INVESTMENT_TYPES,
   SAVE_GOAL,
 } from './constants'
 import * as actions from './actions'
 import messages from './messages'
 
-function* fetchInvestimentTypes() {
+function* fetchInvestmentTypes() {
   try {
-    const response = yield call(request, GOAL_INVESTIMENT_TYPES_API_URL, {
+    const response = yield call(request, GOAL_INVESTMENT_TYPES_API_URL, {
       method: 'GET',
     })
 
-    yield put(actions.fetchInvestimentTypesSuccess(response))
+    yield put(actions.fetchInvestmentTypesSuccess(response))
   } catch (e) {
-    yield put(actions.fetchInvestimentTypesFailure(e))
+    yield put(actions.fetchInvestmentTypesFailure(e))
   }
 }
 
@@ -32,8 +32,8 @@ function* saveGoal(action) {
   try {
     const normalizedValues = {
       ...values,
-      investimentType: {
-        id: values.investimentType,
+      investmentType: {
+        id: values.investmentType,
       },
       goal: values.depositTotal + (values.monthlyDeposit * values.duration),
     }
@@ -53,7 +53,7 @@ function* saveGoal(action) {
 // Individual exports for testing
 export default function* goalDetailsPageSaga() {
   yield all([
-    takeLatest(FETCH_INVESTIMENT_TYPES, fetchInvestimentTypes),
+    takeLatest(FETCH_INVESTMENT_TYPES, fetchInvestmentTypes),
     takeLatest(SAVE_GOAL, saveGoal),
   ])
 }

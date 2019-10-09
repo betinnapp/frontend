@@ -13,18 +13,18 @@ const Wrapper = styled.div`
   }
 `
 
-export function InvestimentPreview(props) {
-  const { investimentType = {}, values } = props
+export function InvestmentPreview(props) {
+  const { investmentType = {}, values } = props
   const depositTotal = values.depositTotal || 0
   const monthlyDeposit = values.monthlyDeposit || 0
 
   let total = depositTotal
   let totalIncome = 0
   let totalTax = 0
-  const monthTaxRate = ((investimentType.interestRate || 0) / 100) / 12
+  const monthTaxRate = ((investmentType.interestRate || 0) / 100) / 12
 
   const getTaxRate = month => {
-    const interest = (investimentType.interest || [])
+    const interest = (investmentType.interest || [])
       .find(({ startMonth, finalMonth }) => startMonth <= month && finalMonth >= month)
     return (interest ? interest.aliquot : 0) / 100
   }
@@ -74,9 +74,9 @@ export function InvestimentPreview(props) {
   )
 }
 
-InvestimentPreview.propTypes = {
+InvestmentPreview.propTypes = {
   values: PropTypes.object.isRequired,
-  investimentType: PropTypes.object,
+  investmentType: PropTypes.object,
 }
 
-export default InvestimentPreview
+export default InvestmentPreview

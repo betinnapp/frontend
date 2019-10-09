@@ -5,13 +5,13 @@
  */
 import produce from 'immer'
 import {
-  FETCH_INVESTIMENT_TYPES,
-  FETCH_INVESTIMENT_TYPES_SUCCESS,
-  FETCH_INVESTIMENT_TYPES_FAILURE,
+  FETCH_INVESTMENT_TYPES,
+  FETCH_INVESTMENT_TYPES_SUCCESS,
+  FETCH_INVESTMENT_TYPES_FAILURE,
 } from './constants'
 
 export const initialState = {
-  investimentTypes: {
+  investmentTypes: {
     resource: [],
     isLoading: false,
     error: null,
@@ -22,16 +22,16 @@ export const initialState = {
 const goalDetailsPageReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
-      case FETCH_INVESTIMENT_TYPES:
-        draft.investimentTypes.isLoading = true
+      case FETCH_INVESTMENT_TYPES:
+        draft.investmentTypes.isLoading = true
         break
-      case FETCH_INVESTIMENT_TYPES_SUCCESS:
-        draft.investimentTypes.isLoading = false
-        draft.investimentTypes.resource = action.response
+      case FETCH_INVESTMENT_TYPES_SUCCESS:
+        draft.investmentTypes.isLoading = false
+        draft.investmentTypes.resource = action.response
         break
-      case FETCH_INVESTIMENT_TYPES_FAILURE:
-        draft.investimentTypes.isLoading = false
-        draft.investimentTypes.error = action.error
+      case FETCH_INVESTMENT_TYPES_FAILURE:
+        draft.investmentTypes.isLoading = false
+        draft.investmentTypes.error = action.error
         break
     }
   })

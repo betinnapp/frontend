@@ -58,7 +58,7 @@ export const REGISTER_QUESTIONS = [
     questionOnAnswer: [
       {
         questionAnswer: false,
-        id: 'QUESTION_INVESTIMENT_TODAY',
+        id: 'QUESTION_INVESTMENT_TODAY',
         type: 'CHOICE',
         choices: [true, false],
         scoreOnChoice: [
