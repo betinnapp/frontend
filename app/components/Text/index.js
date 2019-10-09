@@ -38,6 +38,10 @@ const MediumText = css`
   font-size: 18px;
 `
 
+const SmallText = css`
+  font-size: 12px;
+`
+
 const ErrorText = css`
   font-size: 12px;
   font-weight: bold;
@@ -61,6 +65,7 @@ const Text = styled.p`
   ${props => props.huge && HugeText}
   ${props => props.big && BigText}
   ${props => props.medium && MediumText}
+  ${props => props.small && SmallText}
   ${props => props.bold && BoldText}
   ${props => props.semiBold && SemiBoldText}
   ${props => props.light && LightText}

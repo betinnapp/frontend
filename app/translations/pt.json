@@ -19,6 +19,8 @@
   "app.containers.GoalDetailsPage.saveAsGoal": "Salvar como meta",
   "app.containers.GoalDetailsPage.totalTax": "Imposto sobre os juros",
   "app.containers.GoalsListPage.makeSimulation": "Fazer Simulação",
+  "app.containers.GoalsListPage.myGoals": "Minhas metas",
+  "app.containers.GoalsListPage.quantityOfTotal": "{quantity} de {total}",
   "app.containers.HomePage.alreadyHaveAnAccount": "Já tenho uma conta",
   "app.containers.HomePage.learnToManagerYourFinances": "Aprenda a gerenciar suas finanças de graça.",
   "app.containers.HomePage.startNow": "Comece agora",

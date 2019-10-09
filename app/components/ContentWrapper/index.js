@@ -8,6 +8,7 @@ const GridContent = css`
 const FlexboxContent = css`
   display: flex;
   flex-wrap: ${props => props.flexWrap};
+  flex-direction: ${props => props.flexDirection};
   justify-content: ${props => props.justifyContent};
   align-items: ${props => props.alignItems};
 `

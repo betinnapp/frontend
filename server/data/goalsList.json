@@ -1,0 +1,47 @@
+[
+  {
+    "id": "05332852-1b30-41a9-a82e-ab00f7f62686",
+    "name": "Carro novo",
+    "monthlyDeposit": 1000.0,
+    "depositTotal": 20000.0,
+    "balance": 21250.0,
+    "tax": 250.0,
+    "profit": 1500.0,
+    "goal": 25000.0,
+    "duration": 10,
+    "startDate": "2019-10-07",
+    "lastUpdateDate": "2019-10-07",
+    "investmentType": {
+      "id": "483fb637-3cf6-48b7-a840-82690c560070",
+      "name": "Tesouro Selic",
+      "interestRate": 5.4,
+      "interest": [
+        {
+          "id": "7da11dc2-c94c-453c-87c0-4b233c1a36f9",
+          "startMonth": 0,
+          "finalMonth": 6,
+          "aliquot": 22.5
+        },
+        {
+          "id": "5826037f-3d20-4079-a3dd-325af038d5b0",
+          "startMonth": 7,
+          "finalMonth": 12,
+          "aliquot": 20.0
+        },
+        {
+          "id": "a5211744-1138-4ccb-8e84-1503c4e0a331",
+          "startMonth": 13,
+          "finalMonth": 24,
+          "aliquot": 17.5
+        },
+        {
+          "id": "acb0b4e1-159b-43c0-8e45-49fc2c14f95e",
+          "startMonth": 25,
+          "finalMonth": 999,
+          "aliquot": 15.0
+        }
+      ]
+    },
+    "status": "INCOMPLETED"
+  }
+]

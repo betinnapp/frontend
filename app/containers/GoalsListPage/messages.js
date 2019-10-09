@@ -13,4 +13,12 @@ export default defineMessages({
     id: `${scope}.makeSimulation`,
     defaultMessage: 'Fazer Simulação',
   },
+  myGoals: {
+    id: `${scope}.myGoals`,
+    defaultMessage: 'Minhas metas',
+  },
+  quantityOfTotal: {
+    id: `${scope}.quantityOfTotal`,
+    defaultMessage: '{quantity} de {total}',
+  },
 })

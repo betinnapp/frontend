@@ -1,25 +1,24 @@
 import { createSelector } from 'reselect'
 import { initialState } from './reducer'
 
-/**
- * Direct selector to the goalsListPage state domain
- */
-
 const selectGoalsListPageDomain = state => state.goalsListPage || initialState
 
-/**
- * Other specific selectors
- */
+const selectGoalsListState = createSelector(
+  selectGoalsListPageDomain,
+  substate => substate.goalsList
+)
 
-/**
- * Default selector used by GoalsListPage
- */
+const selectGoalsList = createSelector(
+  selectGoalsListState,
+  substate => substate.resource
+)
 
-const makeSelectGoalsListPage = () =>
-  createSelector(
-    selectGoalsListPageDomain,
-    substate => substate
-  )
+const selectGoalsListIsLoading = createSelector(
+  selectGoalsListState,
+  substate => substate.isLoading
+)
 
-export default makeSelectGoalsListPage
-export { selectGoalsListPageDomain }
+export {
+  selectGoalsList,
+  selectGoalsListIsLoading,
+}

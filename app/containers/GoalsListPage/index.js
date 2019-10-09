@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
@@ -18,11 +18,14 @@ import { HOME_PATH, NEW_GOAL_PATH } from 'containers/App/urls'
 import Button from 'components/Button'
 import ContentWrapper from 'components/ContentWrapper'
 import Header from 'components/Header'
+import Loader from 'components/Loader'
 
-import makeSelectGoalsListPage from './selectors'
 import reducer from './reducer'
 import saga from './saga'
+import { fetchGoalsList } from './actions'
+import { selectGoalsList, selectGoalsListIsLoading } from './selectors'
 import messages from './messages'
+import GoalsList from './GoalsList'
 
 const Wrapper = styled(ContentWrapper)`
   padding-bottom: 16px;
@@ -31,9 +34,13 @@ const Wrapper = styled(ContentWrapper)`
   }
 `
 
-export function GoalsListPage() {
+export function GoalsListPage(props) {
   useInjectReducer({ key: 'goalsListPage', reducer })
   useInjectSaga({ key: 'goalsListPage', saga })
+
+  useEffect(() => {
+    props.fetchGoalsList()
+  }, [])
 
   return (
     <Wrapper
@@ -43,7 +50,9 @@ export function GoalsListPage() {
       noLateralMargins
     >
       <Header backTo={HOME_PATH} />
-      <div></div>
+      <Loader isLoading={props.isLoading}>
+        <GoalsList goalsList={props.goalsList} />
+      </Loader>
       <div className="footer">
         <Button id="makeSimulation" small link={NEW_GOAL_PATH}>
           <FormattedMessage {...messages.makeSimulation} />
@@ -54,16 +63,21 @@ export function GoalsListPage() {
 }
 
 GoalsListPage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  fetchGoalsList: PropTypes.func.isRequired,
+  goalsList: PropTypes.array,
+  isLoading: PropTypes.bool,
 }
 
 const mapStateToProps = createStructuredSelector({
-  goalsListPage: makeSelectGoalsListPage(),
+  goalsList: selectGoalsList,
+  isLoading: selectGoalsListIsLoading,
 })
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    fetchGoalsList: () => {
+      dispatch(fetchGoalsList())
+    },
   }
 }
 
