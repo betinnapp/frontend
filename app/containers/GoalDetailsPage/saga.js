@@ -35,7 +35,7 @@ function* saveGoal(action) {
       investimentType: {
         id: values.investimentType,
       },
-      goal: values.depositTotal + (values.monthlyDeposit + values.duration),
+      goal: values.depositTotal + (values.monthlyDeposit * values.duration),
     }
 
     yield call(request, GOAL_API_PATH, {
