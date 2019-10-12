@@ -27,10 +27,6 @@ const StyledForm = styled(Form)`
   }
 `
 
-const initialValues = {
-  currentDeposit: '',
-}
-
 const goalFormShape = yup.object().shape({
   currentDeposit: yup.number().required(messages.required),
 })
@@ -47,9 +43,9 @@ function GoalDetailsForm(props) {
         bigValue: true,
       },
       {
-        id: 'goal',
-        label: messages.goal,
-        value: goal.goal,
+        id: 'netTotal',
+        label: messages.netTotal,
+        value: goal.balance,
         type: 'currency',
         bigValue: true,
         green: true,
@@ -57,21 +53,9 @@ function GoalDetailsForm(props) {
     ],
     fields: [
       {
-        id: 'netTotal',
-        label: messages.netTotal,
-        value: goal.balance,
-        type: 'currency',
-      },
-      {
-        id: 'totalTax',
-        label: messages.totalTax,
-        value: goal.tax,
-        type: 'currency',
-      },
-      {
-        id: 'interestEarnedInThePeriod',
-        label: messages.interestEarnedInThePeriod,
-        value: goal.profit,
+        id: 'goal',
+        label: messages.goal,
+        value: goal.goal,
         type: 'currency',
       },
       {
@@ -79,6 +63,20 @@ function GoalDetailsForm(props) {
         label: messages.depositedTotal,
         value: goal.depositTotal,
         type: 'currency',
+      },
+      {
+        id: 'interestEarnedInThePeriod',
+        label: messages.interestEarnedInThePeriod,
+        value: goal.profit,
+        type: 'currency',
+        prefix: '+',
+      },
+      {
+        id: 'totalTax',
+        label: messages.totalTax,
+        value: goal.tax,
+        type: 'currency',
+        prefix: '-',
       },
       {
         id: 'investmentType',
@@ -91,7 +89,9 @@ function GoalDetailsForm(props) {
   return (
     <Loader isLoading={isLoading}>
       <Formik
-        initialValues={initialValues}
+        initialValues={{
+          currentDeposit: goal.monthlyDeposit || '',
+        }}
         validationSchema={goalFormShape}
         validateOnBlur={false}
         onSubmit={(values, { setSubmitting }) => {
@@ -107,6 +107,7 @@ function GoalDetailsForm(props) {
                 id="currentDeposit"
                 name="currentDeposit"
                 label={messages.depositValue}
+                min={null}
               />
             </div>
             <div className="alignCenter">
