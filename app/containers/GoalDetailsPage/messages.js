@@ -74,6 +74,10 @@ const messages = defineMessages({
     id: `${scope}.deleteGoal`,
     defaultMessage: 'Deletar',
   },
+  goal: {
+    id: `${scope}.goal`,
+    defaultMessage: 'Meta',
+  },
 })
 
 export default {

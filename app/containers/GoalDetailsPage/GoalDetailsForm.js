@@ -4,12 +4,13 @@ import { FormattedMessage } from 'react-intl'
 import { Formik, Form } from 'formik'
 import styled from 'styled-components'
 import * as yup from 'yup'
+import isEmpty from 'lodash/isEmpty'
 
 import Button from 'components/Button'
 import CurrencyField from 'components/CurrencyField'
+import InvestmentPreview from 'components/InvestmentPreview'
 import Loader from 'components/Loader'
 
-import InvestmentPreview from './InvestmentPreview'
 import messages from './messages'
 
 const StyledForm = styled(Form)`
@@ -36,6 +37,56 @@ const goalFormShape = yup.object().shape({
 
 function GoalDetailsForm(props) {
   const { goal, isLoading } = props
+  const { investmentType = {} } = goal
+  const investmentPreview = {
+    header: [
+      {
+        id: 'goalName',
+        label: messages.goalName,
+        value: goal.name,
+        bigValue: true,
+      },
+      {
+        id: 'goal',
+        label: messages.goal,
+        value: goal.goal,
+        type: 'currency',
+        bigValue: true,
+        green: true,
+      },
+    ],
+    fields: [
+      {
+        id: 'netTotal',
+        label: messages.netTotal,
+        value: goal.balance,
+        type: 'currency',
+      },
+      {
+        id: 'totalTax',
+        label: messages.totalTax,
+        value: goal.tax,
+        type: 'currency',
+      },
+      {
+        id: 'interestEarnedInThePeriod',
+        label: messages.interestEarnedInThePeriod,
+        value: goal.profit,
+        type: 'currency',
+      },
+      {
+        id: 'depositedTotal',
+        label: messages.depositedTotal,
+        value: goal.depositTotal,
+        type: 'currency',
+      },
+      {
+        id: 'investmentType',
+        label: messages.investmentType,
+        value: `${investmentType.name} (${investmentType.interestRate}% a.a)`,
+      },
+    ],
+  }
 
   return (
     <Loader isLoading={isLoading}>
@@ -50,11 +101,7 @@ function GoalDetailsForm(props) {
       >
         {({ isSubmitting }) => (
           <StyledForm>
-            <InvestmentPreview
-              values={goal}
-              investmentType={goal.investmentType}
-              readMode
-            />
+            {!isEmpty(goal) && <InvestmentPreview {...investmentPreview} />}
             <div>
               <CurrencyField
                 id="currentDeposit"

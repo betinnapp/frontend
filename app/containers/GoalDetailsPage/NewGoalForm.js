@@ -8,10 +8,10 @@ import * as yup from 'yup'
 import Button from 'components/Button'
 import CurrencyField from 'components/CurrencyField'
 import InputField from 'components/InputField'
+import InvestmentPreview from 'components/InvestmentPreview'
 import NumberField from 'components/NumberField'
 import SelectField from 'components/SelectField'
 
-import InvestmentPreview from './InvestmentPreview'
 import messages from './messages'
 
 const StyledForm = styled(Form)`
@@ -47,6 +47,64 @@ const goalFormShape = yup.object().shape({
 function NewGoalForm(props) {
   const { investmentTypes } = props
 
+  const getInvestmentPreview = (values, investment) => {
+    const depositTotal = values.depositTotal || 0
+    const monthlyDeposit = values.monthlyDeposit || 0
+
+    let total = depositTotal
+    let totalIncome = 0
+    let totalTax = 0
+    const monthTaxRate = ((investment.interestRate || 0) / 100) / 12
+
+    const getTaxRate = month => {
+      const interest = (investment.interest || [])
+        .find(({ startMonth, finalMonth }) => startMonth <= month && finalMonth >= month)
+      return (interest ? interest.aliquot : 0) / 100
+    }
+
+    for (let i = 0; i < values.duration; i += 1) {
+      const monthlyIncome = total * monthTaxRate
+      totalTax += monthlyIncome * getTaxRate(i)
+      totalIncome += monthlyIncome
+      total += monthlyIncome + monthlyDeposit
+    }
+
+    return {
+      header: [
+        {
+          id: 'netTotal',
+          label: messages.netTotal,
+          value: total - totalTax,
+          type: 'currency',
+          bigValue: true,
+          green: true,
+        },
+      ],
+      fields: [
+        {
+          id: 'depositedTotal',
+          label: messages.depositedTotal,
+          value: depositTotal + (monthlyDeposit * values.duration),
+          type: 'currency',
+        },
+        {
+          id: 'interestEarnedInThePeriod',
+          label: messages.interestEarnedInThePeriod,
+          value: totalIncome,
+          prefix: '+',
+          type: 'currency',
+        },
+        {
+          id: 'totalTax',
+          label: messages.totalTax,
+          value: totalTax,
+          prefix: '-',
+          type: 'currency',
+        },
+      ],
+    }
+  }
+
   return (
     <Formik
       initialValues={initialValues}
@@ -59,12 +117,12 @@ function NewGoalForm(props) {
     >
       {({ values, isSubmitting }) => {
         const selectedInvestment = investmentTypes.find(type => type.id === values.investmentType) || {}
+        const investmentPreview = getInvestmentPreview(values, selectedInvestment)
 
         return (
           <StyledForm>
             <InvestmentPreview
-              values={values}
-              investmentType={selectedInvestment}
+              {...investmentPreview}
             />
             <div>
               <SelectField
