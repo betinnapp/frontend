@@ -15,6 +15,7 @@ import {
   SAVE_GOAL,
   FETCH_GOAL,
   UPDATE_GOAL,
+  DELETE_GOAL,
 } from './constants'
 import * as actions from './actions'
 import messages from './messages'
@@ -85,6 +86,19 @@ function* updateGoal(action) {
   }
 }
 
+function* deleteGoal(action) {
+  try {
+    const url = GOAL_DETAILS_API_PATH.replace(':goalId', action.id)
+
+    yield call(request, url, { method: 'DELETE' })
+
+    yield put(success({ message: messages.goalDeletedSuccessfully, autoDismiss: 8000 }))
+    history.push(GOALS_LIST_PATH)
+  } catch (e) {
+    yield put(error({ message: messages.anErrorOccurredWhileDeletingYourGoalDetails, autoDismiss: 8000 }))
+  }
+}
+
 // Individual exports for testing
 export default function* goalDetailsPageSaga() {
   yield all([
@@ -92,5 +106,6 @@ export default function* goalDetailsPageSaga() {
     takeLatest(SAVE_GOAL, saveGoal),
     takeLatest(FETCH_GOAL, fetchGoal),
     takeLatest(UPDATE_GOAL, updateGoal),
+    takeLatest(DELETE_GOAL, deleteGoal),
   ])
 }

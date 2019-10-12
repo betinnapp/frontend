@@ -22,8 +22,11 @@ const StyledForm = styled(Form)`
   flex-direction: column;
   justify-content: space-between;
 
-  .alignCenter {
+  .buttonsContainer {
     text-align: center;
+    > * {
+      margin-top: 12px;
+    }
   }
 `
 
@@ -86,6 +89,10 @@ function GoalDetailsForm(props) {
     ],
   }
 
+  const handleDeleteGoal = () => {
+    props.deleteGoal(goal.id)
+  }
+
   return (
     <Loader isLoading={isLoading}>
       <Formik
@@ -110,15 +117,27 @@ function GoalDetailsForm(props) {
                 min={null}
               />
             </div>
-            <div className="alignCenter">
-              <Button
-                type="submit"
-                id="updateGoal"
-                disabled={isSubmitting}
-                small
-              >
-                <FormattedMessage {...messages.saveGoal} />
-              </Button>
+            <div className="buttonsContainer">
+              <div>
+                <Button
+                  type="submit"
+                  id="updateGoal"
+                  disabled={isSubmitting}
+                  small
+                >
+                  <FormattedMessage {...messages.saveGoal} />
+                </Button>
+              </div>
+              <div>
+                <Button
+                  id="deleteGoal"
+                  onClick={handleDeleteGoal}
+                  small
+                  red
+                >
+                  <FormattedMessage {...messages.deleteGoal} />
+                </Button>
+              </div>
             </div>
           </StyledForm>
         )}
@@ -131,6 +150,7 @@ GoalDetailsForm.propTypes = {
   goal: PropTypes.object.isRequired,
   isLoading: PropTypes.bool.isRequired,
   updateGoal: PropTypes.func.isRequired,
+  deleteGoal: PropTypes.func.isRequired,
 }
 
 export default GoalDetailsForm

@@ -101,6 +101,10 @@ api.put('/goal/:goalId/deposit', (req, res) => {
   res.status(200).send({ status: 'ok' })
 })
 
+api.delete('/goal/:goalId', (req, res) => {
+  res.status(200).send({ status: 'ok' })
+})
+
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
   outputPath: resolve(process.cwd(), 'build'),

@@ -86,6 +86,14 @@ const messages = defineMessages({
     id: `${scope}.goalUpdatedSuccessfully`,
     defaultMessage: 'Meta atualizada com sucesso!',
   },
+  goalDeletedSuccessfully: {
+    id: `${scope}.goalDeletedSuccessfully`,
+    defaultMessage: 'Meta deletada com sucesso!',
+  },
+  anErrorOccurredWhileDeletingYourGoalDetails: {
+    id: `${scope}.anErrorOccurredWhileDeletingYourGoalDetails`,
+    defaultMessage: 'Occoreu um erro enquanto deletavamos sua meta, tente novamente mais tarde!',
+  },
 })
 
 export default {

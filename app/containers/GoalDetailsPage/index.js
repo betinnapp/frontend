@@ -30,6 +30,7 @@ import {
   saveGoal,
   fetchGoal,
   updateGoal,
+  deleteGoal,
 } from './actions'
 import NewGoalForm from './NewGoalForm'
 import GoalDetailsForm from './GoalDetailsForm'
@@ -61,6 +62,7 @@ export function GoalDetailsPage(props) {
             goal={props.goal}
             isLoading={props.goalIsLoading}
             updateGoal={props.updateGoal}
+            deleteGoal={props.deleteGoal}
           />
         ) : (
           <NewGoalForm
@@ -84,6 +86,7 @@ GoalDetailsPage.propTypes = {
   goalIsLoading: PropTypes.bool,
   match: PropTypes.object,
   updateGoal: PropTypes.func,
+  deleteGoal: PropTypes.func,
 }
 
 const mapStateToProps = createStructuredSelector({
@@ -107,6 +110,9 @@ function mapDispatchToProps(dispatch) {
     },
     updateGoal: (id, deposit) => {
       dispatch(updateGoal(id, deposit))
+    },
+    deleteGoal: id => {
+      dispatch(deleteGoal(id))
     },
   }
 }
