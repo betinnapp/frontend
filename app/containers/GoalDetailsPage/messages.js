@@ -78,6 +78,14 @@ const messages = defineMessages({
     id: `${scope}.goal`,
     defaultMessage: 'Meta',
   },
+  anErrorOccurredWhileUpdatingYourGoalDetails: {
+    id: `${scope}.anErrorOccurredWhileUpdatingYourGoalDetails`,
+    defaultMessage: 'Ocorreu um erro enquanto atualizávamos os detalhes da sua meta, tente novamente mais tarde!',
+  },
+  goalUpdatedSuccessfully: {
+    id: `${scope}.goalUpdatedSuccessfully`,
+    defaultMessage: 'Meta atualizada com sucesso!',
+  },
 })
 
 export default {

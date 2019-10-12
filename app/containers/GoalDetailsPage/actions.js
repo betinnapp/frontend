@@ -12,6 +12,7 @@ import {
   FETCH_GOAL_SUCCESS,
   FETCH_GOAL_FAILURE,
   SAVE_GOAL,
+  UPDATE_GOAL,
 } from './constants'
 
 export function fetchInvestmentTypes() {
@@ -59,5 +60,13 @@ export function fetchGoalFailure(error) {
   return {
     type: FETCH_GOAL_FAILURE,
     error,
+  }
+}
+
+export function updateGoal(id, currentDeposit) {
+  return {
+    type: UPDATE_GOAL,
+    id,
+    currentDeposit,
   }
 }

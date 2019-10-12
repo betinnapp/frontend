@@ -22,6 +22,7 @@ export const SURVEY_QUESTION_ANSWER_API_URL = `${SURVEY_API_URL}/question/:quest
 export const GOALS_LIST_API_URL = `${GOAL_API_PATH}/list`
 export const GOAL_INVESTMENT_TYPES_API_URL = `${GOAL_API_PATH}/types`
 export const GOAL_DETAILS_API_PATH = `${GOAL_API_PATH}/:goalId`
+export const GOAL_DEPOSIT_API_PATH = `${GOAL_DETAILS_API_PATH}/deposit`
 
 // Routes Path
 export const LOGIN_PATH = '/login'

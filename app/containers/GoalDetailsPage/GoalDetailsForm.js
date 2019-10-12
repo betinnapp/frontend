@@ -94,8 +94,8 @@ function GoalDetailsForm(props) {
         }}
         validationSchema={goalFormShape}
         validateOnBlur={false}
-        onSubmit={(values, { setSubmitting }) => {
-          // props.updateGoal(values)
+        onSubmit={({ currentDeposit }, { setSubmitting }) => {
+          props.updateGoal(goal.id, currentDeposit)
           setSubmitting(false)
         }}
       >
@@ -130,7 +130,7 @@ function GoalDetailsForm(props) {
 GoalDetailsForm.propTypes = {
   goal: PropTypes.object.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  // updateGoal: PropTypes.func.isRequired,
+  updateGoal: PropTypes.func.isRequired,
 }
 
 export default GoalDetailsForm
