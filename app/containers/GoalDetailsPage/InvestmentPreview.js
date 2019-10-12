@@ -70,6 +70,12 @@ export function InvestmentPreview(props) {
         prefix="-"
         type="currency"
       />
+      {props.readMode && (
+        <ReadOnlyField
+          label={messages.investmentType}
+          value={`${investmentType.name} (${investmentType.interestRate}% a.a)`}
+        />
+      )}
     </Wrapper>
   )
 }
@@ -77,6 +83,7 @@ export function InvestmentPreview(props) {
 InvestmentPreview.propTypes = {
   values: PropTypes.object.isRequired,
   investmentType: PropTypes.object,
+  readMode: PropTypes.bool,
 }
 
 export default InvestmentPreview
