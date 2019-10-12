@@ -7,10 +7,12 @@ import {
   GOAL_API_PATH,
   GOAL_INVESTMENT_TYPES_API_URL,
   GOALS_LIST_PATH,
+  GOAL_DETAILS_API_PATH,
 } from 'containers/App/urls'
 import {
   FETCH_INVESTMENT_TYPES,
   SAVE_GOAL,
+  FETCH_GOAL,
 } from './constants'
 import * as actions from './actions'
 import messages from './messages'
@@ -50,10 +52,24 @@ function* saveGoal(action) {
   }
 }
 
+function* fetchGoal(action) {
+  try {
+    const url = GOAL_DETAILS_API_PATH.replace(':goalId', action.id)
+
+    const response = yield call(request, url, { method: 'GET' })
+
+    yield put(actions.fetchGoalSuccess(response))
+  } catch (e) {
+    yield put(actions.fetchGoalFailure(e))
+    yield put(error({ message: messages.anErrorOccurredWhileLoadingYourGoalDetails, autoDismiss: 8000 }))
+  }
+}
+
 // Individual exports for testing
 export default function* goalDetailsPageSaga() {
   yield all([
     takeLatest(FETCH_INVESTMENT_TYPES, fetchInvestmentTypes),
     takeLatest(SAVE_GOAL, saveGoal),
+    takeLatest(FETCH_GOAL, fetchGoal),
   ])
 }

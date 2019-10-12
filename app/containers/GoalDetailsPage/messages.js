@@ -58,6 +58,10 @@ const messages = defineMessages({
     id: `${scope}.anErrorOccurredWhileCreatingYourGoal`,
     defaultMessage: 'Ocorreu um erro enquanto criavamos sua meta, tente novamente mais tarde!',
   },
+  anErrorOccurredWhileLoadingYourGoalDetails: {
+    id: `${scope}.anErrorOccurredWhileLoadingYourGoalDetails`,
+    defaultMessage: 'Ocorreu um erro enquanto carregavamos os detalhes da sua meta, tente novamente mais tarde!',
+  },
 })
 
 export default {

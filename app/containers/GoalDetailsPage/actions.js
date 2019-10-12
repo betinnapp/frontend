@@ -8,6 +8,9 @@ import {
   FETCH_INVESTMENT_TYPES,
   FETCH_INVESTMENT_TYPES_SUCCESS,
   FETCH_INVESTMENT_TYPES_FAILURE,
+  FETCH_GOAL,
+  FETCH_GOAL_SUCCESS,
+  FETCH_GOAL_FAILURE,
   SAVE_GOAL,
 } from './constants'
 
@@ -35,5 +38,26 @@ export function saveGoal(values) {
   return {
     type: SAVE_GOAL,
     values,
+  }
+}
+
+export function fetchGoal(id) {
+  return {
+    type: FETCH_GOAL,
+    id,
+  }
+}
+
+export function fetchGoalSuccess(response) {
+  return {
+    type: FETCH_GOAL_SUCCESS,
+    response,
+  }
+}
+
+export function fetchGoalFailure(error) {
+  return {
+    type: FETCH_GOAL_FAILURE,
+    error,
   }
 }

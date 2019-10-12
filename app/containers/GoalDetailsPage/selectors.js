@@ -26,8 +26,26 @@ const selectInvestmentTypesOptions = createSelector(
   }))
 )
 
+const selectGoalState = createSelector(
+  selectGoalDetailsPageDomain,
+  substate => substate.goal
+)
+
+const selectGoal = createSelector(
+  selectGoalState,
+  substate => substate.resource,
+)
+
+const selectGoalIsLoading = createSelector(
+  selectGoalState,
+  substate => substate.isLoading,
+)
+
+
 export {
   selectInvestmentTypes,
   selectInvestmentTypesIsLoading,
   selectInvestmentTypesOptions,
+  selectGoal,
+  selectGoalIsLoading,
 }

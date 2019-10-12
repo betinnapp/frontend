@@ -31,8 +31,10 @@ import {
   selectInvestmentTypes,
   selectInvestmentTypesIsLoading,
   selectInvestmentTypesOptions,
+  selectGoal,
+  selectGoalIsLoading,
 } from './selectors'
-import { fetchInvestmentTypes, saveGoal } from './actions'
+import { fetchInvestmentTypes, saveGoal, fetchGoal } from './actions'
 import messages from './messages'
 import InvestmentPreview from './InvestmentPreview'
 
@@ -71,7 +73,13 @@ export function GoalDetailsPage(props) {
   useInjectSaga({ key: 'goalDetailsPage', saga })
 
   useEffect(() => {
-    props.fetchInvestmentTypes()
+    const { match: { params: { goalId } } } = props
+
+    if (goalId) {
+      props.fetchGoal(goalId)
+    } else {
+      props.fetchInvestmentTypes()
+    }
   }, [])
 
   const { investmentTypes } = props
@@ -156,12 +164,17 @@ GoalDetailsPage.propTypes = {
   investmentTypes: PropTypes.array,
   investmentTypesOptions: PropTypes.array,
   saveGoal: PropTypes.func,
+  fetchGoal: PropTypes.func,
+  goal: PropTypes.object,
+  goalIsLoading: PropTypes.bool,
 }
 
 const mapStateToProps = createStructuredSelector({
   investmentTypes: selectInvestmentTypes,
   investmentTypesIsLoading: selectInvestmentTypesIsLoading,
   investmentTypesOptions: selectInvestmentTypesOptions,
+  goal: selectGoal,
+  goalIsLoading: selectGoalIsLoading,
 })
 
 function mapDispatchToProps(dispatch) {
@@ -171,6 +184,9 @@ function mapDispatchToProps(dispatch) {
     },
     saveGoal: values => {
       dispatch(saveGoal(values))
+    },
+    fetchGoal: id => {
+      dispatch(fetchGoal(id))
     },
   }
 }
