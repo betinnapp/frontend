@@ -1,5 +1,7 @@
 {
   "app.components.CardItem.finishLastOneToUnlock": "Termine o módulo anterior para desbloquear este conteúdo",
+  "app.components.Modal.cancel": "Cancelar",
+  "app.components.Modal.confirm": "Confirmar",
   "app.components.SelectField.selectAnOption": "Selecione uma opção...",
   "app.containers.App.betinnapp": "Betinnapp",
   "app.containers.App.password": "Senha",
