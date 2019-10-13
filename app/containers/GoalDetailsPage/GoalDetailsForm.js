@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import { Formik, Form } from 'formik'
@@ -11,6 +11,7 @@ import CurrencyField from 'components/CurrencyField'
 import InvestmentPreview from 'components/InvestmentPreview'
 import Loader from 'components/Loader'
 
+import DeleteModal from './DeleteModal'
 import messages from './messages'
 
 const StyledForm = styled(Form)`
@@ -22,8 +23,11 @@ const StyledForm = styled(Form)`
   flex-direction: column;
   justify-content: space-between;
 
-  .alignCenter {
+  .buttonsContainer {
     text-align: center;
+    > * {
+      margin-top: 12px;
+    }
   }
 `
 
@@ -32,6 +36,8 @@ const goalFormShape = yup.object().shape({
 })
 
 function GoalDetailsForm(props) {
+  const [open, setOpen] = useState(false)
+
   const { goal, isLoading } = props
   const { investmentType = {} } = goal
   const investmentPreview = {
@@ -86,8 +92,18 @@ function GoalDetailsForm(props) {
     ],
   }
 
+  const handleDeleteGoal = () => {
+    setOpen(true)
+  }
+
   return (
     <Loader isLoading={isLoading}>
+      <DeleteModal
+        open={open}
+        goalId={goal.id}
+        deleteGoal={props.deleteGoal}
+        setOpenState={setOpen}
+      />
       <Formik
         initialValues={{
           currentDeposit: goal.monthlyDeposit || '',
@@ -110,15 +126,27 @@ function GoalDetailsForm(props) {
                 min={null}
               />
             </div>
-            <div className="alignCenter">
-              <Button
-                type="submit"
-                id="updateGoal"
-                disabled={isSubmitting}
-                small
-              >
-                <FormattedMessage {...messages.saveGoal} />
-              </Button>
+            <div className="buttonsContainer">
+              <div>
+                <Button
+                  type="submit"
+                  id="updateGoal"
+                  disabled={isSubmitting}
+                  small
+                >
+                  <FormattedMessage {...messages.saveGoal} />
+                </Button>
+              </div>
+              <div>
+                <Button
+                  id="deleteGoal"
+                  onClick={handleDeleteGoal}
+                  small
+                  red
+                >
+                  <FormattedMessage {...messages.deleteGoal} />
+                </Button>
+              </div>
             </div>
           </StyledForm>
         )}
@@ -131,6 +159,7 @@ GoalDetailsForm.propTypes = {
   goal: PropTypes.object.isRequired,
   isLoading: PropTypes.bool.isRequired,
   updateGoal: PropTypes.func.isRequired,
+  deleteGoal: PropTypes.func.isRequired,
 }
 
 export default GoalDetailsForm

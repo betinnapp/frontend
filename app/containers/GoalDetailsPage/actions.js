@@ -5,6 +5,7 @@
  */
 
 import {
+  DELETE_GOAL,
   FETCH_INVESTMENT_TYPES,
   FETCH_INVESTMENT_TYPES_SUCCESS,
   FETCH_INVESTMENT_TYPES_FAILURE,
@@ -68,5 +69,12 @@ export function updateGoal(id, currentDeposit) {
     type: UPDATE_GOAL,
     id,
     currentDeposit,
+  }
+}
+
+export function deleteGoal(id) {
+  return {
+    type: DELETE_GOAL,
+    id,
   }
 }

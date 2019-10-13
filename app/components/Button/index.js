@@ -20,6 +20,10 @@ const SmallButton = css`
   border-radius: 8px;
 `
 
+const RedButton = css`
+  background: #eb5757;
+`
+
 const StyledButton = styled.button`
   outline: none;
   background: #00dba1;
@@ -42,13 +46,13 @@ const StyledButton = styled.button`
     transform: scale(0.99);
   }
 
-  &:disabled,
-  &:disabled&:hover {
+  &:disabled {
     background: #a3a3a3;
   }
 
   ${props => props.small && SmallButton}
   ${props => props.secondary && SecondaryButton}
+  ${props => props.red && RedButton}
 `
 
 function Button(props) {
@@ -68,6 +72,7 @@ function Button(props) {
       disabled={props.disabled}
       secondary={props.secondary}
       small={props.small}
+      red={props.red}
     >
       {props.children}
     </StyledButton>
@@ -83,6 +88,7 @@ Button.propTypes = {
   secondary: PropTypes.bool,
   small: PropTypes.bool,
   link: PropTypes.string,
+  red: PropTypes.bool,
 }
 
 Button.defaultProps = {

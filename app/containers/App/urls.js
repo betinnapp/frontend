@@ -33,5 +33,5 @@ export const MODULE_DETAILS_PATH = `${MODULES_PATH}/:moduleId`
 export const SUBMODULE_DETAILS_PATH = `${MODULE_DETAILS_PATH}/submodule/:submoduleId`
 export const QUIZ_PATH = `${SUBMODULE_DETAILS_PATH}/quiz`
 export const GOALS_LIST_PATH = '/goals'
-export const NEW_GOAL_PATH = '/goal'
-export const GOAL_DETAILS_PATH = '/goal/:goalId?'
+export const NEW_GOAL_PATH = '/goal/details'
+export const GOAL_DETAILS_PATH = '/goal/:goalId?/details'
