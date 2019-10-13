@@ -94,6 +94,10 @@ const messages = defineMessages({
     id: `${scope}.anErrorOccurredWhileDeletingYourGoalDetails`,
     defaultMessage: 'Occoreu um erro enquanto deletavamos sua meta, tente novamente mais tarde!',
   },
+  doYouWantToDeleteThisGoal: {
+    id: `${scope}.doYouWantToDeleteThisGoal`,
+    defaultMessage: 'Deseja realmente deletar essa meta? Essa ação não pode ser desfeita.',
+  },
 })
 
 export default {

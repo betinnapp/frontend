@@ -15,6 +15,7 @@
   "app.containers.GoalDetailsPage.deleteGoal": "Deletar",
   "app.containers.GoalDetailsPage.depositValue": "Valor do depósito",
   "app.containers.GoalDetailsPage.depositedTotal": "Total depositado",
+  "app.containers.GoalDetailsPage.doYouWantToDeleteThisGoal": "Deseja realmente deletar essa meta? Essa ação não pode ser desfeita.",
   "app.containers.GoalDetailsPage.goal": "Meta",
   "app.containers.GoalDetailsPage.goalDeletedSuccessfully": "Meta deletada com sucesso!",
   "app.containers.GoalDetailsPage.goalName": "Nome da meta",
