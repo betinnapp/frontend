@@ -66,7 +66,7 @@ function GoalsList(props) {
         key={goal.id}
         onClick={() => onClickHandler(goal.id)}
       >
-        {(percentage === 100 || goal.status === 'COMPLETED') && (
+        {(percentage >= 100 || goal.status === 'COMPLETED') && (
           <DoneIconWrapper>
             <DoneIcon className="xablau" />
           </DoneIconWrapper>
