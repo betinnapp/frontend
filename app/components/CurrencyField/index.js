@@ -5,6 +5,7 @@
  */
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import InputField from 'components/InputField'
 
@@ -44,7 +45,7 @@ function CurrencyField(props) {
       <InputField
         {...props}
         type="number"
-        min={0}
+        min={props.min}
       />
       {/* <div>
         <button type="button" className="minusButton">-</button>
@@ -54,6 +55,12 @@ function CurrencyField(props) {
   )
 }
 
-CurrencyField.propTypes = {}
+CurrencyField.propTypes = {
+  min: PropTypes.number,
+}
+
+CurrencyField.defaultProps = {
+  min: 0,
+}
 
 export default CurrencyField

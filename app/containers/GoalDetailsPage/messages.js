@@ -58,6 +58,34 @@ const messages = defineMessages({
     id: `${scope}.anErrorOccurredWhileCreatingYourGoal`,
     defaultMessage: 'Ocorreu um erro enquanto criavamos sua meta, tente novamente mais tarde!',
   },
+  anErrorOccurredWhileLoadingYourGoalDetails: {
+    id: `${scope}.anErrorOccurredWhileLoadingYourGoalDetails`,
+    defaultMessage: 'Ocorreu um erro enquanto carregavamos os detalhes da sua meta, tente novamente mais tarde!',
+  },
+  depositValue: {
+    id: `${scope}.depositValue`,
+    defaultMessage: 'Valor do depósito',
+  },
+  saveGoal: {
+    id: `${scope}.saveGoal`,
+    defaultMessage: 'Salvar',
+  },
+  deleteGoal: {
+    id: `${scope}.deleteGoal`,
+    defaultMessage: 'Deletar',
+  },
+  goal: {
+    id: `${scope}.goal`,
+    defaultMessage: 'Meta',
+  },
+  anErrorOccurredWhileUpdatingYourGoalDetails: {
+    id: `${scope}.anErrorOccurredWhileUpdatingYourGoalDetails`,
+    defaultMessage: 'Ocorreu um erro enquanto atualizávamos os detalhes da sua meta, tente novamente mais tarde!',
+  },
+  goalUpdatedSuccessfully: {
+    id: `${scope}.goalUpdatedSuccessfully`,
+    defaultMessage: 'Meta atualizada com sucesso!',
+  },
 })
 
 export default {

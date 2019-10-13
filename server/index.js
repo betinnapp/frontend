@@ -39,6 +39,7 @@ const userDetails = require('./data/userDetails')
 const survey = require('./data/survey')
 const investmentTypes = require('./data/investmentTypes')
 const goalsList = require('./data/goalsList')
+const goalDetails = require('./data/goalDetails')
 
 api.post('/auth/login', (req, res) => {
   res.json(loginResponse)
@@ -90,6 +91,14 @@ api.post('/goal', (req, res) => {
 
 api.get('/goal/list', (req, res) => {
   res.json(goalsList)
+})
+
+api.get('/goal/:goalId', (req, res) => {
+  res.json(goalDetails)
+})
+
+api.put('/goal/:goalId/deposit', (req, res) => {
+  res.status(200).send({ status: 'ok' })
 })
 
 // In production we need to pass these values in instead of relying on webpack
