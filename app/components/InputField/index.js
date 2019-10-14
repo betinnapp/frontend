@@ -23,6 +23,13 @@ const Wrapper = styled.div`
   text-align: initial;
   margin-top: 16px;
 
+  .prefix {
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 30px;
+  }
+
   .label {
     position: absolute;
     left: 0px;
@@ -45,6 +52,7 @@ const Wrapper = styled.div`
     border: none;
     outline: none;
     border-bottom: 2px solid ${props => (props.error && '#f2994a') || '#bababa'};
+    padding-left: ${props => props.showPrefix && '20px'};
 
     &:focus {
       border-image-source: linear-gradient(45deg, #9657f6, #00dba1);
@@ -74,13 +82,21 @@ function InputField({
   formik,
   label,
   name,
+  prefix,
   ...props
 }) {
   const error = getIn(formik.errors, name)
   const touch = getIn(formik.touched, name)
+  const value = getIn(formik.values, name)
+  const showPrefix = prefix && value
 
   return (
-    <Wrapper error={touch && error}>
+    <Wrapper error={touch && error} showPrefix={showPrefix}>
+      {showPrefix && (
+        <div className="prefix">
+          {prefix}
+        </div>
+      )}
       <Field name={name} {...props} autoComplete="off" placeholder=" " />
 
       <Label className="label" label={label} />
@@ -107,6 +123,7 @@ InputField.propTypes = {
     id: PropTypes.string,
     defaultMessage: PropTypes.string,
   }).isRequired,
+  prefix: PropTypes.string,
 }
 
 export default connect(InputField)
