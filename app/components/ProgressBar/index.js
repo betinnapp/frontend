@@ -11,6 +11,7 @@ const ProgressBar = styled.div`
   height: 4px;
   background: #c4c4c4;
   border-radius: 8px;
+  overflow: hidden;
 
   &:after {
     content: ' ';
