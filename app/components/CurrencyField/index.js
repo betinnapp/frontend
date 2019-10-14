@@ -46,6 +46,8 @@ function CurrencyField(props) {
         {...props}
         type="number"
         min={props.min}
+        step="1"
+        prefix="R$"
       />
       {/* <div>
         <button type="button" className="minusButton">-</button>
