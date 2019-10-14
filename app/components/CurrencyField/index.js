@@ -7,9 +7,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { connect, getIn } from 'formik'
+
 import InputField from 'components/InputField'
 
 const Wrapper = styled.div`
+  position: relative;
+
+  .actionButtons {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  input {
+    padding-right: 60px;
+  }
+
   .plusButton,
   .minusButton {
     border: none;
@@ -40,6 +54,17 @@ const Wrapper = styled.div`
 `
 
 function CurrencyField(props) {
+  const { formik, name } = props
+  const value = getIn(formik.values, name)
+
+  const handleRemoveClick = () => {
+    formik.setFieldValue(name, value - 100)
+  }
+
+  const handleAddClick = () => {
+    formik.setFieldValue(name, value + 100)
+  }
+
   return (
     <Wrapper>
       <InputField
@@ -49,20 +74,34 @@ function CurrencyField(props) {
         step="1"
         prefix="R$"
       />
-      {/* <div>
-        <button type="button" className="minusButton">-</button>
-        <button type="button" className="plusButton">+</button>
-      </div> */}
+      <div className="actionButtons">
+        <button
+          type="button"
+          className="minusButton"
+          onClick={handleRemoveClick}
+        >
+          -
+        </button>
+        <button
+          type="button"
+          className="plusButton"
+          onClick={handleAddClick}
+        >
+          +
+        </button>
+      </div>
     </Wrapper>
   )
 }
 
 CurrencyField.propTypes = {
   min: PropTypes.number,
+  name: PropTypes.string,
+  formik: PropTypes.object,
 }
 
 CurrencyField.defaultProps = {
   min: 0,
 }
 
-export default CurrencyField
+export default connect(CurrencyField)
