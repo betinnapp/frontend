@@ -13,7 +13,7 @@ import { compose } from 'redux'
 
 import { useInjectSaga } from 'utils/injectSaga'
 import { useInjectReducer } from 'utils/injectReducer'
-import Text from 'components/Text'
+import Title from 'components/Title'
 
 import makeSelectUserFormPage from './selectors'
 import reducer from './reducer'
@@ -26,9 +26,9 @@ export function UserFormPage() {
 
   return (
     <div>
-      <Text big uppercase bold greyDarkest>
+      <Title>
         <FormattedMessage {...messages.personalInformation} />
-      </Text>
+      </Title>
     </div>
   )
 }

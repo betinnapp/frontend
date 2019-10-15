@@ -11,6 +11,7 @@ import DoneIcon from 'components/DoneIcon'
 import ProgressBar from 'components/ProgressBar'
 import SmallCardContainer from 'components/SmallCardContainer'
 import Text from 'components/Text'
+import Title from 'components/Title'
 
 import messages from './messages'
 
@@ -102,9 +103,9 @@ function GoalsList(props) {
 
   return (
     <Wrapper>
-      <Text big bold greyDark>
+      <Title>
         <FormattedMessage {...messages.myGoals} />
-      </Text>
+      </Title>
       <div className="content">
         {props.goalsList.map(renderGoalCard)}
       </div>
