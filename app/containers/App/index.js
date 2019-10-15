@@ -13,25 +13,16 @@ import { connect } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
 import styled from 'styled-components'
 
-import HomePage from 'containers/HomePage/Loadable'
-import LoginPage from 'containers/LoginPage'
-import ModulesListPage from 'containers/ModulesListPage'
-import ModuleDetails from 'containers/ModuleDetails'
-import NotFoundPage from 'containers/NotFoundPage/Loadable'
 import Notifications from 'containers/Notifications'
-import Quiz from 'containers/Quiz'
-import RegisterPage from 'containers/RegisterPage'
-import SubmoduleContent from 'containers/SubmoduleContent'
-import WelcomePage from 'containers/WelcomePage'
-import GoalsListPage from 'containers/GoalsListPage'
-import GoalDetailsPage from 'containers/GoalDetailsPage'
 
 import { useInjectSaga } from 'utils/injectSaga'
 import { isLoggedIn } from 'utils/auth'
+import history from 'utils/history'
 import Fonts from 'components/Fonts'
 import GlobalStyle from '../../global-styles'
+import routes, { accessLevels } from '../../routes'
 
-import * as urls from './urls'
+import { HOME_PATH } from './urls'
 import { fetchUserInformation } from './actions'
 import saga from './saga'
 
@@ -43,12 +34,39 @@ const AppWrapper = styled.div`
 
 export function App(props) {
   useInjectSaga({ key: 'common', saga })
+  const loggedIn = isLoggedIn()
+  let routesMap = []
 
   useEffect(() => {
-    if (isLoggedIn()) {
+    if (loggedIn) {
       props.fetchUserInformation()
+      history.replace(HOME_PATH)
     }
   }, [])
+
+  const renderRoutes = () => {
+    routesMap = []
+    routes.forEach(route => {
+      if (
+        (loggedIn && route.accessLevel === accessLevels.AUTHENTICATED) ||
+        (!loggedIn && route.accessLevel === accessLevels.NOT_AUTHENTICATED) ||
+        (route.accessLevel === accessLevels.PUBLIC)
+      ) {
+        routesMap.push(
+          <Route
+            key={route.path || 'not-found'}
+            {...route}
+          />
+        )
+      }
+    })
+
+    return (
+      <Switch>
+        {routesMap}
+      </Switch>
+    )
+  }
 
   return (
     <AppWrapper>
@@ -56,19 +74,7 @@ export function App(props) {
       <GlobalStyle />
       <Notifications />
 
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path={urls.LOGIN_PATH} component={LoginPage} />
-        <Route exact path={urls.REGISTER_PATH} component={RegisterPage} />
-        <Route exact path={urls.HOME_PATH} component={WelcomePage} />
-        <Route exact path={urls.MODULES_PATH} component={ModulesListPage} />
-        <Route exact path={urls.MODULE_DETAILS_PATH} component={ModuleDetails} />
-        <Route exact path={urls.SUBMODULE_DETAILS_PATH} component={SubmoduleContent} />
-        <Route exact path={urls.QUIZ_PATH} component={Quiz} />
-        <Route exact path={urls.GOALS_LIST_PATH} component={GoalsListPage} />
-        <Route exact path={urls.GOAL_DETAILS_PATH} component={GoalDetailsPage} />
-        <Route component={NotFoundPage} />
-      </Switch>
+      {renderRoutes()}
     </AppWrapper>
   )
 }
