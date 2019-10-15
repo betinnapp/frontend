@@ -16,6 +16,11 @@ export default defineMessages({
     id: `${scope}.unableToLoadContent`,
     defaultMessage: 'Desculpa, não fomos capazes de carregar este conteúdo. Tente novamente mais tarde!',
   },
+  save: {
+    id: `${scope}.save`,
+    defaultMessage: 'Salvar',
+  },
+
   // Fields label
   user: {
     id: `${scope}.user`,
