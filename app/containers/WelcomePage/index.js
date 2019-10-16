@@ -23,7 +23,7 @@ import ContentWrapper from 'components/ContentWrapper'
 import Loader from 'components/Loader'
 import Text from 'components/Text'
 
-import { fetchQuickModulesList } from './actions'
+import { fetchQuickModulesList, fetchCoins } from './actions'
 import messages from './messages'
 import reducer from './reducer'
 import saga from './saga'
@@ -116,6 +116,11 @@ export function WelcomePage(props) {
             <FormattedMessage {...messages.seeGoals} />
           </Button>
         </div>
+        <div>
+          <Button id="getCoins" onClick={props.fetchCoins}>
+            Clik nimin pra pega mueda
+          </Button>
+        </div>
       </div>
     </Wrapper>
   )
@@ -127,6 +132,7 @@ WelcomePage.propTypes = {
   modules: PropTypes.array,
   isLoading: PropTypes.bool,
   error: PropTypes.object,
+  fetchCoins: PropTypes.func,
 }
 
 const mapStateToProps = createStructuredSelector({
@@ -140,6 +146,9 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchQuickModulesList: () => {
       dispatch(fetchQuickModulesList())
+    },
+    fetchCoins: () => {
+      dispatch(fetchCoins())
     },
   }
 }

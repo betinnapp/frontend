@@ -29,3 +29,9 @@ export function fetchQuickModulesListFailure(error) {
     error,
   }
 }
+
+export function fetchCoins() {
+  return {
+    type: 'FETCH_COINS',
+  }
+}

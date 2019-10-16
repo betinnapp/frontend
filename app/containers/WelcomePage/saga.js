@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/effects'
+import { all, call, put, takeLatest } from 'redux-saga/effects'
 
 import request from 'utils/request'
 import { MODULES_LIST_QUICK_ACCESS_API_URL } from 'containers/App/urls'
@@ -18,6 +18,23 @@ export function* fetchQuickModulesList() {
   }
 }
 
+function* fetchCoins() {
+  try {
+    const response = yield call(request, 'https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moedas', {
+      method: 'GET',
+      params: {
+        format: 'json',
+      },
+    })
+    console.log(response)
+  } catch (e) {
+    console.log('deu ruim')
+  }
+}
+
 export default function* commonSaga() {
-  yield takeLatest(FETCH_QUICK_MODULES_LIST, fetchQuickModulesList)
+  yield all([
+    takeLatest(FETCH_QUICK_MODULES_LIST, fetchQuickModulesList),
+    takeLatest('FETCH_COINS', fetchCoins),
+  ])
 }
