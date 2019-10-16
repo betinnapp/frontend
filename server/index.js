@@ -49,7 +49,7 @@ api.post('/user/', (req, res) => {
   res.json(loginResponse)
 })
 
-api.get('/me', (req, res) => {
+api.get('/user/me', (req, res) => {
   res.json(userDetails)
 })
 

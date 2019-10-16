@@ -1,25 +1,19 @@
 import { createSelector } from 'reselect'
-import { initialState } from './reducer'
+import { selectUserInformation } from 'containers/App/selectors'
+// import { initialState } from './reducer'
 
-/**
- * Direct selector to the userFormPage state domain
- */
+// const selectUserFormPageDomain = state => state.userFormPage || initialState
 
-const selectUserFormPageDomain = state => state.userFormPage || initialState
+const selectUserFormInitialValues = createSelector(
+  selectUserInformation,
+  substate => ({
+    firstName: substate.firstName,
+    lastName: substate.lastName,
+    shortName: substate.shortName,
+    email: substate.email,
+    birthDate: substate.birthDate,
+    work: substate.work,
+  })
+)
 
-/**
- * Other specific selectors
- */
-
-/**
- * Default selector used by UserFormPage
- */
-
-const makeSelectUserFormPage = () =>
-  createSelector(
-    selectUserFormPageDomain,
-    substate => substate
-  )
-
-export default makeSelectUserFormPage
-export { selectUserFormPageDomain }
+export { selectUserFormInitialValues }

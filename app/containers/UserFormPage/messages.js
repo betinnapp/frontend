@@ -14,9 +14,17 @@ const messages = defineMessages({
     id: `${scope}.personalInformation`,
     defaultMessage: 'Informações Pessoais',
   },
-  fullName: {
-    id: `${scope}.fullName`,
-    defaultMessage: 'Nome Completo',
+  firstName: {
+    id: `${scope}.firstName`,
+    defaultMessage: 'Nome',
+  },
+  lastName: {
+    id: `${scope}.lastName`,
+    defaultMessage: 'Sobrenome',
+  },
+  shortName: {
+    id: `${scope}.shortName`,
+    defaultMessage: 'Apelido',
   },
   email: {
     id: `${scope}.email`,
@@ -29,6 +37,14 @@ const messages = defineMessages({
   work: {
     id: `${scope}.work`,
     defaultMessage: 'Trabalho',
+  },
+  yes: {
+    id: `${scope}.yes`,
+    defaultMessage: 'Sim',
+  },
+  no: {
+    id: `${scope}.no`,
+    defaultMessage: 'Não',
   },
 })
 

@@ -2,7 +2,9 @@
   "id": "111",
   "firstName": "Test",
   "lastName": "User",
+  "shortName": "Lil Test",
   "birthDate": "1990-01-02",
   "email": "test_user@email.com",
+  "work": false,
   "preferences": {}
 }
