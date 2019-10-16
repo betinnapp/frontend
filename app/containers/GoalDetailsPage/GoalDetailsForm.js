@@ -134,7 +134,7 @@ function GoalDetailsForm(props) {
                   disabled={isSubmitting}
                   small
                 >
-                  <FormattedMessage {...messages.saveGoal} />
+                  <FormattedMessage {...messages.save} />
                 </Button>
               </div>
               <div>

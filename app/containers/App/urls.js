@@ -35,3 +35,4 @@ export const QUIZ_PATH = `${SUBMODULE_DETAILS_PATH}/quiz`
 export const GOALS_LIST_PATH = '/goals'
 export const NEW_GOAL_PATH = '/goal/details'
 export const GOAL_DETAILS_PATH = '/goal/:goalId?/details'
+export const USER_PATH = '/user'

@@ -13,7 +13,8 @@ import { createStructuredSelector } from 'reselect'
 import { compose } from 'redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { MODULES_PATH, GOALS_LIST_PATH } from 'containers/App/urls'
+import history from 'utils/history'
+import { MODULES_PATH, GOALS_LIST_PATH, USER_PATH } from 'containers/App/urls'
 import { useInjectSaga } from 'utils/injectSaga'
 import { useInjectReducer } from 'utils/injectReducer'
 import { selectUserFirstName } from 'containers/App/selectors'
@@ -55,6 +56,7 @@ const Wrapper = styled(ContentWrapper)`
 
 const UserIcon = styled(FontAwesomeIcon)`
   color: #000;
+  cursor: pointer;
 `
 
 const QuickModulesListWrapper = styled.div`
@@ -68,6 +70,10 @@ export function WelcomePage(props) {
   useEffect(() => {
     props.fetchQuickModulesList()
   }, [])
+
+  const handleUserIconClick = () => {
+    history.push(USER_PATH)
+  }
 
   return (
     <Wrapper
@@ -83,7 +89,11 @@ export function WelcomePage(props) {
             values={{ username: props.userFirstName }} // TODO: Use username from stored user
           />
         </Text>
-        <UserIcon icon="user-circle" size="3x" />
+        <UserIcon
+          icon="user-circle"
+          size="3x"
+          onClick={handleUserIconClick}
+        />
       </div>
       <QuickModulesListWrapper>
         <Loader isLoading={props.isLoading}>

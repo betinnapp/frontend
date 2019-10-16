@@ -66,10 +66,6 @@ const messages = defineMessages({
     id: `${scope}.depositValue`,
     defaultMessage: 'Valor do depósito',
   },
-  saveGoal: {
-    id: `${scope}.saveGoal`,
-    defaultMessage: 'Salvar',
-  },
   deleteGoal: {
     id: `${scope}.deleteGoal`,
     defaultMessage: 'Deletar',

@@ -56,6 +56,10 @@ const GreyDark = css`
   color: #767676;
 `
 
+const GreyDarkest = css`
+  color: #4a4a4a;
+`
+
 const Text = styled.p`
   margin: 0;
 
@@ -74,6 +78,7 @@ const Text = styled.p`
   ${props => props.error && ErrorText}
   ${props => props.uppercase && UppercaseText}
   ${props => props.greyDark && GreyDark}
+  ${props => props.greyDarkest && GreyDarkest}
 `
 
 export default Text
