@@ -16,8 +16,10 @@ import * as yup from 'yup'
 
 import { useInjectSaga } from 'utils/injectSaga'
 import { useInjectReducer } from 'utils/injectReducer'
+import { HOME_PATH } from 'containers/App/urls'
 import Button from 'components/Button'
 import ContentWrapper from 'components/ContentWrapper'
+import Header from 'components/Header'
 import InputField from 'components/InputField'
 import SelectField from 'components/SelectField'
 import Title from 'components/Title'
@@ -32,6 +34,7 @@ const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin: 0 16px;
 
   > * {
     padding: 16px 0;
@@ -64,8 +67,10 @@ export function UserFormPage(props) {
     <ContentWrapper
       fullHeight
       grid
-      gridTemplateRows={['auto', '1fr']}
+      gridTemplateRows={['auto', 'auto', '1fr']}
+      noLateralMargins
     >
+      <Header backTo={HOME_PATH} />
       <Title>
         <FormattedMessage {...messages.personalInformation} />
       </Title>
