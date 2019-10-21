@@ -5,7 +5,9 @@
  */
 import messages from './messages'
 
-export const DEFAULT_ACTION = 'app/UserFormPage/DEFAULT_ACTION'
+export const SAVE_USER = 'app/UserFormPage/SAVE_USER'
+export const SAVE_USER_SUCCESS = 'app/UserFormPage/SAVE_USER_SUCCESS'
+export const SAVE_USER_FAILURE = 'app/UserFormPage/SAVE_USER_FAILURE'
 
 export const workOptions = [
   {

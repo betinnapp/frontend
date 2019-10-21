@@ -53,6 +53,10 @@ api.get('/user/me', (req, res) => {
   res.json(userDetails)
 })
 
+api.put('/user/me', (req, res) => {
+  res.json(userDetails)
+})
+
 api.get('/module/list', (req, res) => {
   mix(req, res, modulesReponse)
 })

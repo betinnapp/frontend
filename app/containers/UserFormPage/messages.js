@@ -46,6 +46,14 @@ const messages = defineMessages({
     id: `${scope}.no`,
     defaultMessage: 'Não',
   },
+  changesSuccessfullySaved: {
+    id: `${scope}.changesSuccessfullySaved`,
+    defaultMessage: 'Mudanças salvas com sucesso!',
+  },
+  anErrorOccurredWhileSavingYourInformation: {
+    id: `${scope}.anErrorOccurredWhileSavingYourInformation`,
+    defaultMessage: 'Ocorreu um erro enquanto salvamos suas informações, tente novamente mais tarde!',
+  },
 })
 
 export default {

@@ -56,7 +56,7 @@ function* answerQuiz(action) {
     })
   } catch (e) {
     yield put(
-      error({ message: messages.anErrorOcurredWhileSendingYourAnswer, autoDismiss: 5000 }),
+      error({ message: messages.anErrorOccurredWhileSendingYourAnswer, autoDismiss: 5000 }),
     )
   }
 }
@@ -76,7 +76,7 @@ function* completeSubmodule(action) {
 
     yield put(success({ message: messages.congratulationsSubmoduleCompleted, autoDismiss: 8000 }))
   } catch (e) {
-    yield put(error({ message: messages.anErrorOcurredWhileCompletingSubmodule, autoDismiss: 8000 }))
+    yield put(error({ message: messages.anErrorOccurredWhileCompletingSubmodule, autoDismiss: 8000 }))
   }
 }
 

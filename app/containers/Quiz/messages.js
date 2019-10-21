@@ -42,16 +42,16 @@ const messages = defineMessages({
     id: `${scope}.continue`,
     defaultMessage: 'Continuar',
   },
-  anErrorOcurredWhileSendingYourAnswer: {
-    id: `${scope}.anErrorOcurredWhileSendingYourAnswer`,
+  anErrorOccurredWhileSendingYourAnswer: {
+    id: `${scope}.anErrorOccurredWhileSendingYourAnswer`,
     defaultMessage: 'Um erro ocorreu enquanto tentavamos enviar sua resposta. Tente novamente mais tarde.',
   },
   congratulationsSubmoduleCompleted: {
     id: `${scope}.congratulationsSubmoduleCompleted`,
     defaultMessage: 'Parabéns, submódulo concluído!',
   },
-  anErrorOcurredWhileCompletingSubmodule: {
-    id: `${scope}.anErrorOcurredWhileCompletingSubmodule`,
+  anErrorOccurredWhileCompletingSubmodule: {
+    id: `${scope}.anErrorOccurredWhileCompletingSubmodule`,
     defaultMessage: 'Ocorreu um erro durante a ação de completar o submódulo, por favor complete o quiz novamente!',
   },
 })
