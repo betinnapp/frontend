@@ -21,14 +21,19 @@ import Button from 'components/Button'
 import ContentWrapper from 'components/ContentWrapper'
 import Header from 'components/Header'
 import InputField from 'components/InputField'
+import Loader from 'components/Loader'
 import SelectField from 'components/SelectField'
 import Title from 'components/Title'
 
-import { selectUserFormInitialValues } from './selectors'
+import {
+  selectUserFormInitialValues,
+  selectUserSaveIsLoading,
+} from './selectors'
 import reducer from './reducer'
 import saga from './saga'
 import messages from './messages'
 import { workOptions } from './constants'
+import { saveUser } from './actions'
 
 const StyledForm = styled(Form)`
   display: flex;
@@ -78,7 +83,7 @@ export function UserFormPage(props) {
         initialValues={props.initialValues}
         validationSchema={userFormSchema}
         onSubmit={(values, { setSubmitting }) => {
-          // console.log(values)
+          props.saveUser(values)
           setSubmitting(false)
         }}
         enableReinitialize // Needed because user information may delay to load
@@ -125,14 +130,16 @@ export function UserFormPage(props) {
             </div>
 
             <div className="footer">
-              <Button
-                type="submit"
-                id="save"
-                disabled={isSubmitting}
-                small
-              >
-                <FormattedMessage {...messages.save} />
-              </Button>
+              <Loader isLoading={props.isLoading}>
+                <Button
+                  type="submit"
+                  id="save"
+                  disabled={isSubmitting}
+                  small
+                >
+                  <FormattedMessage {...messages.save} />
+                </Button>
+              </Loader>
             </div>
           </StyledForm>
         )}
@@ -144,15 +151,20 @@ export function UserFormPage(props) {
 UserFormPage.propTypes = {
   initialValues: PropTypes.object.isRequired,
   intl: PropTypes.object.isRequired,
+  isLoading: PropTypes.bool,
+  saveUser: PropTypes.func,
 }
 
 const mapStateToProps = createStructuredSelector({
   initialValues: selectUserFormInitialValues,
+  isLoading: selectUserSaveIsLoading,
 })
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    saveUser: values => {
+      dispatch(saveUser(values))
+    },
   }
 }
 

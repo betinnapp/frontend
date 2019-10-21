@@ -4,15 +4,31 @@
  *
  */
 import produce from 'immer'
-import { DEFAULT_ACTION } from './constants'
+import {
+  SAVE_USER,
+  SAVE_USER_SUCCESS,
+  SAVE_USER_FAILURE,
+} from './constants'
 
-export const initialState = {}
+export const initialState = {
+  resource: {},
+  isLoading: false,
+  error: null,
+}
 
 /* eslint-disable default-case, no-param-reassign */
 const userFormPageReducer = (state = initialState, action) =>
-  produce(state, (/* draft */) => {
+  produce(state, draft => {
     switch (action.type) {
-      case DEFAULT_ACTION:
+      case SAVE_USER:
+        draft.isLoading = true
+        break
+      case SAVE_USER_SUCCESS:
+        draft.isLoading = false
+        break
+      case SAVE_USER_FAILURE:
+        draft.isLoading = false
+        draft.error = action.error
         break
     }
   })
