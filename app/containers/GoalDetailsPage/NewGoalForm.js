@@ -11,6 +11,7 @@ import InputField from 'components/InputField'
 import InvestmentPreview from 'components/InvestmentPreview'
 import SelectField from 'components/SelectField'
 import SliderField from 'components/SliderField'
+import Text from 'components/Text'
 
 import messages from './messages'
 
@@ -33,7 +34,7 @@ const SliderWrapper = styled.div`
 
 const initialValues = {
   investmentType: '',
-  duration: '',
+  duration: 1,
   name: '',
   depositTotal: '',
   monthlyDeposit: '',
@@ -108,6 +109,15 @@ function NewGoalForm(props) {
     }
   }
 
+  const renderDuration = value => (
+    <Text semiBold secondary>
+      <FormattedMessage
+        {...messages.monthCount}
+        values={{ months: value }}
+      />
+    </Text>
+  )
+
   return (
     <Formik
       initialValues={initialValues}
@@ -141,6 +151,7 @@ function NewGoalForm(props) {
                   label={messages.investmentTime}
                   min={selectedInvestment.minInvestmentMonthTime}
                 />
+                {renderDuration(values.duration)}
               </SliderWrapper>
               <InputField
                 type="text"
