@@ -9,8 +9,8 @@ import Button from 'components/Button'
 import CurrencyField from 'components/CurrencyField'
 import InputField from 'components/InputField'
 import InvestmentPreview from 'components/InvestmentPreview'
-import NumberField from 'components/NumberField'
 import SelectField from 'components/SelectField'
+import SliderField from 'components/SliderField'
 
 import messages from './messages'
 
@@ -26,6 +26,9 @@ const StyledForm = styled(Form)`
   .alignCenter {
     text-align: center;
   }
+`
+const SliderWrapper = styled.div`
+  text-align: center;
 `
 
 const initialValues = {
@@ -131,12 +134,14 @@ function NewGoalForm(props) {
                 name="investmentType"
                 options={props.investmentTypesOptions}
               />
-              <NumberField
-                id="duration"
-                name="duration"
-                label={messages.investmentTime}
-                min={selectedInvestment.minInvestmentMonthTime}
-              />
+              <SliderWrapper>
+                <SliderField
+                  id="duration"
+                  name="duration"
+                  label={messages.investmentTime}
+                  min={selectedInvestment.minInvestmentMonthTime}
+                />
+              </SliderWrapper>
               <InputField
                 type="text"
                 id="name"
