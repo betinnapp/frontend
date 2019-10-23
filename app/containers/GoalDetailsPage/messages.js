@@ -94,6 +94,14 @@ const messages = defineMessages({
     id: `${scope}.doYouWantToDeleteThisGoal`,
     defaultMessage: 'Deseja realmente deletar essa meta? Essa ação não pode ser desfeita.',
   },
+  monthCount: {
+    id: `${scope}.monthCount`,
+    defaultMessage: `{months, plural,
+      =0 {0 meses}
+      one {1 mês}
+      other {{months} meses}
+    }`,
+  },
 })
 
 export default {

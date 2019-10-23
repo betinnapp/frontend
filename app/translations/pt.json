@@ -26,6 +26,7 @@
   "app.containers.GoalDetailsPage.interestEarnedInThePeriod": "Juros ganho no período",
   "app.containers.GoalDetailsPage.investmentTime": "Tempo de investimento",
   "app.containers.GoalDetailsPage.investmentType": "Tipo de investimento",
+  "app.containers.GoalDetailsPage.monthCount": "{months, plural, =0 {0 meses} one {1 mês} other {{months} meses}}",
   "app.containers.GoalDetailsPage.monthlyDeposit": "Depósito mensal",
   "app.containers.GoalDetailsPage.netTotal": "Total líquido",
   "app.containers.GoalDetailsPage.saveAsGoal": "Salvar como meta",
