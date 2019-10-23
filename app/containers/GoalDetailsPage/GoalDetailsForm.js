@@ -22,13 +22,6 @@ const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  .buttonsContainer {
-    text-align: center;
-    > * {
-      margin-top: 12px;
-    }
-  }
 `
 
 const goalFormShape = yup.object().shape({
@@ -126,7 +119,7 @@ function GoalDetailsForm(props) {
                 min={null}
               />
             </div>
-            <div className="buttonsContainer">
+            <div className="bt-text-align-center">
               <div>
                 <Button
                   type="submit"

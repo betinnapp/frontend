@@ -20,10 +20,6 @@ const Wrapper = styled.div`
   overflow-y: overlay;
   text-align: center;
 
-  .content {
-    margin-top: 38px;
-  }
-
   .cardTitle {
     margin-bottom: 8px;
   }
@@ -106,7 +102,7 @@ function GoalsList(props) {
       <Title>
         <FormattedMessage {...messages.myGoals} />
       </Title>
-      <div className="content">
+      <div>
         {props.goalsList.map(renderGoalCard)}
       </div>
     </Wrapper>

@@ -23,10 +23,6 @@ const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  .alignCenter {
-    text-align: center;
-  }
 `
 const SliderWrapper = styled.div`
   text-align: center;
@@ -170,7 +166,7 @@ function NewGoalForm(props) {
                 label={messages.monthlyDeposit}
               />
             </div>
-            <div className="alignCenter">
+            <div className="bt-text-align-center">
               <Button
                 type="submit"
                 id="saveAsGoal"

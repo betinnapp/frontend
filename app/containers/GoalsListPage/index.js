@@ -34,10 +34,7 @@ export function GoalsListPage(props) {
   }, [])
 
   return (
-    <ContentWithHeader
-      gridTemplateRows={['auto', '1fr', 'auto']}
-      backTo={HOME_PATH}
-    >
+    <ContentWithHeader backTo={HOME_PATH}>
       <Loader isLoading={props.isLoading}>
         <GoalsList goalsList={props.goalsList} />
       </Loader>

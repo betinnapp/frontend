@@ -37,6 +37,7 @@ const StyledButton = styled.button`
   font-weight: bold;
   transition: ease 0.2s;
   cursor: pointer;
+  margin-bottom: 16px;
 
   &:hover {
     transform: scale(1.01);

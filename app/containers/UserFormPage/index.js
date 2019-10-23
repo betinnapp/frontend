@@ -39,14 +39,6 @@ const StyledForm = styled(Form)`
   flex-direction: column;
   justify-content: space-between;
   margin: 0 16px;
-
-  > * {
-    padding: 16px 0;
-  }
-
-  .footer {
-    text-align: center;
-  }
 `
 
 const userFormSchema = yup.object().shape({
@@ -125,7 +117,7 @@ export function UserFormPage(props) {
               />
             </div>
 
-            <div className="footer">
+            <div className="bt-text-align-center">
               <Loader isLoading={props.isLoading}>
                 <Button
                   type="submit"

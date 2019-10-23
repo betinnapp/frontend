@@ -12,8 +12,11 @@ import ContentWrapper from 'components/ContentWrapper'
 import Header from 'components/Header'
 
 const Wrapper = styled(ContentWrapper)`
-  padding-bottom: 16px;
   grid-template-columns: minmax(0, 980px);
+  overflow: hidden;
+  > *:not(:first-child) {
+    overflow-y: auto;
+  }
 `
 
 function ContentWithHeader(props) {
