@@ -12,9 +12,13 @@ import ContentWrapper from 'components/ContentWrapper'
 import Header from 'components/Header'
 
 const Wrapper = styled(ContentWrapper)`
-  grid-template-columns: minmax(0, 980px);
+  grid-template-columns: minmax(0, 1fr);
   overflow: hidden;
+
   > *:not(:first-child) {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1080px;
     overflow-y: auto;
   }
 `
@@ -28,7 +32,6 @@ function ContentWithHeader(props) {
       grid
       gridTemplateRows={['auto', '1fr']}
       noLateralMargins
-      justifyContent="center"
       {...rest}
     >
       <Header backTo={backTo} />

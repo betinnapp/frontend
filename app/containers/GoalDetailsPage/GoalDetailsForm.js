@@ -17,7 +17,6 @@ import messages from './messages'
 const StyledForm = styled(Form)`
   margin: 0 auto;
   padding: 0 24px;
-  max-width: 980px;
   height: 100%;
   display: flex;
   flex-direction: column;
