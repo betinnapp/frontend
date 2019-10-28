@@ -14,6 +14,7 @@ import { useInjectSaga } from 'utils/injectSaga'
 import { useInjectReducer } from 'utils/injectReducer'
 import { SUBMODULE_DETAILS_PATH } from 'containers/App/urls'
 import CardItem from 'components/CardItem'
+import ContentWithHeader from 'components/ContentWithHeader'
 import ContentWrapper from 'components/ContentWrapper'
 import Loader from 'components/Loader'
 
@@ -49,7 +50,7 @@ export function ModuleDetails(props) {
   }
 
   return (
-    <ContentWrapper fullHeight>
+    <ContentWithHeader>
       <Loader isLoading={props.isLoading}>
         <ContentWrapper flexbox flexWrap="wrap" justifyContent="space-around">
           {submodule.map(moduleItem => (
@@ -61,7 +62,7 @@ export function ModuleDetails(props) {
           ))}
         </ContentWrapper>
       </Loader>
-    </ContentWrapper>
+    </ContentWithHeader>
   )
 }
 

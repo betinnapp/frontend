@@ -42,7 +42,7 @@ function ContentWithHeader(props) {
 
 ContentWithHeader.propTypes = {
   children: PropTypes.node,
-  backTo: PropTypes.string.isRequired,
+  backTo: PropTypes.string,
 }
 
 export default ContentWithHeader
