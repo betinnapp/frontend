@@ -57,6 +57,7 @@ export function SubmoduleContent(props) {
     <ContentWithBanner
       isLoading={props.isLoading}
       image={submodule.image}
+      withBack
     >
       <Content>
         <Text huge bold>

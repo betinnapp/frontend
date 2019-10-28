@@ -8,6 +8,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import BackButton from 'components/BackButton'
 import ContentWrapper from 'components/ContentWrapper'
 import Loader from 'components/Loader'
 
@@ -43,7 +44,9 @@ function ContentWithBanner(props) {
       noLateralMargins
     >
       <Loader isLoading={isLoading}>
-        <Banner image={image} miniBanner={miniBanner} />
+        <Banner image={image} miniBanner={miniBanner}>
+          {props.withBack && (<BackButton white />)}
+        </Banner>
         <Content>{children}</Content>
       </Loader>
     </ContentWrapper>
@@ -55,6 +58,7 @@ ContentWithBanner.propTypes = {
   image: PropTypes.string,
   isLoading: PropTypes.bool,
   miniBanner: PropTypes.bool,
+  withBack: PropTypes.bool,
 }
 
 export default ContentWithBanner
