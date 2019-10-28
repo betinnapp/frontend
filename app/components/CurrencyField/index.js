@@ -55,7 +55,7 @@ const Wrapper = styled.div`
 
 function CurrencyField(props) {
   const { formik, name } = props
-  const value = getIn(formik.values, name)
+  const value = getIn(formik.values, name) || 0
 
   const handleRemoveClick = () => {
     formik.setFieldValue(name, value - 100)

@@ -92,11 +92,11 @@ function InputField({
 
   return (
     <Wrapper error={touch && error} showPrefix={showPrefix}>
-      {showPrefix && (
+      {showPrefix ? (
         <div className="prefix">
           {prefix}
         </div>
-      )}
+      ) : null}
       <Field name={name} {...props} autoComplete="off" placeholder=" " />
 
       <Label className="label" label={label} />
