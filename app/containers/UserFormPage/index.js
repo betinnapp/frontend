@@ -18,8 +18,7 @@ import { useInjectSaga } from 'utils/injectSaga'
 import { useInjectReducer } from 'utils/injectReducer'
 import { HOME_PATH } from 'containers/App/urls'
 import Button from 'components/Button'
-import ContentWrapper from 'components/ContentWrapper'
-import Header from 'components/Header'
+import ContentWithHeader from 'components/ContentWithHeader'
 import InputField from 'components/InputField'
 import Loader from 'components/Loader'
 import SelectField from 'components/SelectField'
@@ -40,14 +39,6 @@ const StyledForm = styled(Form)`
   flex-direction: column;
   justify-content: space-between;
   margin: 0 16px;
-
-  > * {
-    padding: 16px 0;
-  }
-
-  .footer {
-    text-align: center;
-  }
 `
 
 const userFormSchema = yup.object().shape({
@@ -69,13 +60,10 @@ export function UserFormPage(props) {
   }))
 
   return (
-    <ContentWrapper
-      fullHeight
-      grid
+    <ContentWithHeader
+      backTo={HOME_PATH}
       gridTemplateRows={['auto', 'auto', '1fr']}
-      noLateralMargins
     >
-      <Header backTo={HOME_PATH} />
       <Title>
         <FormattedMessage {...messages.personalInformation} />
       </Title>
@@ -129,7 +117,7 @@ export function UserFormPage(props) {
               />
             </div>
 
-            <div className="footer">
+            <div className="bt-text-align-center">
               <Loader isLoading={props.isLoading}>
                 <Button
                   type="submit"
@@ -144,7 +132,7 @@ export function UserFormPage(props) {
           </StyledForm>
         )}
       </Formik>
-    </ContentWrapper>
+    </ContentWithHeader>
   )
 }
 

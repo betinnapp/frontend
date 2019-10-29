@@ -9,7 +9,6 @@ const FlexboxContent = css`
   display: flex;
   flex-wrap: ${props => props.flexWrap};
   flex-direction: ${props => props.flexDirection};
-  justify-content: ${props => props.justifyContent};
   align-items: ${props => props.alignItems};
 `
 const FullHeight = css`
@@ -20,6 +19,8 @@ const NoLateralMargins = css`
 `
 
 const ContentWrapper = styled.div`
+  justify-content: ${props => props.justifyContent};
+
   ${props => props.grid && GridContent}
   ${props => props.flexbox && FlexboxContent}
   ${props => props.fullHeight && FullHeight}

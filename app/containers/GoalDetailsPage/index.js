@@ -13,8 +13,7 @@ import { compose } from 'redux'
 import { useInjectSaga } from 'utils/injectSaga'
 import { useInjectReducer } from 'utils/injectReducer'
 import { GOALS_LIST_PATH } from 'containers/App/urls'
-import ContentWrapper from 'components/ContentWrapper'
-import Header from 'components/Header'
+import ContentWithHeader from 'components/ContentWithHeader'
 
 import reducer from './reducer'
 import saga from './saga'
@@ -49,13 +48,7 @@ export function GoalDetailsPage(props) {
   }, [])
 
   return (
-    <ContentWrapper
-      fullHeight
-      grid
-      gridTemplateRows={['auto', '1fr']}
-      noLateralMargins
-    >
-      <Header backTo={GOALS_LIST_PATH} />
+    <ContentWithHeader backTo={GOALS_LIST_PATH}>
       <div>
         {goalId ? (
           <GoalDetailsForm
@@ -72,7 +65,7 @@ export function GoalDetailsPage(props) {
           />
         )}
       </div>
-    </ContentWrapper>
+    </ContentWithHeader>
   )
 }
 

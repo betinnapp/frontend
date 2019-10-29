@@ -33,9 +33,6 @@ const Content = styled.div`
     width: 100%;
   }
 `
-const QuizArea = styled.div`
-  text-align: center;
-`
 
 export function SubmoduleContent(props) {
   useInjectSaga({ key: 'submoduleContent', saga })
@@ -60,6 +57,7 @@ export function SubmoduleContent(props) {
     <ContentWithBanner
       isLoading={props.isLoading}
       image={submodule.image}
+      withBack
     >
       <Content>
         <Text huge bold>
@@ -69,14 +67,14 @@ export function SubmoduleContent(props) {
         <div // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: submodule.content }}
         />
-        <QuizArea>
+        <div className="bt-text-align-center">
           <Button
             id="startQuiz"
             onClick={startQuizOnClickHandler}
           >
             <FormattedMessage {...messages.startQuiz} />
           </Button>
-        </QuizArea>
+        </div>
       </Content>
     </ContentWithBanner>
   )

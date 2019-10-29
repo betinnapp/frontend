@@ -16,19 +16,11 @@ import messages from './messages'
 
 const StyledForm = styled(Form)`
   margin: 0 auto;
-  padding: 24px;
-  max-width: 980px;
+  padding: 0 24px;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  .buttonsContainer {
-    text-align: center;
-    > * {
-      margin-top: 12px;
-    }
-  }
 `
 
 const goalFormShape = yup.object().shape({
@@ -126,7 +118,7 @@ function GoalDetailsForm(props) {
                 min={null}
               />
             </div>
-            <div className="buttonsContainer">
+            <div className="bt-text-align-center">
               <div>
                 <Button
                   type="submit"

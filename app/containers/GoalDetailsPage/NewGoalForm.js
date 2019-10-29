@@ -17,16 +17,11 @@ import messages from './messages'
 
 const StyledForm = styled(Form)`
   margin: 0 auto;
-  padding: 24px;
-  max-width: 980px;
+  padding: 0 24px;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  .alignCenter {
-    text-align: center;
-  }
 `
 const SliderWrapper = styled.div`
   text-align: center;
@@ -170,7 +165,7 @@ function NewGoalForm(props) {
                 label={messages.monthlyDeposit}
               />
             </div>
-            <div className="alignCenter">
+            <div className="bt-text-align-center">
               <Button
                 type="submit"
                 id="saveAsGoal"

@@ -13,6 +13,7 @@ import Text from 'components/Text'
 const Wrapper = styled(Text)`
   text-align: center;
   font-size: 24px;
+  margin-bottom: 16px;
 `
 
 function Title({ children }) {

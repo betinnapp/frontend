@@ -14,13 +14,14 @@ import history from 'utils/history'
 const ButtonWrapper = styled.button`
   font-size: 36px;
   cursor: pointer;
-  padding: none;
+  padding: 0 6px;
   border: none;
   outline: none;
   background: none;
+  color: ${props => props.white && '#fff'};
 `
 
-function BackButton({ backTo }) {
+function BackButton({ backTo, white }) {
   const onClickHandler = () => {
     if (backTo) {
       history.push(backTo)
@@ -30,7 +31,7 @@ function BackButton({ backTo }) {
   }
 
   return (
-    <ButtonWrapper onClick={onClickHandler}>
+    <ButtonWrapper onClick={onClickHandler} white={white}>
       <FontAwesomeIcon icon="angle-left" />
     </ButtonWrapper>
   )
@@ -38,6 +39,7 @@ function BackButton({ backTo }) {
 
 BackButton.propTypes = {
   backTo: PropTypes.string,
+  white: PropTypes.bool,
 }
 
 export default BackButton

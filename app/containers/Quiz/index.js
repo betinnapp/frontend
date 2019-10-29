@@ -71,6 +71,7 @@ export function Quiz(props) {
       isLoading={props.isLoading}
       image={submodule.image}
       miniBanner
+      withBack
     >
       <Text huge bold>
         {submodule.name}

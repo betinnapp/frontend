@@ -43,9 +43,6 @@ const QuestionWrapper = styled.div`
   overflow-y: auto;
   padding: 0 16px;
 `
-const SubmitWrapper = styled.div`
-  margin-bottom: 8px;
-`
 
 export function RegisterPage(props) {
   useInjectReducer({ key: 'registerPage', reducer })
@@ -110,11 +107,11 @@ export function RegisterPage(props) {
     )
   } else {
     content = (
-      <SubmitWrapper className="bt-text-align-center">
+      <div className="bt-text-align-center">
         <Button id="finishRegister" onClick={props.finishQuestions}>
           <FormattedMessage {...messages.finishRegister} />
         </Button>
-      </SubmitWrapper>
+      </div>
     )
   }
 

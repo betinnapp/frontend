@@ -43,15 +43,6 @@ const Wrapper = styled(ContentWrapper)`
       width: 45px;
     }
   }
-
-  .footer {
-    text-align: center;
-    margin-bottom: 16px;
-
-    > * {
-      margin-top: 16px;
-    }
-  }
 `
 
 const UserIcon = styled(FontAwesomeIcon)`
@@ -105,7 +96,7 @@ export function WelcomePage(props) {
             )}
         </Loader>
       </QuickModulesListWrapper>
-      <div className="footer">
+      <div className="bt-text-align-center">
         <div>
           <Button id="seeAvailableModules" link={MODULES_PATH} small>
             <FormattedMessage {...messages.seeAvailableModules} />

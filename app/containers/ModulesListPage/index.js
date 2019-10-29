@@ -6,6 +6,7 @@
 
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import { createStructuredSelector } from 'reselect'
@@ -13,8 +14,9 @@ import { compose } from 'redux'
 
 import { useInjectSaga } from 'utils/injectSaga'
 import { useInjectReducer } from 'utils/injectReducer'
-import { MODULE_DETAILS_PATH } from 'containers/App/urls'
+import { HOME_PATH, MODULE_DETAILS_PATH } from 'containers/App/urls'
 import CardItem from 'components/CardItem'
+import ContentWithHeader from 'components/ContentWithHeader'
 import ContentWrapper from 'components/ContentWrapper'
 import history from 'utils/history'
 import Loader from 'components/Loader'
@@ -28,6 +30,10 @@ import {
 import reducer from './reducer'
 import saga from './saga'
 import messages from './messages'
+
+const CardsWrapper = styled(ContentWrapper)`
+  margin: 0 16px;
+`
 
 export function ModulesListPage(props) {
   useInjectReducer({ key: 'modulesListPage', reducer })
@@ -43,23 +49,27 @@ export function ModulesListPage(props) {
   }
 
   return (
-    <ContentWrapper fullHeight>
+    <ContentWithHeader backTo={HOME_PATH}>
       <Loader isLoading={props.isLoading}>
-        {props.error && (
+        {props.error ? (
           <FormattedMessage {...messages.unableToLoadModulesList} />
-        )}
-        <ContentWrapper flexbox flexWrap="wrap" justifyContent="space-around">
-          {!props.error &&
-            props.modules.map(moduleItem => (
+        ) : (
+          <CardsWrapper
+            flexbox
+            flexWrap="wrap"
+            justifyContent="space-around"
+          >
+            {props.modules.map(moduleItem => (
               <CardItem
                 key={moduleItem.id}
                 {...moduleItem}
                 onClick={onCardClickHandler}
               />
             ))}
-        </ContentWrapper>
+          </CardsWrapper>
+        )}
       </Loader>
-    </ContentWrapper>
+    </ContentWithHeader>
   )
 }
 
