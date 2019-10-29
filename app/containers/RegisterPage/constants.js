@@ -46,13 +46,28 @@ export const REGISTER_QUESTIONS = [
     choices: [true, false],
   },
   {
+    id: 'QUESTION_PLAN_YOUR_BILLS',
+    type: 'CHOICE',
+    choices: [true, false],
+    scoreOnChoice: [
+      {
+        answer: true,
+        score: 1,
+      },
+      {
+        answer: false,
+        score: 0.5,
+      },
+    ],
+  },
+  {
     id: 'QUESTION_ALREADY_INVESTED',
     type: 'CHOICE',
     choices: [true, false],
     scoreOnChoice: [
       {
         answer: true,
-        score: 2,
+        score: 1,
       },
     ],
     questionOnAnswer: [
@@ -66,6 +81,10 @@ export const REGISTER_QUESTIONS = [
             answer: true,
             score: 1,
           },
+          {
+            answer: false,
+            score: 0.5,
+          },
         ],
       },
     ],
@@ -78,6 +97,40 @@ export const REGISTER_QUESTIONS = [
       {
         answer: 'LETS_DO_THIS',
         score: 1,
+      },
+      {
+        answer: 'NEVER_DO_THIS',
+        score: 0.5,
+      },
+    ],
+  },
+  {
+    id: 'QUESTION_PREFER_SECURITY_OR_PROFIT',
+    type: 'CHOICE',
+    choices: ['SECURITY', 'PROFIT'],
+    scoreOnChoice: [
+      {
+        answer: 'SECURITY',
+        score: 1,
+      },
+      {
+        answer: 'PROFIT',
+        score: 1,
+      },
+    ],
+  },
+  {
+    id: 'QUESTION_KNOW_THE_DIFFERENCE_BETWEEN_CDB_AND_CDI',
+    type: 'CHOICE',
+    choices: [true, false],
+    scoreOnChoice: [
+      {
+        answer: true,
+        score: 1,
+      },
+      {
+        answer: false,
+        score: 0.5,
       },
     ],
   },
