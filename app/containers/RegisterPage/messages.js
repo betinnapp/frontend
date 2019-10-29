@@ -38,6 +38,14 @@ const messages = defineMessages({
     id: `${scope}.NEVER_DO_THIS`,
     defaultMessage: 'Tenho medo',
   },
+  SECURITY: {
+    id: `${scope}.SECURITY`,
+    defaultMessage: 'Segurança',
+  },
+  PROFIT: {
+    id: `${scope}.PROFIT`,
+    defaultMessage: 'Rendimento',
+  },
   QUESTION_FIRST_NAME: {
     id: `${scope}.QUESTION_FIRST_NAME`,
     defaultMessage: 'Qual o seu nome?',
@@ -62,6 +70,10 @@ const messages = defineMessages({
     id: `${scope}.QUESTION_WORK`,
     defaultMessage: 'Você trabalha?',
   },
+  QUESTION_PLAN_YOUR_BILLS: {
+    id: `${scope}.QUESTION_PLAN_YOUR_BILLS`,
+    defaultMessage: 'Você planeja seus gastos hoje?',
+  },
   QUESTION_INVESTMENT_TODAY: {
     id: `${scope}.QUESTION_INVESTMENT_TODAY`,
     defaultMessage: 'Você investe hoje?',
@@ -74,6 +86,14 @@ const messages = defineMessages({
     id: `${scope}.QUESTION_THOUGHT_ABOUT_INVESTING_OUT_OF_USUAL_BANK`,
     defaultMessage:
       'O que pensa logo que ouve sobre investir seu dinheiro fora da poupança?',
+  },
+  QUESTION_PREFER_SECURITY_OR_PROFIT: {
+    id: `${scope}.QUESTION_PREFER_SECURITY_OR_PROFIT`,
+    defaultMessage: 'Se fosse investir agora, o que lhe importa mais, segurança ou rendimento?',
+  },
+  QUESTION_KNOW_THE_DIFFERENCE_BETWEEN_CDB_AND_CDI: {
+    id: `${scope}.QUESTION_KNOW_THE_DIFFERENCE_BETWEEN_CDB_AND_CDI`,
+    defaultMessage: 'Sabe a diferença entre CDB e CDI?',
   },
   finishRegister: {
     id: `${scope}.finishRegister`,
