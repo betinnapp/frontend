@@ -59,9 +59,14 @@ export function AnswerArea({ question, answerQuestion }) {
 
   const getValidationForFieldType = inputType => {
     switch (inputType) {
-      case 'EMAIL':
-      case 'DATE':
-      case 'TEXT':
+      case 'date':
+        return yup
+          .date()
+          .min(new Date('1900-01-01'), messages.needToBeMoreRecentDate)
+          .max(new Date(), messages.smallerThanActualDate)
+          .required(messages.required)
+      case 'email':
+      case 'text':
       default:
         return yup.string().required(messages.required)
     }

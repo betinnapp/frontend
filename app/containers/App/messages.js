@@ -34,4 +34,12 @@ export default defineMessages({
     id: `${scope}.required`,
     defaultMessage: 'Obrigatório',
   },
+  needToBeMoreRecentDate: {
+    id: `${scope}.needToBeMoreRecentDate`,
+    defaultMessage: 'Data precisa ser mais recente',
+  },
+  smallerThanActualDate: {
+    id: `${scope}.smallerThanActualDate`,
+    defaultMessage: 'Data precisa menor que a data atual',
+  },
 })

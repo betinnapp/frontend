@@ -46,7 +46,11 @@ const userFormSchema = yup.object().shape({
   lastName: yup.string().required(messages.required),
   shortName: yup.string().required(messages.required),
   email: yup.string().required(messages.required),
-  birthDate: yup.string().required(messages.required),
+  birthDate: yup
+    .date()
+    .min(new Date('1900-01-01'), messages.needToBeMoreRecentDate)
+    .max(new Date(), messages.smallerThanActualDate)
+    .required(messages.required),
   work: yup.string().required(messages.required),
 })
 
