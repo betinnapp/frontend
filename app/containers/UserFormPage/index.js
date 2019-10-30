@@ -38,7 +38,7 @@ const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 0 16px;
+  padding: 0 24px;
 `
 
 const userFormSchema = yup.object().shape({
