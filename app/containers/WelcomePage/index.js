@@ -116,11 +116,6 @@ export function WelcomePage(props) {
             <FormattedMessage {...messages.seeGoals} />
           </Button>
         </div>
-        <div>
-          <Button id="getCoins" onClick={props.fetchCoins}>
-            Clik nimin pra pega mueda
-          </Button>
-        </div>
       </div>
     </Wrapper>
   )
@@ -146,9 +141,6 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchQuickModulesList: () => {
       dispatch(fetchQuickModulesList())
-    },
-    fetchCoins: () => {
-      dispatch(fetchCoins())
     },
   }
 }

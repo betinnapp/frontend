@@ -26,6 +26,7 @@ import WelcomePage from 'containers/WelcomePage'
 import GoalsListPage from 'containers/GoalsListPage'
 import GoalDetailsPage from 'containers/GoalDetailsPage'
 import UserFormPage from 'containers/UserFormPage'
+import ThanosT7 from 'containers/ThanosT7'
 
 import { useInjectSaga } from 'utils/injectSaga'
 import { isLoggedIn } from 'utils/auth'
@@ -69,6 +70,7 @@ export function App(props) {
         <Route exact path={urls.GOALS_LIST_PATH} component={GoalsListPage} />
         <Route exact path={urls.GOAL_DETAILS_PATH} component={GoalDetailsPage} />
         <Route exact path={urls.USER_PATH} component={UserFormPage} />
+        <Route exact path="/thanos" component={ThanosT7} />
         <Route component={NotFoundPage} />
       </Switch>
     </AppWrapper>
