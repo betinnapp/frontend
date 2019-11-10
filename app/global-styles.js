@@ -19,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100%;
     min-width: 100%;
     font-size: 14px;
+    display: flex;
   }
 
   p,

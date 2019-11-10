@@ -37,7 +37,7 @@ import { fetchUserInformation } from './actions'
 import saga from './saga'
 
 const AppWrapper = styled.div`
-  height: 100vh;
+  flex: 1;
   margin: 0 auto;
   padding: 0 16px;
 `

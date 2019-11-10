@@ -19,6 +19,7 @@ const Wrapper = styled.div`
   left: 0;
   right: 0;
   margin: 0 auto;
+  z-index: 1000;
 `
 
 const NotificationItem = styled(animated.div)`

@@ -29,6 +29,10 @@ const Wrapper = styled.div`
   > *:first-child {
     justify-self: start;
   }
+
+  .growingImg {
+    margin: 16px auto;
+  }
 `
 
 export default function HomePage() {
@@ -37,7 +41,7 @@ export default function HomePage() {
       <Slogan />
 
       <div>
-        <img src={stat} alt="Stats" />
+        <img className="growingImg" src={stat} alt="Stats" />
         <Text bold fontSize="18">
           <FormattedMessage {...messages.learnToManagerYourFinances} />
         </Text>
