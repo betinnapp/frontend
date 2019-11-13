@@ -25,6 +25,9 @@ export function ThanosT7(props) {
 
   return (
     <div>
+      <h2>
+        GETs
+      </h2>
       <div>
         <Button id="fetchCoinsBtn" onClick={props.fetchCoins}>
           Fetch Coins
@@ -49,6 +52,27 @@ export function ThanosT7(props) {
           {JSON.stringify(props.health)}
         </div>
       </div>
+      <h2>
+        POSTs
+      </h2>
+      <div>
+        <Button id="createUserInMacedo" onClick={props.createUserMacedo}>
+          POST User Macedo
+        </Button>
+      </div>
+      <div>
+        <Button id="createUserInAna" onClick={props.createUserAna}>
+          POST User Ana
+        </Button>
+      </div>
+      <div>
+        <Button id="fetchAnaUsers" onClick={props.fetchAnaUsers}>
+          GET Users Ana
+        </Button>
+        <div>
+          {JSON.stringify(props.anaUsers)}
+        </div>
+      </div>
     </div>
   )
 }
@@ -57,15 +81,20 @@ ThanosT7.propTypes = {
   fetchCoins: PropTypes.func.isRequired,
   fetchNotification: PropTypes.func.isRequired,
   fetchHealthCheck: PropTypes.func.isRequired,
+  createUserMacedo: PropTypes.func.isRequired,
+  createUserAna: PropTypes.func.isRequired,
+  fetchAnaUsers: PropTypes.func.isRequired,
   coins: PropTypes.object,
   notification: PropTypes.object,
   health: PropTypes.object,
+  anaUsers: PropTypes.object,
 }
 
 const mapStateToProps = createStructuredSelector({
   coins: selectResponse('coins'),
   notification: selectResponse('notification'),
   health: selectResponse('health'),
+  anaUsers: selectResponse('anaUsers'),
 })
 
 function mapDispatchToProps(dispatch) {
@@ -88,6 +117,41 @@ function mapDispatchToProps(dispatch) {
     },
     fetchHealthCheck: () => {
       dispatch(fetchApi('http://54.207.126.218:8080/health', 'health'))
+    },
+    createUserMacedo: () => {
+      dispatch(fetchApi(
+        'https://cors-anywhere.herokuapp.com/http://3jobs-api.azurewebsites.net/users',
+        'macedao',
+        {
+          data: {
+            name: 'Zeca Pacotinho',
+            email: 'zeca-pacotinho@email.com',
+            password: 'Senha123!',
+            roles: [0],
+            profile: {
+              name: 'zeca-pacotinho',
+            },
+          },
+        },
+        'POST'
+      ))
+    },
+    createUserAna: () => {
+      dispatch(fetchApi(
+        'https://pagae-api.herokuapp.com/auth/signup',
+        'ana',
+        {
+          data: {
+            name: 'Zeca Pacotinho',
+            cellphone: '+5518985011111',
+            password: 'Senha123!',
+          },
+        },
+        'POST',
+      ))
+    },
+    fetchAnaUsers: () => {
+      dispatch(fetchApi('https://pagae-api.herokuapp.com/users', 'anaUsers'))
     },
   }
 }

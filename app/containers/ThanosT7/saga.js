@@ -8,7 +8,7 @@ import { fetchApiSuccess } from './actions'
 function* fetchApi(action) {
   try {
     const response = yield call(request, action.url, {
-      method: 'GET',
+      method: action.method,
       ...action.options,
     })
 

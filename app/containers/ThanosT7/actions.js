@@ -6,12 +6,13 @@
 
 import { FETCH_API, FETCH_API_SUCCESS } from './constants'
 
-export function fetchApi(url, stateKey, options) {
+export function fetchApi(url, stateKey, options, method = 'GET') {
   return {
     type: FETCH_API,
     url,
     stateKey,
     options,
+    method,
   }
 }
 
