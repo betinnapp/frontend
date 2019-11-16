@@ -33,6 +33,9 @@ const Content = styled.div`
     width: 100%;
   }
 `
+const Title = styled(Text)`
+  text-align: left;
+`
 
 export function SubmoduleContent(props) {
   useInjectSaga({ key: 'submoduleContent', saga })
@@ -60,9 +63,9 @@ export function SubmoduleContent(props) {
       withBack
     >
       <Content>
-        <Text huge bold>
+        <Title huge bold>
           {submodule.name}
-        </Text>
+        </Title>
         {/* TODO: Found a better solution to render html coming from backend? */}
         <div // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: submodule.content }}
