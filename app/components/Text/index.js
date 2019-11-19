@@ -65,6 +65,7 @@ const Text = styled.p`
 
   font-size: 1em;
   color: #000000;
+  text-align: justify;
 
   ${props => props.huge && HugeText}
   ${props => props.big && BigText}

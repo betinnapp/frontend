@@ -17,9 +17,6 @@ const StatusText = styled(Text)`
   text-align: right;
   min-width: 30px;
 `
-const ModuleText = styled(Text)`
-  text-align: left;
-`
 
 function QuickModulesList(props) {
   const renderModuleStatus = moduleItem => {
@@ -61,9 +58,9 @@ function QuickModulesList(props) {
             justifyContent="space-between"
             alignItems="center"
           >
-            <ModuleText bold>
+            <Text bold>
               {moduleItem.name}
-            </ModuleText>
+            </Text>
             {renderModuleStatus(moduleItem)}
           </ContentWrapper>
         </SmallCardContainer>
