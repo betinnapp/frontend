@@ -10,8 +10,8 @@ import { error, success } from 'react-notification-system-redux'
 import history from 'utils/history'
 import request from 'utils/request'
 import {
-  SURVEY_API_URL,
-  SURVEY_QUESTION_ANSWER_API_URL,
+  SURVEYS_API_PATH,
+  SURVEYS_QUESTION_ANSWER_API_URL,
   SUBMODULE_COMPLETED_API_URL,
 } from 'containers/App/urls'
 import { selectSelectedId } from 'containers/App/selectors'
@@ -26,7 +26,7 @@ import messages from './messages'
 
 function* fetchQuiz(action) {
   try {
-    const url = SURVEY_API_URL.replace(':surveyId', action.quizId)
+    const url = SURVEYS_API_PATH.replace(':surveyId', action.quizId)
 
     const response = yield call(request, url, {
       method: 'GET',
@@ -46,7 +46,7 @@ function* answerQuiz(action) {
     const { questionId, optionId } = action
     const quizId = yield select(selectSelectedId('quizId'))
 
-    const url = SURVEY_QUESTION_ANSWER_API_URL
+    const url = SURVEYS_QUESTION_ANSWER_API_URL
       .replace(':surveyId', quizId)
       .replace(':questionId', questionId)
 
