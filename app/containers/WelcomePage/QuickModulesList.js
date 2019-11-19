@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import { FormattedMessage } from 'react-intl'
 
 import history from 'utils/history'
@@ -11,6 +12,14 @@ import SmallCardContainer from 'components/SmallCardContainer'
 import Text from 'components/Text'
 
 import messages from './messages'
+
+const StatusText = styled(Text)`
+  text-align: right;
+  min-width: 30px;
+`
+const ModuleText = styled(Text)`
+  text-align: left;
+`
 
 function QuickModulesList(props) {
   const renderModuleStatus = moduleItem => {
@@ -25,9 +34,9 @@ function QuickModulesList(props) {
     ).length
 
     return (
-      <Text bold medium greyDark>
+      <StatusText bold medium greyDark>
         {`${completedSubmodulesLength}/${submodule.length}`}
-      </Text>
+      </StatusText>
     )
   }
 
@@ -52,9 +61,9 @@ function QuickModulesList(props) {
             justifyContent="space-between"
             alignItems="center"
           >
-            <Text bold>
+            <ModuleText bold>
               {moduleItem.name}
-            </Text>
+            </ModuleText>
             {renderModuleStatus(moduleItem)}
           </ContentWrapper>
         </SmallCardContainer>
