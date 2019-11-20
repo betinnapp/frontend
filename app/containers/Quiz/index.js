@@ -11,6 +11,7 @@ import { selectSelectedId } from 'containers/App/selectors'
 import { deleteSelectedId } from 'containers/App/actions'
 import { HOME_PATH, SUBMODULE_DETAILS_PATH } from 'containers/App/urls'
 import { selectSubmoduleContent } from 'containers/SubmoduleContent/selectors'
+import { StatusType } from 'containers/App/enums'
 import ContentWithBanner from 'components/ContentWithBanner'
 
 import {
@@ -43,6 +44,7 @@ export function Quiz(props) {
     match: {
       params: { moduleId, submoduleId },
     },
+    history,
   } = props
 
   useEffect(() => {
@@ -53,7 +55,7 @@ export function Quiz(props) {
         .replace(':moduleId', moduleId)
         .replace(':submoduleId', submoduleId)
 
-      props.history.replace(url)
+      history.replace(url)
     }
 
     return function cleanup() {
@@ -62,7 +64,11 @@ export function Quiz(props) {
   }, [])
 
   const completeSubmoduleHandler = () => {
-    props.completeSubmodule(moduleId, submoduleId)
+    if (submodule.status === StatusType.COMPLETED) {
+      history.push(HOME_PATH)
+    } else {
+      props.completeSubmodule(moduleId, submoduleId)
+    }
   }
 
   return (

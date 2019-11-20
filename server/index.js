@@ -77,11 +77,11 @@ api.post('/module/:moduleId/submodule/:submoduleId/completed', (req, res) => {
   res.status(200).send({ status: 'ok' })
 })
 
-api.get('/survey/:surveyId', (req, res) => {
+api.get('/surveys/:surveyId', (req, res) => {
   res.json(survey)
 })
 
-api.post('/survey/:surveyId/question/:questionId:answer', (req, res) => {
+api.post('/questions/:questionId:answer', (req, res) => {
   res.status(200).send({ status: 'ok' })
 })
 

@@ -22,10 +22,6 @@ const validationSchema = yup.object().shape({
   optionId: yup.string().required(messages.anOptionIsRequired),
 })
 
-const initialValues = {
-  optionId: '',
-}
-
 function QuizContent({
   id,
   text,
@@ -34,8 +30,13 @@ function QuizContent({
   goToNextQuestion,
   isLastQuestion,
   correctOptionId,
+  answeredOptionId,
 }) {
   const [submitted, setSubmitted] = useState(false)
+
+  const initialValues = {
+    optionId: answeredOptionId || '',
+  }
 
   useEffect(() => {
     setSubmitted(false)
@@ -54,6 +55,7 @@ function QuizContent({
         onSubmitQuiz(id, optionId)
         setSubmitted(true)
       }}
+      enableReinitialize
     >
       {({
         isSubmitting,
@@ -70,9 +72,9 @@ function QuizContent({
             name="optionId"
             submitted={submitted}
             correctOption={correctOptionId}
-            disabled={isSubmitting || submitted}
+            disabled={isSubmitting || submitted || !!answeredOptionId}
           />
-          {submitted ? (
+          {submitted || answeredOptionId ? (
             <Button
               id="nextQuestion"
               onClick={() => {
@@ -105,6 +107,7 @@ QuizContent.propTypes = {
   goToNextQuestion: PropTypes.func.isRequired,
   isLastQuestion: PropTypes.bool.isRequired,
   correctOptionId: PropTypes.string,
+  answeredOptionId: PropTypes.string,
 }
 
 export default QuizContent
