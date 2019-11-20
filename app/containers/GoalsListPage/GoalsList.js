@@ -22,6 +22,7 @@ const Wrapper = styled.div`
 
   .cardTitle {
     margin-bottom: 8px;
+    text-align: justify;
   }
 
   .cardFooter {

@@ -26,7 +26,7 @@ function RadioButtonGroup({
 }) {
   return (
     <Wrapper>
-      <Text big>{label}</Text>
+      <Text big bold>{label}</Text>
       {options.map(option => (
         <Field
           key={option.id}

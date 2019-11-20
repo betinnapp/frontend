@@ -33,9 +33,9 @@ function QuizContent({
   onSubmitQuiz,
   goToNextQuestion,
   isLastQuestion,
+  correctOptionId,
 }) {
   const [submitted, setSubmitted] = useState(false)
-  const correctOptionId = options.find(option => option.isCorrectAnswer).id
 
   useEffect(() => {
     setSubmitted(false)
@@ -104,6 +104,7 @@ QuizContent.propTypes = {
   onSubmitQuiz: PropTypes.func.isRequired,
   goToNextQuestion: PropTypes.func.isRequired,
   isLastQuestion: PropTypes.bool.isRequired,
+  correctOptionId: PropTypes.string,
 }
 
 export default QuizContent

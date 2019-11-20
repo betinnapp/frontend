@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import Text from 'components/Text'
 
 const Label = styled.label`
+  font-size: 16px;
   margin-left: 16px;
   cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
 `

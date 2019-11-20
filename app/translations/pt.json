@@ -50,7 +50,7 @@
   "app.containers.Quiz.anErrorOccurredWhileSendingYourAnswer": "Um erro ocorreu enquanto tentavamos enviar sua resposta. Tente novamente mais tarde.",
   "app.containers.Quiz.anOptionIsRequired": "Selecionar uma opção é obrigatório",
   "app.containers.Quiz.answerSavedSuccessfully": "Resposta salva com sucesso!",
-  "app.containers.Quiz.answersResult": "Acertou {correctAnswersCount} questões de {questionsCount}.",
+  "app.containers.Quiz.answersResult": "Acertou {correctAnswersCount} {correctAnswersCount, plural, one {questão} other {questões}} de {questionsCount}.",
   "app.containers.Quiz.confirmAnswer": "Confirmar Resposta",
   "app.containers.Quiz.congratulationsSubmoduleCompleted": "Parabéns, submódulo concluído!",
   "app.containers.Quiz.continue": "Continuar",

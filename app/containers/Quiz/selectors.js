@@ -35,10 +35,8 @@ const selectCorrectAnswersCount = createSelector(
   (answers, questions) => {
     let count = 0
 
-    questions.forEach(({ id, options }) => {
-      const correctAnswerId = options.find(option => option.isCorrectAnswer).id
-
-      if (answers[id] === correctAnswerId) {
+    questions.forEach(({ id, correctOptionId }) => {
+      if (answers[id] === correctOptionId) {
         count += 1
       }
     })

@@ -12,7 +12,6 @@ import { deleteSelectedId } from 'containers/App/actions'
 import { HOME_PATH, SUBMODULE_DETAILS_PATH } from 'containers/App/urls'
 import { selectSubmoduleContent } from 'containers/SubmoduleContent/selectors'
 import ContentWithBanner from 'components/ContentWithBanner'
-import Text from 'components/Text'
 
 import {
   fetchQuiz,
@@ -73,9 +72,6 @@ export function Quiz(props) {
       miniBanner
       withBack
     >
-      <Text huge bold>
-        {submodule.name}
-      </Text>
       {question ? (
         <QuizContent
           {...question}

@@ -36,7 +36,10 @@ const messages = defineMessages({
   },
   answersResult: {
     id: `${scope}.answersResult`,
-    defaultMessage: 'Acertou {correctAnswersCount} questões de {questionsCount}.',
+    defaultMessage: `Acertou {correctAnswersCount} {correctAnswersCount, plural,
+      one {questão}
+      other {questões}
+    } de {questionsCount}.`,
   },
   continue: {
     id: `${scope}.continue`,
