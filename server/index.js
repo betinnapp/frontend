@@ -65,6 +65,12 @@ api.get('/module/quick-access', (req, res) => {
   res.json(modulesReponse)
 })
 
+api.get('/module/coin', (req, res) => {
+  res.status(200).send({
+    coin: 500,
+  })
+})
+
 api.get('/module/:moduleId', (req, res) => {
   res.json(moduleDetails)
 })
