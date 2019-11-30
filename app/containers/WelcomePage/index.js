@@ -17,18 +17,23 @@ import history from 'utils/history'
 import { MODULES_PATH, GOALS_LIST_PATH, USER_PATH } from 'containers/App/urls'
 import { useInjectSaga } from 'utils/injectSaga'
 import { useInjectReducer } from 'utils/injectReducer'
-import { selectUserFirstName, selectUserCoins } from 'containers/App/selectors'
+import { selectUserFirstName } from 'containers/App/selectors'
 import Button from 'components/Button'
 import CoinIcon from 'components/CoinIcon'
 import ContentWrapper from 'components/ContentWrapper'
 import Loader from 'components/Loader'
 import Text from 'components/Text'
 
-import { fetchQuickModulesList } from './actions'
+import { fetchQuickModulesList, fetchUserCoins } from './actions'
 import messages from './messages'
 import reducer from './reducer'
 import saga from './saga'
-import { selectModulesList, selectModulesListIsLoading, selectModulesListError } from './selectors'
+import {
+  selectModulesList,
+  selectModulesListIsLoading,
+  selectModulesListError,
+  selectUserCoins,
+} from './selectors'
 import QuickModulesList from './QuickModulesList'
 
 const Wrapper = styled(ContentWrapper)`
@@ -68,6 +73,7 @@ export function WelcomePage(props) {
 
   useEffect(() => {
     props.fetchQuickModulesList()
+    props.fetchUserCoins()
   }, [])
 
   const handleUserIconClick = () => {
@@ -130,6 +136,7 @@ WelcomePage.propTypes = {
   isLoading: PropTypes.bool,
   error: PropTypes.object,
   userCoins: PropTypes.number,
+  fetchUserCoins: PropTypes.func,
 }
 
 const mapStateToProps = createStructuredSelector({
@@ -144,6 +151,9 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchQuickModulesList: () => {
       dispatch(fetchQuickModulesList())
+    },
+    fetchUserCoins: () => {
+      dispatch(fetchUserCoins())
     },
   }
 }

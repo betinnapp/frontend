@@ -8,6 +8,7 @@ import {
   FETCH_QUICK_MODULES_LIST,
   FETCH_QUICK_MODULES_LIST_SUCCESS,
   FETCH_QUICK_MODULES_LIST_FAILURE,
+  FETCH_USER_COINS_SUCCESS,
 } from './constants'
 
 export const initialState = {
@@ -16,6 +17,7 @@ export const initialState = {
     error: null,
     isLoading: false,
   },
+  userCoins: null,
 }
 
 /* eslint-disable default-case, no-param-reassign */
@@ -31,6 +33,9 @@ const welcomePageReducer = (state = initialState, action) => produce(state, draf
     case FETCH_QUICK_MODULES_LIST_FAILURE:
       draft.modulesList.isLoading = false
       draft.modulesList.error = action.error
+      break
+    case FETCH_USER_COINS_SUCCESS:
+      draft.userCoins = action.coins
       break
   }
 })

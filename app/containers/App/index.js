@@ -33,7 +33,7 @@ import Fonts from 'components/Fonts'
 import GlobalStyle from '../../global-styles'
 
 import * as urls from './urls'
-import { fetchUserCoins, fetchUserInformation } from './actions'
+import { fetchUserInformation } from './actions'
 import saga from './saga'
 
 const AppWrapper = styled.div`
@@ -48,7 +48,6 @@ export function App(props) {
   useEffect(() => {
     if (isLoggedIn()) {
       props.fetchUserInformation()
-      props.fetchUserCoins()
     }
   }, [])
 
@@ -78,7 +77,6 @@ export function App(props) {
 
 App.propTypes = {
   fetchUserInformation: PropTypes.func,
-  fetchUserCoins: PropTypes.func,
 }
 
 const mapStateToProps = () => ({})
@@ -87,9 +85,6 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchUserInformation: () => {
       dispatch(fetchUserInformation())
-    },
-    fetchUserCoins: () => {
-      dispatch(fetchUserCoins())
     },
   }
 }

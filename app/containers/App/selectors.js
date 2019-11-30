@@ -24,15 +24,9 @@ const selectSelectedId = key => createSelector(
   substate => substate.selectedIds[key]
 )
 
-const selectUserCoins = createSelector(
-  selectCommonDomain,
-  substate => substate.userCoins
-)
-
 export {
   makeSelectLocation,
   selectUserInformation,
   selectUserFirstName,
   selectSelectedId,
-  selectUserCoins,
 }

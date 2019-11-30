@@ -23,8 +23,14 @@ const selectModulesListError = createSelector(
   substate => substate.error
 )
 
+const selectUserCoins = createSelector(
+  selectWelcomePageDomain,
+  substate => substate.userCoins
+)
+
 export {
   selectModulesList,
   selectModulesListIsLoading,
   selectModulesListError,
+  selectUserCoins,
 }
