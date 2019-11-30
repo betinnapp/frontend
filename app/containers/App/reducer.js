@@ -8,11 +8,13 @@ import {
   SAVE_USER_INFORMATION,
   SET_SELECTED_ID,
   DELETE_SELECTED_ID,
+  FETCH_USER_COINS_SUCCESS,
 } from './constants'
 
 export const initialState = {
   userInformation: {},
   selectedIds: {},
+  userCoins: null,
 }
 
 /* eslint-disable default-case, no-param-reassign */
@@ -26,6 +28,9 @@ const commonAppReducer = (state = initialState, action) => produce(state, draft 
       break
     case DELETE_SELECTED_ID:
       delete draft.selectedIds[action.key]
+      break
+    case FETCH_USER_COINS_SUCCESS:
+      draft.userCoins = action.coins
       break
   }
 })

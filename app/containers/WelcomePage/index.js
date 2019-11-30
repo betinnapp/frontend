@@ -17,8 +17,9 @@ import history from 'utils/history'
 import { MODULES_PATH, GOALS_LIST_PATH, USER_PATH } from 'containers/App/urls'
 import { useInjectSaga } from 'utils/injectSaga'
 import { useInjectReducer } from 'utils/injectReducer'
-import { selectUserFirstName } from 'containers/App/selectors'
+import { selectUserFirstName, selectUserCoins } from 'containers/App/selectors'
 import Button from 'components/Button'
+import CoinIcon from 'components/CoinIcon'
 import ContentWrapper from 'components/ContentWrapper'
 import Loader from 'components/Loader'
 import Text from 'components/Text'
@@ -42,6 +43,12 @@ const Wrapper = styled(ContentWrapper)`
     img {
       width: 45px;
     }
+
+    .userInfo {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
   }
 `
 
@@ -57,6 +64,7 @@ const QuickModulesListWrapper = styled.div`
 export function WelcomePage(props) {
   useInjectReducer({ key: 'welcomePage', reducer })
   useInjectSaga({ key: 'welcomePage', saga })
+  const { userCoins } = props
 
   useEffect(() => {
     props.fetchQuickModulesList()
@@ -80,11 +88,14 @@ export function WelcomePage(props) {
             values={{ username: props.userFirstName }} // TODO: Use username from stored user
           />
         </Text>
-        <UserIcon
-          icon="user-circle"
-          size="3x"
-          onClick={handleUserIconClick}
-        />
+        <div className="userInfo">
+          {(userCoins || userCoins === 0) && <CoinIcon coins={userCoins} />}
+          <UserIcon
+            icon="user-circle"
+            size="3x"
+            onClick={handleUserIconClick}
+          />
+        </div>
       </div>
       <QuickModulesListWrapper>
         <Loader isLoading={props.isLoading}>
@@ -118,6 +129,7 @@ WelcomePage.propTypes = {
   modules: PropTypes.array,
   isLoading: PropTypes.bool,
   error: PropTypes.object,
+  userCoins: PropTypes.number,
 }
 
 const mapStateToProps = createStructuredSelector({
@@ -125,6 +137,7 @@ const mapStateToProps = createStructuredSelector({
   modules: selectModulesList,
   isLoading: selectModulesListIsLoading,
   error: selectModulesListError,
+  userCoins: selectUserCoins,
 })
 
 function mapDispatchToProps(dispatch) {

@@ -5,6 +5,8 @@
  */
 
 import {
+  FETCH_USER_COINS,
+  FETCH_USER_COINS_SUCCESS,
   FETCH_USER_INFORMATION,
   SAVE_USER_INFORMATION,
   SET_SELECTED_ID,
@@ -36,5 +38,18 @@ export function deleteSelectedId(key) {
   return {
     type: DELETE_SELECTED_ID,
     key,
+  }
+}
+
+export function fetchUserCoins() {
+  return {
+    type: FETCH_USER_COINS,
+  }
+}
+
+export function fetchUserCoinsSuccess(coins) {
+  return {
+    type: FETCH_USER_COINS_SUCCESS,
+    coins,
   }
 }

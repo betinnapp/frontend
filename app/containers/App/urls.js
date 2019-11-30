@@ -16,6 +16,7 @@ export const MODULE_DETAILS_API_URL = `${EDU_API_PATH}/:moduleId`
 export const SUBMODULE_API_URL = `${MODULE_DETAILS_API_URL}/submodule/:submoduleId`
 export const SUBMODULE_COMPLETED_API_URL = `${SUBMODULE_API_URL}/completed`
 export const MODULES_LIST_QUICK_ACCESS_API_URL = `${EDU_API_PATH}/quick-access`
+export const COINS_API_URL = `${EDU_API_PATH}/coin`
 
 export const SURVEYS_API_URL = `${SURVEYS_API_PATH}/:surveyId`
 
