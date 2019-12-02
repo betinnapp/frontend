@@ -4,7 +4,7 @@
  *
  */
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
@@ -14,11 +14,10 @@ import { compose } from 'redux'
 
 import { useInjectSaga } from 'utils/injectSaga'
 import { useInjectReducer } from 'utils/injectReducer'
-import { HOME_PATH, MODULE_DETAILS_PATH } from 'containers/App/urls'
+import { HOME_PATH } from 'containers/App/urls'
 import CardItem from 'components/CardItem'
 import ContentWithHeader from 'components/ContentWithHeader'
 import ContentWrapper from 'components/ContentWrapper'
-import history from 'utils/history'
 import Loader from 'components/Loader'
 
 import { fetchModulesList } from './actions'
@@ -30,7 +29,11 @@ import {
 import reducer from './reducer'
 import saga from './saga'
 import messages from './messages'
+import ModuleInfo from './ModuleInfo'
 
+const ContentWithHeaderWrapper = styled(ContentWithHeader)`
+  /* position: relative; */
+`
 const CardsWrapper = styled(ContentWrapper)`
   margin: 0 16px;
 `
@@ -39,17 +42,26 @@ export function ModulesListPage(props) {
   useInjectReducer({ key: 'modulesListPage', reducer })
   useInjectSaga({ key: 'modulesListPage', saga })
 
+  const [showModuleInfo, setShowModuleInfo] = useState(false)
+  const [moduleInfo, setModuleInfo] = useState({})
+
   useEffect(() => {
     props.fetchModulesList()
   }, [])
 
   const onCardClickHandler = id => {
-    const url = MODULE_DETAILS_PATH.replace(':moduleId', id)
-    history.push(url)
+    setShowModuleInfo(true)
+    const selectedModule = props.modules.find(mod => mod.id === id)
+    setModuleInfo(selectedModule)
+  }
+
+  const handleCloseModuleInfo = () => {
+    setShowModuleInfo(false)
+    setModuleInfo({})
   }
 
   return (
-    <ContentWithHeader backTo={HOME_PATH}>
+    <ContentWithHeaderWrapper backTo={HOME_PATH}>
       <Loader isLoading={props.isLoading}>
         {props.error ? (
           <FormattedMessage {...messages.unableToLoadModulesList} />
@@ -68,8 +80,15 @@ export function ModulesListPage(props) {
             ))}
           </CardsWrapper>
         )}
+        {showModuleInfo && (
+          <ModuleInfo
+            visible={showModuleInfo}
+            moduleInfo={moduleInfo}
+            handleClose={handleCloseModuleInfo}
+          />
+        )}
       </Loader>
-    </ContentWithHeader>
+    </ContentWithHeaderWrapper>
   )
 }
 

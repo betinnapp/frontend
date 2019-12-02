@@ -2,7 +2,7 @@
   {
     "id": "3a63f50a-a8d9-4424-8b6b-1ba12a529da1",
     "name": "Module 1",
-    "descrition": "Module 1",
+    "description": "Nesse módulo você aprenderá sobre o tipo de investimento mais conhecido no mercado.",
     "image": "https://static01.nyt.com/images/2018/08/26/business/26VIEW.illo/26VIEW.illo-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
     "submodule": [
       {
@@ -12,7 +12,8 @@
         "image": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/04/15/11/money.jpg",
         "quizId": null,
         "submoduleOrder": 1,
-        "status": "COMPLETED"
+        "status": "COMPLETED",
+        "reward": 15
       },
       {
         "id": "621c5aa3-bfc6-4df8-897b-148d53701ca1",
@@ -21,7 +22,8 @@
         "image": "https://media3.s-nbcnews.com/j/newscms/2019_06/2746941/190208-stock-money-fanned-out-ew-317p_fa445b2f6f3e86a3ffa18707e6a8adcb.fit-760w.jpg",
         "quizId": null,
         "submoduleOrder": 2,
-        "status": "COMPLETED"
+        "status": "COMPLETED",
+        "reward": 15
       }
     ],
     "moduleOrder": 1,
@@ -30,7 +32,7 @@
   {
     "id": "3a63f50a-a8d9-4424-8b6b-1ba12a529da2",
     "name": "Module 2",
-    "descrition": "Module 2",
+    "description": "Nesse módulo você aprenderá sobre o tipo de investimento mais conhecido no mercado.",
     "image": "https://static01.nyt.com/images/2018/08/26/business/26VIEW.illo/26VIEW.illo-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
     "submodule": [
       {
@@ -40,7 +42,8 @@
         "image": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/04/15/11/money.jpg",
         "quizId": null,
         "submoduleOrder": 1,
-        "status": "LOCKED"
+        "status": "LOCKED",
+        "reward": 30
       },
       {
         "id": "621c5aa3-bfc6-4df8-897b-148d53701ca1",
@@ -49,7 +52,8 @@
         "image": "https://media3.s-nbcnews.com/j/newscms/2019_06/2746941/190208-stock-money-fanned-out-ew-317p_fa445b2f6f3e86a3ffa18707e6a8adcb.fit-760w.jpg",
         "quizId": null,
         "submoduleOrder": 2,
-        "status": "LOCKED"
+        "status": "LOCKED",
+        "reward": 30
       }
     ],
     "moduleOrder": 2,
@@ -58,7 +62,7 @@
   {
     "id": "3a63f50a-a8d9-4424-8b6b-1ba12a529da3",
     "name": "Module 3",
-    "descrition": "Module 3",
+    "description": "Nesse módulo você aprenderá sobre o tipo de investimento mais conhecido no mercado.",
     "image": "https://static01.nyt.com/images/2018/08/26/business/26VIEW.illo/26VIEW.illo-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
     "submodule": [
       {
@@ -68,7 +72,8 @@
         "image": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/04/15/11/money.jpg",
         "quizId": null,
         "submoduleOrder": 1,
-        "status": "LOCKED"
+        "status": "LOCKED",
+        "reward": 5
       },
       {
         "id": "621c5aa3-bfc6-4df8-897b-148d53701ca1",
@@ -77,7 +82,8 @@
         "image": "https://media3.s-nbcnews.com/j/newscms/2019_06/2746941/190208-stock-money-fanned-out-ew-317p_fa445b2f6f3e86a3ffa18707e6a8adcb.fit-760w.jpg",
         "quizId": null,
         "submoduleOrder": 2,
-        "status": "LOCKED"
+        "status": "LOCKED",
+        "reward": 5
       }
     ],
     "moduleOrder": 3,

@@ -44,6 +44,8 @@
   "app.containers.LoginPage.invalidLogin": "Usuário e/ou senha estão inválidos",
   "app.containers.LoginPage.weHaveALotToLearn": "Temos muito o que aprender.",
   "app.containers.LoginPage.welcome": "Bem-vindo!",
+  "app.containers.ModulesListPage.coins": "Moedas",
+  "app.containers.ModulesListPage.start": "Iniciar",
   "app.containers.ModulesListPage.unableToLoadModulesList": "Desculpa, não fomos capazes de carregar a lista de módulos, tente novamente mais tarde!",
   "app.containers.NotFoundPage.header": "This is the NotFoundPage container!",
   "app.containers.Quiz.anErrorOccurredWhileCompletingSubmodule": "Ocorreu um erro durante a ação de completar o submódulo, por favor complete o quiz novamente!",

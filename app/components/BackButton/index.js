@@ -21,9 +21,11 @@ const ButtonWrapper = styled.button`
   color: ${props => props.white && '#fff'};
 `
 
-function BackButton({ backTo, white }) {
+function BackButton({ backTo, white, onClick }) {
   const onClickHandler = () => {
-    if (backTo) {
+    if (onClick) {
+      onClick()
+    } else if (backTo) {
       history.push(backTo)
     } else {
       history.goBack()
@@ -40,6 +42,7 @@ function BackButton({ backTo, white }) {
 BackButton.propTypes = {
   backTo: PropTypes.string,
   white: PropTypes.bool,
+  onClick: PropTypes.func,
 }
 
 export default BackButton

@@ -13,6 +13,7 @@ import Text from 'components/Text'
 
 const Icon = styled.img`
   height: 20px;
+  margin-left: 8px;
 `
 
 function CoinIcon({ coins }) {
@@ -25,7 +26,7 @@ function CoinIcon({ coins }) {
 }
 
 CoinIcon.propTypes = {
-  coins: PropTypes.number,
+  coins: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 }
 
 export default CoinIcon

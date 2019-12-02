@@ -14,4 +14,12 @@ export default defineMessages({
     defaultMessage:
       'Desculpa, não fomos capazes de carregar a lista de módulos, tente novamente mais tarde!',
   },
+  start: {
+    id: `${scope}.start`,
+    defaultMessage: 'Iniciar',
+  },
+  coins: {
+    id: `${scope}.coins`,
+    defaultMessage: 'Moedas',
+  },
 })
