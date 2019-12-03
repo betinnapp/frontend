@@ -58,7 +58,8 @@ api.put('/user/me', (req, res) => {
 })
 
 api.get('/module/list', (req, res) => {
-  mix(req, res, modulesReponse)
+  // mix(req, res, modulesReponse)
+  res.json(modulesReponse)
 })
 
 api.get('/module/quick-access', (req, res) => {
