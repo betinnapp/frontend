@@ -64,7 +64,7 @@ const Blocked = styled.div`
   justify-content: center;
   text-align: center;
   height: 100%;
-  padding: 24px;
+  padding: 8px;
 
   > * {
     z-index: 2;
