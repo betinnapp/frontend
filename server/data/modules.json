@@ -2,7 +2,7 @@
   {
     "id": "3a63f50a-a8d9-4424-8b6b-1ba12a529da1",
     "name": "Module 1",
-    "description": "Nesse módulo você aprenderá sobre o tipo de investimento mais conhecido no mercado.",
+    "descrition": "Nesse módulo você aprenderá sobre o tipo de investimento mais conhecido no mercado.",
     "image": "https://static01.nyt.com/images/2018/08/26/business/26VIEW.illo/26VIEW.illo-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
     "submodule": [
       {
@@ -32,7 +32,7 @@
   {
     "id": "3a63f50a-a8d9-4424-8b6b-1ba12a529da2",
     "name": "Module 2",
-    "description": "Nesse módulo você aprenderá sobre o tipo de investimento mais conhecido no mercado.",
+    "descrition": "Nesse módulo você aprenderá sobre o tipo de investimento mais conhecido no mercado.",
     "image": "https://static01.nyt.com/images/2018/08/26/business/26VIEW.illo/26VIEW.illo-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
     "submodule": [
       {
@@ -62,7 +62,7 @@
   {
     "id": "3a63f50a-a8d9-4424-8b6b-1ba12a529da3",
     "name": "Module 3",
-    "description": "Nesse módulo você aprenderá sobre o tipo de investimento mais conhecido no mercado.",
+    "descrition": "Nesse módulo você aprenderá sobre o tipo de investimento mais conhecido no mercado.",
     "image": "https://static01.nyt.com/images/2018/08/26/business/26VIEW.illo/26VIEW.illo-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
     "submodule": [
       {

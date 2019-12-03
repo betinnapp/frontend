@@ -26,6 +26,7 @@ const Container = styled.div`
   justify-content: space-between;
   padding: 8px 8px 0;
   .content {
+    width: 100%;
     text-align: center;
     flex: 1;
     background: #ffffff;
@@ -86,7 +87,7 @@ export function ModuleInfo({
         </Title>
 
         <Text medium greyDark>
-          {moduleInfo.description}
+          {moduleInfo.descrition}
         </Text>
 
         <div>
