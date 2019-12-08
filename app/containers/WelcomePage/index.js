@@ -17,7 +17,7 @@ import history from 'utils/history'
 import { MODULES_PATH, GOALS_LIST_PATH, USER_PATH } from 'containers/App/urls'
 import { useInjectSaga } from 'utils/injectSaga'
 import { useInjectReducer } from 'utils/injectReducer'
-import { selectUserFirstName } from 'containers/App/selectors'
+import { selectuserShortName } from 'containers/App/selectors'
 import Button from 'components/Button'
 import CoinIcon from 'components/CoinIcon'
 import ContentWrapper from 'components/ContentWrapper'
@@ -91,7 +91,7 @@ export function WelcomePage(props) {
         <Text bold medium>
           <FormattedMessage
             {...messages.welcomeUser}
-            values={{ username: props.userFirstName }} // TODO: Use username from stored user
+            values={{ username: props.userShortName }} // TODO: Use username from stored user
           />
         </Text>
         <div className="userInfo">
@@ -130,7 +130,7 @@ export function WelcomePage(props) {
 }
 
 WelcomePage.propTypes = {
-  userFirstName: PropTypes.string,
+  userShortName: PropTypes.string,
   fetchQuickModulesList: PropTypes.func.isRequired,
   modules: PropTypes.array,
   isLoading: PropTypes.bool,
@@ -140,7 +140,7 @@ WelcomePage.propTypes = {
 }
 
 const mapStateToProps = createStructuredSelector({
-  userFirstName: selectUserFirstName,
+  userShortName: selectuserShortName,
   modules: selectModulesList,
   isLoading: selectModulesListIsLoading,
   error: selectModulesListError,

@@ -14,9 +14,9 @@ const selectUserInformation = createSelector(
   substate => substate.userInformation,
 )
 
-const selectUserFirstName = createSelector(
+const selectuserShortName = createSelector(
   selectUserInformation,
-  userInformation => userInformation.firstName,
+  userInformation => userInformation.shortName || userInformation.firstName,
 )
 
 const selectSelectedId = key => createSelector(
@@ -27,6 +27,6 @@ const selectSelectedId = key => createSelector(
 export {
   makeSelectLocation,
   selectUserInformation,
-  selectUserFirstName,
+  selectuserShortName,
   selectSelectedId,
 }

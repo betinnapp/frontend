@@ -21,4 +21,8 @@ export default defineMessages({
     id: `${scope}.quantityOfTotal`,
     defaultMessage: '{quantity} de {total}',
   },
+  emptyGoalListMessage: {
+    id: `${scope}.emptyGoalListMessage`,
+    defaultMessage: 'Você ainda não tem nenhuma meta, selecione "Fazer Simulação" para começar.',
+  },
 })

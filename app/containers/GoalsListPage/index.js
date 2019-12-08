@@ -21,7 +21,11 @@ import Loader from 'components/Loader'
 import reducer from './reducer'
 import saga from './saga'
 import { fetchGoalsList } from './actions'
-import { selectGoalsList, selectGoalsListIsLoading } from './selectors'
+import {
+  selectGoalsList,
+  selectGoalsListIsLoading,
+  selectGoalsListLoaded,
+} from './selectors'
 import messages from './messages'
 import GoalsList from './GoalsList'
 
@@ -36,7 +40,10 @@ export function GoalsListPage(props) {
   return (
     <ContentWithHeader backTo={HOME_PATH}>
       <Loader isLoading={props.isLoading}>
-        <GoalsList goalsList={props.goalsList} />
+        <GoalsList
+          loaded={props.loaded}
+          goalsList={props.goalsList}
+        />
       </Loader>
       <div className="bt-text-align-center">
         <Button id="makeSimulation" small link={NEW_GOAL_PATH}>
@@ -51,11 +58,13 @@ GoalsListPage.propTypes = {
   fetchGoalsList: PropTypes.func.isRequired,
   goalsList: PropTypes.array,
   isLoading: PropTypes.bool,
+  loaded: PropTypes.bool,
 }
 
 const mapStateToProps = createStructuredSelector({
   goalsList: selectGoalsList,
   isLoading: selectGoalsListIsLoading,
+  loaded: selectGoalsListLoaded,
 })
 
 function mapDispatchToProps(dispatch) {

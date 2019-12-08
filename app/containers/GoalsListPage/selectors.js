@@ -18,7 +18,13 @@ const selectGoalsListIsLoading = createSelector(
   substate => substate.isLoading
 )
 
+const selectGoalsListLoaded = createSelector(
+  selectGoalsListState,
+  substate => substate.loaded,
+)
+
 export {
   selectGoalsList,
   selectGoalsListIsLoading,
+  selectGoalsListLoaded,
 }

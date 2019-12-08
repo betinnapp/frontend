@@ -15,6 +15,7 @@ export const initialState = {
     resource: [],
     isLoading: false,
     error: null,
+    loaded: false,
   },
 }
 
@@ -24,14 +25,17 @@ const goalsListPageReducer = (state = initialState, action) =>
     switch (action.type) {
       case FETCH_GOALS_LIST:
         draft.goalsList.isLoading = true
+        draft.goalsList.loaded = false
         break
       case FETCH_GOALS_LIST_SUCCESS:
         draft.goalsList.isLoading = false
         draft.goalsList.resource = action.response
+        draft.goalsList.loaded = true
         break
       case FETCH_GOALS_LIST_FAILURE:
         draft.goalsList.isLoading = false
         draft.goalsList.error = action.error
+        draft.goalsList.loaded = true
         break
     }
   })

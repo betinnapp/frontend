@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { FormattedMessage, FormattedNumber } from 'react-intl'
 import round from 'lodash/round'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import history from 'utils/history'
 import { GOAL_DETAILS_PATH } from 'containers/App/urls'
@@ -40,6 +41,18 @@ const DoneIconWrapper = styled.div`
   top: -9px;
   right: -9px;
   font-size: 18px;
+`
+const EmptyListContainer = styled.div`
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+const EmptyListIcon = styled(FontAwesomeIcon)`
+  font-size: 80px;
+  color: #767676;
+  margin-bottom: 16px;
 `
 
 function GoalsList(props) {
@@ -103,15 +116,31 @@ function GoalsList(props) {
       <Title>
         <FormattedMessage {...messages.myGoals} />
       </Title>
-      <div>
-        {props.goalsList.map(renderGoalCard)}
-      </div>
+      {props.loaded && !props.goalsList.length ?
+        (
+          <EmptyListContainer>
+            <EmptyListIcon icon="hand-holding-usd" />
+            <p>
+              <FormattedMessage {...messages.emptyGoalListMessage} />
+            </p>
+          </EmptyListContainer>
+        ) :
+        (
+          <div>
+            {props.goalsList.map(renderGoalCard)}
+          </div>
+        )}
     </Wrapper>
   )
 }
 
 GoalsList.propTypes = {
   goalsList: PropTypes.array.isRequired,
+  loaded: PropTypes.bool,
+}
+
+GoalsList.defualtProps = {
+  goalsList: [],
 }
 
 export default GoalsList
